@@ -100,7 +100,7 @@
     }
     
     [[AZResourceManager sharedInstance] saveSelectedApps:appsArray];
-    [[AZHotKeyManager sharedInstance] registerHotKey:appsArray];
+    [[AZHotKeyManager sharedInstance] registerHotKeys:appsArray];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESH_WINDOW" object:nil];
 }
 
