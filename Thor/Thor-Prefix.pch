@@ -1,0 +1,14 @@
+//
+//  Thor-Prefix.pch
+//  Thor
+//
+//  Created by Alvin on 12/1/14.
+//  Copyright (c) 2014 AlvinZhu. All rights reserved.
+//
+
+#ifndef Thor_Thor_Prefix_pch
+#define Thor_Thor_Prefix_pch
+
+#import "NSView+Addition.h"
+
+#endif

@@ -11,7 +11,6 @@
 		E12A0D181A217BE200C0C366 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D171A217BE200C0C366 /* AppDelegate.m */; };
 		E12A0D1A1A217BE200C0C366 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D191A217BE200C0C366 /* main.m */; };
 		E12A0D1F1A217BE200C0C366 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E12A0D1E1A217BE200C0C366 /* Images.xcassets */; };
-		E12A0D221A217BE200C0C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E12A0D201A217BE200C0C366 /* Main.storyboard */; };
 		E12A0D2E1A217BE200C0C366 /* ThorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D2D1A217BE200C0C366 /* ThorTests.m */; };
 		E12A0D5F1A217D6300C0C366 /* AZAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D3B1A217D6300C0C366 /* AZAppController.m */; };
 		E12A0D601A217D6300C0C366 /* AZPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D3D1A217D6300C0C366 /* AZPreferenceWindowController.m */; };
@@ -29,6 +28,9 @@
 		E12A0D6C1A217D6300C0C366 /* AZAppsSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D5C1A217D6300C0C366 /* AZAppsSelectionView.m */; };
 		E12A0D6D1A217D6300C0C366 /* AZConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D5E1A217D6300C0C366 /* AZConfigView.m */; };
 		E12A0D701A217DCE00C0C366 /* AZAppsSwitchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D6F1A217DCE00C0C366 /* AZAppsSwitchWindow.m */; };
+		E192A3491A2CAC820068BE3F /* AZAppsListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E192A3481A2CAC820068BE3F /* AZAppsListWindowController.m */; };
+		E192A34B1A2CAF230068BE3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E192A34A1A2CAF230068BE3F /* MainMenu.xib */; };
+		E192A34D1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E192A34C1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib */; };
 		E1D0CB811A235CEA0022CB04 /* AZPreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +54,6 @@
 		E12A0D171A217BE200C0C366 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E12A0D191A217BE200C0C366 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E12A0D1E1A217BE200C0C366 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E12A0D211A217BE200C0C366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E12A0D271A217BE200C0C366 /* ThorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12A0D2C1A217BE200C0C366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E12A0D2D1A217BE200C0C366 /* ThorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThorTests.m; sourceTree = "<group>"; };
@@ -88,6 +89,11 @@
 		E12A0D5E1A217D6300C0C366 /* AZConfigView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZConfigView.m; sourceTree = "<group>"; };
 		E12A0D6E1A217DCE00C0C366 /* AZAppsSwitchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZAppsSwitchWindow.h; sourceTree = "<group>"; };
 		E12A0D6F1A217DCE00C0C366 /* AZAppsSwitchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZAppsSwitchWindow.m; sourceTree = "<group>"; };
+		E192A3471A2CAC820068BE3F /* AZAppsListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZAppsListWindowController.h; sourceTree = "<group>"; };
+		E192A3481A2CAC820068BE3F /* AZAppsListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZAppsListWindowController.m; sourceTree = "<group>"; };
+		E192A34A1A2CAF230068BE3F /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		E192A34C1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZPreferenceWindowController.xib; sourceTree = "<group>"; };
+		E192A34E1A2CB0820068BE3F /* Thor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Thor-Prefix.pch"; sourceTree = "<group>"; };
 		E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZPreferenceWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,7 +166,8 @@
 				E12A0D551A217D6300C0C366 /* Vendor */,
 				E12A0D561A217D6300C0C366 /* View */,
 				E12A0D1E1A217BE200C0C366 /* Images.xcassets */,
-				E12A0D201A217BE200C0C366 /* Main.storyboard */,
+				E192A34A1A2CAF230068BE3F /* MainMenu.xib */,
+				E192A34C1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib */,
 				E12A0D141A217BE200C0C366 /* Supporting Files */,
 			);
 			path = Thor;
@@ -171,6 +178,7 @@
 			children = (
 				E12A0D151A217BE200C0C366 /* Info.plist */,
 				E12A0D191A217BE200C0C366 /* main.m */,
+				E192A34E1A2CB0820068BE3F /* Thor-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -202,6 +210,8 @@
 				E12A0D3E1A217D6300C0C366 /* AZPrefsWindowController.h */,
 				E12A0D3F1A217D6300C0C366 /* AZPrefsWindowController.m */,
 				E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */,
+				E192A3471A2CAC820068BE3F /* AZAppsListWindowController.h */,
+				E192A3481A2CAC820068BE3F /* AZAppsListWindowController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -367,11 +377,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12A0D681A217D6300C0C366 /* General.png in Resources */,
+				E192A34D1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib in Resources */,
 				E12A0D691A217D6300C0C366 /* Updates.tiff in Resources */,
 				E12A0D671A217D6300C0C366 /* Advanced.png in Resources */,
 				E12A0D1F1A217BE200C0C366 /* Images.xcassets in Resources */,
 				E1D0CB811A235CEA0022CB04 /* AZPreferenceWindowController.xib in Resources */,
-				E12A0D221A217BE200C0C366 /* Main.storyboard in Resources */,
+				E192A34B1A2CAF230068BE3F /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +473,7 @@
 				E12A0D601A217D6300C0C366 /* AZPreferenceWindowController.m in Sources */,
 				E12A0D631A217D6300C0C366 /* AZHotKeyManager.m in Sources */,
 				E12A0D641A217D6300C0C366 /* AZResourceManager.m in Sources */,
+				E192A3491A2CAC820068BE3F /* AZAppsListWindowController.m in Sources */,
 				E12A0D181A217BE200C0C366 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,17 +495,6 @@
 			targetProxy = E12A0D281A217BE200C0C366 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E12A0D201A217BE200C0C366 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E12A0D211A217BE200C0C366 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E12A0D2F1A217BE200C0C366 /* Debug */ = {
@@ -578,6 +579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "Thor/Thor-Prefix.pch";
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -590,6 +592,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "Thor/Thor-Prefix.pch";
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

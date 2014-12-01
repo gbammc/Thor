@@ -7,9 +7,8 @@
 //
 
 #import "AZConfigView.h"
-#import "AZAppDelegate.h"
+#import "AppDelegate.h"
 #import "AZHotKeyManager.h"
-#import "AZAppDelegate.h"
 
 @implementation AZConfigView
 
@@ -36,8 +35,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@"modifyKey"] || [keyPath isEqualToString:@"delayInterval"]) {
-        [[AZHotKeyManager sharedInstance] registerHotKey];
-        [((AZAppDelegate *)[NSApplication sharedApplication].delegate) listenEvents];
+        [[AZHotKeyManager sharedInstance] registerHotKeys];
+        [((AppDelegate *)[NSApplication sharedApplication].delegate) listenEvents];
         
     } else  if ([keyPath isEqualToString:@"loginItemEnable"]) {
         if ([[change objectForKey:@"new"] boolValue]) {
@@ -47,7 +46,7 @@
         }
         
     } else if ([keyPath isEqualToString:@"shownInStatusBar"]) {
-        AZAppDelegate *delegate = ((AZAppDelegate *)[NSApplication sharedApplication]);
+        AppDelegate *delegate = ((AppDelegate *)[NSApplication sharedApplication]);
         if ([[change objectForKey:@"new"] boolValue]) {
             [delegate showStatusBar];
         } else {

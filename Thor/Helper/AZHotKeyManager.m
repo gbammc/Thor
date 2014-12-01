@@ -10,7 +10,7 @@
 #import <Carbon/Carbon.h>
 #import "AZAppModel.h"
 #import "AZResourceManager.h"
-#import "AZAppDelegate.h"
+#import "AppDelegate.h"
 
 /* key codes
  * spacebar 49
@@ -106,7 +106,7 @@ OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *
 }
 
 OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData) {
-    if (!((AZAppDelegate *)[NSApplication sharedApplication].delegate).enableHotKey) return noErr;
+    if (!((AppDelegate *)[NSApplication sharedApplication].delegate).enableHotKey) return noErr;
     
     EventHotKeyID hotKeyRef;
     
