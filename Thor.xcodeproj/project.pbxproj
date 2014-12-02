@@ -28,9 +28,8 @@
 		E12A0D6C1A217D6300C0C366 /* AZAppsSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D5C1A217D6300C0C366 /* AZAppsSelectionView.m */; };
 		E12A0D6D1A217D6300C0C366 /* AZConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D5E1A217D6300C0C366 /* AZConfigView.m */; };
 		E12A0D701A217DCE00C0C366 /* AZAppsSwitchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D6F1A217DCE00C0C366 /* AZAppsSwitchWindow.m */; };
-		E192A3491A2CAC820068BE3F /* AZAppsListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E192A3481A2CAC820068BE3F /* AZAppsListWindowController.m */; };
 		E192A34B1A2CAF230068BE3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E192A34A1A2CAF230068BE3F /* MainMenu.xib */; };
-		E192A34D1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E192A34C1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib */; };
+		E1AFBA711A2E096E003F283C /* AZAppsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AFBA701A2E096E003F283C /* AZAppsListView.m */; };
 		E1D0CB811A235CEA0022CB04 /* AZPreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */; };
 /* End PBXBuildFile section */
 
@@ -89,11 +88,10 @@
 		E12A0D5E1A217D6300C0C366 /* AZConfigView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZConfigView.m; sourceTree = "<group>"; };
 		E12A0D6E1A217DCE00C0C366 /* AZAppsSwitchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZAppsSwitchWindow.h; sourceTree = "<group>"; };
 		E12A0D6F1A217DCE00C0C366 /* AZAppsSwitchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZAppsSwitchWindow.m; sourceTree = "<group>"; };
-		E192A3471A2CAC820068BE3F /* AZAppsListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZAppsListWindowController.h; sourceTree = "<group>"; };
-		E192A3481A2CAC820068BE3F /* AZAppsListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZAppsListWindowController.m; sourceTree = "<group>"; };
 		E192A34A1A2CAF230068BE3F /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		E192A34C1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZPreferenceWindowController.xib; sourceTree = "<group>"; };
 		E192A34E1A2CB0820068BE3F /* Thor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Thor-Prefix.pch"; sourceTree = "<group>"; };
+		E1AFBA6F1A2E096E003F283C /* AZAppsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZAppsListView.h; sourceTree = "<group>"; };
+		E1AFBA701A2E096E003F283C /* AZAppsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZAppsListView.m; sourceTree = "<group>"; };
 		E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZPreferenceWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,7 +165,6 @@
 				E12A0D561A217D6300C0C366 /* View */,
 				E12A0D1E1A217BE200C0C366 /* Images.xcassets */,
 				E192A34A1A2CAF230068BE3F /* MainMenu.xib */,
-				E192A34C1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib */,
 				E12A0D141A217BE200C0C366 /* Supporting Files */,
 			);
 			path = Thor;
@@ -210,8 +207,6 @@
 				E12A0D3E1A217D6300C0C366 /* AZPrefsWindowController.h */,
 				E12A0D3F1A217D6300C0C366 /* AZPrefsWindowController.m */,
 				E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */,
-				E192A3471A2CAC820068BE3F /* AZAppsListWindowController.h */,
-				E192A3481A2CAC820068BE3F /* AZAppsListWindowController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -288,6 +283,8 @@
 				E12A0D5E1A217D6300C0C366 /* AZConfigView.m */,
 				E12A0D6E1A217DCE00C0C366 /* AZAppsSwitchWindow.h */,
 				E12A0D6F1A217DCE00C0C366 /* AZAppsSwitchWindow.m */,
+				E1AFBA6F1A2E096E003F283C /* AZAppsListView.h */,
+				E1AFBA701A2E096E003F283C /* AZAppsListView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -377,7 +374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12A0D681A217D6300C0C366 /* General.png in Resources */,
-				E192A34D1A2CAF2A0068BE3F /* AZPreferenceWindowController.xib in Resources */,
 				E12A0D691A217D6300C0C366 /* Updates.tiff in Resources */,
 				E12A0D671A217D6300C0C366 /* Advanced.png in Resources */,
 				E12A0D1F1A217BE200C0C366 /* Images.xcassets in Resources */,
@@ -460,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12A0D6D1A217D6300C0C366 /* AZConfigView.m in Sources */,
+				E1AFBA711A2E096E003F283C /* AZAppsListView.m in Sources */,
 				E12A0D6B1A217D6300C0C366 /* AZAppIconView.m in Sources */,
 				E12A0D5F1A217D6300C0C366 /* AZAppController.m in Sources */,
 				E12A0D701A217DCE00C0C366 /* AZAppsSwitchWindow.m in Sources */,
@@ -473,7 +470,6 @@
 				E12A0D601A217D6300C0C366 /* AZPreferenceWindowController.m in Sources */,
 				E12A0D631A217D6300C0C366 /* AZHotKeyManager.m in Sources */,
 				E12A0D641A217D6300C0C366 /* AZResourceManager.m in Sources */,
-				E192A3491A2CAC820068BE3F /* AZAppsListWindowController.m in Sources */,
 				E12A0D181A217BE200C0C366 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
