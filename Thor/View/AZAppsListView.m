@@ -7,13 +7,20 @@
 //
 
 #import "AZAppsListView.h"
+#import "AZAppsManager.h"
+#import "AZAppModel.h"
+#import "AZResourceManager.h"
+#import "AZHotKeyManager.h"
 
-@implementation AZAppsListView
+@interface AZAppsListView ()
+@property (nonatomic, strong) NSArray *appsList;
+@end
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
+@implementation AZAppsListView 
+
+- (void)awakeFromNib
+{
+    self.appsList = [[AZAppsManager sharedInstance] getApps];
 }
 
 @end
