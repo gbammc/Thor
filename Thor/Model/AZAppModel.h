@@ -17,6 +17,6 @@
 @property (nonatomic) BOOL              isSysApp;
 @property (nonatomic) NSInteger         index;
 
-+ (AZAppModel *)appFromMetadataItem:(NSMetadataItem *)item;
++ (NSArray<AZAppModel *> *)appsFromMetadataItems:(NSArray *)items;
 
 @end

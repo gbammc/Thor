@@ -59,11 +59,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSMetadataQueryDidFinishGatheringNotification object:nil];
     
-    NSMutableArray<AZAppModel *> *apps = [NSMutableArray array];
-    for (NSMetadataItem *item in self.appsQuery.results) {
-        AZAppModel *app = [AZAppModel appFromMetadataItem:item];
-        [apps addObject:app];
-    }
+    NSArray *apps = [AZAppModel appsFromMetadataItems:self.appsQuery.results];
     
     [[AZResourceManager sharedInstance] cacheAllApps:apps];
     
