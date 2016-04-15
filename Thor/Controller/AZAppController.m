@@ -1,6 +1,6 @@
 //
 //  AZAppController.m
-//  AppShortCut
+//  Thor
 //
 //  Created by Alvin on 13-10-17.
 //  Copyright (c) 2013年 Alvin. All rights reserved.
@@ -11,21 +11,30 @@
 
 @implementation AZAppController
 
-- (void)awakeFromNib {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showPreferencePanel:) name:@"SHOW_PREFERENCE_VIEW" object:nil];
-} 
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showPreferencePanel:) name:AZShowPreferencePanelNotification object:nil];
+}
 
-- (void)showPreferencePanel:(id)sender {
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (IBAction)showPreferencePanel:(id)sender
+{
     [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
     [[AZPrefsWindowController sharedPreferenceWindowController] showWindow:nil];
 }
 
-- (void)showAboutPanel:(id)sender {
+- (IBAction)showAboutPanel:(id)sender
+{
     [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
     [[AZPrefsWindowController sharedPreferenceWindowController] loadViewForIdentifier:@"Updates"];
 }
 
-- (void)exit:(id)sender {
+- (IBAction)exit:(id)sender
+{
     [NSApp terminate:self];
 }
 

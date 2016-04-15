@@ -1,6 +1,6 @@
 //
 //  AZAppsManager.m
-//  FastSwitcher
+//  Thor
 //
 //  Created by Alvin on 13-10-22.
 //  Copyright (c) 2013年 Alvin. All rights reserved.
@@ -10,19 +10,67 @@
 #import "AZAppModel.h"
 #import "AZResourceManager.h"
 
+@interface AZAppsManager ()
+
+@property (nonatomic, strong) NSMetadataQuery *appsQuery;
+@property (nonatomic, copy) void(^getAppsCallback)(NSArray<AZAppModel *> *);
+
+@end
+
 @implementation AZAppsManager
 
-static AZAppsManager *AZAm = nil;
-
-+ (id)sharedInstance {
++ (instancetype)sharedInstance
+{
     static dispatch_once_t onceToken;
+    static AZAppsManager *manager = nil;
     dispatch_once(&onceToken, ^{
-        AZAm = [[[self class] alloc] init];
+        manager = [[[self class] alloc] init];
+        [manager setupQuery];
     });
-    return AZAm;
+    return manager;
+}
+
+- (void)setupQuery
+{
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"kMDItemContentType == 'com.apple.application-bundle'"];
+    
+    self.appsQuery = [[NSMetadataQuery alloc] init];
+    [self.appsQuery setSearchScopes:@[@"/Applications", @"/System/Library/CoreServices"]];
+    [self.appsQuery setPredicate:pred];
 }
 
 #pragma mark - get Apps
+
+- (void)getApps:(void(^)(NSArray<AZAppModel *> *))callback
+{
+    self.getAppsCallback = callback;
+    
+    [self startQuery];
+}
+
+- (void)startQuery
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryFinish:) name:NSMetadataQueryDidFinishGatheringNotification object:nil];
+    
+    [self.appsQuery startQuery];
+}
+
+- (void)queryFinish:(NSNotification *)notification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSMetadataQueryDidFinishGatheringNotification object:nil];
+    
+    NSMutableArray<AZAppModel *> *apps = [NSMutableArray array];
+    for (NSMetadataItem *item in self.appsQuery.results) {
+        AZAppModel *app = [AZAppModel appFromMetadataItem:item];
+        [apps addObject:app];
+    }
+    
+    [[AZResourceManager sharedInstance] cacheAllApps:apps];
+    
+    if (self.getAppsCallback) {
+        self.getAppsCallback(apps);
+    }
+}
 
 - (NSArray *)getApps {
     // Depreted method, 
@@ -79,7 +127,7 @@ static AZAppsManager *AZAm = nil;
                     app.isSysApp = NO;
                     app.index = index++;
                     [appsArray addObject:app];
-                } 
+                }
             }
         }
         

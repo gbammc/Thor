@@ -1,6 +1,6 @@
 //
 //  AZAppIconView.m
-//  AppShortCut
+//  Thor
 //
 //  Created by Alvin on 13-10-21.
 //  Copyright (c) 2013年 Alvin. All rights reserved.

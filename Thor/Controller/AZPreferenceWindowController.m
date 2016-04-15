@@ -1,6 +1,6 @@
 //
 //  AZPreferenceWindowController.m
-//  AppShortCut
+//  Thor
 //
 //  Created by Alvin on 13-10-18.
 //  Copyright (c) 2013年 Alvin. All rights reserved.
@@ -17,10 +17,10 @@
 
 @end
 
-
 @implementation AZPreferenceWindowController
 
-+ (AZPreferenceWindowController *)sharedPreferenceWindowController {
++ (AZPreferenceWindowController *)sharedPreferenceWindowController
+{
     static AZPreferenceWindowController *sharedPreferenceWindowController = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -29,11 +29,13 @@
     return sharedPreferenceWindowController;
 }
 
-+ (NSString *)nibName {
++ (NSString *)nibName
+{
     return @"AZPreferenceWindowController";
 }
 
-- (id)initWithWindow:(NSWindow *)window {
+- (id)initWithWindow:(NSWindow *)window
+{
     if ((self = [super initWithWindow:window])) {
         self.toolbarIdentifiers = [[NSMutableArray alloc] init];
         self.toolbarViews = [[NSMutableDictionary alloc] init];
@@ -44,25 +46,27 @@
 
 - (void)windowDidLoad
 {    
-    NSWindow *window = 
-    [[NSWindow alloc] initWithContentRect:NSMakeRect(0,0,1000,1000)
-                                styleMask:(NSTitledWindowMask |
-                                           NSClosableWindowMask |
-                                           NSMiniaturizableWindowMask)
-                                  backing:NSBackingStoreBuffered
-                                    defer:YES];
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0,0,1000,1000)
+                                                   styleMask:(NSTitledWindowMask |
+                                                              NSClosableWindowMask |
+                                                              NSMiniaturizableWindowMask)
+                                                     backing:NSBackingStoreBuffered
+                                                       defer:YES];
     [self setWindow:window];
     self.contentSubview = [[NSView alloc] initWithFrame:[[[self window] contentView] frame]];
     [self.contentSubview setAutoresizingMask:(NSViewMinYMargin | NSViewWidthSizable)];
     [[[self window] contentView] addSubview:self.contentSubview];
     [[self window] setShowsToolbarButton:NO];
+    
+    self.window.backgroundColor = [NSColor whiteColor];
 }
 
 - (void)setupToolbar {
     
 }
 
-- (void)addToolbarItemForIdentifier:(NSString *)identifier label:(NSString *)label image:(NSImage *)image selector:(SEL)selector {
+- (void)addToolbarItemForIdentifier:(NSString *)identifier label:(NSString *)label image:(NSImage *)image selector:(SEL)selector
+{
     [self.toolbarIdentifiers addObject:identifier];
     
     NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
@@ -74,15 +78,18 @@
     (self.toolbarItems)[identifier] = item;
 }
 
-- (void)addFlexibeSpacer {
+- (void)addFlexibeSpacer
+{
     [self addToolbarItemForIdentifier:NSToolbarFlexibleSpaceItemIdentifier label:nil image:nil selector:nil];
 }
+
 
 - (void)addView:(NSView *)view label:(NSString *)label {
     [self addView:view label:label image:[NSImage imageNamed:label]];
 }
 
-- (void)addView:(NSView *)view label:(NSString *)label image:(NSImage *)image {
+- (void)addView:(NSView *)view label:(NSString *)label image:(NSImage *)image
+{
     if (view == nil) return;
 
     NSString *identifier = [label copy];
@@ -93,7 +100,8 @@
                              selector:@selector(toggleActivePreferenceView:)];
 }
 
-- (void)showWindow:(id)sender {
+- (void)showWindow:(id)sender
+{
     [self window];
     
     [self.toolbarIdentifiers removeAllObjects];
@@ -123,27 +131,33 @@
 
 #pragma mark - Toolbar
 
-- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar {
+- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar
+{
     return self.toolbarIdentifiers;
 }
 
-- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar {
+- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar
+{
     return self.toolbarIdentifiers;
 }
 
-- (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar {
+- (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar
+{
     return self.toolbarIdentifiers;
 }
 
-- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)identifier willBeInsertedIntoToolbar:(BOOL)willBeInserted{
+- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)identifier willBeInsertedIntoToolbar:(BOOL)willBeInserted
+{
 	return (self.toolbarItems)[identifier];
 }
 
-- (void)toggleActivePreferenceView:(NSToolbarItem *)toolbarItem {
+- (void)toggleActivePreferenceView:(NSToolbarItem *)toolbarItem
+{
     [self displayViewForIdentifier:[toolbarItem itemIdentifier]];
 }
 
-- (void)displayViewForIdentifier:(NSString *)identifier {
+- (void)displayViewForIdentifier:(NSString *)identifier
+{
     // Find the view we want to display.
     NSView *newView = (self.toolbarViews)[identifier];
     
@@ -179,12 +193,14 @@
     }
 }
 
-- (void)loadViewForIdentifier:(NSString *)identifier {
+- (void)loadViewForIdentifier:(NSString *)identifier
+{
     if (self.toolbarItems.count == 0) [self showWindow:identifier];
     
     [[[self window] toolbar] setSelectedItemIdentifier:identifier];
     [self displayViewForIdentifier:identifier];
 }
+
 
 - (NSRect)frameForView:(NSView *)view {
     NSRect windowFrame = [[self window] frame];
@@ -198,7 +214,8 @@
     return windowFrame;
 }
 
-- (void)keyDown:(NSEvent *)theEvent {
+- (void)keyDown:(NSEvent *)theEvent
+{
     NSString *key = [theEvent charactersIgnoringModifiers];
     if (([theEvent modifierFlags] & NSCommandKeyMask) && [key isEqualToString:@"w"]) {
         [self close];

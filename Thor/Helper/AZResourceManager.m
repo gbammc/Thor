@@ -1,6 +1,6 @@
 //
 //  AZResourceManager.m
-//  AppShortCut
+//  Thor
 //
 //  Created by Alvin on 13-10-17.
 //  Copyright (c) 2013年 Alvin. All rights reserved.
@@ -178,7 +178,7 @@ id AZRez;
 - (NSString *)documentPath {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *folder = @"~/Library/Application Support/FastSwitcher/";
+    NSString *folder = @"~/Library/Application Support/Thor/";
     folder = [folder stringByExpandingTildeInPath];
     
     if ([fileManager fileExistsAtPath: folder] == NO) {

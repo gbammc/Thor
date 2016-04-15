@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14C68k" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AZPrefsWindowController">
@@ -282,11 +282,11 @@
             </connections>
         </view>
         <customView id="5Wq-4B-1nW" customClass="AZConfigView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ut-CP-6in">
-                    <rect key="frame" x="32" y="224" width="79" height="17"/>
+                    <rect key="frame" x="32" y="354" width="79" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="激活键：" id="4yl-Eb-BPR">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -294,7 +294,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-9R-mER">
-                    <rect key="frame" x="111" y="184" width="179" height="18"/>
+                    <rect key="frame" x="111" y="314" width="179" height="18"/>
                     <buttonCell key="cell" type="check" title="登录时启动 Thor" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6VQ-Nn-stq">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" size="13" name="STHeitiSC-Light"/>
@@ -304,7 +304,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UCq-Mg-YTs">
-                    <rect key="frame" x="32" y="185" width="76" height="17"/>
+                    <rect key="frame" x="32" y="315" width="76" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="开机启动：" id="hfD-9t-7mn">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -312,7 +312,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDc-zs-qJs">
-                    <rect key="frame" x="111" y="147" width="176" height="18"/>
+                    <rect key="frame" x="111" y="277" width="176" height="18"/>
                     <buttonCell key="cell" type="check" title="显示状态栏图标" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WeW-ll-kl6">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -322,7 +322,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZ8-X7-FFd">
-                    <rect key="frame" x="32" y="148" width="76" height="17"/>
+                    <rect key="frame" x="32" y="278" width="76" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="状态栏：" id="OCF-Xq-tYG">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -330,7 +330,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MdR-Lc-M0T">
-                    <rect key="frame" x="111" y="113" width="176" height="18"/>
+                    <rect key="frame" x="111" y="243" width="176" height="18"/>
                     <buttonCell key="cell" type="check" title="显示提示窗口" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wry-BP-wrb">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -343,7 +343,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBY-Ca-xf9">
-                    <rect key="frame" x="32" y="114" width="76" height="17"/>
+                    <rect key="frame" x="32" y="244" width="76" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="提示：" id="a7z-fG-IN1">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -351,23 +351,15 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEi-64-W0B">
-                    <rect key="frame" x="32" y="70" width="76" height="17"/>
+                    <rect key="frame" x="32" y="200" width="76" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="显示延时：" id="nCt-7b-bDQ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLw-ub-KFa">
-                    <rect key="frame" x="29" y="22" width="76" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="关闭：" id="vY3-uk-B3q">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJb-FD-1Sf">
-                    <rect key="frame" x="114" y="219" width="177" height="26"/>
+                    <rect key="frame" x="114" y="349" width="177" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="⌘ Command 键" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hUL-is-wLt" id="4Js-uT-W4K">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -390,29 +382,37 @@
                         <binding destination="qqW-1X-lB0" name="selectedIndex" keyPath="values.modifyKey" id="GQD-Rw-dxF"/>
                     </connections>
                 </popUpButton>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IzX-Tx-eMJ">
-                    <rect key="frame" x="107" y="13" width="187" height="32"/>
-                    <buttonCell key="cell" type="push" title="退出 Thor" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qYn-8K-gY1">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IzX-Tx-eMJ">
+                    <rect key="frame" x="54" y="13" width="212" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="wlV-Yx-n6T"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="退出 Thor" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="qYn-8K-gY1">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="13" name="STHeitiSC-Light"/>
+                        <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="exit:" target="5Wq-4B-1nW" id="QJg-rB-8Fd"/>
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLa-zN-5Fv">
-                    <rect key="frame" x="114" y="66" width="176" height="27"/>
+                    <rect key="frame" x="114" y="195" width="176" height="27"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.44444444444444442" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="W8i-gE-WWc"/>
                     <connections>
                         <binding destination="qqW-1X-lB0" name="value" keyPath="values.delayInterval" id="pDs-gb-vS3"/>
                     </connections>
                 </slider>
             </subviews>
+            <constraints>
+                <constraint firstItem="IzX-Tx-eMJ" firstAttribute="centerX" secondItem="5Wq-4B-1nW" secondAttribute="centerX" id="D8k-Rb-HoW"/>
+                <constraint firstAttribute="bottom" secondItem="IzX-Tx-eMJ" secondAttribute="bottom" constant="20" id="yue-lR-T0Z"/>
+            </constraints>
             <connections>
                 <outlet property="loginItemCheckBox" destination="TZ8-9R-mER" id="l8X-bW-OMa"/>
                 <outlet property="shownInStatusBarCheckBox" destination="sDc-zs-qJs" id="GDb-Vt-B5U"/>
                 <outlet property="shownSwitcherViewCheckBox" destination="MdR-Lc-M0T" id="FAH-S9-Btr"/>
             </connections>
+            <point key="canvasLocation" x="714" y="664"/>
         </customView>
         <customView focusRingType="none" appearanceType="aqua" id="TBI-Qb-0nD" customClass="AZAboutView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
@@ -448,14 +448,14 @@
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8K-Ew-hZe">
                     <rect key="frame" x="20" y="20" width="260" height="360"/>
                     <clipView key="contentView" id="Ptw-De-7bb">
-                        <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                        <rect key="frame" x="1" y="0.0" width="258" height="359"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Jyc-GN-6fB" viewBased="YES" id="Vdi-6a-BTh">
-                                <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
+                                <rect key="frame" x="0.0" y="0.0" width="258" height="336"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn width="116" minWidth="40" maxWidth="1000" id="ReR-Ar-UGF">
@@ -536,7 +536,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="Jyc-GN-6fB">
-                        <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                        <rect key="frame" x="0.0" y="0.0" width="258" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -547,7 +547,7 @@
                 <constraint firstAttribute="bottom" secondItem="p8K-Ew-hZe" secondAttribute="bottom" constant="20" symbolic="YES" id="Y8B-x6-cYQ"/>
                 <constraint firstItem="p8K-Ew-hZe" firstAttribute="top" secondItem="73C-27-6zd" secondAttribute="top" constant="20" symbolic="YES" id="kaj-zb-YTK"/>
             </constraints>
-            <point key="canvasLocation" x="1220" y="396"/>
+            <point key="canvasLocation" x="295" y="648"/>
         </customView>
     </objects>
     <resources>

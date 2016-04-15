@@ -1,6 +1,6 @@
 //
 //  AZPreferenceWindowController.h
-//  AppShortCut
+//  Thor
 //
 //  Created by Alvin on 13-10-18.
 //  Copyright (c) 2013年 Alvin. All rights reserved.

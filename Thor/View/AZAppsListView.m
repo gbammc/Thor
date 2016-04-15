@@ -20,7 +20,9 @@
 
 - (void)awakeFromNib
 {
-    self.appsList = [[AZAppsManager sharedInstance] getApps];
+    [[AZAppsManager sharedInstance] getApps:^(NSArray<AZAppModel *> *apps) {
+        self.appsList = [NSArray arrayWithArray:apps];
+    }];
 }
 
 @end

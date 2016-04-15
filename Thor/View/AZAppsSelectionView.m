@@ -1,6 +1,6 @@
 //
 //  AZAppsSelectionView.m
-//  FastSwitcher
+//  Thor
 //
 //  Created by Alvin on 13-10-24.
 //  Copyright (c) 2013年 Alvin. All rights reserved.
@@ -20,21 +20,30 @@
 
 @implementation AZAppsSelectionView
 
-- (void)awakeFromNib {
-    self.appsList = [[AZAppsManager sharedInstance] getApps];
-    // setup popupMenu    
+- (void)awakeFromNib
+{
+    [[AZAppsManager sharedInstance] getApps:^(NSArray<AZAppModel *> *apps) {
+        self.appsList = [NSArray arrayWithArray:apps];
+        [self resetApps];
+    }];
+}
+
+- (void)resetApps
+{
+    // setup popupMenu
     NSMenu *menu = [[NSMenu alloc] init];
     // empty object
     NSMenuItem *emptyMenuItem = [[NSMenuItem alloc] init];
-    [emptyMenuItem setTitle:NSLocalizedString(@"空", nil)];
+    [emptyMenuItem setTitle:LocalizedString(@"空")];
     [menu addItem:emptyMenuItem];
     // seperator
     [menu addItem:[NSMenuItem separatorItem]];
+    
     // apps menuitem
     for (AZAppModel *app in self.appsList) {
         NSMenuItem *menuItem = [[NSMenuItem alloc] init];
         menuItem.title = app.appDisplayName;
-        NSImage *image = [AZResourceManager imageNamed:app.appIconPath 
+        NSImage *image = [AZResourceManager imageNamed:app.appIconPath
                                               inBundle:[NSBundle bundleWithURL:app.appBundleURL]];
         [image setSize:NSMakeSize(16, 16)];
         menuItem.image = image;
@@ -77,7 +86,8 @@
     }
 }
 
-- (void)selectApp:(id)sender {
+- (void)selectApp:(id)sender
+{
     NSPopUpButton *popUpBtn = (NSPopUpButton *)sender;
     NSInteger tag = popUpBtn.tag - 1001;
     NSInteger index = [popUpBtn indexOfSelectedItem];
@@ -101,7 +111,7 @@
     
     [[AZResourceManager sharedInstance] saveSelectedApps:appsArray];
     [[AZHotKeyManager sharedInstance] registerHotKeys:appsArray];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESH_WINDOW" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:AZRefreshWindowNotification object:nil];
 }
 
 @end

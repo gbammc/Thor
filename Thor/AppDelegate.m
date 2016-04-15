@@ -45,18 +45,19 @@
 //    CFRelease(runLoopSource);
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
-- (void)awakeFromNib {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"shownInStatusBar"]) {
-        [self showStatusBar];
+- (void)awakeFromNib
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:AZDisplayInStatusBarKey]) {
+        [self displayInStatusBar];
     }
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
     isFirstActive = YES;
     self.enableHotKey = YES;
     [self listenEvents];
@@ -64,32 +65,36 @@
     NSArray *appsArray = [[AZResourceManager sharedInstance] readSelectedAppsList];
     [[AZHotKeyManager sharedInstance] registerHotKeys:appsArray];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWindow) name:@"REFRESH_WINDOW" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWindow) name:AZRefreshWindowNotification object:nil];
 }
 
-- (void)applicationDidBecomeActive:(NSNotification *)notification {
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"shownInStatusBar"] && !isFirstActive) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOW_PREFERENCE_VIEW" object:nil];
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:AZDisplayInStatusBarKey] && !isFirstActive) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:AZShowPreferencePanelNotification object:nil];
     }
     isFirstActive = NO;
 }
 
 #pragma mark - StatusBar
 
-- (void)showStatusBar {
+- (void)displayInStatusBar
+{
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [self.statusItem setMenu:self.statusMenu];
-    [self.statusItem setImage:[NSImage imageNamed:@"icon_20x20.png "]];
+    [self.statusItem setImage:[NSImage imageNamed:@"icon_20x20.png"]];
     [self.statusItem setHighlightMode:YES];
 }
 
-- (void)hideStatusBar {
+- (void)disappearFromStatusBar
+{
     [[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
 }
 
 #pragma mark - Handle events
 
-- (void)listenEvents {
+- (void)listenEvents
+{
     // get modify key
     NSInteger modifyKey = [self getModifyKey];
     
@@ -188,7 +193,8 @@
     }];
 }
 
-- (NSInteger)getModifyKey {
+- (NSInteger)getModifyKey
+{
     NSInteger modifyKeyIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"modifyKey"];
     NSInteger modifyKey = 0;
     switch (modifyKeyIndex) {
@@ -211,26 +217,31 @@
     return modifyKey;
 }
 
-- (NSTimeInterval)getDelayInterval {
+- (NSTimeInterval)getDelayInterval
+{
     NSTimeInterval interval = [[NSUserDefaults standardUserDefaults] doubleForKey:@"delayInterval"];
     return interval;
 }
+
 
 - (void)refreshWindow {
     [self.window refresh];
 }
 
-- (void)switcherViewFadeIn {
+- (void)switcherViewFadeIn
+{
     if (isTapping) {
         [self.window fadeIn];
     }
 }
 
-- (void)checkHotKeyEnable {
+- (void)checkHotKeyEnable
+{
     hasTapped = NO;
 }
 
-- (void)anewHotKeyEnable {
+- (void)anewHotKeyEnable
+{
     [[AZHotKeyManager sharedInstance] registerHotKeys];
     self.enableHotKey = YES;
 }

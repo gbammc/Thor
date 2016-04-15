@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2DBC5A81CC0CF0D00FBF3A2 /* AZPreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2DBC5AA1CC0CF0D00FBF3A2 /* AZPreferenceWindowController.xib */; };
 		C609951399DB843FBAA2A366 /* libPods-Thor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D028EE5B61D17B8ECCDF02 /* libPods-Thor.a */; };
 		E12A0D181A217BE200C0C366 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D171A217BE200C0C366 /* AppDelegate.m */; };
 		E12A0D1A1A217BE200C0C366 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D191A217BE200C0C366 /* main.m */; };
@@ -30,7 +31,6 @@
 		E12A0D701A217DCE00C0C366 /* AZAppsSwitchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E12A0D6F1A217DCE00C0C366 /* AZAppsSwitchWindow.m */; };
 		E192A34B1A2CAF230068BE3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E192A34A1A2CAF230068BE3F /* MainMenu.xib */; };
 		E1AFBA711A2E096E003F283C /* AZAppsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AFBA701A2E096E003F283C /* AZAppsListView.m */; };
-		E1D0CB811A235CEA0022CB04 /* AZPreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +47,8 @@
 		570A3E20716E79E5D9A01CCF /* Pods-Thor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.debug.xcconfig"; sourceTree = "<group>"; };
 		5CC7ECE03F9F76B403FB5676 /* Pods-Thor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.release.xcconfig"; sourceTree = "<group>"; };
 		69D028EE5B61D17B8ECCDF02 /* libPods-Thor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Thor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2DBC5A91CC0CF0D00FBF3A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AZPreferenceWindowController.xib; sourceTree = "<group>"; };
+		B2DBC5AB1CC0CF7300FBF3A2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/AZPreferenceWindowController.xib"; sourceTree = "<group>"; };
 		E12A0D111A217BE200C0C366 /* Thor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12A0D151A217BE200C0C366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E12A0D161A217BE200C0C366 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -92,7 +94,6 @@
 		E192A34E1A2CB0820068BE3F /* Thor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Thor-Prefix.pch"; sourceTree = "<group>"; };
 		E1AFBA6F1A2E096E003F283C /* AZAppsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZAppsListView.h; sourceTree = "<group>"; };
 		E1AFBA701A2E096E003F283C /* AZAppsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZAppsListView.m; sourceTree = "<group>"; };
-		E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZPreferenceWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,9 +205,9 @@
 				E12A0D3B1A217D6300C0C366 /* AZAppController.m */,
 				E12A0D3C1A217D6300C0C366 /* AZPreferenceWindowController.h */,
 				E12A0D3D1A217D6300C0C366 /* AZPreferenceWindowController.m */,
+				B2DBC5AA1CC0CF0D00FBF3A2 /* AZPreferenceWindowController.xib */,
 				E12A0D3E1A217D6300C0C366 /* AZPrefsWindowController.h */,
 				E12A0D3F1A217D6300C0C366 /* AZPrefsWindowController.m */,
-				E1D0CB801A235CEA0022CB04 /* AZPreferenceWindowController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,6 +304,7 @@
 				E12A0D371A217BF900C0C366 /* ShellScript */,
 				E12A0D381A217C0600C0C366 /* ShellScript */,
 				BD737277149ACB02B4797EC5 /* Copy Pods Resources */,
+				40B1F9A92039CD248E0795D0 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,6 +358,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = E12A0D081A217BE200C0C366;
 			productRefGroup = E12A0D121A217BE200C0C366 /* Products */;
@@ -377,7 +380,7 @@
 				E12A0D691A217D6300C0C366 /* Updates.tiff in Resources */,
 				E12A0D671A217D6300C0C366 /* Advanced.png in Resources */,
 				E12A0D1F1A217BE200C0C366 /* Images.xcassets in Resources */,
-				E1D0CB811A235CEA0022CB04 /* AZPreferenceWindowController.xib in Resources */,
+				B2DBC5A81CC0CF0D00FBF3A2 /* AZPreferenceWindowController.xib in Resources */,
 				E192A34B1A2CAF230068BE3F /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +395,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		40B1F9A92039CD248E0795D0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thor/Pods-Thor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BD737277149ACB02B4797EC5 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -491,6 +509,18 @@
 			targetProxy = E12A0D281A217BE200C0C366 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B2DBC5AA1CC0CF0D00FBF3A2 /* AZPreferenceWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2DBC5A91CC0CF0D00FBF3A2 /* en */,
+				B2DBC5AB1CC0CF7300FBF3A2 /* zh-Hans */,
+			);
+			name = AZPreferenceWindowController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E12A0D2F1A217BE200C0C366 /* Debug */ = {

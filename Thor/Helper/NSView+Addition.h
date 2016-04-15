@@ -1,6 +1,6 @@
 //
 //  NSView+Addition.h
-//  FastSwitcher
+//  Thor
 //
 //  Created by Alvin on 13-10-23.
 //  Copyright (c) 2013年 Alvin. All rights reserved.
@@ -61,7 +61,14 @@
  */
 @property (nonatomic) CGSize size;
 
+/**
+ *  Shortcut for center.x
+ */
 @property (nonatomic, readonly) CGFloat centerX;
+
+/**
+ *  Shortcut for center.y
+ */
 @property (nonatomic, readonly) CGFloat centerY;
 
 @end

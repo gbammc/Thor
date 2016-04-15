@@ -1,6 +1,6 @@
 //
 //  AZConfigView.m
-//  FastSwitcher
+//  Thor
 //
 //  Created by Alvin on 13-10-24.
 //  Copyright (c) 2013年 Alvin. All rights reserved.
@@ -24,7 +24,7 @@
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
     [defaults addObserver:self
-               forKeyPath:@"shownInStatusBar"
+               forKeyPath:AZDisplayInStatusBarKey
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
     [defaults addObserver:self
@@ -45,12 +45,12 @@
             [self removeAppFromLoginItem];
         }
         
-    } else if ([keyPath isEqualToString:@"shownInStatusBar"]) {
+    } else if ([keyPath isEqualToString:AZDisplayInStatusBarKey]) {
         AppDelegate *delegate = ((AppDelegate *)[NSApplication sharedApplication]);
         if ([[change objectForKey:@"new"] boolValue]) {
-            [delegate showStatusBar];
+            [delegate displayInStatusBar];
         } else {
-            [delegate hideStatusBar];
+            [delegate disappearFromStatusBar];
         }
     }
 }
