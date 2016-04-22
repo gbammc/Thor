@@ -6,7 +6,8 @@
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
-import Foundation
+import Cocoa
+import MASShortcut
 
 class AppModel {
 
@@ -15,6 +16,22 @@ class AppModel {
     let appDisplayName: String
     let appIconName: String
     let isSysApp: Bool
+    
+    var shortcut: MASShortcut?
+    
+    var icon: NSImage? {
+        get {
+            let bundle = NSBundle(URL: appBundleURL)!
+            let compositeName = "\(bundle.bundleIdentifier):\(appIconName)"
+            if let bundleImage = NSImage(contentsOfFile: bundle.pathForImageResource(appIconName)!) {
+                bundleImage.setName(compositeName)
+                bundleImage.size = NSSize(width: 16, height: 16)
+                return bundleImage
+            }
+            
+            return nil
+        }
+    }
     
     init?(item: NSMetadataItem) {
         guard let path = item.valueForAttribute(kMDItemPath as String) as? String else { return nil }
@@ -49,6 +66,10 @@ class AppModel {
         
         guard let isSysApp = dict.objectForKey("isSysApp") as? Bool else { return nil }
         self.isSysApp = isSysApp
+        
+        if let shortcut = dict.objectForKey("shortcut") as? MASShortcut {
+            self.shortcut = shortcut
+        }
     }
     
     func encode() -> NSDictionary {
@@ -58,6 +79,7 @@ class AppModel {
         dict.setObject(appDisplayName, forKey: "appDisplayName")
         dict.setObject(appIconName, forKey: "appIconName")
         dict.setObject(isSysApp, forKey: "isSysApp")
+        dict.setObject(shortcut ?? NSNull(), forKey: "shortcut")
         
         return dict
     }
@@ -65,7 +87,7 @@ class AppModel {
     class func appsFroms(items: [AnyObject]) -> [AppModel] {
         guard let apps = items as? [NSMetadataItem] else { return [] }
         
-        return apps.flatMap({ AppModel(item: $0) }).sort({ $0.0.appDisplayName < $0.1.appDisplayName })
+        return apps.flatMap({ AppModel(item: $0) }).sort({ $0.0.appDisplayName.lowercaseString < $0.1.appDisplayName.lowercaseString })
     }
     
 }
