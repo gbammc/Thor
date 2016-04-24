@@ -1,7 +1,7 @@
 PODS:
   - MASShortcut (2.3.3)
   - SnapKit (0.20.0)
-  - SwiftyUserDefaults (2.2.0)
+  - SwiftyUserDefaults (2.1.3)
 
 DEPENDENCIES:
   - MASShortcut
@@ -11,6 +11,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   MASShortcut: 38a76c9ea927de770c0a97ae28b15d18d6268b24
   SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
-  SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
+  SwiftyUserDefaults: bd394a09247e3f00e17e402aa535c047c5d12b07
 
 COCOAPODS: 0.39.0
