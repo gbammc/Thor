@@ -15,5 +15,6 @@ extension DefaultsKeys {
     static let modifyKey = DefaultsKey<Int?>("modifyKey")
     static let delayInterval = DefaultsKey<Double?>("delayInterval")
     static let displayStatusItem = DefaultsKey<Bool>("displayStatusItem")
+    static let showCheatSheetWindow = DefaultsKey<Bool>("showCheatSheetWindow")
     
 }

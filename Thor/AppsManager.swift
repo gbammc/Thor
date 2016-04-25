@@ -8,19 +8,19 @@
 
 import Foundation
 
-class AppsManager {
+class AppsManager: NSObject {
     
     static let manager = AppsManager()
     
     var selectedApps = [AppModel]()
     
-    private let query: NSMetadataQuery
+    private var query = NSMetadataQuery()
     private var callback: (([AppModel]) -> ())?
     
-    init() {
-        let pred = NSPredicate(format: "kMDItemKind=='Application'")
-        query = NSMetadataQuery()
-        query.predicate = pred
+    override init() {
+        super.init()
+
+        query.predicate = NSPredicate(format: "kMDItemKind=='Application'")
         query.searchScopes = ["/Applications/"]
         
         if let apps = loadDataFrom(selectedAppsFile) as? [NSDictionary] {

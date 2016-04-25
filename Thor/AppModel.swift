@@ -9,7 +9,7 @@
 import Cocoa
 import MASShortcut
 
-class AppModel {
+class AppModel: NSObject {
 
     let appBundleURL: NSURL
     let appName: String

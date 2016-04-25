@@ -26,6 +26,9 @@ func save(obj: AnyObject, to path: String) -> Bool {
 
 let selectedAppsFile = "apps"
 
+// notifications
+let refreshAppsListNotification = "refreshAppsListNotification"
+
 // identifiers
 let titleViewIdentifier = "titleViewIdentifier"
 let appsTitleItemIdentifier = "appsTitleItemIdentifier"
