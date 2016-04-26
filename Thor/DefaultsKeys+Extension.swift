@@ -11,10 +11,8 @@ import SwiftyUserDefaults
 
 extension DefaultsKeys {
     
-    static let hotKey = DefaultsKey<[NSData]?>("hotKey")
-    static let modifyKey = DefaultsKey<Int?>("modifyKey")
-    static let delayInterval = DefaultsKey<Double?>("delayInterval")
-    static let displayStatusItem = DefaultsKey<Bool>("displayStatusItem")
-    static let showCheatSheetWindow = DefaultsKey<Bool>("showCheatSheetWindow")
+    static let modifyKey = DefaultsKey<Int>("modifyKey")
+    static let delayInterval = DefaultsKey<Double>("delayInterval")
+    static let showCheatSheet = DefaultsKey<Bool>("showCheatSheet")
     
 }

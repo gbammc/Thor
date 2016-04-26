@@ -13,6 +13,8 @@ class MainWindowController: TOLWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
+        window?.contentView?.layer?.masksToBounds = true
+        
         SharedAppDelegate?.mainWindowController = self
         
         let appItem = TitleViewItem(itemIdentifier: appsTitleItemIdentifier)

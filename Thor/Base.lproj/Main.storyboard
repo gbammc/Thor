@@ -252,7 +252,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="HSK-Sf-ydT" viewBased="YES" id="aOE-yu-2yD">
-                                            <rect key="frame" x="0.0" y="0.0" width="278" height="382"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -343,7 +343,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="HSK-Sf-ydT">
-                                    <rect key="frame" x="0.0" y="0.0" width="278" height="17"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="278" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -371,13 +371,113 @@
         <!--Settings View Controller-->
         <scene sceneID="Uye-Ur-Jj1">
             <objects>
+                <customObject id="0cR-1e-8gt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SettingsViewController" id="LfM-H7-njo" customClass="SettingsViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Crp-4s-mEo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XJy-eX-prE">
+                                <rect key="frame" x="131" y="442" width="176" height="18"/>
+                                <buttonCell key="cell" type="check" title="Launch Thor at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Uwv-xu-Spi">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleLaunchAtLogin:" target="LfM-H7-njo" id="OBV-kl-ahX"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="erl-iE-RbD">
+                                <rect key="frame" x="131" y="400" width="176" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show Cheatsheet" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mzu-MP-WaM">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleShowCheatSheet:" target="LfM-H7-njo" id="Ujf-jY-spm"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="709-09-hkn">
+                                <rect key="frame" x="14" y="401" width="115" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Cheatsheet:" id="kYt-rI-O8Y">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-0d-C8U">
+                                <rect key="frame" x="45" y="315" width="84" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Display after:" id="1fT-Qh-dE2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Wg-Pgf">
+                                <rect key="frame" x="131" y="310" width="171" height="27"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="9mT-en-uZb">
+                                    <connections>
+                                        <action selector="changeCheatSheetActivateInterval:" target="LfM-H7-njo" id="aX1-il-uFb"/>
+                                    </connections>
+                                </sliderCell>
+                            </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7f-tZ-zin">
+                                <rect key="frame" x="53" y="443" width="76" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Startup:" id="rKg-Oa-Jg1">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="prA-Il-0qM">
+                                <rect key="frame" x="60" y="13" width="200" height="32"/>
+                                <buttonCell key="cell" type="push" title="Quit Thor" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="2nX-9N-OOj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="exit:" target="LfM-H7-njo" id="4R9-rw-H8N"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIc-ga-45L">
+                                <rect key="frame" x="25" y="360" width="104" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Activate Hotkey:" id="uWp-Ys-dhU">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zk-yi-rDJ" userLabel="⌘ Command Key">
+                                <rect key="frame" x="131" y="355" width="172" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="⇧ Shift 键" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qJu-sX-5Pd" id="2rr-yT-VNc" userLabel="⌃ Control Key">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" title="OtherViews" id="Hcy-Ge-ZoW">
+                                        <items>
+                                            <menuItem title="⌘ Command 键" id="Yef-Cj-gO1" userLabel="⌘ Command Key"/>
+                                            <menuItem title="⌥ Option 键" id="ltM-LE-FOy" userLabel="⌥ Option Key">
+                                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            </menuItem>
+                                            <menuItem title="⌃ Control 键" id="NL4-zo-fys" userLabel="⌃ Control Key">
+                                                <modifierMask key="keyEquivalentModifierMask" control="YES"/>
+                                            </menuItem>
+                                            <menuItem title="⇧ Shift 键" state="on" id="qJu-sX-5Pd" userLabel="⇧ Shift Key">
+                                                <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="btnCheatSheetAvtivateHotKey" destination="0zk-yi-rDJ" id="X1b-ur-Oge"/>
+                        <outlet property="btnLaunchAtLogin" destination="XJy-eX-prE" id="xKD-J0-ALg"/>
+                        <outlet property="btnShowCheatSheet" destination="erl-iE-RbD" id="W7L-k3-zqz"/>
+                        <outlet property="slider" destination="9mT-en-uZb" id="ZmK-N7-ClV"/>
+                    </connections>
                 </viewController>
-                <customObject id="0cR-1e-8gt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="XlP-8s-PZm"/>
             </objects>
             <point key="canvasLocation" x="872" y="416"/>
         </scene>

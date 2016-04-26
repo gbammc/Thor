@@ -25,7 +25,6 @@ class TOLWindowController: NSWindowController {
         
         guard window?.toolbar == nil else { return }
         
-        
         let toolbar = NSToolbar(identifier: "toolbar")
         toolbar.delegate = self
         toolbar.showsBaselineSeparator = false

@@ -7,11 +7,6 @@
 //
 
 import Cocoa
-import SnapKit
-
-protocol TitleViewDelegate {
-//    func titleView(titleView: TitleView, didSelectItem)
-}
 
 class TitleViewItem: NSButton {
     
@@ -50,16 +45,11 @@ class TitleView: NSView {
         items.forEach { $0.removeFromSuperview() }
         
         for (index, item) in items.enumerate() {
-            addSubview(item)
-            
-            item.snp_makeConstraints(closure: { (make) in
-                make.left.equalTo(CGFloat(index) * titleItemWidth)
-                make.width.equalTo(titleItemWidth)
-                make.top.bottom.equalTo(self)
-            })
-            
+            item.frame = NSRect(x: CGFloat(index) * titleItemWidth, y: 0, width: titleItemWidth, height: self.height)
             item.target = self
             item.action = #selector(TitleView.toggle(_:))
+            
+            addSubview(item)
         }
     }
     

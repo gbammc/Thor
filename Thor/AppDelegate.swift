@@ -39,11 +39,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Life cycle
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        if Defaults[.displayStatusItem] || true {
-            displayInStatusBar()
+        Defaults.registerDefaults(
+            [
+                DefaultsKeys.showCheatSheet._key : true,
+                DefaultsKeys.delayInterval._key : 3,
+            ]
+        )
+        
+        if Defaults[.showCheatSheet] {
+            activateCheatSheetMonitor()
         }
         
-        activateCheatSheetMonitor()
+        displayInStatusBar()
+        
         HotKeysManager.sharedManager().registerHotKeys()
     }
     
@@ -75,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     self.timerDisableHotKey = NSTimer(timeInterval: intervalCheckHotKeyEnable, target: self, selector: #selector(AppDelegate.checkHotKeyEnable(_:)), userInfo: nil, repeats: false)
                     NSRunLoop.currentRunLoop().addTimer(self.timerDisableHotKey!, forMode: NSRunLoopCommonModes)
                     
-                    if !Defaults[.showCheatSheetWindow] {
+                    if !Defaults[.showCheatSheet] {
                         return
                     }
                     
@@ -116,10 +124,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = statusMenu
         statusItem.image = NSImage(named: "Settings")
         statusItem.highlightMode = true
-    }
-    
-    func disappearFromStatusBar() {
-        NSStatusBar.systemStatusBar().removeStatusItem(statusItem)
     }
     
     func refreshWindow() {
