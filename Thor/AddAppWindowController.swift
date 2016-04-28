@@ -14,7 +14,6 @@ class AddAppWindowController: NSWindowController {
         super.windowDidLoad()
     
         window?.center()
-        
     }
 
 }

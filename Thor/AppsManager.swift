@@ -21,7 +21,7 @@ class AppsManager: NSObject {
         super.init()
 
         query.predicate = NSPredicate(format: "kMDItemKind=='Application'")
-        query.searchScopes = ["/Applications/"]
+        query.searchScopes = ["/Applications/", "/System/Library/CoreServices/"]
         
         if let apps = loadDataFrom(selectedAppsFile) as? [NSDictionary] {
             selectedApps = apps.flatMap { AppModel(dict: $0) }
@@ -30,13 +30,15 @@ class AppsManager: NSObject {
     
     func getApps(callback: ([AppModel] -> ())?) {
         self.callback = callback
-        
+
         startQuery()
     }
     
     func saveData() {
         let apps = selectedApps.map { $0.encode() }
         save(apps, to: selectedAppsFile)
+        
+        HotKeysManager.sharedManager().registerHotKeys()
     }
     
     private func startQuery() {
@@ -47,9 +49,11 @@ class AppsManager: NSObject {
     
     @objc private func queryFinish(notification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: NSMetadataQueryDidFinishGatheringNotification, object: nil)
+
+        query.stopQuery()
         
         let apps = AppModel.appsFroms(query.results)
-        
+
         callback?(apps)
     }
     

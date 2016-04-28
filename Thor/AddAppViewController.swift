@@ -15,34 +15,43 @@ class AddAppViewController: NSViewController {
     @IBOutlet weak var shortcutView: MASShortcutView!
     
     var apps: [AppModel]?
+    var selectedApp: AppModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.layer?.backgroundColor = NSColor.whiteColor().CGColor
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
         
         AppsManager.manager.getApps {
             self.apps = $0
             self.resetSelections($0)
         }
-        
-        shortcutView.shortcutValueChange = { (view) in
-            NSLog("\(view.shortcutValue)")
-        }
     }
     
     func resetSelections(apps: [AppModel]) {
         let menu = NSMenu()
-        // apps menuitem
+        var selectedIndex = 0
         
-        apps.forEach {
+        for (idx, app) in apps.enumerate() {
+            if app.appName == selectedApp?.appName {
+                selectedIndex = idx
+                shortcutView.shortcutValue = selectedApp?.shortcut
+            }
+            
             let item = NSMenuItem()
-            item.title = $0.appDisplayName
-            item.image = $0.icon
+            item.title = app.appDisplayName
+            item.image = app.icon
             
             menu.addItem(item)
         }
         
         btnApps.removeAllItems()
         btnApps.menu = menu
+        btnApps.selectItemAtIndex(selectedIndex)
     }
     
     override func viewWillDisappear() {
@@ -64,6 +73,8 @@ class AddAppViewController: NSViewController {
             
             AppsManager.manager.selectedApps.append(app)
             AppsManager.manager.saveData()
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(refreshAppsListNotification, object: nil)
         }
         
         view.window?.close()

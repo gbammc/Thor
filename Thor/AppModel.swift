@@ -35,14 +35,16 @@ class AppModel: NSObject {
     
     init?(item: NSMetadataItem) {
         guard let path = item.valueForAttribute(kMDItemPath as String) as? String else { return nil }
-    
-        guard let appBundle = NSBundle(path: path) else { return nil }
         
-        guard let iconName = appBundle.infoDictionary?["CFBundleIconFile"] as? String else { return nil }
+        guard let displayName = item.valueForAttribute(kMDItemDisplayName as String) as? String else { return nil }
+        
+        guard !path.containsString("/System/Library") || displayName == "Finder" else { return nil }
         
         guard let name = item.valueForKey(kMDItemFSName as String) as? String else { return nil }
         
-        guard let displayName = item.valueForAttribute(kMDItemDisplayName as String) as? String else { return nil }
+        guard let appBundle = NSBundle(path: path) else { return nil }
+        
+        guard let iconName = appBundle.infoDictionary?["CFBundleIconFile"] as? String else { return nil }
         
         self.appBundleURL = appBundle.bundleURL
         self.appName = name

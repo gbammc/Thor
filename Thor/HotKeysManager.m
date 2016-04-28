@@ -45,13 +45,15 @@
         hotKeyID.signature = (OSType)[app.appName UTF8String];
         EventHotKeyRef hotKeyRef;
         RegisterEventHotKey(app.shortcut.carbonKeyCode, app.shortcut.carbonFlags, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
-        if (!hotKeyRef) {
+        if (hotKeyRef) {
             NSData *data = [NSData dataWithBytes:&hotKeyRef length:sizeof(EventHotKeyRef)];
             [array addObject:data];
         }
         
         idx++;
     }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:array forKey:@"hotKey"];
     
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind = kEventHotKeyPressed;
@@ -62,6 +64,7 @@
 - (void)unregisterHotKeys
 {
     NSArray *hotKeyRefs = [[NSUserDefaults standardUserDefaults] objectForKey:@"hotKey"];
+    
     for (NSData *value in hotKeyRefs) {
         EventHotKeyRef myHotKeyRef;
         [value getBytes:&myHotKeyRef length:sizeof(EventHotKeyRef)];

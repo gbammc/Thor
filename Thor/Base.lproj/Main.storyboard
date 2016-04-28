@@ -127,6 +127,9 @@
                         <rect key="contentRect" x="100" y="240" width="320" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
+                    <connections>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="WtA-Kv-bIf"/>
+                    </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,7 +155,7 @@
         <!--Add App View Controller-->
         <scene sceneID="4xG-BL-LBN">
             <objects>
-                <viewController id="kYE-Rv-OG1" customClass="AddAppViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAppViewController" id="kYE-Rv-OG1" customClass="AddAppViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="AWD-Ld-3Eq">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="137"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -252,13 +255,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="HSK-Sf-ydT" viewBased="YES" id="aOE-yu-2yD">
-                                            <rect key="frame" x="0.0" y="0.0" width="278" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="376"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="AppTableCellView" width="116" minWidth="40" maxWidth="1000" id="TMx-gL-5FD">
+                                                <tableColumn identifier="AppTableCellView" width="172" minWidth="40" maxWidth="1000" id="TMx-gL-5FD">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Applications">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -271,7 +274,7 @@
                                                     </textFieldCell>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="AppTableCellView" id="qGf-fE-yif">
-                                                            <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="172" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NdX-eb-XMU">
@@ -294,7 +297,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="ShortcutTableCellView" width="156" minWidth="40" maxWidth="1000" id="MnA-QG-Ny8">
+                                                <tableColumn identifier="ShortcutTableCellView" width="100" minWidth="40" maxWidth="1000" id="MnA-QG-Ny8">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Shortcuts">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -307,7 +310,7 @@
                                                     </textFieldCell>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="ShortcutTableCellView" id="Nsv-UC-ZsR">
-                                                            <rect key="frame" x="120" y="1" width="156" height="17"/>
+                                                            <rect key="frame" x="176" y="1" width="100" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DlW-8d-yE4">
@@ -335,7 +338,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="eym-iE-zkx">
-                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <rect key="frame" x="1" y="383" width="278" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="FaQ-iX-Sob">
@@ -365,6 +368,7 @@
                         <outlet property="tableView" destination="aOE-yu-2yD" id="bmS-Bh-9DW"/>
                     </connections>
                 </viewController>
+                <userDefaultsController id="C1B-Hp-Svg"/>
             </objects>
             <point key="canvasLocation" x="472" y="416"/>
         </scene>
@@ -388,7 +392,7 @@
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="erl-iE-RbD">
-                                <rect key="frame" x="131" y="400" width="176" height="18"/>
+                                <rect key="frame" x="131" y="358" width="176" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Cheatsheet" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mzu-MP-WaM">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -397,16 +401,8 @@
                                     <action selector="toggleShowCheatSheet:" target="LfM-H7-njo" id="Ujf-jY-spm"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="709-09-hkn">
-                                <rect key="frame" x="14" y="401" width="115" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Cheatsheet:" id="kYt-rI-O8Y">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-0d-C8U">
-                                <rect key="frame" x="45" y="315" width="84" height="17"/>
+                                <rect key="frame" x="45" y="275" width="84" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Display after:" id="1fT-Qh-dE2">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -414,7 +410,7 @@
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Wg-Pgf">
-                                <rect key="frame" x="131" y="310" width="171" height="27"/>
+                                <rect key="frame" x="131" y="270" width="171" height="27"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="1" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="9mT-en-uZb">
                                     <connections>
                                         <action selector="changeCheatSheetActivateInterval:" target="LfM-H7-njo" id="aX1-il-uFb"/>
@@ -424,6 +420,24 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7f-tZ-zin">
                                 <rect key="frame" x="53" y="443" width="76" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Startup:" id="rKg-Oa-Jg1">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7sy-3X-TvI">
+                                <rect key="frame" x="131" y="400" width="176" height="18"/>
+                                <buttonCell key="cell" type="check" title="Enable shortcut" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fya-Hu-agS">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleEnableShortcut:" target="LfM-H7-njo" id="wyA-Z5-TGh"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XKt-dc-gB6">
+                                <rect key="frame" x="53" y="401" width="76" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Enable:" id="cu5-Zh-kYl">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -440,7 +454,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIc-ga-45L">
-                                <rect key="frame" x="25" y="360" width="104" height="17"/>
+                                <rect key="frame" x="25" y="317" width="104" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Activate Hotkey:" id="uWp-Ys-dhU">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -448,7 +462,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zk-yi-rDJ" userLabel="⌘ Command Key">
-                                <rect key="frame" x="131" y="355" width="172" height="26"/>
+                                <rect key="frame" x="131" y="312" width="172" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="⇧ Shift 键" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qJu-sX-5Pd" id="2rr-yT-VNc" userLabel="⌃ Control Key">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -468,10 +482,19 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="709-09-hkn">
+                                <rect key="frame" x="14" y="359" width="115" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Cheatsheet:" id="kYt-rI-O8Y">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="btnCheatSheetAvtivateHotKey" destination="0zk-yi-rDJ" id="X1b-ur-Oge"/>
+                        <outlet property="btnEnableShortcut" destination="7sy-3X-TvI" id="qGM-kS-fk6"/>
                         <outlet property="btnLaunchAtLogin" destination="XJy-eX-prE" id="xKD-J0-ALg"/>
                         <outlet property="btnShowCheatSheet" destination="erl-iE-RbD" id="W7L-k3-zqz"/>
                         <outlet property="slider" destination="9mT-en-uZb" id="ZmK-N7-ClV"/>

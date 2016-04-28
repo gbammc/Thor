@@ -15,19 +15,16 @@ class AppsViewController: NSViewController {
     @IBOutlet weak var btnAdd: NSButton!
     @IBOutlet weak var btnRemove: NSButton!
     
-    lazy var addAppWindowController: AddAppWindowController = {
-        let addAppWindowController =  SharedAppDelegate?.mainWindowController?.storyboard?.instantiateControllerWithIdentifier(String(AddAppWindowController)) as! AddAppWindowController
-        
-        return addAppWindowController
-    }()
+    lazy var addAppWindowController: AddAppWindowController = SharedAppDelegate?.mainWindowController?.storyboard?.instantiateControllerWithIdentifier(String(AddAppWindowController)) as! AddAppWindowController
     
-    var apps = AppsManager.manager.selectedApps
-//    var apps = ["", ""]
+    var apps: [AppModel] { get { return AppsManager.manager.selectedApps } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layer?.backgroundColor = NSColor.whiteColor().CGColor
+        
+        tableView.doubleAction = #selector(AppsViewController.editShortcut)
     }
     
     override func viewWillAppear() {
@@ -43,17 +40,31 @@ class AppsViewController: NSViewController {
     }
     
     @IBAction func add(sender: AnyObject) {
-        let window = addAppWindowController.window!
+        NSApplication.sharedApplication().runModalForWindow(addAppWindowController.window!)
+    }
+    
+    func editShortcut() {
+        let addAppViewController = addAppWindowController.contentViewController as! AddAppViewController
         
-        let xPos = (NSWidth(window.screen!.frame) - NSWidth(window.frame)) / 2
-        let yPos = (NSHeight(window.screen!.frame) - NSHeight(window.frame))
-        window.setFrame(NSRect(x: xPos, y: yPos, width: NSWidth(window.frame), height: NSHeight(window.frame)), display: false)
+        let app = AppsManager.manager.selectedApps[tableView.selectedRow]
+        addAppViewController.selectedApp = app
         
-        NSApplication.sharedApplication().runModalForWindow(window)
+        NSApplication.sharedApplication().runModalForWindow(addAppWindowController.window!)
     }
     
     @IBAction func remove(sender: AnyObject) {
+        let alert = NSAlert()
+        alert.addButtonWithTitle("OK")
+        alert.addButtonWithTitle("Cancel")
+        alert.messageText = "Delete the shortcut?"
+        alert.alertStyle = .WarningAlertStyle
         
+        if alert.runModal() == NSAlertFirstButtonReturn {
+            AppsManager.manager.selectedApps.removeAtIndex(tableView.selectedRow)
+            AppsManager.manager.saveData()
+            
+            tableView.reloadData()
+        }
     }
 }
 
@@ -68,7 +79,6 @@ extension AppsViewController: NSTableViewDataSource, NSTableViewDelegate {
     }
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
         let app = apps[row]
         if tableColumn?.identifier == appTableCellViewIdentifier {
             let cell = tableView.makeViewWithIdentifier(appTableCellViewIdentifier, owner: self) as! NSTableCellView
