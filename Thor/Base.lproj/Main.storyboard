@@ -116,7 +116,7 @@
                 </menu>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="16.5" y="44"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -150,7 +150,7 @@
                 </windowController>
                 <customObject id="dew-37-FQv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="965"/>
+            <point key="canvasLocation" x="114" y="844.5"/>
         </scene>
         <!--Add App View Controller-->
         <scene sceneID="4xG-BL-LBN">
@@ -186,9 +186,6 @@
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="wIy-Jg-iZb"/>
                                 </popUpButtonCell>
-                                <connections>
-                                    <action selector="selectApps:" target="kYE-Rv-OG1" id="hzO-8j-LMw"/>
-                                </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FUJ-rV-z05">
                                 <rect key="frame" x="160" y="13" width="81" height="32"/>
@@ -209,7 +206,7 @@
                 </viewController>
                 <customObject id="aNd-3H-rea" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="955.5"/>
+            <point key="canvasLocation" x="653" y="835.5"/>
         </scene>
         <!--Apps View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -370,7 +367,7 @@
                 </viewController>
                 <userDefaultsController id="C1B-Hp-Svg"/>
             </objects>
-            <point key="canvasLocation" x="472" y="416"/>
+            <point key="canvasLocation" x="488" y="416"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Uye-Ur-Jj1">
@@ -502,7 +499,7 @@
                 </viewController>
                 <userDefaultsController representsSharedInstance="YES" id="XlP-8s-PZm"/>
             </objects>
-            <point key="canvasLocation" x="872" y="416"/>
+            <point key="canvasLocation" x="912" y="416"/>
         </scene>
     </scenes>
     <resources>

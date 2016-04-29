@@ -52,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         displayInStatusBar()
         
-        HotKeysManager.sharedManager().registerHotKeys()
+        HotKeysCoordinator.registerHotKeys()
     }
     
     // MARK: Listen events
@@ -74,7 +74,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     self.timerDelay?.invalidate()
                     self.timerDisableHotKey?.invalidate()
                     
-                    HotKeysManager.sharedManager().unregisterHotKeys()
+                    HotKeysCoordinator.unregisterHotKeys()
                     
                     let timer = NSTimer(timeInterval: intervalAnewHotKey, target: self, selector: #selector(AppDelegate.anewHotKeyEnable), userInfo: nil, repeats: false)
                     NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
@@ -151,7 +151,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func anewHotKeyEnable(timer: NSTimer) {
         timer.invalidate()
         
-        HotKeysManager.sharedManager().registerHotKeys()
+        HotKeysCoordinator.registerHotKeys()
         enableHotKey = true
     }
 

@@ -32,37 +32,37 @@ class AddAppViewController: NSViewController {
         }
     }
     
-    func resetSelections(apps: [AppModel]) {
-        let menu = NSMenu()
-        var selectedIndex = 0
-        
-        for (idx, app) in apps.enumerate() {
-            if app.appName == selectedApp?.appName {
-                selectedIndex = idx
-                shortcutView.shortcutValue = selectedApp?.shortcut
-            }
-            
-            let item = NSMenuItem()
-            item.title = app.appDisplayName
-            item.image = app.icon
-            
-            menu.addItem(item)
-        }
-        
-        btnApps.removeAllItems()
-        btnApps.menu = menu
-        btnApps.selectItemAtIndex(selectedIndex)
-    }
-    
     override func viewWillDisappear() {
         super.viewWillDisappear()
         
         view.window?.close()
         NSApp.stopModal()
     }
-
-    @IBAction func selectApps(sender: AnyObject) {
-        
+    
+    func resetSelections(apps: [AppModel]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+            let menu = NSMenu()
+            var selectedIndex = 0
+            
+            for (idx, app) in apps.enumerate() {
+                if app.appName == self.selectedApp?.appName {
+                    selectedIndex = idx
+                    self.shortcutView.shortcutValue = self.selectedApp?.shortcut
+                }
+                
+                let item = NSMenuItem()
+                item.title = app.appDisplayName
+                item.image = app.icon
+                
+                menu.addItem(item)
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.btnApps.removeAllItems()
+                self.btnApps.menu = menu
+                self.btnApps.selectItemAtIndex(selectedIndex)
+            })
+        }
     }
     
     @IBAction func save(sender: AnyObject) {
@@ -71,7 +71,14 @@ class AddAppViewController: NSViewController {
             let app = apps![idx]
             app.shortcut = shortcutView.shortcutValue
             
-            AppsManager.manager.selectedApps.append(app)
+            if let selectedApp = selectedApp {
+                for app in AppsManager.manager.selectedApps where app.appName == selectedApp.appName {
+                    app.shortcut = shortcutView.shortcutValue
+                }
+            } else {
+                AppsManager.manager.selectedApps.append(app)
+            }
+            
             AppsManager.manager.saveData()
             
             NSNotificationCenter.defaultCenter().postNotificationName(refreshAppsListNotification, object: nil)

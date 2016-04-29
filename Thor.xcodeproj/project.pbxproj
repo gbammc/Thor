@@ -13,11 +13,10 @@
 		B2768FDA1CCF6A5000D4D172 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2768FD91CCF6A5000D4D172 /* LoginItemManager.swift */; };
 		B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */; };
 		B2C38FB01CCA16C00036D8B7 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C38FAF1CCA16C00036D8B7 /* TitleView.swift */; };
-		B2C7EA1C1CCDAA20000C4CFF /* HotKeysManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C7EA1B1CCDAA20000C4CFF /* HotKeysManager.m */; };
+		B2C7EA1C1CCDAA20000C4CFF /* HotKeysCoordinator..m in Sources */ = {isa = PBXBuildFile; fileRef = B2C7EA1B1CCDAA20000C4CFF /* HotKeysCoordinator..m */; };
 		B2D05C161CC5FA0C00ADA66A /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D05C151CC5FA0C00ADA66A /* AppsViewController.swift */; };
 		B2D05C181CC5FF2900ADA66A /* NSViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D05C171CC5FF2900ADA66A /* NSViewController+Extension.swift */; };
 		B2D05C1E1CC6086C00ADA66A /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D05C1D1CC6086C00ADA66A /* AppController.swift */; };
-		B2DBC68D1CC76BE70082A8FD /* AppsDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DBC68C1CC76BE70082A8FD /* AppsDataController.swift */; };
 		B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0431CC48CD900FB687F /* AppDelegate.swift */; };
 		B2E1B0481CC48CD900FB687F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2E1B0471CC48CD900FB687F /* Assets.xcassets */; };
 		B2E1B04B1CC48CD900FB687F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E1B0491CC48CD900FB687F /* Main.storyboard */; };
@@ -41,12 +40,11 @@
 		B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B2C38FAF1CCA16C00036D8B7 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		B2C7EA191CCDAA20000C4CFF /* Thor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Thor-Bridging-Header.h"; sourceTree = "<group>"; };
-		B2C7EA1A1CCDAA20000C4CFF /* HotKeysManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotKeysManager.h; sourceTree = "<group>"; };
-		B2C7EA1B1CCDAA20000C4CFF /* HotKeysManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotKeysManager.m; sourceTree = "<group>"; };
+		B2C7EA1A1CCDAA20000C4CFF /* HotKeysCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotKeysCoordinator.h; sourceTree = "<group>"; };
+		B2C7EA1B1CCDAA20000C4CFF /* HotKeysCoordinator..m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotKeysCoordinator..m; sourceTree = "<group>"; };
 		B2D05C151CC5FA0C00ADA66A /* AppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		B2D05C171CC5FF2900ADA66A /* NSViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSViewController+Extension.swift"; sourceTree = "<group>"; };
 		B2D05C1D1CC6086C00ADA66A /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		B2DBC68C1CC76BE70082A8FD /* AppsDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsDataController.swift; sourceTree = "<group>"; };
 		B2E1B0401CC48CD900FB687F /* Thor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E1B0431CC48CD900FB687F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2E1B0471CC48CD900FB687F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				B23C9BA41CC8D4FE00F12BE5 /* AddAppViewController.swift */,
 				B2E1B06A1CC4D49800FB687F /* SettingsViewController.swift */,
 				B2D05C1D1CC6086C00ADA66A /* AppController.swift */,
-				B2DBC68C1CC76BE70082A8FD /* AppsDataController.swift */,
 				B2603B691CCDF82700308261 /* CheatSheetWindow.swift */,
 				B2E1B0641CC4C55D00FB687F /* View */,
 				B2E1B0621CC4B16600FB687F /* Extension */,
@@ -137,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				B2E1B0561CC4A85700FB687F /* AppsManager.swift */,
-				B2C7EA1A1CCDAA20000C4CFF /* HotKeysManager.h */,
-				B2C7EA1B1CCDAA20000C4CFF /* HotKeysManager.m */,
+				B2C7EA1A1CCDAA20000C4CFF /* HotKeysCoordinator.h */,
+				B2C7EA1B1CCDAA20000C4CFF /* HotKeysCoordinator..m */,
 				B2C7EA191CCDAA20000C4CFF /* Thor-Bridging-Header.h */,
 				B2768FD91CCF6A5000D4D172 /* LoginItemManager.swift */,
 			);
@@ -294,14 +291,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23C9BA51CC8D4FE00F12BE5 /* AddAppViewController.swift in Sources */,
-				B2C7EA1C1CCDAA20000C4CFF /* HotKeysManager.m in Sources */,
+				B2C7EA1C1CCDAA20000C4CFF /* HotKeysCoordinator..m in Sources */,
 				B2E1B06B1CC4D49800FB687F /* SettingsViewController.swift in Sources */,
 				B2E1B0531CC4A81D00FB687F /* AppModel.swift in Sources */,
 				B2E1B0691CC4CDD100FB687F /* TOLWindowController.swift in Sources */,
 				B23C9BA31CC8D47500F12BE5 /* AddAppWindowController.swift in Sources */,
 				B2E1B05B1CC4AE2600FB687F /* Constant.swift in Sources */,
 				B2D05C161CC5FA0C00ADA66A /* AppsViewController.swift in Sources */,
-				B2DBC68D1CC76BE70082A8FD /* AppsDataController.swift in Sources */,
 				B2E1B05D1CC4AE4500FB687F /* DefaultsKeys+Extension.swift in Sources */,
 				B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */,
 				B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */,

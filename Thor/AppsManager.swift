@@ -15,7 +15,7 @@ class AppsManager: NSObject {
     var selectedApps = [AppModel]()
     
     private var query = NSMetadataQuery()
-    private var callback: (([AppModel]) -> ())?
+    private var callback: (([AppModel]) -> ())!
     
     override init() {
         super.init()
@@ -23,38 +23,34 @@ class AppsManager: NSObject {
         query.predicate = NSPredicate(format: "kMDItemKind=='Application'")
         query.searchScopes = ["/Applications/", "/System/Library/CoreServices/"]
         
-        if let apps = loadDataFrom(selectedAppsFile) as? [NSDictionary] {
+        if let data = NSData(contentsOfFile: selectedAppsFile), apps = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [NSDictionary] {
             selectedApps = apps.flatMap { AppModel(dict: $0) }
         }
     }
     
-    func getApps(callback: ([AppModel] -> ())?) {
+    func getApps(callback: [AppModel] -> ()) {
         self.callback = callback
 
         startQuery()
     }
     
-    func saveData() {
-        let apps = selectedApps.map { $0.encode() }
-        save(apps, to: selectedAppsFile)
-        
-        HotKeysManager.sharedManager().registerHotKeys()
-    }
-    
     private func startQuery() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppsManager.queryFinish(_:)), name: NSMetadataQueryDidFinishGatheringNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserverForName(NSMetadataQueryDidFinishGatheringNotification, object: nil, queue: NSOperationQueue.currentQueue()) { (_) in
+            self.query.stopQuery()
+            
+            let apps = AppModel.appsFroms(self.query.results)
+            self.callback(apps)
+        }
         
         query.startQuery()
     }
     
-    @objc private func queryFinish(notification: NSNotification) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSMetadataQueryDidFinishGatheringNotification, object: nil)
-
-        query.stopQuery()
+    func saveData() {
+        let apps = selectedApps.map { $0.encode() }
         
-        let apps = AppModel.appsFroms(query.results)
-
-        callback?(apps)
+        if NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile) {
+            HotKeysCoordinator.registerHotKeys()
+        }
     }
     
 }

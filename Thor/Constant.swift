@@ -12,18 +12,6 @@ let SharedAppDelegate = NSApplication.sharedApplication().delegate as? AppDelega
 let titleItemWidth: CGFloat = 40.0
 let titleItemHeight: CGFloat = 37.0
 
-func loadDataFrom(path: String) -> AnyObject? {
-    guard let data = NSData(contentsOfFile: path) else { return nil }
-    
-    let obj = NSKeyedUnarchiver.unarchiveObjectWithData(data)
-    
-    return obj
-}
-
-func save(obj: AnyObject, to path: String) -> Bool {
-    return NSKeyedArchiver.archiveRootObject(obj, toFile: path)
-}
-
 let selectedAppsFile = "apps"
 
 // notifications
