@@ -54,9 +54,9 @@ class AppsViewController: NSViewController {
     
     @IBAction func remove(sender: AnyObject) {
         let alert = NSAlert()
-        alert.addButtonWithTitle("OK")
-        alert.addButtonWithTitle("Cancel")
-        alert.messageText = "Delete the shortcut?"
+        alert.addButtonWithTitle("OK".localized())
+        alert.addButtonWithTitle("Cancel".localized())
+        alert.messageText = "Delete the shortcut?".localized()
         alert.alertStyle = .WarningAlertStyle
         
         if alert.runModal() == NSAlertFirstButtonReturn {
