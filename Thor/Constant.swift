@@ -8,18 +8,16 @@
 
 import Cocoa
 
-let SharedAppDelegate = NSApplication.sharedApplication().delegate as? AppDelegate
-let titleItemWidth: CGFloat = 40.0
+let SharedAppDelegate        = NSApplication.sharedApplication().delegate as? AppDelegate
+let titleItemWidth: CGFloat  = 40.0
 let titleItemHeight: CGFloat = 37.0
 
-let selectedAppsFile = "apps"
-
 // notifications
-let refreshAppsListNotification = "refreshAppsListNotification"
+let refreshAppsListNotification     = "refreshAppsListNotification"
 
 // identifiers
-let titleViewIdentifier = "titleViewIdentifier"
-let appsTitleItemIdentifier = "appsTitleItemIdentifier"
-let settingsTitleItemIdentifier = "settingsTitleItemIdentifier"
-let appTableCellViewIdentifier = "AppTableCellView"
+let titleViewIdentifier             = "titleViewIdentifier"
+let appsTitleItemIdentifier         = "appsTitleItemIdentifier"
+let settingsTitleItemIdentifier     = "settingsTitleItemIdentifier"
+let appTableCellViewIdentifier      = "AppTableCellView"
 let shortcutTableCellViewIdentifier = "ShortcutTableCellView"

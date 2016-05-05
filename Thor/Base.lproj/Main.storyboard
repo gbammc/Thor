@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <scenes>
@@ -252,7 +251,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="HSK-Sf-ydT" viewBased="YES" id="aOE-yu-2yD">
-                                            <rect key="frame" x="0.0" y="0.0" width="278" height="376"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -388,29 +387,19 @@
                                     <action selector="toggleLaunchAtLogin:" target="LfM-H7-njo" id="OBV-kl-ahX"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="erl-iE-RbD">
-                                <rect key="frame" x="131" y="358" width="176" height="18"/>
-                                <buttonCell key="cell" type="check" title="Show Cheatsheet" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mzu-MP-WaM">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="toggleShowCheatSheet:" target="LfM-H7-njo" id="Ujf-jY-spm"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-0d-C8U">
-                                <rect key="frame" x="45" y="275" width="84" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Display after:" id="1fT-Qh-dE2">
+                                <rect key="frame" x="18" y="290" width="111" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Reactivate after:" id="1fT-Qh-dE2">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Wg-Pgf">
-                                <rect key="frame" x="131" y="270" width="171" height="27"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="9mT-en-uZb">
+                                <rect key="frame" x="131" y="285" width="171" height="27"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="9mT-en-uZb">
                                     <connections>
-                                        <action selector="changeCheatSheetActivateInterval:" target="LfM-H7-njo" id="aX1-il-uFb"/>
+                                        <action selector="changeShortcutReactivateInterval:" target="LfM-H7-njo" id="V4e-FL-dTK"/>
                                     </connections>
                                 </sliderCell>
                             </slider>
@@ -451,16 +440,16 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIc-ga-45L">
-                                <rect key="frame" x="25" y="317" width="104" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Activate Hotkey:" id="uWp-Ys-dhU">
+                                <rect key="frame" x="25" y="359" width="104" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Deactivate Key:" id="uWp-Ys-dhU">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zk-yi-rDJ" userLabel="⌘ Command Key">
-                                <rect key="frame" x="131" y="312" width="172" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="⇧ Shift 键" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qJu-sX-5Pd" id="2rr-yT-VNc" userLabel="⌃ Control Key">
+                                <rect key="frame" x="131" y="354" width="172" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="2rr-yT-VNc" userLabel="⌃ Control Key">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" title="OtherViews" id="Hcy-Ge-ZoW">
@@ -472,28 +461,46 @@
                                             <menuItem title="⌃ Control 键" id="NL4-zo-fys" userLabel="⌃ Control Key">
                                                 <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                             </menuItem>
-                                            <menuItem title="⇧ Shift 键" state="on" id="qJu-sX-5Pd" userLabel="⇧ Shift Key">
+                                            <menuItem title="⇧ Shift 键" id="qJu-sX-5Pd" userLabel="⇧ Shift Key">
                                                 <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
                                             </menuItem>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="changeDeactivateKey:" target="LfM-H7-njo" id="KCl-Bg-YRc"/>
+                                </connections>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="709-09-hkn">
-                                <rect key="frame" x="14" y="359" width="115" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Show Cheatsheet:" id="kYt-rI-O8Y">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yjh-vn-RQQ">
+                                <rect key="frame" x="38" y="332" width="245" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Double tap will deactivate the shortcuts" id="yod-j7-EUV">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hWC-9z-cv3">
+                                <rect key="frame" x="123" y="263" width="37" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0.1s" id="RmK-si-Zsx">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9pw-DH-pgZ">
+                                <rect key="frame" x="275" y="261" width="37" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="1s" id="UpG-OL-d8P">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="btnCheatSheetAvtivateHotKey" destination="0zk-yi-rDJ" id="X1b-ur-Oge"/>
                         <outlet property="btnEnableShortcut" destination="7sy-3X-TvI" id="qGM-kS-fk6"/>
                         <outlet property="btnLaunchAtLogin" destination="XJy-eX-prE" id="xKD-J0-ALg"/>
-                        <outlet property="btnShowCheatSheet" destination="erl-iE-RbD" id="W7L-k3-zqz"/>
+                        <outlet property="btnShortcutDeavtivateKey" destination="0zk-yi-rDJ" id="OzF-KE-TX0"/>
                         <outlet property="slider" destination="9mT-en-uZb" id="ZmK-N7-ClV"/>
                     </connections>
                 </viewController>

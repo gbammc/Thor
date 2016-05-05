@@ -17,86 +17,59 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var statusMenu: NSMenu!
     
-    var isFirstActive = false
     var isTapping = false
     var hasTapped = false
-    var enableHotKey = false
+    var isGoingToDisableHotKey = false
 
     var globalMonitor: AnyObject?
     var localMonitor: AnyObject?
     var mainWindowController: MainWindowController?
-    var timerDelay: NSTimer?
-    var timerDisableHotKey: NSTimer?
     
-    lazy var window: CheatSheetWindow = {
-        CheatSheetWindow()
-    }()
+    var anewHotKeyTimer: NSTimer?
+    var delayTimer: NSTimer?
     
-    lazy var statusItem: NSStatusItem = {
-        NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
-    }()
+    var statusItem: NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     
     // MARK: Life cycle
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        Defaults.registerDefaults(
-            [
-                DefaultsKeys.showCheatSheet._key : true,
-                DefaultsKeys.delayInterval._key : 3,
-            ]
-        )
+        Defaults.registerDefaults([
+            DefaultsKeys.DeactivateKey._key : 0,
+            DefaultsKeys.DelayInterval._key : 0.3,
+            DefaultsKeys.EnableShortcut._key : true,
+            ])
         
-        if Defaults[.showCheatSheet] {
-            activateCheatSheetMonitor()
-        }
+        hotKeyEnableMonitor()
         
         displayInStatusBar()
         
-        HotKeysCoordinator.registerHotKeys()
+        HotKeysRegister.registerHotKeys()
     }
     
     // MARK: Listen events
     
-    func activateCheatSheetMonitor() {
-        let interval: NSTimeInterval                  = getDelayInterval()
-        let intervalAnewHotKey: NSTimeInterval        = 1
-        let intervalCheckHotKeyEnable: NSTimeInterval = 0.3
+    func hotKeyEnableMonitor() {
+        let delayInterval: NSTimeInterval      = 1
+        let anewShortcutInterval: NSTimeInterval = Defaults[.DelayInterval]
         
-        let cheatSheetActivateHandler = { (event: NSEvent) in
-            let flags = event.modifierFlags.intersect(.DeviceIndependentModifierFlagsMask)
-            
-            if flags == .ControlKeyMask && self.window.fadingOut && !self.isTapping {
-                self.isTapping = true
-                
-                if self.hasTapped {
-                    self.hasTapped = false
+        let hotKeyActivateHandler = { (event: NSEvent) in
+            let deactivateKey: NSEventModifierFlags = [.CommandKeyMask, .AlternateKeyMask, .ControlKeyMask, .ShiftKeyMask][Defaults[.DeactivateKey]]
+            let modifier = event.modifierFlags.intersect(deactivateKey)
+
+            if modifier == deactivateKey {
+                if self.isGoingToDisableHotKey {
+                    self.isGoingToDisableHotKey = false
                     
-                    self.timerDelay?.invalidate()
-                    self.timerDisableHotKey?.invalidate()
+                    HotKeysRegister.unregisterHotKeys()
                     
-                    HotKeysCoordinator.unregisterHotKeys()
-                    
-                    let timer = NSTimer(timeInterval: intervalAnewHotKey, target: self, selector: #selector(AppDelegate.anewHotKeyEnable), userInfo: nil, repeats: false)
-                    NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+                    self.anewHotKeyTimer = NSTimer(timeInterval: anewShortcutInterval, target: self, selector: #selector(AppDelegate.anewHotKeyEnable), userInfo: nil, repeats: false)
+                    NSRunLoop.currentRunLoop().addTimer(self.anewHotKeyTimer!, forMode: NSRunLoopCommonModes)
                 } else {
-                    self.hasTapped = true
-                    self.timerDisableHotKey = NSTimer(timeInterval: intervalCheckHotKeyEnable, target: self, selector: #selector(AppDelegate.checkHotKeyEnable(_:)), userInfo: nil, repeats: false)
-                    NSRunLoop.currentRunLoop().addTimer(self.timerDisableHotKey!, forMode: NSRunLoopCommonModes)
+                    self.isGoingToDisableHotKey = true
                     
-                    if !Defaults[.showCheatSheet] {
-                        return
-                    }
-                    
-                    self.timerDelay = NSTimer(timeInterval: interval, target: self, selector: #selector(AppDelegate.cheatSheetWindowFadeIn(_:)), userInfo: nil, repeats: false)
-                    NSRunLoop.currentRunLoop().addTimer(self.timerDelay!, forMode: NSRunLoopCommonModes)
+                    self.delayTimer = NSTimer(timeInterval: delayInterval, target: self, selector: #selector(AppDelegate.checkHotKeyEnable(_:)), userInfo: nil, repeats: false)
+                    NSRunLoop.currentRunLoop().addTimer(self.delayTimer!, forMode: NSRunLoopCommonModes)
                 }
-            } else {
-                self.timerDelay?.invalidate()
-                
-                if self.isTapping {
-                    self.window.fadeOut()
-                }
-                self.isTapping = false
             }
         }
         
@@ -109,11 +82,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         globalMonitor = NSEvent.addGlobalMonitorForEventsMatchingMask([.FlagsChangedMask, .KeyDownMask], handler: { (event) in
-            cheatSheetActivateHandler(event)
+            hotKeyActivateHandler(event)
         })
         
         localMonitor = NSEvent.addLocalMonitorForEventsMatchingMask([.FlagsChangedMask, .KeyDownMask], handler: { (event) -> NSEvent? in
-            cheatSheetActivateHandler(event)
+            hotKeyActivateHandler(event)
             return event
         })
     }
@@ -123,36 +96,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func displayInStatusBar() {
         statusItem.menu = statusMenu
         statusItem.image = NSImage(named: "Settings")
-        statusItem.highlightMode = true
-    }
-    
-    func refreshWindow() {
-        window.refresh()
-    }
-    
-    func getDelayInterval() -> NSTimeInterval {
-        return Defaults[.delayInterval] ?? 3.0
-    }
-    
-    func cheatSheetWindowFadeIn(timer: NSTimer) {
-        timer.invalidate()
-        
-        if isTapping {
-            window.fadeIn()
-        }
+//        statusItem.highlightMode = true
     }
     
     func checkHotKeyEnable(timer: NSTimer) {
-        timer.invalidate()
+        delayTimer?.invalidate()
+        delayTimer = nil
         
-        hasTapped = false
+        isGoingToDisableHotKey = false
     }
     
     func anewHotKeyEnable(timer: NSTimer) {
-        timer.invalidate()
+        anewHotKeyTimer?.invalidate()
+        anewHotKeyTimer = nil
         
-        HotKeysCoordinator.registerHotKeys()
-        enableHotKey = true
+        HotKeysRegister.registerHotKeys()
     }
 
 }

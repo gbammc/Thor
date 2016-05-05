@@ -11,9 +11,10 @@ import SwiftyUserDefaults
 
 extension DefaultsKeys {
     
-    static let modifyKey = DefaultsKey<Int>("modifyKey")
-    static let enableShortcut = DefaultsKey<Bool>("enableShortcut")
-    static let showCheatSheet = DefaultsKey<Bool>("showCheatSheet")
-    static let delayInterval = DefaultsKey<Double>("delayInterval")
+    static let ModifyKey = DefaultsKey<Int>("ModifyKey")
+    static let EnableShortcut = DefaultsKey<Bool>("EnableShortcut")
+    static let DelayInterval = DefaultsKey<Double>("DelayInterval")
+    static let HotKeys = DefaultsKey<[NSData]?>("HotKeys")
+    static let DeactivateKey = DefaultsKey<Int>("DeactivateKey")
     
 }

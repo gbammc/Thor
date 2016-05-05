@@ -16,6 +16,7 @@ class AppsManager: NSObject {
     
     private var query = NSMetadataQuery()
     private var callback: (([AppModel]) -> ())!
+    private let selectedAppsFile = "apps"
     
     override init() {
         super.init()
@@ -49,7 +50,7 @@ class AppsManager: NSObject {
         let apps = selectedApps.map { $0.encode() }
         
         if NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile) {
-            HotKeysCoordinator.registerHotKeys()
+            HotKeysRegister.registerHotKeys()
         }
     }
     

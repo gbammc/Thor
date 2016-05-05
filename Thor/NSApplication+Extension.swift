@@ -1,14 +1,14 @@
 //
-//  LoginItemManager.swift
+//  NSApplication+Extension.swift
 //  Thor
 //
-//  Created by AlvinZhu on 4/26/16.
+//  Created by AlvinZhu on 5/5/16.
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
-class LoginItemsManager {
+extension NSApplication {
     
     // MARK: Variables
     

@@ -10,10 +10,9 @@ import Cocoa
 
 class TOLWindowController: NSWindowController {
     
-    var identifiers = [String]()
-    var views = [String: NSView]()
-    var items = [String: NSToolbarItem]()
-    var titleView = TitleView()
+    var titleView       = TitleView()
+    var identifiers     = [String]()
+    var items           = [String: NSToolbarItem]()
     var viewControllers = [String: NSViewController]()
 
     override func windowDidLoad() {
@@ -23,12 +22,9 @@ class TOLWindowController: NSWindowController {
         window?.titleVisibility = .Hidden
         window?.backgroundColor = NSColor.whiteColor()
         
-        guard window?.toolbar == nil else { return }
-        
         let toolbar = NSToolbar(identifier: "toolbar")
         toolbar.delegate = self
         toolbar.showsBaselineSeparator = false
-        
         window?.toolbar = toolbar
         
         // title
