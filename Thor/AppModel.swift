@@ -9,7 +9,7 @@
 import Cocoa
 import MASShortcut
 
-class AppModel: NSObject {
+class AppModel: Equatable {
 
     let appBundleURL: NSURL
     let appName: String
@@ -92,4 +92,8 @@ class AppModel: NSObject {
         return apps.flatMap({ AppModel(item: $0) }).sort({ $0.0.appDisplayName.lowercaseString < $0.1.appDisplayName.lowercaseString })
     }
     
+}
+
+func ==(lhs: AppModel, rhs: AppModel) -> Bool {
+    return lhs.appBundleURL.absoluteString == rhs.appBundleURL.absoluteString
 }

@@ -26,20 +26,29 @@ class AddAppViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        AppsManager.manager.getApps {
-            self.apps = $0
-            self.resetSelections($0)
+        if let apps = apps {
+            resetSelections(apps)
+        } else {
+            AppsManager.manager.getApps {
+                if self.apps == nil || $0 != self.apps! {
+                    self.apps = $0
+                    self.resetSelections($0)
+                }
+            }
         }
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
         
+        selectedApp = nil
         view.window?.close()
         NSApp.stopModal()
     }
     
-    func resetSelections(apps: [AppModel]) {
+    func resetSelections(apps: [AppModel]?) {
+        guard let apps = apps else { return }
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
             let menu = NSMenu()
             var selectedIndex = 0

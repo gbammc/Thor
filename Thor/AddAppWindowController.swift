@@ -13,6 +13,9 @@ class AddAppWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
     
+        window?.titlebarAppearsTransparent = true
+        window?.titleVisibility = .Hidden
+        window?.backgroundColor = NSColor.whiteColor()
         window?.center()
     }
 

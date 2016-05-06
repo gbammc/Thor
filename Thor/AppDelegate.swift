@@ -21,8 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var hasTapped = false
     var isGoingToDisableHotKey = false
 
-    var globalMonitor: AnyObject?
-    var localMonitor: AnyObject?
     var mainWindowController: MainWindowController?
     
     var anewHotKeyTimer: NSTimer?
@@ -39,6 +37,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DefaultsKeys.EnableShortcut._key : true,
             ])
         
+        NSApp.setActivationPolicy(.Accessory)
+        
         hotKeyEnableMonitor()
         
         displayInStatusBar()
@@ -49,13 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Listen events
     
     func hotKeyEnableMonitor() {
-        let delayInterval: NSTimeInterval      = 1
+        let delayInterval: NSTimeInterval        = 0.3
         let anewShortcutInterval: NSTimeInterval = Defaults[.DelayInterval]
         
         let hotKeyActivateHandler = { (event: NSEvent) in
             let deactivateKey: NSEventModifierFlags = [.CommandKeyMask, .AlternateKeyMask, .ControlKeyMask, .ShiftKeyMask][Defaults[.DeactivateKey]]
             let modifier = event.modifierFlags.intersect(deactivateKey)
-
+            
             if modifier == deactivateKey {
                 if self.isGoingToDisableHotKey {
                     self.isGoingToDisableHotKey = false
@@ -73,19 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        if let globalMonitor = globalMonitor {
-            NSEvent.removeMonitor(globalMonitor)
-        }
-        
-        if let localMonitor = localMonitor {
-            NSEvent.removeMonitor(localMonitor)
-        }
-        
-        globalMonitor = NSEvent.addGlobalMonitorForEventsMatchingMask([.FlagsChangedMask, .KeyDownMask], handler: { (event) in
+        NSEvent.addGlobalMonitorForEventsMatchingMask([.FlagsChangedMask], handler: { (event) in
             hotKeyActivateHandler(event)
         })
         
-        localMonitor = NSEvent.addLocalMonitorForEventsMatchingMask([.FlagsChangedMask, .KeyDownMask], handler: { (event) -> NSEvent? in
+        NSEvent.addLocalMonitorForEventsMatchingMask([.FlagsChangedMask], handler: { (event) -> NSEvent? in
             hotKeyActivateHandler(event)
             return event
         })
