@@ -44,6 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         displayInStatusBar()
         
         HotKeysRegister.registerHotKeys()
+        
+        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayInStatusBar), name: "AppleInterfaceThemeChangedNotification", object: nil)
     }
     
     // MARK: Listen events
@@ -94,9 +96,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Status bar
     
     func displayInStatusBar() {
+        let image = NSImage(named: "menu-item")
+        image?.template = true
+        
         statusItem.menu = statusMenu
-        statusItem.image = NSImage(named: "Settings")
-//        statusItem.highlightMode = true
+        statusItem.image = image
     }
     
     func checkHotKeyEnable(timer: NSTimer) {
