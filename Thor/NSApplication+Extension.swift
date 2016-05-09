@@ -21,11 +21,7 @@ extension NSApplication {
     }
     
     private var loginItemsReference: LSSharedFileListRef? {
-        return LSSharedFileListCreate(
-            nil,
-            kLSSharedFileListSessionLoginItems.takeRetainedValue(),
-            nil
-            ).takeRetainedValue() as LSSharedFileListRef?
+        return LSSharedFileListCreate(nil, kLSSharedFileListSessionLoginItems.takeRetainedValue(), nil).takeRetainedValue() as LSSharedFileListRef?
     }
     
     // MARK: Methods

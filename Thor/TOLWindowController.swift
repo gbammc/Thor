@@ -71,7 +71,9 @@ class TOLWindowController: NSWindowController {
     }
     
     func toggleViewControllers(item: TitleViewItem) {
-        contentViewController = viewControllers[item.identifier!]
+        window?.contentView?.subviews.first?.removeFromSuperview()
+        let view = viewControllers[item.identifier!]?.view
+        window?.contentView?.addSubview(view!)
     }
     
 }

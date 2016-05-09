@@ -40,25 +40,6 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="View" id="H8h-7b-M4v">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="View" id="HyV-fh-RgO">
-                                    <items>
-                                        <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="toggleToolbarShown:" target="Ady-hI-5gd" id="BXY-wc-z0C"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
@@ -98,24 +79,43 @@
                 <customObject id="tdb-s2-QWr" customClass="AppController" customModule="Thor" customModuleProvider="target"/>
                 <menu id="dS2-uP-mFH">
                     <items>
-                        <menuItem title="偏好设置" id="LOh-9N-Sq4">
+                        <menuItem title="Preference" id="LOh-9N-Sq4">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="showApps:" target="tdb-s2-QWr" id="zr3-M4-Xwv"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="关于" id="ong-Un-zmC">
+                        <menuItem title="About" id="ong-Un-zmC">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="about:" target="tdb-s2-QWr" id="tQG-FC-lEe"/>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="8ld-uy-wtv"/>
-                        <menuItem title="退出" id="RwK-Ds-RBj">
+                        <menuItem title="Exit" id="RwK-Ds-RBj">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="exit:" target="tdb-s2-QWr" id="RqF-yP-uaB"/>
+                            </connections>
                         </menuItem>
                     </items>
                 </menu>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="16.5" y="44"/>
+            <point key="canvasLocation" x="7.5" y="40"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="S00-Mq-ioy">
+            <objects>
+                <viewController id="x6J-UP-P0f" sceneMemberID="viewController">
+                    <view key="view" id="h6s-l2-XQH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="458"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="8T1-Ww-qhk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="433" y="416"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -127,7 +127,7 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="WtA-Kv-bIf"/>
+                        <segue destination="x6J-UP-P0f" kind="relationship" relationship="window.shadowedContentViewController" id="r77-hl-J1L"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -139,7 +139,7 @@
             <objects>
                 <windowController storyboardIdentifier="AddAppWindowController" id="Wht-H7-JKX" customClass="AddAppWindowController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Add" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hBE-4N-uTl">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
                         <rect key="contentRect" x="425" y="461" width="400" height="137"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                     </window>
@@ -160,10 +160,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azN-6t-pMU" customClass="MASShortcutView">
-                                <rect key="frame" x="182" y="61" width="158" height="19"/>
+                                <rect key="frame" x="182" y="66" width="158" height="19"/>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuI-69-GMo">
-                                <rect key="frame" x="58" y="98" width="111" height="17"/>
+                                <rect key="frame" x="58" y="103" width="111" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Application:" id="tBA-e9-bfB">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -171,7 +171,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBd-a7-TvE">
-                                <rect key="frame" x="58" y="63" width="111" height="17"/>
+                                <rect key="frame" x="58" y="68" width="111" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Custom shortcut:" id="sAq-HE-orT">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -179,7 +179,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2G-vM-k5u">
-                                <rect key="frame" x="180" y="93" width="163" height="26"/>
+                                <rect key="frame" x="180" y="98" width="163" height="26"/>
                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="hYR-bq-pjb">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -251,7 +251,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="HSK-Sf-ydT" viewBased="YES" id="aOE-yu-2yD">
-                                            <rect key="frame" x="0.0" y="0.0" width="278" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="376"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -366,7 +366,7 @@
                 </viewController>
                 <userDefaultsController id="C1B-Hp-Svg"/>
             </objects>
-            <point key="canvasLocation" x="488" y="416"/>
+            <point key="canvasLocation" x="840" y="416"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Uye-Ur-Jj1">
@@ -506,7 +506,7 @@
                 </viewController>
                 <userDefaultsController representsSharedInstance="YES" id="XlP-8s-PZm"/>
             </objects>
-            <point key="canvasLocation" x="912" y="416"/>
+            <point key="canvasLocation" x="1238" y="416"/>
         </scene>
     </scenes>
     <resources>

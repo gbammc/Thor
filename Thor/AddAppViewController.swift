@@ -42,6 +42,7 @@ class AddAppViewController: NSViewController {
         super.viewWillDisappear()
         
         selectedApp = nil
+        shortcutView.shortcutValue = nil
         view.window?.close()
         NSApp.stopModal()
     }

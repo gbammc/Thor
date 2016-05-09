@@ -19,4 +19,11 @@ class AppController: NSObject {
         }
     }
     
+    @IBAction func about(sender: AnyObject) {
+    }
+    
+    @IBAction func exit(sender: AnyObject) {
+        NSApp.terminate(self)
+    }
+    
 }

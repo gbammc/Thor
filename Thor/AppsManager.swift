@@ -16,7 +16,14 @@ class AppsManager: NSObject {
     
     private var query = NSMetadataQuery()
     private var callback: (([AppModel]) -> ())!
-    private let selectedAppsFile = "apps"
+    
+    private var selectedAppsFile: String {
+        get {
+            let appName = NSBundle.mainBundle().infoDictionary![kCFBundleNameKey as String] as! String
+            let path = NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory, .UserDomainMask, true).first!
+            return path.stringByAppendingString("/\(appName)/apps")
+        }
+    }
     
     override init() {
         super.init()
