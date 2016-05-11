@@ -24,7 +24,7 @@ class AppsViewController: NSViewController {
         
         view.layer?.backgroundColor = NSColor.whiteColor().CGColor
         
-        tableView.doubleAction = #selector(AppsViewController.editShortcut)
+        tableView.doubleAction = #selector(editShortcut)
     }
     
     override func viewWillAppear() {
@@ -43,28 +43,27 @@ class AppsViewController: NSViewController {
         NSApplication.sharedApplication().runModalForWindow(addAppWindowController.window!)
     }
     
-    func editShortcut() {
+    @IBAction func remove(sender: AnyObject) {
+        let alert = NSAlert()
+        alert.addButtonWithTitle("Sure".localized())
+        alert.addButtonWithTitle("Cancel".localized())
+        alert.messageText = "Delete this shortcut?".localized()
+        alert.alertStyle = .WarningAlertStyle
+        
+        if alert.runModal() == NSAlertFirstButtonReturn {
+            AppsManager.manager.delete(tableView.selectedRow)
+            
+            tableView.reloadData()
+        }
+    }
+    
+    @objc private func editShortcut() {
         let addAppViewController = addAppWindowController.contentViewController as! AddAppViewController
         
         let app = AppsManager.manager.selectedApps[tableView.selectedRow]
         addAppViewController.selectedApp = app
         
         NSApplication.sharedApplication().runModalForWindow(addAppWindowController.window!)
-    }
-    
-    @IBAction func remove(sender: AnyObject) {
-        let alert = NSAlert()
-        alert.addButtonWithTitle("OK".localized())
-        alert.addButtonWithTitle("Cancel".localized())
-        alert.messageText = "Delete the shortcut?".localized()
-        alert.alertStyle = .WarningAlertStyle
-        
-        if alert.runModal() == NSAlertFirstButtonReturn {
-            AppsManager.manager.selectedApps.removeAtIndex(tableView.selectedRow)
-            AppsManager.manager.saveData()
-            
-            tableView.reloadData()
-        }
     }
 }
 

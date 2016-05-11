@@ -15,8 +15,6 @@ class MainWindowController: TOLWindowController {
         
         window?.contentView?.layer?.masksToBounds = true
         
-        SharedAppDelegate?.mainWindowController = self
-        
         let appItem = TitleViewItem(itemIdentifier: appsTitleItemIdentifier)
         appItem.activeImage = NSImage(named: "AppStore-active")
         appItem.inactiveImage = NSImage(named: "AppStore")

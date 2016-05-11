@@ -15,12 +15,13 @@ class AppsManager: NSObject {
     var selectedApps = [AppModel]()
     
     private var query = NSMetadataQuery()
-    private var callback: (([AppModel]) -> ())!
+    private var closure: (([AppModel]) -> ())!
     
     private var selectedAppsFile: String {
         get {
             let appName = NSBundle.mainBundle().infoDictionary![kCFBundleNameKey as String] as! String
             let path = NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory, .UserDomainMask, true).first!
+            
             return path.stringByAppendingString("/\(appName)/apps")
         }
     }
@@ -28,7 +29,7 @@ class AppsManager: NSObject {
     override init() {
         super.init()
 
-        query.predicate = NSPredicate(format: "kMDItemKind=='Application'")
+        query.predicate = NSPredicate(format: "kMDItemKind == 'Application'")
         query.searchScopes = ["/Applications/", "/System/Library/CoreServices/"]
         
         if let data = NSData(contentsOfFile: selectedAppsFile), apps = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [NSDictionary] {
@@ -36,10 +37,32 @@ class AppsManager: NSObject {
         }
     }
     
-    func getApps(callback: [AppModel] -> ()) {
-        self.callback = callback
+    func getAppsInApplicationsDirectiory(closure: [AppModel] -> ()) {
+        self.closure = closure
 
         startQuery()
+    }
+    
+    func save(app: AppModel) {
+        selectedApps.append(app)
+        
+        saveData()
+    }
+    
+    func delete(index: Int) {
+        guard 0 <= index && index < selectedApps.count else { return }
+        
+        selectedApps.removeAtIndex(index)
+        
+        saveData()
+    }
+    
+    private func saveData() {
+        let apps = selectedApps.map { $0.encode() }
+        
+        if NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile) {
+            HotKeysRegister.registerHotKeys()
+        }
     }
     
     private func startQuery() {
@@ -47,18 +70,10 @@ class AppsManager: NSObject {
             self.query.stopQuery()
             
             let apps = AppModel.appsFroms(self.query.results)
-            self.callback(apps)
+            self.closure(apps)
         }
         
         query.startQuery()
-    }
-    
-    func saveData() {
-        let apps = selectedApps.map { $0.encode() }
-        
-        if NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile) {
-            HotKeysRegister.registerHotKeys()
-        }
     }
     
 }

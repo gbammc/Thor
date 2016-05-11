@@ -21,6 +21,9 @@ class AddAppViewController: NSViewController {
         super.viewDidLoad()
         
         view.layer?.backgroundColor = NSColor.whiteColor().CGColor
+        
+        btnApps.action = #selector(chooseApp(_:))
+        btnApps.target = self
     }
     
     override func viewWillAppear() {
@@ -29,7 +32,7 @@ class AddAppViewController: NSViewController {
         if let apps = apps {
             resetSelections(apps)
         } else {
-            AppsManager.manager.getApps {
+            AppsManager.manager.getAppsInApplicationsDirectiory {
                 if self.apps == nil || $0 != self.apps! {
                     self.apps = $0
                     self.resetSelections($0)
@@ -47,19 +50,65 @@ class AddAppViewController: NSViewController {
         NSApp.stopModal()
     }
     
-    func resetSelections(apps: [AppModel]?) {
+    @IBAction func save(sender: AnyObject) {
+        if let shortcut = shortcutView.shortcutValue, selectedApp = selectedApp {
+            selectedApp.shortcut = shortcut
+            
+            AppsManager.manager.save(selectedApp)
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(refreshAppsListNotification, object: nil)
+        }
+        
+        view.window?.close()
+        NSApp.stopModal()
+    }
+    
+    @objc private func chooseApp(popUpButton: NSPopUpButton) {
+        if let selectedItem = popUpButton.selectedItem where selectedItem.tag == 1000 {
+            let openPanel = NSOpenPanel()
+            openPanel.allowsMultipleSelection = false
+            openPanel.canChooseDirectories = true
+            openPanel.canChooseFiles = true
+            openPanel.allowedFileTypes = ["app"]
+            
+            openPanel.beginSheetModalForWindow(view.window!, completionHandler: { (result) in
+                if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(URL: openPanel.URLs.first!) {
+                    
+                    self.selectedApp = AppModel(item: metaDataItem)
+                    
+                    self.resetSelections(self.apps)
+                }
+            })
+        } else {
+            let idx = popUpButton.indexOfSelectedItem
+            
+            if let apps = apps {
+                selectedApp = apps[idx]
+            }
+            
+            resetSelections(apps)
+        }
+    }
+    
+    private func resetSelections(apps: [AppModel]?) {
         guard let apps = apps else { return }
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
             let menu = NSMenu()
-            var selectedIndex = 0
             
-            for (idx, app) in apps.enumerate() {
-                if app.appName == self.selectedApp?.appName {
-                    selectedIndex = idx
-                    self.shortcutView.shortcutValue = self.selectedApp?.shortcut
-                }
+            if let selectedApp = self.selectedApp {
+                let selectedItem = NSMenuItem()
+                selectedItem.title = selectedApp.appDisplayName
+                selectedItem.image = selectedApp.icon
                 
+                menu.addItem(selectedItem)
+                
+                menu.addItem(NSMenuItem.separatorItem())
+                
+                self.shortcutView.shortcutValue = self.selectedApp?.shortcut
+            }
+            
+            for app in apps {
                 let item = NSMenuItem()
                 item.title = app.appDisplayName
                 item.image = app.icon
@@ -67,35 +116,19 @@ class AddAppViewController: NSViewController {
                 menu.addItem(item)
             }
             
+            menu.addItem(NSMenuItem.separatorItem())
+            
+            let customMenuItem = NSMenuItem()
+            customMenuItem.title = "Custom".localized()
+            customMenuItem.tag = 1000
+            menu.addItem(customMenuItem)
+            
             dispatch_async(dispatch_get_main_queue(), { 
                 self.btnApps.removeAllItems()
                 self.btnApps.menu = menu
-                self.btnApps.selectItemAtIndex(selectedIndex)
+                self.btnApps.selectItemAtIndex(0)
             })
         }
-    }
-    
-    @IBAction func save(sender: AnyObject) {
-        if shortcutView.shortcutValue != nil {
-            let idx = btnApps.indexOfSelectedItem
-            let app = apps![idx]
-            app.shortcut = shortcutView.shortcutValue
-            
-            if let selectedApp = selectedApp {
-                for app in AppsManager.manager.selectedApps where app.appName == selectedApp.appName {
-                    app.shortcut = shortcutView.shortcutValue
-                }
-            } else {
-                AppsManager.manager.selectedApps.append(app)
-            }
-            
-            AppsManager.manager.saveData()
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(refreshAppsListNotification, object: nil)
-        }
-        
-        view.window?.close()
-        NSApp.stopModal()
     }
     
 }

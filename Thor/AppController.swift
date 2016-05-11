@@ -15,7 +15,8 @@ class AppController: NSObject {
             rootViewController.showWindow(nil)
         } else {
             let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier(String(MainWindowController)) as! MainWindowController
-            rootViewController.showWindow(nil)
+            SharedAppDelegate?.mainWindowController = rootViewController
+            SharedAppDelegate?.mainWindowController?.showWindow(nil)
         }
     }
     

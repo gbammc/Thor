@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Listen events
     
-    func hotKeyEnableMonitor() {
+    private func hotKeyEnableMonitor() {
         let delayInterval: NSTimeInterval        = 0.3
         let anewShortcutInterval: NSTimeInterval = Defaults[.DelayInterval]
         
@@ -64,12 +64,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     
                     HotKeysRegister.unregisterHotKeys()
                     
-                    self.anewHotKeyTimer = NSTimer(timeInterval: anewShortcutInterval, target: self, selector: #selector(AppDelegate.anewHotKeyEnable), userInfo: nil, repeats: false)
+                    self.anewHotKeyTimer = NSTimer(timeInterval: anewShortcutInterval, target: self, selector: #selector(self.anewHotKeyEnable), userInfo: nil, repeats: false)
                     NSRunLoop.currentRunLoop().addTimer(self.anewHotKeyTimer!, forMode: NSRunLoopCommonModes)
                 } else {
                     self.isGoingToDisableHotKey = true
                     
-                    self.delayTimer = NSTimer(timeInterval: delayInterval, target: self, selector: #selector(AppDelegate.checkHotKeyEnable(_:)), userInfo: nil, repeats: false)
+                    self.delayTimer = NSTimer(timeInterval: delayInterval, target: self, selector: #selector(self.checkHotKeyEnable(_:)), userInfo: nil, repeats: false)
                     NSRunLoop.currentRunLoop().addTimer(self.delayTimer!, forMode: NSRunLoopCommonModes)
                 }
             }
@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Status bar
     
-    func displayInStatusBar() {
+    @objc private func displayInStatusBar() {
         let image = NSImage(named: "menu-item")
         image?.template = true
         
@@ -95,14 +95,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.image = image
     }
     
-    func checkHotKeyEnable(timer: NSTimer) {
+    @objc private func checkHotKeyEnable(timer: NSTimer) {
         delayTimer?.invalidate()
         delayTimer = nil
         
         isGoingToDisableHotKey = false
     }
     
-    func anewHotKeyEnable(timer: NSTimer) {
+    @objc private func anewHotKeyEnable(timer: NSTimer) {
         anewHotKeyTimer?.invalidate()
         anewHotKeyTimer = nil
         
