@@ -103,34 +103,6 @@ extension TOLWindowController: NSToolbarDelegate {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class TitleViewItem: NSButton {
-    
-    var activeImage: NSImage? {
-        get { return image }
-        set { image = newValue }
-    }
-    
-    var inactiveImage: NSImage? {
-        get { return alternateImage }
-        set { alternateImage = newValue }
-    }
-    
-    init(itemIdentifier: String) {
-        super.init(frame: NSRect.zero)
-        
-        identifier = itemIdentifier
-        bordered = false
-        setButtonType(.ToggleButton)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class TitleView: NSView {
     
     var items = [TitleViewItem]()
@@ -155,4 +127,32 @@ class TitleView: NSView {
         
         toggleCallback?(item: sender)
     }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class TitleViewItem: NSButton {
+    
+    var activeImage: NSImage? {
+        get { return image }
+        set { image = newValue }
+    }
+    
+    var inactiveImage: NSImage? {
+        get { return alternateImage }
+        set { alternateImage = newValue }
+    }
+    
+    init(itemIdentifier: String) {
+        super.init(frame: NSRect.zero)
+        
+        identifier = itemIdentifier
+        bordered = false
+        setButtonType(.ToggleButton)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

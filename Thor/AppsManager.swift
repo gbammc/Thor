@@ -20,9 +20,12 @@ class AppsManager: NSObject {
     private var selectedAppsFile: String {
         get {
             let appName = NSBundle.mainBundle().infoDictionary![kCFBundleNameKey as String] as! String
-            let path = NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory, .UserDomainMask, true).first!
+            let path = (NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory, .UserDomainMask, true).first! as NSString).stringByAppendingPathComponent(appName)
+            if !NSFileManager.defaultManager().fileExistsAtPath(path) {
+                _ = try? NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+            }
             
-            return path.stringByAppendingString("/\(appName)/apps")
+            return (path as NSString).stringByAppendingPathComponent("apps")
         }
     }
     
@@ -30,7 +33,7 @@ class AppsManager: NSObject {
         super.init()
 
         query.predicate = NSPredicate(format: "kMDItemKind == 'Application'")
-        query.searchScopes = ["/Applications/", "/System/Library/CoreServices/"]
+        query.searchScopes = ["/Applications/"]
         
         if let data = NSData(contentsOfFile: selectedAppsFile), apps = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [NSDictionary] {
             selectedApps = apps.flatMap { AppModel(dict: $0) }
@@ -44,7 +47,11 @@ class AppsManager: NSObject {
     }
     
     func save(app: AppModel) {
-        selectedApps.append(app)
+        if let existedApp = selectedApps.filter({ $0.appName == app.appName }).first {
+            existedApp.shortcut = app.shortcut
+        } else {
+            selectedApps.append(app)
+        }
         
         saveData()
     }

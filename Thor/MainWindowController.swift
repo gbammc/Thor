@@ -23,8 +23,8 @@ class MainWindowController: TOLWindowController {
         settingsItem.activeImage = NSImage(named: "Settings-active")
         settingsItem.inactiveImage = NSImage(named: "Settings")
         
-        let appsViewController = storyboard!.instantiateControllerWithIdentifier(String(AppsViewController)) as! AppsViewController
-        insert(appItem, viewController: appsViewController)
+        let hotKeyListViewController = storyboard!.instantiateControllerWithIdentifier(String(HotKeyListViewController)) as! HotKeyListViewController
+        insert(appItem, viewController: hotKeyListViewController)
         
         let settingsViewController = storyboard!.instantiateControllerWithIdentifier(String(SettingsViewController)) as! SettingsViewController
         insert(settingsItem, viewController: settingsViewController)

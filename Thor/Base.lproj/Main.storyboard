@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -76,7 +76,7 @@
                         <outlet property="statusMenu" destination="dS2-uP-mFH" id="DX0-wC-End"/>
                     </connections>
                 </customObject>
-                <customObject id="tdb-s2-QWr" customClass="AppController" customModule="Thor" customModuleProvider="target"/>
+                <customObject id="tdb-s2-QWr" customClass="StatusItemController" customModule="Thor" customModuleProvider="target"/>
                 <menu id="dS2-uP-mFH">
                     <items>
                         <menuItem title="Preference" id="LOh-9N-Sq4">
@@ -137,7 +137,7 @@
         <!--Window Controller-->
         <scene sceneID="R9I-gH-T5y">
             <objects>
-                <windowController storyboardIdentifier="AddAppWindowController" id="Wht-H7-JKX" customClass="AddAppWindowController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="EditHotKeyWindowController" id="Wht-H7-JKX" customClass="EditHotKeyWindowController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Add" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hBE-4N-uTl">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
                         <rect key="contentRect" x="425" y="461" width="400" height="137"/>
@@ -151,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="114" y="844.5"/>
         </scene>
-        <!--Add App View Controller-->
+        <!--Edit Hot Key View Controller-->
         <scene sceneID="4xG-BL-LBN">
             <objects>
-                <viewController storyboardIdentifier="AddAppViewController" id="kYE-Rv-OG1" customClass="AddAppViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditHotKeyViewController" id="kYE-Rv-OG1" customClass="EditHotKeyViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="AWD-Ld-3Eq">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="137"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -207,11 +207,11 @@
             </objects>
             <point key="canvasLocation" x="653" y="835.5"/>
         </scene>
-        <!--Apps View Controller-->
+        <!--Hot Key List View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="AppsViewController" id="XfG-lQ-9wD" customClass="AppsViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HotKeyListViewController" id="XfG-lQ-9wD" customClass="HotKeyListViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -305,7 +305,7 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="ShortcutTableCellView" id="Nsv-UC-ZsR">
+                                                        <tableCellView identifier="HotKeyTableCellView" id="Nsv-UC-ZsR">
                                                             <rect key="frame" x="176" y="1" width="100" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -396,7 +396,7 @@
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Wg-Pgf">
-                                <rect key="frame" x="131" y="285" width="171" height="27"/>
+                                <rect key="frame" x="131" y="285" width="171" height="25"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="1" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="9mT-en-uZb">
                                     <connections>
                                         <action selector="changeShortcutReactivateInterval:" target="LfM-H7-njo" id="V4e-FL-dTK"/>

@@ -1,14 +1,14 @@
 //
-//  AppController.swift
+//  StatusItemController.swift
 //  Thor
 //
-//  Created by AlvinZhu on 4/19/16.
+//  Created by Alvin on 5/12/16.
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
 import Cocoa
 
-class AppController: NSObject {
+class StatusItemController: NSObject {
 
     @IBAction func showApps(sender: AnyObject) {
         if let rootViewController = SharedAppDelegate?.mainWindowController {

@@ -15,7 +15,6 @@ class AppModel: Equatable {
     let appName: String
     let appDisplayName: String
     let appIconName: String
-    let isSysApp: Bool
     
     var shortcut: MASShortcut?
     
@@ -38,8 +37,6 @@ class AppModel: Equatable {
         
         guard let displayName = item.valueForAttribute(kMDItemDisplayName as String) as? String else { return nil }
         
-        guard !path.containsString("/System/Library") || displayName == "Finder" else { return nil }
-        
         guard let name = item.valueForKey(kMDItemFSName as String) as? String else { return nil }
         
         guard let appBundle = NSBundle(path: path) else { return nil }
@@ -50,7 +47,6 @@ class AppModel: Equatable {
         self.appName = name
         self.appDisplayName = displayName
         self.appIconName = iconName
-        self.isSysApp = path.containsString("/System/Library")
     }
     
     init?(dict: NSDictionary) {
@@ -66,9 +62,6 @@ class AppModel: Equatable {
         guard let iconName = dict.objectForKey("appIconName") as? String else { return nil }
         self.appIconName = iconName
         
-        guard let isSysApp = dict.objectForKey("isSysApp") as? Bool else { return nil }
-        self.isSysApp = isSysApp
-        
         if let shortcut = dict.objectForKey("shortcut") as? MASShortcut {
             self.shortcut = shortcut
         }
@@ -80,7 +73,6 @@ class AppModel: Equatable {
         dict.setObject(appName, forKey: "appName")
         dict.setObject(appDisplayName, forKey: "appDisplayName")
         dict.setObject(appIconName, forKey: "appIconName")
-        dict.setObject(isSysApp, forKey: "isSysApp")
         dict.setObject(shortcut ?? NSNull(), forKey: "shortcut")
         
         return dict

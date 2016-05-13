@@ -1,21 +1,23 @@
 //
-//  AddAppViewController.swift
+//  EditHotKeyViewController.swift
 //  Thor
 //
-//  Created by AlvinZhu on 4/21/16.
+//  Created by Alvin on 5/12/16.
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
 import Cocoa
 import MASShortcut
 
-class AddAppViewController: NSViewController {
+class EditHotKeyViewController: NSViewController {
 
     @IBOutlet weak var btnApps: NSPopUpButton!
     @IBOutlet weak var shortcutView: MASShortcutView!
     
-    var apps: [AppModel]?
-    var selectedApp: AppModel?
+    var editedApp: AppModel?
+    
+    private var apps: [AppModel]?
+    private var selectedApp: AppModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +46,10 @@ class AddAppViewController: NSViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         
+        editedApp = nil
         selectedApp = nil
         shortcutView.shortcutValue = nil
+        
         view.window?.close()
         NSApp.stopModal()
     }
@@ -74,38 +78,38 @@ class AddAppViewController: NSViewController {
             openPanel.beginSheetModalForWindow(view.window!, completionHandler: { (result) in
                 if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(URL: openPanel.URLs.first!) {
                     
-                    self.selectedApp = AppModel(item: metaDataItem)
+                    self.editedApp = AppModel(item: metaDataItem)
                     
                     self.resetSelections(self.apps)
                 }
             })
         } else {
-            let idx = popUpButton.indexOfSelectedItem
+            let idx = popUpButton.indexOfSelectedItem - (editedApp == nil ? 0 : 2)
             
             if let apps = apps {
                 selectedApp = apps[idx]
             }
-            
-            resetSelections(apps)
         }
     }
     
     private func resetSelections(apps: [AppModel]?) {
         guard let apps = apps else { return }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             let menu = NSMenu()
             
-            if let selectedApp = self.selectedApp {
+            if let editedApp = self.editedApp {
                 let selectedItem = NSMenuItem()
-                selectedItem.title = selectedApp.appDisplayName
-                selectedItem.image = selectedApp.icon
+                selectedItem.title = editedApp.appDisplayName
+                selectedItem.image = editedApp.icon
                 
                 menu.addItem(selectedItem)
                 
                 menu.addItem(NSMenuItem.separatorItem())
                 
-                self.shortcutView.shortcutValue = self.selectedApp?.shortcut
+                self.shortcutView.shortcutValue = editedApp.shortcut
+                
+                self.selectedApp = editedApp
             }
             
             for app in apps {
@@ -123,9 +127,10 @@ class AddAppViewController: NSViewController {
             customMenuItem.tag = 1000
             menu.addItem(customMenuItem)
             
-            dispatch_async(dispatch_get_main_queue(), { 
+            dispatch_async(dispatch_get_main_queue(), {
                 self.btnApps.removeAllItems()
                 self.btnApps.menu = menu
+                self.selectedApp = self.selectedApp ?? apps.first
                 self.btnApps.selectItemAtIndex(0)
             })
         }
