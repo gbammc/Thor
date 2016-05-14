@@ -10,6 +10,30 @@ import Cocoa
 
 extension NSApplication {
     
+    class func shortVersionString() -> String {
+        guard let infoDict = NSBundle.mainBundle().infoDictionary else {
+            return "Unknown"
+        }
+        
+        return infoDict["CFBundleShortVersionString"] as! String
+    }
+    
+    class func buildVersionString() -> String {
+        guard let infoDict = NSBundle.mainBundle().infoDictionary else {
+            return "?"
+        }
+        
+        return infoDict["CFBundleVersion"] as! String
+    }
+    
+    class func formattedVersion() -> String {
+        return "Version \(shortVersionString()) (\(buildVersionString()))"
+    }
+    
+}
+
+extension NSApplication {
+    
     // MARK: Variables
     
     var startAtLogin: Bool {

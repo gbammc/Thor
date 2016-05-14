@@ -76,7 +76,11 @@
                         <outlet property="statusMenu" destination="dS2-uP-mFH" id="DX0-wC-End"/>
                     </connections>
                 </customObject>
-                <customObject id="tdb-s2-QWr" customClass="StatusItemController" customModule="Thor" customModuleProvider="target"/>
+                <customObject id="tdb-s2-QWr" customClass="StatusItemController" customModule="Thor" customModuleProvider="target">
+                    <connections>
+                        <outlet property="versionMenuItem" destination="ong-Un-zmC" id="2gn-me-ivp"/>
+                    </connections>
+                </customObject>
                 <menu id="dS2-uP-mFH">
                     <items>
                         <menuItem title="Preference" id="LOh-9N-Sq4">
@@ -85,20 +89,26 @@
                                 <action selector="showApps:" target="tdb-s2-QWr" id="zr3-M4-Xwv"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="About" id="ong-Un-zmC">
+                        <menuItem title="Check for updates" id="b8r-Yq-V8b">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="about:" target="tdb-s2-QWr" id="tQG-FC-lEe"/>
+                                <action selector="checkForUpdates:" target="tdb-s2-QWr" id="E4D-Pq-9Y9"/>
                             </connections>
                         </menuItem>
+                        <menuItem title="Version" enabled="NO" id="ong-Un-zmC">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="8ld-uy-wtv"/>
-                        <menuItem title="Exit" id="RwK-Ds-RBj">
+                        <menuItem title="Quit" id="RwK-Ds-RBj">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="exit:" target="tdb-s2-QWr" id="RqF-yP-uaB"/>
+                                <action selector="quit:" target="tdb-s2-QWr" id="j95-qv-IKv"/>
                             </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="delegate" destination="tdb-s2-QWr" id="IHT-Nm-3FZ"/>
+                    </connections>
                 </menu>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +147,7 @@
         <!--Window Controller-->
         <scene sceneID="R9I-gH-T5y">
             <objects>
-                <windowController storyboardIdentifier="EditHotKeyWindowController" id="Wht-H7-JKX" customClass="EditHotKeyWindowController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="EditShortcutWindowController" id="Wht-H7-JKX" customClass="EditShortcutWindowController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Add" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hBE-4N-uTl">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
                         <rect key="contentRect" x="425" y="461" width="400" height="137"/>
@@ -151,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="114" y="844.5"/>
         </scene>
-        <!--Edit Hot Key View Controller-->
+        <!--Edit Shortcut View Controller-->
         <scene sceneID="4xG-BL-LBN">
             <objects>
-                <viewController storyboardIdentifier="EditHotKeyViewController" id="kYE-Rv-OG1" customClass="EditHotKeyViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditShortcutViewController" id="kYE-Rv-OG1" customClass="EditShortcutViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="AWD-Ld-3Eq">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="137"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -207,11 +217,11 @@
             </objects>
             <point key="canvasLocation" x="653" y="835.5"/>
         </scene>
-        <!--Hot Key List View Controller-->
+        <!--Shortcut List View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="HotKeyListViewController" id="XfG-lQ-9wD" customClass="HotKeyListViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShortcutListViewController" id="XfG-lQ-9wD" customClass="ShortcutListViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -251,7 +261,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="HSK-Sf-ydT" viewBased="YES" id="aOE-yu-2yD">
-                                            <rect key="frame" x="0.0" y="0.0" width="278" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="376"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -305,7 +315,7 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="HotKeyTableCellView" id="Nsv-UC-ZsR">
+                                                        <tableCellView identifier="ShortcutTableCellView" id="Nsv-UC-ZsR">
                                                             <rect key="frame" x="176" y="1" width="100" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -449,15 +459,15 @@
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zk-yi-rDJ" userLabel="⌘ Command Key">
                                 <rect key="frame" x="131" y="354" width="172" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="2rr-yT-VNc" userLabel="⌃ Control Key">
+                                <popUpButtonCell key="cell" type="push" title="⌥ Option 键" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ltM-LE-FOy" id="2rr-yT-VNc" userLabel="⌃ Control Key">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" title="OtherViews" id="Hcy-Ge-ZoW">
                                         <items>
-                                            <menuItem title="⌘ Command 键" id="Yef-Cj-gO1" userLabel="⌘ Command Key"/>
                                             <menuItem title="⌥ Option 键" id="ltM-LE-FOy" userLabel="⌥ Option Key">
                                                 <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             </menuItem>
+                                            <menuItem title="⌘ Command 键" id="Yef-Cj-gO1" userLabel="⌘ Command Key"/>
                                             <menuItem title="⌃ Control 键" id="NL4-zo-fys" userLabel="⌃ Control Key">
                                                 <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                                             </menuItem>
@@ -472,8 +482,8 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yjh-vn-RQQ">
-                                <rect key="frame" x="38" y="332" width="245" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Double tap will deactivate the shortcuts" id="yod-j7-EUV">
+                                <rect key="frame" x="35" y="332" width="251" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Double tap will deactivate the Shortcuts" id="yod-j7-EUV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

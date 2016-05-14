@@ -68,7 +68,7 @@ class AppsManager: NSObject {
         let apps = selectedApps.map { $0.encode() }
         
         if NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile) {
-            HotKeysRegister.registerHotKeys()
+            ShortcutRegister.register()
         }
     }
     

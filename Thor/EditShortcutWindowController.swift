@@ -1,14 +1,14 @@
 //
-//  EditHotKeyWindowController.swift
+//  EditShortcutWindowController.swift
 //  Thor
 //
-//  Created by Alvin on 5/12/16.
+//  Created by Alvin on 5/14/16.
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
 import Cocoa
 
-class EditHotKeyWindowController: NSWindowController {
+class EditShortcutWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -16,7 +16,6 @@ class EditHotKeyWindowController: NSWindowController {
         window?.titlebarAppearsTransparent = true
         window?.titleVisibility = .Hidden
         window?.backgroundColor = NSColor.whiteColor()
-        window?.center()
     }
 
 }

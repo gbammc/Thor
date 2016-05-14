@@ -7,9 +7,12 @@
 //
 
 import Cocoa
+import Sparkle
 
-class StatusItemController: NSObject {
+class StatusItemController: NSObject, NSMenuDelegate {
 
+    @IBOutlet weak var versionMenuItem: NSMenuItem!
+    
     @IBAction func showApps(sender: AnyObject) {
         if let rootViewController = SharedAppDelegate?.mainWindowController {
             rootViewController.showWindow(nil)
@@ -20,11 +23,16 @@ class StatusItemController: NSObject {
         }
     }
     
-    @IBAction func about(sender: AnyObject) {
+    @IBAction func quit(sender: AnyObject) {
+        NSApp.terminate(self)
     }
     
-    @IBAction func exit(sender: AnyObject) {
-        NSApp.terminate(self)
+    @IBAction func checkForUpdates(sender: AnyObject) {
+        SUUpdater.sharedUpdater().checkForUpdates(sender)
+    }
+    
+    func menuWillOpen(menu: NSMenu) {
+        versionMenuItem.title = NSApplication.formattedVersion()
     }
     
 }

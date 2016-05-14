@@ -1,15 +1,15 @@
 //
-//  EditHotKeyViewController.swift
+//  EditShortcutViewController.swift
 //  Thor
 //
-//  Created by Alvin on 5/12/16.
+//  Created by Alvin on 5/14/16.
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
 import Cocoa
 import MASShortcut
 
-class EditHotKeyViewController: NSViewController {
+class EditShortcutViewController: NSViewController {
 
     @IBOutlet weak var btnApps: NSPopUpButton!
     @IBOutlet weak var shortcutView: MASShortcutView!
@@ -77,11 +77,10 @@ class EditHotKeyViewController: NSViewController {
             
             openPanel.beginSheetModalForWindow(view.window!, completionHandler: { (result) in
                 if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(URL: openPanel.URLs.first!) {
-                    
                     self.editedApp = AppModel(item: metaDataItem)
-                    
-                    self.resetSelections(self.apps)
                 }
+                
+                self.resetSelections(self.apps)
             })
         } else {
             let idx = popUpButton.indexOfSelectedItem - (editedApp == nil ? 0 : 2)

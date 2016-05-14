@@ -14,7 +14,7 @@ extension DefaultsKeys {
     static let ModifyKey = DefaultsKey<Int>("ModifyKey")
     static let EnableShortcut = DefaultsKey<Bool>("EnableShortcut")
     static let DelayInterval = DefaultsKey<Double>("DelayInterval")
-    static let HotKeys = DefaultsKey<[NSData]?>("HotKeys")
+    static let Shortcuts = DefaultsKey<[NSData]?>("Shortcuts")
     static let DeactivateKey = DefaultsKey<Int>("DeactivateKey")
     
 }

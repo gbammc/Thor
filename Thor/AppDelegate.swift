@@ -19,11 +19,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var isTapping = false
     var hasTapped = false
-    var isGoingToDisableHotKey = false
+    var isGoingToDisableShortcut = false
 
     var mainWindowController: MainWindowController?
     
-    var anewHotKeyTimer: NSTimer?
+    var anewShortcutTimer: NSTimer?
     var delayTimer: NSTimer?
     
     var statusItem: NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
@@ -39,48 +39,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSApp.setActivationPolicy(.Accessory)
         
-        hotKeyEnableMonitor()
+        shortcutEnableMonitor()
         
         displayInStatusBar()
         
-        HotKeysRegister.registerHotKeys()
+        ShortcutRegister.register()
         
         NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayInStatusBar), name: "AppleInterfaceThemeChangedNotification", object: nil)
     }
     
     // MARK: Listen events
     
-    private func hotKeyEnableMonitor() {
+    private func shortcutEnableMonitor() {
         let delayInterval: NSTimeInterval        = 0.3
         let anewShortcutInterval: NSTimeInterval = Defaults[.DelayInterval]
         
-        let hotKeyActivateHandler = { (event: NSEvent) in
-            let deactivateKey: NSEventModifierFlags = [.CommandKeyMask, .AlternateKeyMask, .ControlKeyMask, .ShiftKeyMask][Defaults[.DeactivateKey]]
+        let shortcutActivateHandler = { (event: NSEvent) in
+            let deactivateKey: NSEventModifierFlags = [.AlternateKeyMask, .CommandKeyMask, .ControlKeyMask, .ShiftKeyMask][Defaults[.DeactivateKey]]
             let modifier = event.modifierFlags.intersect(deactivateKey)
             
             if modifier == deactivateKey {
-                if self.isGoingToDisableHotKey {
-                    self.isGoingToDisableHotKey = false
+                if self.isGoingToDisableShortcut {
+                    self.isGoingToDisableShortcut = false
                     
-                    HotKeysRegister.unregisterHotKeys()
+                    ShortcutRegister.unregister()
                     
-                    self.anewHotKeyTimer = NSTimer(timeInterval: anewShortcutInterval, target: self, selector: #selector(self.anewHotKeyEnable), userInfo: nil, repeats: false)
-                    NSRunLoop.currentRunLoop().addTimer(self.anewHotKeyTimer!, forMode: NSRunLoopCommonModes)
+                    self.anewShortcutTimer = NSTimer(timeInterval: anewShortcutInterval, target: self, selector: #selector(self.anewShortcutEnable), userInfo: nil, repeats: false)
+                    NSRunLoop.currentRunLoop().addTimer(self.anewShortcutTimer!, forMode: NSRunLoopCommonModes)
                 } else {
-                    self.isGoingToDisableHotKey = true
+                    self.isGoingToDisableShortcut = true
                     
-                    self.delayTimer = NSTimer(timeInterval: delayInterval, target: self, selector: #selector(self.checkHotKeyEnable(_:)), userInfo: nil, repeats: false)
+                    self.delayTimer = NSTimer(timeInterval: delayInterval, target: self, selector: #selector(self.checkShortcutEnable(_:)), userInfo: nil, repeats: false)
                     NSRunLoop.currentRunLoop().addTimer(self.delayTimer!, forMode: NSRunLoopCommonModes)
                 }
             }
         }
         
         NSEvent.addGlobalMonitorForEventsMatchingMask([.FlagsChangedMask], handler: { (event) in
-            hotKeyActivateHandler(event)
+            shortcutActivateHandler(event)
         })
         
         NSEvent.addLocalMonitorForEventsMatchingMask([.FlagsChangedMask], handler: { (event) -> NSEvent? in
-            hotKeyActivateHandler(event)
+            shortcutActivateHandler(event)
             return event
         })
     }
@@ -95,18 +95,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.image = image
     }
     
-    @objc private func checkHotKeyEnable(timer: NSTimer) {
+    @objc private func checkShortcutEnable(timer: NSTimer) {
         delayTimer?.invalidate()
         delayTimer = nil
         
-        isGoingToDisableHotKey = false
+        isGoingToDisableShortcut = false
     }
     
-    @objc private func anewHotKeyEnable(timer: NSTimer) {
-        anewHotKeyTimer?.invalidate()
-        anewHotKeyTimer = nil
+    @objc private func anewShortcutEnable(timer: NSTimer) {
+        anewShortcutTimer?.invalidate()
+        anewShortcutTimer = nil
         
-        HotKeysRegister.registerHotKeys()
+        ShortcutRegister.register()
     }
 
 }

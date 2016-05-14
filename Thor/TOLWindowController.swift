@@ -114,7 +114,7 @@ class TitleView: NSView {
         items.forEach { $0.removeFromSuperview() }
         
         for (index, item) in items.enumerate() {
-            item.frame = NSRect(x: CGFloat(index) * titleItemWidth, y: 0, width: titleItemWidth, height: self.height)
+            item.frame = NSRect(x: CGFloat(index) * titleItemWidth, y: 0, width: titleItemWidth, height: self.frame.size.height)
             item.target = self
             item.action = #selector(TitleView.toggle(_:))
             

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */; };
 		B2D65A071CDAF2D500E39A65 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */; };
-		B2D65A091CDB1BA100E39A65 /* HotKeysRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65A081CDB1BA100E39A65 /* HotKeysRegister.swift */; };
 		B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0431CC48CD900FB687F /* AppDelegate.swift */; };
 		B2E1B0481CC48CD900FB687F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2E1B0471CC48CD900FB687F /* Assets.xcassets */; };
 		B2E1B04B1CC48CD900FB687F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E1B0491CC48CD900FB687F /* Main.storyboard */; };
@@ -17,15 +16,15 @@
 		B2E1B0571CC4A85700FB687F /* AppsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0561CC4A85700FB687F /* AppsManager.swift */; };
 		B2E1B05B1CC4AE2600FB687F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B05A1CC4AE2600FB687F /* Constant.swift */; };
 		B2E1B05D1CC4AE4500FB687F /* DefaultsKeys+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B05C1CC4AE4500FB687F /* DefaultsKeys+Extension.swift */; };
-		B2E1B0611CC4B16200FB687F /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0601CC4B16200FB687F /* NSView+Extension.swift */; };
 		B2E1B0691CC4CDD100FB687F /* TOLWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0681CC4CDD100FB687F /* TOLWindowController.swift */; };
 		B2E1B06B1CC4D49800FB687F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B06A1CC4D49800FB687F /* SettingsViewController.swift */; };
 		B2F635FC1CD35BDD00E1232D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F635FB1CD35BDD00E1232D /* String+Extension.swift */; };
 		C70F7238CC27794CB6C37880 /* Pods_Thor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6D8111B4E9725A60F041E4 /* Pods_Thor.framework */; };
 		E166F32B1CE4B7E300F7C7B8 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F32A1CE4B7E300F7C7B8 /* StatusItemController.swift */; };
-		E166F32F1CE4BBA000F7C7B8 /* HotKeyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F32E1CE4BBA000F7C7B8 /* HotKeyListViewController.swift */; };
-		E166F3311CE4BC5B00F7C7B8 /* EditHotKeyWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F3301CE4BC5B00F7C7B8 /* EditHotKeyWindowController.swift */; };
-		E166F3331CE4BC7F00F7C7B8 /* EditHotKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F3321CE4BC7F00F7C7B8 /* EditHotKeyViewController.swift */; };
+		E166F3391CE7801A00F7C7B8 /* ShortcutListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */; };
+		E166F33C1CE780A600F7C7B8 /* EditShortcutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F33B1CE780A600F7C7B8 /* EditShortcutWindowController.swift */; };
+		E166F33E1CE780CA00F7C7B8 /* EditShortcutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F33D1CE780CA00F7C7B8 /* EditShortcutViewController.swift */; };
+		E166F3401CE781EC00F7C7B8 /* ShortcutRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F33F1CE781EC00F7C7B8 /* ShortcutRegister.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		3A89078B5AFF17A0F2DB5DAA /* Pods-Thor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.debug.xcconfig"; sourceTree = "<group>"; };
 		B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
-		B2D65A081CDB1BA100E39A65 /* HotKeysRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeysRegister.swift; sourceTree = "<group>"; };
 		B2E1B0401CC48CD900FB687F /* Thor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E1B0431CC48CD900FB687F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2E1B0471CC48CD900FB687F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,14 +41,14 @@
 		B2E1B0561CC4A85700FB687F /* AppsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsManager.swift; sourceTree = "<group>"; };
 		B2E1B05A1CC4AE2600FB687F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		B2E1B05C1CC4AE4500FB687F /* DefaultsKeys+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DefaultsKeys+Extension.swift"; sourceTree = "<group>"; };
-		B2E1B0601CC4B16200FB687F /* NSView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
 		B2E1B0681CC4CDD100FB687F /* TOLWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOLWindowController.swift; sourceTree = "<group>"; };
 		B2E1B06A1CC4D49800FB687F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B2F635FB1CD35BDD00E1232D /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E166F32A1CE4B7E300F7C7B8 /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
-		E166F32E1CE4BBA000F7C7B8 /* HotKeyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyListViewController.swift; sourceTree = "<group>"; };
-		E166F3301CE4BC5B00F7C7B8 /* EditHotKeyWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHotKeyWindowController.swift; sourceTree = "<group>"; };
-		E166F3321CE4BC7F00F7C7B8 /* EditHotKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHotKeyViewController.swift; sourceTree = "<group>"; };
+		E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutListViewController.swift; sourceTree = "<group>"; };
+		E166F33B1CE780A600F7C7B8 /* EditShortcutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditShortcutWindowController.swift; sourceTree = "<group>"; };
+		E166F33D1CE780CA00F7C7B8 /* EditShortcutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditShortcutViewController.swift; sourceTree = "<group>"; };
+		E166F33F1CE781EC00F7C7B8 /* ShortcutRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutRegister.swift; sourceTree = "<group>"; };
 		EE6D8111B4E9725A60F041E4 /* Pods_Thor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,10 +78,10 @@
 				E166F32A1CE4B7E300F7C7B8 /* StatusItemController.swift */,
 				B2E1B0681CC4CDD100FB687F /* TOLWindowController.swift */,
 				B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */,
-				E166F32E1CE4BBA000F7C7B8 /* HotKeyListViewController.swift */,
+				E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */,
 				B2E1B06A1CC4D49800FB687F /* SettingsViewController.swift */,
-				E166F3301CE4BC5B00F7C7B8 /* EditHotKeyWindowController.swift */,
-				E166F3321CE4BC7F00F7C7B8 /* EditHotKeyViewController.swift */,
+				E166F33B1CE780A600F7C7B8 /* EditShortcutWindowController.swift */,
+				E166F33D1CE780CA00F7C7B8 /* EditShortcutViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -134,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E1B0561CC4A85700FB687F /* AppsManager.swift */,
-				B2D65A081CDB1BA100E39A65 /* HotKeysRegister.swift */,
+				E166F33F1CE781EC00F7C7B8 /* ShortcutRegister.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -143,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				B2E1B05C1CC4AE4500FB687F /* DefaultsKeys+Extension.swift */,
-				B2E1B0601CC4B16200FB687F /* NSView+Extension.swift */,
 				B2F635FB1CD35BDD00E1232D /* String+Extension.swift */,
 				B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */,
 			);
@@ -283,18 +280,17 @@
 				B2E1B06B1CC4D49800FB687F /* SettingsViewController.swift in Sources */,
 				B2F635FC1CD35BDD00E1232D /* String+Extension.swift in Sources */,
 				B2E1B0531CC4A81D00FB687F /* AppModel.swift in Sources */,
+				E166F3391CE7801A00F7C7B8 /* ShortcutListViewController.swift in Sources */,
 				B2E1B0691CC4CDD100FB687F /* TOLWindowController.swift in Sources */,
+				E166F33C1CE780A600F7C7B8 /* EditShortcutWindowController.swift in Sources */,
 				B2E1B05B1CC4AE2600FB687F /* Constant.swift in Sources */,
-				E166F32F1CE4BBA000F7C7B8 /* HotKeyListViewController.swift in Sources */,
 				B2E1B05D1CC4AE4500FB687F /* DefaultsKeys+Extension.swift in Sources */,
 				B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */,
 				B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */,
-				B2E1B0611CC4B16200FB687F /* NSView+Extension.swift in Sources */,
-				E166F3331CE4BC7F00F7C7B8 /* EditHotKeyViewController.swift in Sources */,
+				E166F33E1CE780CA00F7C7B8 /* EditShortcutViewController.swift in Sources */,
 				B2E1B0571CC4A85700FB687F /* AppsManager.swift in Sources */,
 				E166F32B1CE4B7E300F7C7B8 /* StatusItemController.swift in Sources */,
-				E166F3311CE4BC5B00F7C7B8 /* EditHotKeyWindowController.swift in Sources */,
-				B2D65A091CDB1BA100E39A65 /* HotKeysRegister.swift in Sources */,
+				E166F3401CE781EC00F7C7B8 /* ShortcutRegister.swift in Sources */,
 				B2D65A071CDAF2D500E39A65 /* NSApplication+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -417,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

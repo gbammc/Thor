@@ -1,20 +1,20 @@
 //
-//  HotKeyListViewController.swift
+//  ShortcutListViewController.swift
 //  Thor
 //
-//  Created by Alvin on 5/12/16.
+//  Created by Alvin on 5/14/16.
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
 import Cocoa
 
-class HotKeyListViewController: NSViewController {
-
+class ShortcutListViewController: NSViewController {
+    
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var btnAdd: NSButton!
     @IBOutlet weak var btnRemove: NSButton!
     
-    lazy var editHotKeyWindowController: EditHotKeyWindowController = SharedAppDelegate?.mainWindowController?.storyboard?.instantiateControllerWithIdentifier(String(EditHotKeyWindowController)) as! EditHotKeyWindowController
+    lazy var editShortcutWindowController = SharedAppDelegate?.mainWindowController?.storyboard?.instantiateControllerWithIdentifier(String(EditShortcutWindowController)) as! EditShortcutWindowController
     
     var apps: [AppModel] { get { return AppsManager.manager.selectedApps } }
     
@@ -23,7 +23,7 @@ class HotKeyListViewController: NSViewController {
         
         view.layer?.backgroundColor = NSColor.whiteColor().CGColor
         
-        tableView.doubleAction = #selector(editHotKey)
+        tableView.doubleAction = #selector(editShortcut)
     }
     
     override func viewWillAppear() {
@@ -39,14 +39,14 @@ class HotKeyListViewController: NSViewController {
     }
     
     @IBAction func add(sender: AnyObject) {
-        NSApplication.sharedApplication().runModalForWindow(editHotKeyWindowController.window!)
+        NSApplication.sharedApplication().runModalForWindow(editShortcutWindowController.window!)
     }
     
     @IBAction func remove(sender: AnyObject) {
         let alert = NSAlert()
         alert.addButtonWithTitle("Sure".localized())
         alert.addButtonWithTitle("Cancel".localized())
-        alert.messageText = "Delete this hotkey?".localized()
+        alert.messageText = "Delete this shortcut?".localized()
         alert.alertStyle = .WarningAlertStyle
         
         if alert.runModal() == NSAlertFirstButtonReturn {
@@ -56,23 +56,17 @@ class HotKeyListViewController: NSViewController {
         }
     }
     
-    @objc private func editHotKey() {
-        let editHotKeyViewController = editHotKeyWindowController.contentViewController as! EditHotKeyViewController
+    @objc private func editShortcut() {
+        let editShortcutViewController = editShortcutWindowController.contentViewController as! EditShortcutViewController
         
         let app = AppsManager.manager.selectedApps[tableView.selectedRow]
-        editHotKeyViewController.editedApp = app
+        editShortcutViewController.editedApp = app
         
-//        NSApp.runModalForWindow(editHotKeyWindowController.window!)
-        
-        view.window!.beginSheet(editHotKeyWindowController.window!) { (response) in
-            
-        }
-    
-//        NSApp.beginSheet(editHotKeyWindowController.window!, modalForWindow: view.window!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
+        NSApp.runModalForWindow(editShortcutWindowController.window!)
     }
 }
 
-extension HotKeyListViewController: NSTableViewDataSource, NSTableViewDelegate {
+extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate {
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return apps.count
@@ -91,7 +85,7 @@ extension HotKeyListViewController: NSTableViewDataSource, NSTableViewDelegate {
             
             return cell
         } else {
-            let cell = tableView.makeViewWithIdentifier(hotKeyTableCellViewIdentifier, owner: self) as! NSTableCellView
+            let cell = tableView.makeViewWithIdentifier(shortcutTableCellViewIdentifier, owner: self) as! NSTableCellView
             cell.textField?.stringValue = "\(app.shortcut!)"
             
             return cell
