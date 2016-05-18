@@ -43,6 +43,8 @@ class ShortcutListViewController: NSViewController {
     }
     
     @IBAction func remove(sender: AnyObject) {
+        guard tableView.selectedRow != -1 else { return }
+        
         let alert = NSAlert()
         alert.addButtonWithTitle("Sure".localized())
         alert.addButtonWithTitle("Cancel".localized())

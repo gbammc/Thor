@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var anewShortcutTimer: NSTimer?
     var delayTimer: NSTimer?
     
-    var statusItem: NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     
     // MARK: Life cycle
     
