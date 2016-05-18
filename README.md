@@ -20,7 +20,7 @@ pod install
 
 ## Download
 
-[Click here to download the latest release.]()
+[Click here to download the latest release.](https://github.com/gbammc/Thor/releases)
 
 ## Thanks
 
