@@ -35,6 +35,6 @@
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://github.com/gbammc/Thor/raw/master/Release/appcast.xml</string>
+	<string>https://github.com/gbammc/Thor/raw/master/Releases/appcast.xml</string>
 </dict>
 </plist>
