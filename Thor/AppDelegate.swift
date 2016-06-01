@@ -15,18 +15,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Properties
     
-    @IBOutlet weak var statusMenu: NSMenu!
-    
     var isTapping = false
     var hasTapped = false
     var isGoingToDisableShortcut = false
-
-    var mainWindowController: MainWindowController?
     
     var anewShortcutTimer: NSTimer?
     var delayTimer: NSTimer?
     
-    var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    var mainWindowController: MainWindowController?
+    
+    @IBOutlet weak var statusItemController: StatusItemController!
     
     // MARK: Life cycle
     
@@ -39,13 +37,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSApp.setActivationPolicy(.Accessory)
         
+        statusItemController.displayInStatusBar()
+        
         shortcutEnableMonitor()
         
-        displayInStatusBar()
-        
-        ShortcutRegister.register()
-        
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayInStatusBar), name: "AppleInterfaceThemeChangedNotification", object: nil)
+        ShortcutMonitor.register()
     }
     
     // MARK: Listen events
@@ -62,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if self.isGoingToDisableShortcut {
                     self.isGoingToDisableShortcut = false
                     
-                    ShortcutRegister.unregister()
+                    ShortcutMonitor.unregister()
                     
                     self.anewShortcutTimer = NSTimer(timeInterval: anewShortcutInterval, target: self, selector: #selector(self.anewShortcutEnable), userInfo: nil, repeats: false)
                     NSRunLoop.currentRunLoop().addTimer(self.anewShortcutTimer!, forMode: NSRunLoopCommonModes)
@@ -85,16 +81,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         })
     }
     
-    // MARK: Status bar
-    
-    @objc private func displayInStatusBar() {
-        let image = NSImage(named: "menu-item")
-        image?.template = true
-        
-        statusItem.menu = statusMenu
-        statusItem.image = image
-    }
-    
     @objc private func checkShortcutEnable(timer: NSTimer) {
         delayTimer?.invalidate()
         delayTimer = nil
@@ -106,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         anewShortcutTimer?.invalidate()
         anewShortcutTimer = nil
         
-        ShortcutRegister.register()
+        ShortcutMonitor.register()
     }
 
 }

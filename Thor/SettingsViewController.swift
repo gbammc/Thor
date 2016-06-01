@@ -35,7 +35,11 @@ class SettingsViewController: NSViewController {
     }
     
     @IBAction func toggleEnableShortcut(sender: AnyObject) {
-        Defaults[.EnableShortcut] = btnEnableShortcut.state == NSOnState
+        let enable = btnEnableShortcut.state == NSOnState
+        
+        Defaults[.EnableShortcut] = enable
+        
+        enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
     }
     
     @IBAction func changeDeactivateKey(sender: AnyObject) {

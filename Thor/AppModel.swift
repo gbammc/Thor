@@ -24,7 +24,7 @@ class AppModel: Equatable {
             let compositeName = "\(bundle.bundleIdentifier):\(appIconName)"
             if let bundleImage = NSImage(contentsOfFile: bundle.pathForImageResource(appIconName)!) {
                 bundleImage.setName(compositeName)
-                bundleImage.size = NSSize(width: 16, height: 16)
+                bundleImage.size = NSSize(width: 36, height: 36)
                 return bundleImage
             }
             
@@ -41,7 +41,7 @@ class AppModel: Equatable {
         
         guard let appBundle = NSBundle(path: path) else { return nil }
         
-        guard let iconName = appBundle.infoDictionary?["CFBundleIconFile"] as? String else { return nil }
+        guard let iconName = (appBundle.infoDictionary?["CFBundleIconFile"]) as? String else { return nil }
         
         self.appBundleURL = appBundle.bundleURL
         self.appName = name

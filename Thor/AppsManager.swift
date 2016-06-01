@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import MASShortcut
 
 class AppsManager: NSObject {
+    
+    // MARK: Properties
     
     static let manager = AppsManager()
     
     var selectedApps = [AppModel]()
     
-    private var query = NSMetadataQuery()
     private var closure: (([AppModel]) -> ())!
     
     private var selectedAppsFile: String {
@@ -29,27 +31,27 @@ class AppsManager: NSObject {
         }
     }
     
+    // MARK: Life cycle
+    
     override init() {
         super.init()
 
-        query.predicate = NSPredicate(format: "kMDItemKind == 'Application'")
-        query.searchScopes = ["/Applications/"]
-        
         if let data = NSData(contentsOfFile: selectedAppsFile), apps = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [NSDictionary] {
             selectedApps = apps.flatMap { AppModel(dict: $0) }
         }
     }
     
-    func getAppsInApplicationsDirectiory(closure: [AppModel] -> ()) {
-        self.closure = closure
-
-        startQuery()
-    }
+    // MARK: Actions
     
-    func save(app: AppModel) {
+    func save(app: AppModel?, shortcut: MASShortcut?) {
+        guard let app = app else { return }
+        
+        ShortcutMonitor.unregister()
+        
         if let existedApp = selectedApps.filter({ $0.appName == app.appName }).first {
-            existedApp.shortcut = app.shortcut
+            existedApp.shortcut = shortcut
         } else {
+            app.shortcut = shortcut
             selectedApps.append(app)
         }
         
@@ -68,19 +70,8 @@ class AppsManager: NSObject {
         let apps = selectedApps.map { $0.encode() }
         
         if NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile) {
-            ShortcutRegister.register()
+            ShortcutMonitor.register()
         }
-    }
-    
-    private func startQuery() {
-        NSNotificationCenter.defaultCenter().addObserverForName(NSMetadataQueryDidFinishGatheringNotification, object: nil, queue: NSOperationQueue.currentQueue()) { (_) in
-            self.query.stopQuery()
-            
-            let apps = AppModel.appsFroms(self.query.results)
-            self.closure(apps)
-        }
-        
-        query.startQuery()
     }
     
 }

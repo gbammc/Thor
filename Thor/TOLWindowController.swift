@@ -110,7 +110,6 @@ class TitleView: NSView {
     
     func insert(item: TitleViewItem) {
         items.append(item)
-        
         items.forEach { $0.removeFromSuperview() }
         
         for (index, item) in items.enumerate() {

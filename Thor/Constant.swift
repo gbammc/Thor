@@ -12,12 +12,8 @@ let SharedAppDelegate        = NSApplication.sharedApplication().delegate as? Ap
 let titleItemWidth: CGFloat  = 40.0
 let titleItemHeight: CGFloat = 37.0
 
-// notifications
-let refreshAppsListNotification     = "refreshAppsListNotification"
-
 // identifiers
 let titleViewIdentifier             = "titleViewIdentifier"
 let appsTitleItemIdentifier         = "appsTitleItemIdentifier"
 let settingsTitleItemIdentifier     = "settingsTitleItemIdentifier"
-let appTableCellViewIdentifier      = "AppTableCellView"
 let shortcutTableCellViewIdentifier   = "ShortcutTableCellView"

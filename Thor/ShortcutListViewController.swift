@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASShortcut
 
 class ShortcutListViewController: NSViewController {
     
@@ -14,32 +15,31 @@ class ShortcutListViewController: NSViewController {
     @IBOutlet weak var btnAdd: NSButton!
     @IBOutlet weak var btnRemove: NSButton!
     
-    lazy var editShortcutWindowController = SharedAppDelegate?.mainWindowController?.storyboard?.instantiateControllerWithIdentifier(String(EditShortcutWindowController)) as! EditShortcutWindowController
-    
     var apps: [AppModel] { get { return AppsManager.manager.selectedApps } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layer?.backgroundColor = NSColor.whiteColor().CGColor
-        
-        tableView.doubleAction = #selector(editShortcut)
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        
-        NSNotificationCenter.defaultCenter().addObserver(tableView, selector: #selector(NSTableView.reloadData), name: refreshAppsListNotification, object: nil)
-    }
-    
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        
-        NSNotificationCenter.defaultCenter().removeObserver(tableView, name: refreshAppsListNotification, object: nil)
     }
     
     @IBAction func add(sender: AnyObject) {
-        NSApplication.sharedApplication().runModalForWindow(editShortcutWindowController.window!)
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = true
+        openPanel.canChooseFiles = true
+        openPanel.allowedFileTypes = [kUTTypeApplicationFile as String, kUTTypeApplicationBundle as String]
+        
+        openPanel.beginSheetModalForWindow(view.window!, completionHandler: { (result) in
+            if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(URL: openPanel.URLs.first!) {
+                let app = AppModel(item: metaDataItem)
+                
+                AppsManager.manager.save(app, shortcut: nil)
+                
+                self.tableView.reloadData()
+                self.tableView.scrollRowToVisible(self.apps.count - 1)
+            }
+        })
     }
     
     @IBAction func remove(sender: AnyObject) {
@@ -57,15 +57,7 @@ class ShortcutListViewController: NSViewController {
             tableView.reloadData()
         }
     }
-    
-    @objc private func editShortcut() {
-        let editShortcutViewController = editShortcutWindowController.contentViewController as! EditShortcutViewController
-        
-        let app = AppsManager.manager.selectedApps[tableView.selectedRow]
-        editShortcutViewController.editedApp = app
-        
-        NSApp.runModalForWindow(editShortcutWindowController.window!)
-    }
+
 }
 
 extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate {
@@ -80,18 +72,12 @@ extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let app = apps[row]
-        if tableColumn?.identifier == appTableCellViewIdentifier {
-            let cell = tableView.makeViewWithIdentifier(appTableCellViewIdentifier, owner: self) as! NSTableCellView
-            cell.textField?.stringValue = app.appDisplayName
-            cell.imageView?.image = app.icon
-            
-            return cell
-        } else {
-            let cell = tableView.makeViewWithIdentifier(shortcutTableCellViewIdentifier, owner: self) as! NSTableCellView
-            cell.textField?.stringValue = "\(app.shortcut!)"
-            
-            return cell
+        let cell = tableView.makeViewWithIdentifier(shortcutTableCellViewIdentifier, owner: self) as! ShortcutTableCellView
+        cell.configure(app.appDisplayName, icon: app.icon, shortcut: app.shortcut) { (shortcut) in
+            AppsManager.manager.save(app, shortcut: shortcut)
         }
+        
+        return cell
     }
     
 }

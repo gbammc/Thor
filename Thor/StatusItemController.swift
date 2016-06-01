@@ -11,7 +11,28 @@ import Sparkle
 
 class StatusItemController: NSObject, NSMenuDelegate {
 
+    // MARK: Properties
+    
+    var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    
+    @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var versionMenuItem: NSMenuItem!
+    
+    // MARK: Life cycle
+    
+    override init() {
+        super.init()
+        
+        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayInStatusBar), name: "AppleInterfaceThemeChangedNotification", object: nil)
+    }
+    
+    // MARK: NSMenuDelegate
+    
+    func menuWillOpen(menu: NSMenu) {
+        versionMenuItem.title = NSApplication.formattedVersion()
+    }
+    
+    // MARK: Actions
     
     @IBAction func showApps(sender: AnyObject) {
         if let rootViewController = SharedAppDelegate?.mainWindowController {
@@ -31,8 +52,14 @@ class StatusItemController: NSObject, NSMenuDelegate {
         SUUpdater.sharedUpdater().checkForUpdates(sender)
     }
     
-    func menuWillOpen(menu: NSMenu) {
-        versionMenuItem.title = NSApplication.formattedVersion()
+    // MARK: Status bar
+    
+    func displayInStatusBar() {
+        let image = NSImage(named: "menu-item")
+        image?.template = true
+        
+        statusItem.menu = statusMenu
+        statusItem.image = image
     }
     
 }
