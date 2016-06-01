@@ -1,6 +1,7 @@
 language: objective-c
-xcode_workspace: Thor.xcworkspace
-xcode_scheme: Thor
 
 before_install:
   - gem install cocoapods -v '0.39.0'
+
+xcode_workspace: Thor.xcworkspace
+xcode_scheme: Thor
