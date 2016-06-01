@@ -1,0 +1,3 @@
+language: objective-c
+xcode_workspace: Thor.xcworkspace
+xcode_scheme: Thor

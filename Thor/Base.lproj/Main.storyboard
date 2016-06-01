@@ -145,79 +145,6 @@
             </objects>
             <point key="canvasLocation" x="74" y="416"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="R9I-gH-T5y">
-            <objects>
-                <windowController storyboardIdentifier="EditShortcutWindowController" id="Wht-H7-JKX" customClass="EditShortcutWindowController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Add" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hBE-4N-uTl">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
-                        <rect key="contentRect" x="425" y="461" width="400" height="137"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-                    </window>
-                    <connections>
-                        <segue destination="kYE-Rv-OG1" kind="relationship" relationship="window.shadowedContentViewController" id="Whh-ba-e0k"/>
-                    </connections>
-                </windowController>
-                <customObject id="dew-37-FQv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="114" y="844.5"/>
-        </scene>
-        <!--Edit Shortcut View Controller-->
-        <scene sceneID="4xG-BL-LBN">
-            <objects>
-                <viewController storyboardIdentifier="EditShortcutViewController" id="kYE-Rv-OG1" customClass="EditShortcutViewController" customModule="Thor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="AWD-Ld-3Eq">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="137"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuI-69-GMo">
-                                <rect key="frame" x="58" y="103" width="111" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Application:" id="tBA-e9-bfB">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBd-a7-TvE">
-                                <rect key="frame" x="58" y="68" width="111" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Custom shortcut:" id="sAq-HE-orT">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2G-vM-k5u">
-                                <rect key="frame" x="180" y="98" width="163" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="hYR-bq-pjb">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="wIy-Jg-iZb"/>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FUJ-rV-z05">
-                                <rect key="frame" x="160" y="13" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3zZ-2I-RfD">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="save:" target="kYE-Rv-OG1" id="X5h-3b-NbL"/>
-                                </connections>
-                            </button>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azN-6t-pMU" customClass="MASShortcutView">
-                                <rect key="frame" x="182" y="66" width="158" height="19"/>
-                            </customView>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="btnApps" destination="U2G-vM-k5u" id="gcf-mA-4G2"/>
-                        <outlet property="shortcutView" destination="azN-6t-pMU" id="p8e-Fa-Wr7"/>
-                    </connections>
-                </viewController>
-                <customObject id="aNd-3H-rea" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="653" y="835.5"/>
-        </scene>
         <!--Shortcut List View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
@@ -335,7 +262,7 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="eym-iE-zkx">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="eym-iE-zkx">
                                     <rect key="frame" x="1" y="383" width="318" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -394,7 +321,7 @@
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Wg-Pgf">
-                                <rect key="frame" x="146" y="285" width="171" height="27"/>
+                                <rect key="frame" x="146" y="285" width="171" height="25"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="1" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="9mT-en-uZb">
                                     <connections>
                                         <action selector="changeShortcutReactivateInterval:" target="LfM-H7-njo" id="V4e-FL-dTK"/>
