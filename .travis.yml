@@ -13,7 +13,7 @@ deploy:
   provider: releases
   api_key:
     secure: MFSmLIndNlnimU6/KG8Q0JfFttFGi5MvJG6N6OXSeEEaGyA3BwrGuQVePXrX6wyA8um2v1c9SuOkXn0rvTAyo6+0oRxDZt1ybvMDxQLIB6crydjwfaaJYi7JgNUFU/9Uyoj4gQ8AELt8UAQUN8n/cAeDqTY87cb7nzF6+XO2p0LfOzWpR1XFZjEaJQql7Mi92OBUl5iaoGOaHa1hN64/+xnk9APxv6BqXoXoseLGN8H9pAG0sxI720eao0NsSVMg8DB4NcGnyjYUDk/aGeNfipQr7XvaXw7lc4O3i91dTX4Z620NGwjP66JgF60xS8CHR2zSVg4fbg5fPwcHigSwSIS6GKTC9sC7TtNUM65QWH4Nfh/t9YxaHmKdUZDRstWhe0jmea7oRKuMQlCgA7NxQETXEMYQzMXuF+a9eshYpOxsVpRA9WN3YG1uaRfZ5LWkEl+9OdMeD7Jn/djhU/5AZQE60A99fltIV7ktOP9IgTbY/nI+JYDFve9ijv94ypCzv1Ov2lK3eSUym+NROhHEbo53GITyeUpaJ5WccYuoDecxeJktRcOsk0B/5txOyLKVGMCYXXC/dTv5HWtMDEru+hyIuAqH+t4kOuVTE0aLotcNN2Hli0xPlv6pQaL7EERRfMy4XN3SZoMR9SbZyNh0Ds9awe9OKpw6WbM0ruUwsQs=
-  file: Thor
+  file: Thor.zip
   clean_up: false
   skip_cleanup: true
   on:
