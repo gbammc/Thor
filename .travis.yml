@@ -1,6 +1,6 @@
 language: objective-c
 rvm:
-  - 2.2
+  - 2.3.1
 xcode_workspace: Thor.xcworkspace
 xcode_scheme: Thor
 before_install:
