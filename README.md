@@ -21,6 +21,10 @@ cd /path/to/Thor
 pod install
 ```
 
+Now branch `Swift3` is Swift 3.0 ready, and it requires:
+
+* Xcode 8.0
+
 ## Download
 
 [Click here to download the latest release.](https://github.com/gbammc/Thor/releases)
