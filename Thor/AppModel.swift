@@ -11,7 +11,7 @@ import MASShortcut
 
 class AppModel: Equatable {
 
-    let appBundleURL: NSURL
+    let appBundleURL: URL
     let appName: String
     let appDisplayName: String
     let appIconName: String
@@ -20,7 +20,7 @@ class AppModel: Equatable {
     
     var icon: NSImage? {
         get {
-            let bundle = NSBundle(URL: appBundleURL)!
+            let bundle = Bundle(url: appBundleURL)!
             let compositeName = "\(bundle.bundleIdentifier):\(appIconName)"
             if let file = bundle.pathForImageResource(appIconName), bundleImage = NSImage(contentsOfFile: file) {
                 bundleImage.setName(compositeName)
@@ -33,13 +33,13 @@ class AppModel: Equatable {
     }
     
     init?(item: NSMetadataItem) {
-        guard let path = item.valueForAttribute(kMDItemPath as String) as? String else { return nil }
+        guard let path = item.value(forAttribute: kMDItemPath as String) as? String else { return nil }
         
-        guard let displayName = item.valueForAttribute(kMDItemDisplayName as String) as? String else { return nil }
+        guard let displayName = item.value(forAttribute: kMDItemDisplayName as String) as? String else { return nil }
         
-        guard let name = item.valueForKey(kMDItemFSName as String) as? String else { return nil }
+        guard let name = item.value(forKey: kMDItemFSName as String) as? String else { return nil }
         
-        guard let appBundle = NSBundle(path: path) else { return nil }
+        guard let appBundle = Bundle(path: path) else { return nil }
         
         guard let iconName = (appBundle.infoDictionary?["CFBundleIconFile"]) as? String else { return nil }
         
@@ -50,26 +50,26 @@ class AppModel: Equatable {
     }
     
     init?(dict: NSDictionary) {
-        guard let appBundle = dict.objectForKey("appBundleURL") as? String else { return nil }
-        self.appBundleURL = NSURL(string: appBundle)!
+        guard let appBundle = dict.object(forKey: "appBundleURL") as? String else { return nil }
+        self.appBundleURL = URL(string: appBundle)!
         
-        guard let name = dict.objectForKey("appName") as? String else { return nil }
+        guard let name = dict.object(forKey: "appName") as? String else { return nil }
         self.appName = name
         
-        guard let displayName = dict.objectForKey("appDisplayName") as? String else { return nil }
+        guard let displayName = dict.object(forKey: "appDisplayName") as? String else { return nil }
         self.appDisplayName = displayName
         
-        guard let iconName = dict.objectForKey("appIconName") as? String else { return nil }
+        guard let iconName = dict.object(forKey: "appIconName") as? String else { return nil }
         self.appIconName = iconName
         
-        if let shortcut = dict.objectForKey("shortcut") as? MASShortcut {
+        if let shortcut = dict.object(forKey: "shortcut") as? MASShortcut {
             self.shortcut = shortcut
         }
     }
     
     func encode() -> NSDictionary {
         let dict = NSMutableDictionary()
-        dict.setObject(appBundleURL.absoluteString, forKey: "appBundleURL")
+        dict.setObject(appBundleURL.absoluteString!, forKey: "appBundleURL")
         dict.setObject(appName, forKey: "appName")
         dict.setObject(appDisplayName, forKey: "appDisplayName")
         dict.setObject(appIconName, forKey: "appIconName")
@@ -78,10 +78,10 @@ class AppModel: Equatable {
         return dict
     }
     
-    class func appsFroms(items: [AnyObject]) -> [AppModel] {
+    class func appsFroms(_ items: [AnyObject]) -> [AppModel] {
         guard let apps = items as? [NSMetadataItem] else { return [] }
         
-        return apps.flatMap({ AppModel(item: $0) }).sort({ $0.0.appDisplayName.lowercaseString < $0.1.appDisplayName.lowercaseString })
+        return apps.flatMap({ AppModel(item: $0) }).sorted(isOrderedBefore: { $0.0.appDisplayName.lowercased() < $0.1.appDisplayName.lowercased() })
     }
     
 }

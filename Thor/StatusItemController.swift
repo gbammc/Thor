@@ -13,7 +13,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
     // MARK: Properties
     
-    var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    var statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var versionMenuItem: NSMenuItem!
@@ -23,40 +23,40 @@ class StatusItemController: NSObject, NSMenuDelegate {
     override init() {
         super.init()
         
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayInStatusBar), name: "AppleInterfaceThemeChangedNotification", object: nil)
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(displayInStatusBar), name: "AppleInterfaceThemeChangedNotification", object: nil)
     }
     
     // MARK: NSMenuDelegate
     
-    func menuWillOpen(menu: NSMenu) {
+    func menuWillOpen(_ menu: NSMenu) {
         versionMenuItem.title = NSApplication.formattedVersion()
     }
     
     // MARK: Actions
     
-    @IBAction func showApps(sender: AnyObject) {
+    @IBAction func showApps(_ sender: AnyObject) {
         if let rootViewController = SharedAppDelegate?.mainWindowController {
             rootViewController.showWindow(nil)
         } else {
-            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier(String(MainWindowController)) as! MainWindowController
+            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: String(MainWindowController)) as! MainWindowController
             SharedAppDelegate?.mainWindowController = rootViewController
             SharedAppDelegate?.mainWindowController?.showWindow(nil)
         }
     }
     
-    @IBAction func quit(sender: AnyObject) {
+    @IBAction func quit(_ sender: AnyObject) {
         NSApp.terminate(self)
     }
     
-    @IBAction func checkForUpdates(sender: AnyObject) {
-        SUUpdater.sharedUpdater().checkForUpdates(sender)
+    @IBAction func checkForUpdates(_ sender: AnyObject) {
+        SUUpdater.shared().checkForUpdates(sender)
     }
     
     // MARK: Status bar
     
     func displayInStatusBar() {
         let image = NSImage(named: "menu-item")
-        image?.template = true
+        image?.isTemplate = true
         
         statusItem.menu = statusMenu
         statusItem.image = image

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import SwiftyUserDefaults
 
 class SettingsViewController: NSViewController {
     
@@ -19,22 +18,22 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer?.backgroundColor = NSColor.whiteColor().CGColor
+        view.layer?.backgroundColor = NSColor.white().cgColor
         
-        btnLaunchAtLogin.state = NSApplication.sharedApplication().startAtLogin ? NSOnState : NSOffState
+        btnLaunchAtLogin.state = NSApplication.shared().startAtLogin ? NSOnState : NSOffState
         
         btnEnableShortcut.state = Defaults[.EnableShortcut] ? NSOnState : NSOffState
         
-        btnShortcutDeavtivateKey.selectItemAtIndex(Defaults[.DeactivateKey])
+        btnShortcutDeavtivateKey.selectItem(at: Defaults[.DeactivateKey])
         
         slider.doubleValue = Defaults[.DelayInterval]
     }
    
-    @IBAction func toggleLaunchAtLogin(sender: AnyObject) {
-        NSApplication.sharedApplication().toggleStartAtLogin()
+    @IBAction func toggleLaunchAtLogin(_ sender: AnyObject) {
+        NSApplication.shared().toggleStartAtLogin()
     }
     
-    @IBAction func toggleEnableShortcut(sender: AnyObject) {
+    @IBAction func toggleEnableShortcut(_ sender: AnyObject) {
         let enable = btnEnableShortcut.state == NSOnState
         
         Defaults[.EnableShortcut] = enable
@@ -42,15 +41,15 @@ class SettingsViewController: NSViewController {
         enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
     }
     
-    @IBAction func changeDeactivateKey(sender: AnyObject) {
+    @IBAction func changeDeactivateKey(_ sender: AnyObject) {
         Defaults[.DeactivateKey] = btnShortcutDeavtivateKey.indexOfSelectedItem
     }
     
-    @IBAction func changeShortcutReactivateInterval(sender: AnyObject) {
+    @IBAction func changeShortcutReactivateInterval(_ sender: AnyObject) {
         Defaults[.DelayInterval] = slider.doubleValue
     }
     
-    @IBAction func exit(sender: AnyObject) {
+    @IBAction func exit(_ sender: AnyObject) {
         NSApp.terminate(self)
     }
     
