@@ -25,19 +25,23 @@ class ShortcutListViewController: NSViewController {
     
     @IBAction func add(sender: AnyObject) {
         let openPanel = NSOpenPanel()
-        openPanel.allowsMultipleSelection = false
+        openPanel.allowsMultipleSelection = true
         openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = true
         openPanel.allowedFileTypes = [kUTTypeApplicationFile as String, kUTTypeApplicationBundle as String]
         
         openPanel.beginSheetModalForWindow(view.window!, completionHandler: { (result) in
-            if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(URL: openPanel.URLs.first!) {
-                let app = AppModel(item: metaDataItem)
+            if (result == NSModalResponseOK) {
                 
-                AppsManager.manager.save(app, shortcut: nil)
-                
-                self.tableView.reloadData()
-                self.tableView.scrollRowToVisible(self.apps.count - 1)
+                for i in openPanel.URLs {
+                    let metaDataItem = NSMetadataItem(URL: i)
+                    let app = AppModel(item: metaDataItem!)
+                    
+                    AppsManager.manager.save(app, shortcut: nil)
+                    
+                    self.tableView.reloadData()
+                    self.tableView.scrollRowToVisible(self.apps.count - 1)
+                }
             }
         })
     }
@@ -57,7 +61,7 @@ class ShortcutListViewController: NSViewController {
             tableView.reloadData()
         }
     }
-
+    
 }
 
 extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate {
@@ -81,3 +85,4 @@ extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate
     }
     
 }
+
