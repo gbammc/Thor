@@ -17,7 +17,11 @@ struct ShortcutMonitor {
             MASShortcutMonitor.shared().register(app.shortcut, withAction: {
                 guard Defaults[.EnableShortcut] else { return }
                 
-                NSWorkspace.shared().launchApplication(app.appName)
+                if let frontmostAppIdentifier = NSWorkspace.shared().frontmostApplication?.bundleIdentifier, targetAppIdentifier = Bundle(url: app.appBundleURL)?.bundleIdentifier where frontmostAppIdentifier == targetAppIdentifier {
+                    NSRunningApplication.runningApplications(withBundleIdentifier: frontmostAppIdentifier).first?.hide()
+                } else {
+                    NSWorkspace.shared().launchApplication(app.appName)
+                }
             })
         }
     }

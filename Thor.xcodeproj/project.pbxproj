@@ -202,7 +202,7 @@
 						DevelopmentTeam = 4Y65NZLKET;
 						DevelopmentTeamName = "Canfeng Zhu";
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
