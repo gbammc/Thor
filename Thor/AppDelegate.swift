@@ -41,6 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         shortcutEnableMonitor()
         
+        MASShortcutValidator.sharedValidator().allowAnyShortcutWithOptionModifier = true
         ShortcutMonitor.register()
     }
     
