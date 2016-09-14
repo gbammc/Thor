@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		635363151D0FF2B00094EFCE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635363141D0FF2B00094EFCE /* Defaults.swift */; };
 		638E33F41CFEB31900069198 /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638E33F31CFEB31900069198 /* ShortcutTableCellView.swift */; };
+		63AFC3521D89452C00F65803 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AFC3511D89452C00F65803 /* NSObject+Extension.swift */; };
 		937BCDC4F1AC75FAB4105C14 /* Pods_Thor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8E31A8FAF4E0220B6C83B8 /* Pods_Thor.framework */; };
 		B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */; };
 		B2D65A071CDAF2D500E39A65 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */; };
@@ -32,6 +33,7 @@
 		59A77D0F5DC390AFD575D36D /* Pods-Thor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.debug.xcconfig"; sourceTree = "<group>"; };
 		635363141D0FF2B00094EFCE /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		638E33F31CFEB31900069198 /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
+		63AFC3511D89452C00F65803 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		8C81152C71A8CB38E641CC71 /* Pods-Thor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.release.xcconfig"; sourceTree = "<group>"; };
 		B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				B2E1B05C1CC4AE4500FB687F /* DefaultsKeys+Extension.swift */,
 				B2F635FB1CD35BDD00E1232D /* String+Extension.swift */,
 				B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */,
+				63AFC3511D89452C00F65803 /* NSObject+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				B2E1B06B1CC4D49800FB687F /* SettingsViewController.swift in Sources */,
 				B2F635FC1CD35BDD00E1232D /* String+Extension.swift in Sources */,
 				B2E1B0531CC4A81D00FB687F /* AppModel.swift in Sources */,
+				63AFC3521D89452C00F65803 /* NSObject+Extension.swift in Sources */,
 				E166F3391CE7801A00F7C7B8 /* ShortcutListViewController.swift in Sources */,
 				635363151D0FF2B00094EFCE /* Defaults.swift in Sources */,
 				B2E1B0691CC4CDD100FB687F /* TOLWindowController.swift in Sources */,

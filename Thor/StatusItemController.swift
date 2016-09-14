@@ -38,7 +38,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
         if let rootViewController = SharedAppDelegate?.mainWindowController {
             rootViewController.showWindow(nil)
         } else {
-            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: MainWindowController.name) as! MainWindowController
+            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: MainWindowController.classString) as! MainWindowController
             SharedAppDelegate?.mainWindowController = rootViewController
             SharedAppDelegate?.mainWindowController?.showWindow(nil)
         }

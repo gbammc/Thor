@@ -15,13 +15,3 @@ extension String {
     }
     
 }
-
-extension NSObject {
-    
-    static var name: String {
-        get {
-            return String(describing: self)
-        }
-    }
-    
-}
