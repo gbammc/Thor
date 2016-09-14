@@ -2,7 +2,7 @@
 //  NSObject+Extension.swift
 //  Thor
 //
-//  Created by hebao on 9/14/16.
+//  Created by AlvinZhu on 9/14/16.
 //  Copyright © 2016 AlvinZhu. All rights reserved.
 //
 
