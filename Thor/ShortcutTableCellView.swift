@@ -13,7 +13,7 @@ class ShortcutTableCellView: NSTableCellView {
     
     @IBOutlet weak var shortcutView: MASShortcutView!
     
-    func configure(_ name: String, icon: NSImage?, shortcut: MASShortcut?, shortcutValueChange: (MASShortcut?) -> ()) {
+    func configure(_ name: String, icon: NSImage?, shortcut: MASShortcut?, shortcutValueChange: @escaping (MASShortcut?) -> ()) {
         textField?.stringValue = name
         imageView?.image = icon
         

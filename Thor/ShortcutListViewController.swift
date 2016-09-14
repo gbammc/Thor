@@ -20,7 +20,7 @@ class ShortcutListViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer?.backgroundColor = NSColor.white().cgColor
+        view.layer?.backgroundColor = NSColor.white.cgColor
     }
     
     @IBAction func add(_ sender: AnyObject) {
@@ -65,8 +65,8 @@ extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate
     func numberOfRows(in tableView: NSTableView) -> Int {
         return apps.count
     }
-    
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return apps[row]
     }
     

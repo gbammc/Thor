@@ -11,7 +11,7 @@ import Cocoa
 extension NSApplication {
     
     class func shortVersionString() -> String {
-        guard let infoDict = Bundle.main().infoDictionary else {
+        guard let infoDict = Bundle.main.infoDictionary else {
             return "Unknown"
         }
         
@@ -19,7 +19,7 @@ extension NSApplication {
     }
     
     class func buildVersionString() -> String {
-        guard let infoDict = Bundle.main().infoDictionary else {
+        guard let infoDict = Bundle.main.infoDictionary else {
             return "?"
         }
         
@@ -58,7 +58,7 @@ extension NSApplication {
         let itemReferences = itemReferencesInLoginItems()
         if let loginItemsRef = loginItemsReference {
             if shouldBeLoginItem {
-                let bundleURL: URL = Bundle.main().bundleURL
+                let bundleURL = Bundle.main.bundleURL as CFURL
                 LSSharedFileListInsertItemURL(loginItemsRef, itemReferences.lastItemReference, nil, nil, bundleURL, nil, nil)
             } else {
                 if let itemReference = itemReferences.thisReference {
@@ -69,14 +69,14 @@ extension NSApplication {
     }
     
     private func itemReferencesInLoginItems() -> (thisReference: LSSharedFileListItem?, lastItemReference: LSSharedFileListItem?) {
-        let bundleURL: URL = Bundle.main().bundleURL
+        let bundleURL: URL = Bundle.main.bundleURL
         if let loginItemsRef = loginItemsReference {
             let loginItems: NSArray = LSSharedFileListCopySnapshot(loginItemsRef, nil).takeRetainedValue() as NSArray
             if loginItems.count > 0 {
                 let lastItemReference: LSSharedFileListItem = loginItems.lastObject as! LSSharedFileListItem
                 for currentItemReference in loginItems as! [LSSharedFileListItem] {
                     let itemURL = LSSharedFileListItemCopyResolvedURL(currentItemReference, 0, nil)
-                    if let itemURL = itemURL where bundleURL == URL(string: String(itemURL.takeRetainedValue())) {
+                    if let itemURL = itemURL, bundleURL == URL(string: String(describing: itemURL.takeRetainedValue())) {
                         return (currentItemReference, lastItemReference)
                     }
                 }

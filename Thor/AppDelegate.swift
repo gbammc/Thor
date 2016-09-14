@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Life cycle
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        Defaults.register([
+        Defaults.register(defaults: [
             DefaultsKeys.DeactivateKey._key : 0,
             DefaultsKeys.DelayInterval._key : 0.3,
             DefaultsKeys.EnableShortcut._key : true,
@@ -61,12 +61,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     ShortcutMonitor.unregister()
                     
                     self.anewShortcutTimer = Timer(timeInterval: anewShortcutInterval, target: self, selector: #selector(self.anewShortcutEnable), userInfo: nil, repeats: false)
-                    RunLoop.current().add(self.anewShortcutTimer!, forMode: RunLoopMode.commonModes)
+                    RunLoop.current.add(self.anewShortcutTimer!, forMode: RunLoopMode.commonModes)
                 } else {
                     self.isGoingToDisableShortcut = true
                     
                     self.delayTimer = Timer(timeInterval: delayInterval, target: self, selector: #selector(self.checkShortcutEnable(_:)), userInfo: nil, repeats: false)
-                    RunLoop.current().add(self.delayTimer!, forMode: RunLoopMode.commonModes)
+                    RunLoop.current.add(self.delayTimer!, forMode: RunLoopMode.commonModes)
                 }
             }
         }

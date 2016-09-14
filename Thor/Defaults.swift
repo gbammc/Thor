@@ -8,7 +8,7 @@
 
 import Foundation
 
-let Defaults = UserDefaults.standard()
+let Defaults = UserDefaults.standard
 
 extension UserDefaults {
     
@@ -18,7 +18,7 @@ extension UserDefaults {
     }
     
     subscript(key: DefaultsKey<Int>) -> Int {
-        get { return integer(forKey: key._key) ?? 0 }
+        get { return integer(forKey: key._key) }
         set { set(newValue, forKey: key._key) }
     }
     
@@ -32,7 +32,7 @@ extension UserDefaults {
         set { set(newValue, forKey: key._key) }
     }
     
-    subscript(key: DefaultsKey<NSArray?>) -> NSArray? {
+    subscript(key: DefaultsKey<Array<Any>?>) -> Array<Any>? {
         get { return array(forKey: key._key) }
         set { set(newValue, forKey: key._key) }
     }

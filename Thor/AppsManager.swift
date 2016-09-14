@@ -21,10 +21,10 @@ class AppsManager: NSObject {
     
     private var selectedAppsFile: String {
         get {
-            let appName = Bundle.main().infoDictionary![kCFBundleNameKey as String] as! String
+            let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
             let path = (NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent(appName)
-            if !FileManager.default().fileExists(atPath: path) {
-                _ = try? FileManager.default().createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            if !FileManager.default.fileExists(atPath: path) {
+                _ = try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             }
             
             return (path as NSString).appendingPathComponent("apps")
@@ -36,7 +36,7 @@ class AppsManager: NSObject {
     override init() {
         super.init()
 
-        if let data = try? Data(contentsOf: URL(fileURLWithPath: selectedAppsFile)), apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
+        if let data = try? Data(contentsOf: URL(fileURLWithPath: selectedAppsFile)), let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
             selectedApps = apps.flatMap { AppModel(dict: $0) }
         }
     }

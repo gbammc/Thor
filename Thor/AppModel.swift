@@ -22,7 +22,7 @@ class AppModel: Equatable {
         get {
             let bundle = Bundle(url: appBundleURL)!
             let compositeName = "\(bundle.bundleIdentifier):\(appIconName)"
-            if let file = bundle.pathForImageResource(appIconName), bundleImage = NSImage(contentsOfFile: file) {
+            if let file = bundle.pathForImageResource(appIconName), let bundleImage = NSImage(contentsOfFile: file) {
                 bundleImage.setName(compositeName)
                 bundleImage.size = NSSize(width: 36, height: 36)
                 return bundleImage
@@ -68,20 +68,20 @@ class AppModel: Equatable {
     }
     
     func encode() -> NSDictionary {
-        let dict = NSMutableDictionary()
-        dict.setObject(appBundleURL.absoluteString!, forKey: "appBundleURL")
-        dict.setObject(appName, forKey: "appName")
-        dict.setObject(appDisplayName, forKey: "appDisplayName")
-        dict.setObject(appIconName, forKey: "appIconName")
-        dict.setObject(shortcut ?? NSNull(), forKey: "shortcut")
+        var dict = [String : Any]()
+        dict["appBundleURL"] = appBundleURL.absoluteString
+        dict["appName"] = appName
+        dict["appDisplayName"] = appDisplayName
+        dict["appIconName"] = appIconName
+        dict["shortcut"] = shortcut ?? NSNull()
         
-        return dict
+        return dict as NSDictionary
     }
     
     class func appsFroms(_ items: [AnyObject]) -> [AppModel] {
         guard let apps = items as? [NSMetadataItem] else { return [] }
         
-        return apps.flatMap({ AppModel(item: $0) }).sorted(isOrderedBefore: { $0.0.appDisplayName.lowercased() < $0.1.appDisplayName.lowercased() })
+        return apps.flatMap({ AppModel(item: $0) }).sorted(by: { $0.0.appDisplayName.lowercased() < $0.1.appDisplayName.lowercased() })
     }
     
 }

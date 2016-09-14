@@ -23,7 +23,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
     override init() {
         super.init()
         
-        DistributedNotificationCenter.default().addObserver(self, selector: #selector(displayInStatusBar), name: "AppleInterfaceThemeChangedNotification", object: nil)
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(displayInStatusBar), name: Notification.Name("AppleInterfaceThemeChangedNotification"), object: nil)
     }
     
     // MARK: NSMenuDelegate
@@ -38,10 +38,12 @@ class StatusItemController: NSObject, NSMenuDelegate {
         if let rootViewController = SharedAppDelegate?.mainWindowController {
             rootViewController.showWindow(nil)
         } else {
-            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: String(MainWindowController)) as! MainWindowController
+            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: MainWindowController.name) as! MainWindowController
             SharedAppDelegate?.mainWindowController = rootViewController
             SharedAppDelegate?.mainWindowController?.showWindow(nil)
         }
+        
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     @IBAction func quit(_ sender: AnyObject) {

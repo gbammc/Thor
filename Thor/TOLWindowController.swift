@@ -20,7 +20,7 @@ class TOLWindowController: NSWindowController {
                 
         window?.titlebarAppearsTransparent = true
         window?.titleVisibility = .hidden
-        window?.backgroundColor = NSColor.white()
+        window?.backgroundColor = NSColor.white
         
         let toolbar = NSToolbar(identifier: "toolbar")
         toolbar.delegate = self
@@ -47,18 +47,12 @@ class TOLWindowController: NSWindowController {
         toolbar.insertItem(withItemIdentifier: NSToolbarFlexibleSpaceItemIdentifier, at: 0)
     }
     
-    override func showWindow(_ sender: AnyObject?) {
-        super.showWindow(sender)
-        
-        NSApp.activateIgnoringOtherApps(true)
-    }
-    
-    override func keyDown(_ theEvent: NSEvent) {
+    override func keyDown(with theEvent: NSEvent) {
         let key = theEvent.charactersIgnoringModifiers
         if theEvent.modifierFlags.contains(.command) && key == "w" {
             close()
         } else {
-            super.keyDown(theEvent)
+            super.keyDown(with: theEvent)
         }
     }
     
@@ -71,9 +65,9 @@ class TOLWindowController: NSWindowController {
     }
     
     private func toggleViewControllers(_ item: TitleViewItem) {
-        if contentViewController?.childViewControllers.count > 0 {
-            contentViewController?.view.subviews.forEach { $0.removeFromSuperview() }
-            contentViewController?.childViewControllers.forEach { $0.removeFromParentViewController() }
+        if let contentViewController = contentViewController, contentViewController.childViewControllers.count > 0 {
+            contentViewController.view.subviews.forEach { $0.removeFromSuperview() }
+            contentViewController.childViewControllers.forEach { $0.removeFromParentViewController() }
         }
         
         if let viewController = viewControllers[item.identifier!] {
@@ -106,7 +100,7 @@ extension TOLWindowController: NSToolbarDelegate {
 class TitleView: NSView {
     
     var items = [TitleViewItem]()
-    var toggleCallback: ((item: TitleViewItem) -> ())?
+    var toggleCallback: ((_ item: TitleViewItem) -> ())?
     
     func insert(_ item: TitleViewItem) {
         items.append(item)
@@ -124,7 +118,7 @@ class TitleView: NSView {
     func toggle(_ sender: TitleViewItem) {
         items.forEach { $0.state = ($0 != sender) ? NSOnState : NSOffState }
         
-        toggleCallback?(item: sender)
+        toggleCallback?(sender)
     }
 }
 
@@ -147,7 +141,7 @@ class TitleViewItem: NSButton {
         
         identifier = itemIdentifier
         isBordered = false
-        setButtonType(.toggleButton)
+        setButtonType(.toggle)
     }
     
     required init?(coder: NSCoder) {
