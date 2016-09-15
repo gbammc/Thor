@@ -12,7 +12,7 @@ extension NSObject {
     
     static var classString: String {
         get {
-            return NSStringFromClass(self)
+            return String(describing: self)
         }
     }
     

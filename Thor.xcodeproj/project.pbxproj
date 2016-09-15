@@ -10,7 +10,7 @@
 		635363151D0FF2B00094EFCE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635363141D0FF2B00094EFCE /* Defaults.swift */; };
 		638E33F41CFEB31900069198 /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638E33F31CFEB31900069198 /* ShortcutTableCellView.swift */; };
 		63AFC3521D89452C00F65803 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AFC3511D89452C00F65803 /* NSObject+Extension.swift */; };
-		937BCDC4F1AC75FAB4105C14 /* Pods_Thor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8E31A8FAF4E0220B6C83B8 /* Pods_Thor.framework */; };
+		99FD6B79AE3534EDDB5FB0EA /* Pods_Thor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12429CF05A48A6408B4A64C8 /* Pods_Thor.framework */; };
 		B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */; };
 		B2D65A071CDAF2D500E39A65 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */; };
 		B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0431CC48CD900FB687F /* AppDelegate.swift */; };
@@ -29,12 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3C8E31A8FAF4E0220B6C83B8 /* Pods_Thor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59A77D0F5DC390AFD575D36D /* Pods-Thor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.debug.xcconfig"; sourceTree = "<group>"; };
+		12429CF05A48A6408B4A64C8 /* Pods_Thor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E4A4A5B4E51247E9CC67238 /* Pods-Thor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.debug.xcconfig"; sourceTree = "<group>"; };
 		635363141D0FF2B00094EFCE /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		638E33F31CFEB31900069198 /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
 		63AFC3511D89452C00F65803 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
-		8C81152C71A8CB38E641CC71 /* Pods-Thor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.release.xcconfig"; sourceTree = "<group>"; };
 		B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
 		B2E1B0401CC48CD900FB687F /* Thor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +48,7 @@
 		B2E1B0681CC4CDD100FB687F /* TOLWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOLWindowController.swift; sourceTree = "<group>"; };
 		B2E1B06A1CC4D49800FB687F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B2F635FB1CD35BDD00E1232D /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		DD2E56EBC04CE95CF2361EC5 /* Pods-Thor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.release.xcconfig"; sourceTree = "<group>"; };
 		E166F32A1CE4B7E300F7C7B8 /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutListViewController.swift; sourceTree = "<group>"; };
 		E166F33F1CE781EC00F7C7B8 /* ShortcutMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutMonitor.swift; sourceTree = "<group>"; };
@@ -59,27 +59,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				937BCDC4F1AC75FAB4105C14 /* Pods_Thor.framework in Frameworks */,
+				99FD6B79AE3534EDDB5FB0EA /* Pods_Thor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		229480A2896005EAB1FF0AA4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3C8E31A8FAF4E0220B6C83B8 /* Pods_Thor.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		638E33F21CFEB2E200069198 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				638E33F31CFEB31900069198 /* ShortcutTableCellView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		7D3C22423A5AE7C6F35BDFB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12429CF05A48A6408B4A64C8 /* Pods_Thor.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B2D65A0A1CDB2CAF00E39A65 /* Controller */ = {
@@ -99,8 +99,8 @@
 			children = (
 				B2E1B0421CC48CD900FB687F /* Thor */,
 				B2E1B0411CC48CD900FB687F /* Products */,
-				D3911A2F29D4FF21D1A1C0C3 /* Pods */,
-				229480A2896005EAB1FF0AA4 /* Frameworks */,
+				FDE9A764C147F4A861F86FE1 /* Pods */,
+				7D3C22423A5AE7C6F35BDFB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,11 +158,11 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
-		D3911A2F29D4FF21D1A1C0C3 /* Pods */ = {
+		FDE9A764C147F4A861F86FE1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				59A77D0F5DC390AFD575D36D /* Pods-Thor.debug.xcconfig */,
-				8C81152C71A8CB38E641CC71 /* Pods-Thor.release.xcconfig */,
+				5E4A4A5B4E51247E9CC67238 /* Pods-Thor.debug.xcconfig */,
+				DD2E56EBC04CE95CF2361EC5 /* Pods-Thor.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -174,12 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2E1B04F1CC48CD900FB687F /* Build configuration list for PBXNativeTarget "Thor" */;
 			buildPhases = (
-				973F0C54AABED572507CB8C8 /* [CP] Check Pods Manifest.lock */,
+				9DD9BD1D0D0ED608494DBE8F /* [CP] Check Pods Manifest.lock */,
 				B2E1B03C1CC48CD900FB687F /* Sources */,
 				B2E1B03D1CC48CD900FB687F /* Frameworks */,
 				B2E1B03E1CC48CD900FB687F /* Resources */,
-				4ECA6431EFACFD059914660C /* [CP] Embed Pods Frameworks */,
-				6358C56DDE2182D354ADDE39 /* [CP] Copy Pods Resources */,
+				7104CD680FD6ED7343226604 /* [CP] Embed Pods Frameworks */,
+				C2B7AC12A16E17D5ED1AAF25 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,7 +240,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4ECA6431EFACFD059914660C /* [CP] Embed Pods Frameworks */ = {
+		7104CD680FD6ED7343226604 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,7 +255,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thor/Pods-Thor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6358C56DDE2182D354ADDE39 /* [CP] Copy Pods Resources */ = {
+		9DD9BD1D0D0ED608494DBE8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C2B7AC12A16E17D5ED1AAF25 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,21 +283,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thor/Pods-Thor-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		973F0C54AABED572507CB8C8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -409,7 +409,7 @@
 		};
 		B2E1B0501CC48CD900FB687F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59A77D0F5DC390AFD575D36D /* Pods-Thor.debug.xcconfig */;
+			baseConfigurationReference = 5E4A4A5B4E51247E9CC67238 /* Pods-Thor.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -430,7 +430,7 @@
 		};
 		B2E1B0511CC48CD900FB687F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C81152C71A8CB38E641CC71 /* Pods-Thor.release.xcconfig */;
+			baseConfigurationReference = DD2E56EBC04CE95CF2361EC5 /* Pods-Thor.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
