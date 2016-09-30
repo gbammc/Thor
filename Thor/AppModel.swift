@@ -20,15 +20,20 @@ class AppModel: Equatable {
     
     var icon: NSImage? {
         get {
-            let bundle = Bundle(url: appBundleURL)!
-            let compositeName = "\(bundle.bundleIdentifier):\(appIconName)"
-            if let file = bundle.pathForImageResource(appIconName), let bundleImage = NSImage(contentsOfFile: file) {
-                bundleImage.setName(compositeName)
-                bundleImage.size = NSSize(width: 36, height: 36)
-                return bundleImage
+            guard let bundle = Bundle(url: appBundleURL) else {
+                return nil
             }
             
-            return nil
+            let compositeName = "\(bundle.bundleIdentifier):\(appIconName)"
+            
+            guard let file = bundle.pathForImageResource(appIconName), let bundleImage = NSImage(contentsOfFile: file) else {
+                return nil
+            }
+            
+            bundleImage.setName(compositeName)
+            bundleImage.size = NSSize(width: 36, height: 36)
+            
+            return bundleImage
         }
     }
     
