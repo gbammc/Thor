@@ -11,7 +11,7 @@ import Cocoa
 extension NSApplication {
     
     class func shortVersionString() -> String {
-        guard let infoDict = NSBundle.mainBundle().infoDictionary else {
+        guard let infoDict = Bundle.main.infoDictionary else {
             return "Unknown"
         }
         
@@ -19,7 +19,7 @@ extension NSApplication {
     }
     
     class func buildVersionString() -> String {
-        guard let infoDict = NSBundle.mainBundle().infoDictionary else {
+        guard let infoDict = Bundle.main.infoDictionary else {
             return "?"
         }
         
@@ -44,8 +44,8 @@ extension NSApplication {
         }
     }
     
-    private var loginItemsReference: LSSharedFileListRef? {
-        return LSSharedFileListCreate(nil, kLSSharedFileListSessionLoginItems.takeRetainedValue(), nil).takeRetainedValue() as LSSharedFileListRef?
+    private var loginItemsReference: LSSharedFileList? {
+        return LSSharedFileListCreate(nil, kLSSharedFileListSessionLoginItems.takeRetainedValue(), nil).takeRetainedValue() as LSSharedFileList?
     }
     
     // MARK: Methods
@@ -54,11 +54,11 @@ extension NSApplication {
         startAtLogin = !startAtLogin
     }
     
-    private func makeLoginItem(shouldBeLoginItem: Bool) {
+    private func makeLoginItem(_ shouldBeLoginItem: Bool) {
         let itemReferences = itemReferencesInLoginItems()
         if let loginItemsRef = loginItemsReference {
             if shouldBeLoginItem {
-                let bundleURL: NSURL = NSBundle.mainBundle().bundleURL
+                let bundleURL = Bundle.main.bundleURL as CFURL
                 LSSharedFileListInsertItemURL(loginItemsRef, itemReferences.lastItemReference, nil, nil, bundleURL, nil, nil)
             } else {
                 if let itemReference = itemReferences.thisReference {
@@ -68,15 +68,15 @@ extension NSApplication {
         }
     }
     
-    private func itemReferencesInLoginItems() -> (thisReference: LSSharedFileListItemRef?, lastItemReference: LSSharedFileListItemRef?) {
-        let bundleURL: NSURL = NSBundle.mainBundle().bundleURL
+    private func itemReferencesInLoginItems() -> (thisReference: LSSharedFileListItem?, lastItemReference: LSSharedFileListItem?) {
+        let bundleURL: URL = Bundle.main.bundleURL
         if let loginItemsRef = loginItemsReference {
             let loginItems: NSArray = LSSharedFileListCopySnapshot(loginItemsRef, nil).takeRetainedValue() as NSArray
             if loginItems.count > 0 {
-                let lastItemReference: LSSharedFileListItemRef = loginItems.lastObject as! LSSharedFileListItemRef
-                for currentItemReference in loginItems as! [LSSharedFileListItemRef] {
+                let lastItemReference: LSSharedFileListItem = loginItems.lastObject as! LSSharedFileListItem
+                for currentItemReference in loginItems as! [LSSharedFileListItem] {
                     let itemURL = LSSharedFileListItemCopyResolvedURL(currentItemReference, 0, nil)
-                    if itemURL != nil && bundleURL.isEqual(itemURL.takeRetainedValue()) {
+                    if let itemURL = itemURL, bundleURL == URL(string: String(describing: itemURL.takeRetainedValue())) {
                         return (currentItemReference, lastItemReference)
                     }
                 }

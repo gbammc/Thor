@@ -23,10 +23,10 @@ class MainWindowController: TOLWindowController {
         settingsItem.activeImage = NSImage(named: "Settings-active")
         settingsItem.inactiveImage = NSImage(named: "Settings")
         
-        let shortcutListViewController = storyboard!.instantiateControllerWithIdentifier(String(ShortcutListViewController)) as! ShortcutListViewController
+        let shortcutListViewController = storyboard!.instantiateController(withIdentifier: ShortcutListViewController.classString) as! ShortcutListViewController
         insert(appItem, viewController: shortcutListViewController)
         
-        let settingsViewController = storyboard!.instantiateControllerWithIdentifier(String(SettingsViewController)) as! SettingsViewController
+        let settingsViewController = storyboard!.instantiateController(withIdentifier: SettingsViewController.classString) as! SettingsViewController
         insert(settingsItem, viewController: settingsViewController)
     }
 

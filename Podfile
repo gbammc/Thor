@@ -3,7 +3,6 @@ use_frameworks!
 
 target 'Thor' do
 	pod 'MASShortcut'
-    pod 'SwiftyUserDefaults'
     pod 'Sparkle'
 end
 

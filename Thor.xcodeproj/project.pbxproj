@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635363151D0FF2B00094EFCE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635363141D0FF2B00094EFCE /* Defaults.swift */; };
 		638E33F41CFEB31900069198 /* ShortcutTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638E33F31CFEB31900069198 /* ShortcutTableCellView.swift */; };
+		63AFC3521D89452C00F65803 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AFC3511D89452C00F65803 /* NSObject+Extension.swift */; };
+		99FD6B79AE3534EDDB5FB0EA /* Pods_Thor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12429CF05A48A6408B4A64C8 /* Pods_Thor.framework */; };
 		B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */; };
 		B2D65A071CDAF2D500E39A65 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */; };
 		B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0431CC48CD900FB687F /* AppDelegate.swift */; };
@@ -20,16 +23,17 @@
 		B2E1B0691CC4CDD100FB687F /* TOLWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0681CC4CDD100FB687F /* TOLWindowController.swift */; };
 		B2E1B06B1CC4D49800FB687F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B06A1CC4D49800FB687F /* SettingsViewController.swift */; };
 		B2F635FC1CD35BDD00E1232D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F635FB1CD35BDD00E1232D /* String+Extension.swift */; };
-		C70F7238CC27794CB6C37880 /* Pods_Thor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6D8111B4E9725A60F041E4 /* Pods_Thor.framework */; };
 		E166F32B1CE4B7E300F7C7B8 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F32A1CE4B7E300F7C7B8 /* StatusItemController.swift */; };
 		E166F3391CE7801A00F7C7B8 /* ShortcutListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */; };
 		E166F3401CE781EC00F7C7B8 /* ShortcutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F33F1CE781EC00F7C7B8 /* ShortcutMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		093874056E115B25D9061FA2 /* Pods-Thor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.release.xcconfig"; sourceTree = "<group>"; };
-		3A89078B5AFF17A0F2DB5DAA /* Pods-Thor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.debug.xcconfig"; sourceTree = "<group>"; };
+		12429CF05A48A6408B4A64C8 /* Pods_Thor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E4A4A5B4E51247E9CC67238 /* Pods-Thor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.debug.xcconfig"; sourceTree = "<group>"; };
+		635363141D0FF2B00094EFCE /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		638E33F31CFEB31900069198 /* ShortcutTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutTableCellView.swift; sourceTree = "<group>"; };
+		63AFC3511D89452C00F65803 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
 		B2E1B0401CC48CD900FB687F /* Thor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,10 +48,10 @@
 		B2E1B0681CC4CDD100FB687F /* TOLWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOLWindowController.swift; sourceTree = "<group>"; };
 		B2E1B06A1CC4D49800FB687F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B2F635FB1CD35BDD00E1232D /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		DD2E56EBC04CE95CF2361EC5 /* Pods-Thor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thor/Pods-Thor.release.xcconfig"; sourceTree = "<group>"; };
 		E166F32A1CE4B7E300F7C7B8 /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutListViewController.swift; sourceTree = "<group>"; };
 		E166F33F1CE781EC00F7C7B8 /* ShortcutMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutMonitor.swift; sourceTree = "<group>"; };
-		EE6D8111B4E9725A60F041E4 /* Pods_Thor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C70F7238CC27794CB6C37880 /* Pods_Thor.framework in Frameworks */,
+				99FD6B79AE3534EDDB5FB0EA /* Pods_Thor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,10 +74,10 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		6B80E53D3B0FDDBD8F3E6822 /* Frameworks */ = {
+		7D3C22423A5AE7C6F35BDFB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE6D8111B4E9725A60F041E4 /* Pods_Thor.framework */,
+				12429CF05A48A6408B4A64C8 /* Pods_Thor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,8 +99,8 @@
 			children = (
 				B2E1B0421CC48CD900FB687F /* Thor */,
 				B2E1B0411CC48CD900FB687F /* Products */,
-				FA273432D4A5CC7E216D36E5 /* Pods */,
-				6B80E53D3B0FDDBD8F3E6822 /* Frameworks */,
+				FDE9A764C147F4A861F86FE1 /* Pods */,
+				7D3C22423A5AE7C6F35BDFB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +142,7 @@
 			children = (
 				B2E1B0561CC4A85700FB687F /* AppsManager.swift */,
 				E166F33F1CE781EC00F7C7B8 /* ShortcutMonitor.swift */,
+				635363141D0FF2B00094EFCE /* Defaults.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -148,15 +153,16 @@
 				B2E1B05C1CC4AE4500FB687F /* DefaultsKeys+Extension.swift */,
 				B2F635FB1CD35BDD00E1232D /* String+Extension.swift */,
 				B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */,
+				63AFC3511D89452C00F65803 /* NSObject+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
 		};
-		FA273432D4A5CC7E216D36E5 /* Pods */ = {
+		FDE9A764C147F4A861F86FE1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3A89078B5AFF17A0F2DB5DAA /* Pods-Thor.debug.xcconfig */,
-				093874056E115B25D9061FA2 /* Pods-Thor.release.xcconfig */,
+				5E4A4A5B4E51247E9CC67238 /* Pods-Thor.debug.xcconfig */,
+				DD2E56EBC04CE95CF2361EC5 /* Pods-Thor.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -168,12 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2E1B04F1CC48CD900FB687F /* Build configuration list for PBXNativeTarget "Thor" */;
 			buildPhases = (
-				EF5B15313316429924FDC151 /* [CP] Check Pods Manifest.lock */,
+				9DD9BD1D0D0ED608494DBE8F /* [CP] Check Pods Manifest.lock */,
 				B2E1B03C1CC48CD900FB687F /* Sources */,
 				B2E1B03D1CC48CD900FB687F /* Frameworks */,
 				B2E1B03E1CC48CD900FB687F /* Resources */,
-				16F1B3904C32657B99E28356 /* [CP] Embed Pods Frameworks */,
-				36FD439BF949F90EFE5D41DE /* [CP] Copy Pods Resources */,
+				7104CD680FD6ED7343226604 /* [CP] Embed Pods Frameworks */,
+				C2B7AC12A16E17D5ED1AAF25 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,11 +197,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = AlvinZhu;
 				TargetAttributes = {
 					B2E1B03F1CC48CD900FB687F = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4Y65NZLKET;
+						DevelopmentTeamName = "Canfeng Zhu";
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -230,7 +240,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		16F1B3904C32657B99E28356 /* [CP] Embed Pods Frameworks */ = {
+		7104CD680FD6ED7343226604 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,22 +255,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thor/Pods-Thor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		36FD439BF949F90EFE5D41DE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thor/Pods-Thor-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF5B15313316429924FDC151 /* [CP] Check Pods Manifest.lock */ = {
+		9DD9BD1D0D0ED608494DBE8F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,6 +270,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		C2B7AC12A16E17D5ED1AAF25 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Thor/Pods-Thor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -285,7 +295,9 @@
 				B2E1B06B1CC4D49800FB687F /* SettingsViewController.swift in Sources */,
 				B2F635FC1CD35BDD00E1232D /* String+Extension.swift in Sources */,
 				B2E1B0531CC4A81D00FB687F /* AppModel.swift in Sources */,
+				63AFC3521D89452C00F65803 /* NSObject+Extension.swift in Sources */,
 				E166F3391CE7801A00F7C7B8 /* ShortcutListViewController.swift in Sources */,
+				635363151D0FF2B00094EFCE /* Defaults.swift in Sources */,
 				B2E1B0691CC4CDD100FB687F /* TOLWindowController.swift in Sources */,
 				638E33F41CFEB31900069198 /* ShortcutTableCellView.swift in Sources */,
 				B2E1B05B1CC4AE2600FB687F /* Constant.swift in Sources */,
@@ -397,32 +409,41 @@
 		};
 		B2E1B0501CC48CD900FB687F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A89078B5AFF17A0F2DB5DAA /* Pods-Thor.debug.xcconfig */;
+			baseConfigurationReference = 5E4A4A5B4E51247E9CC67238 /* Pods-Thor.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		B2E1B0511CC48CD900FB687F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 093874056E115B25D9061FA2 /* Pods-Thor.release.xcconfig */;
+			baseConfigurationReference = DD2E56EBC04CE95CF2361EC5 /* Pods-Thor.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

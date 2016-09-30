@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
 import MASShortcut
 
 struct ShortcutMonitor {
@@ -15,13 +14,13 @@ struct ShortcutMonitor {
     static func register() {
         let apps = AppsManager.manager.selectedApps
         for app in apps where app.shortcut != nil {
-            MASShortcutMonitor.sharedMonitor().registerShortcut(app.shortcut, withAction: {
+            MASShortcutMonitor.shared().register(app.shortcut, withAction: {
                 guard Defaults[.EnableShortcut] else { return }
                 
-                if let frontmostAppIdentifier = NSWorkspace.sharedWorkspace().frontmostApplication?.bundleIdentifier, targetAppIdentifier = NSBundle(URL: app.appBundleURL)?.bundleIdentifier where frontmostAppIdentifier == targetAppIdentifier {
-                    NSRunningApplication.runningApplicationsWithBundleIdentifier(frontmostAppIdentifier).first?.hide()
+                if let frontmostAppIdentifier = NSWorkspace.shared().frontmostApplication?.bundleIdentifier, let targetAppIdentifier = Bundle(url: app.appBundleURL)?.bundleIdentifier , frontmostAppIdentifier == targetAppIdentifier {
+                    NSRunningApplication.runningApplications(withBundleIdentifier: frontmostAppIdentifier).first?.hide()
                 } else {
-                    NSWorkspace.sharedWorkspace().launchApplication(app.appName)
+                    NSWorkspace.shared().launchApplication(app.appName)
                 }
             })
         }
@@ -30,7 +29,7 @@ struct ShortcutMonitor {
     static func unregister() {
         let apps = AppsManager.manager.selectedApps
         for app in apps where app.shortcut != nil {
-            MASShortcutMonitor.sharedMonitor().unregisterShortcut(app.shortcut)
+            MASShortcutMonitor.shared().unregisterShortcut(app.shortcut)
         }
     }
     

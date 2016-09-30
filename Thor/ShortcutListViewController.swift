@@ -20,18 +20,18 @@ class ShortcutListViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer?.backgroundColor = NSColor.whiteColor().CGColor
+        view.layer?.backgroundColor = NSColor.white.cgColor
     }
     
-    @IBAction func add(sender: AnyObject) {
+    @IBAction func add(_ sender: AnyObject) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = true
         openPanel.allowedFileTypes = [kUTTypeApplicationFile as String, kUTTypeApplicationBundle as String]
         
-        openPanel.beginSheetModalForWindow(view.window!, completionHandler: { (result) in
-            if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(URL: openPanel.URLs.first!) {
+        openPanel.beginSheetModal(for: view.window!, completionHandler: { (result) in
+            if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(url: openPanel.urls.first!) {
                 let app = AppModel(item: metaDataItem)
                 
                 AppsManager.manager.save(app, shortcut: nil)
@@ -42,14 +42,14 @@ class ShortcutListViewController: NSViewController {
         })
     }
     
-    @IBAction func remove(sender: AnyObject) {
+    @IBAction func remove(_ sender: AnyObject) {
         guard tableView.selectedRow != -1 else { return }
         
         let alert = NSAlert()
-        alert.addButtonWithTitle("Sure".localized())
-        alert.addButtonWithTitle("Cancel".localized())
+        alert.addButton(withTitle: "Sure".localized())
+        alert.addButton(withTitle: "Cancel".localized())
         alert.messageText = "Delete this shortcut?".localized()
-        alert.alertStyle = .WarningAlertStyle
+        alert.alertStyle = .warning
         
         if alert.runModal() == NSAlertFirstButtonReturn {
             AppsManager.manager.delete(tableView.selectedRow)
@@ -62,17 +62,17 @@ class ShortcutListViewController: NSViewController {
 
 extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate {
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return apps.count
     }
-    
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return apps[row]
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let app = apps[row]
-        let cell = tableView.makeViewWithIdentifier(shortcutTableCellViewIdentifier, owner: self) as! ShortcutTableCellView
+        let cell = tableView.make(withIdentifier: shortcutTableCellViewIdentifier, owner: self) as! ShortcutTableCellView
         cell.configure(app.appDisplayName, icon: app.icon, shortcut: app.shortcut) { (shortcut) in
             AppsManager.manager.save(app, shortcut: shortcut)
         }

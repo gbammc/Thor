@@ -21,13 +21,13 @@ class AppsManager: NSObject {
     
     private var selectedAppsFile: String {
         get {
-            let appName = NSBundle.mainBundle().infoDictionary![kCFBundleNameKey as String] as! String
-            let path = (NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory, .UserDomainMask, true).first! as NSString).stringByAppendingPathComponent(appName)
-            if !NSFileManager.defaultManager().fileExistsAtPath(path) {
-                _ = try? NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+            let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+            let path = (NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent(appName)
+            if !FileManager.default.fileExists(atPath: path) {
+                _ = try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
             }
             
-            return (path as NSString).stringByAppendingPathComponent("apps")
+            return (path as NSString).appendingPathComponent("apps")
         }
     }
     
@@ -36,14 +36,14 @@ class AppsManager: NSObject {
     override init() {
         super.init()
 
-        if let data = NSData(contentsOfFile: selectedAppsFile), apps = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [NSDictionary] {
+        if let data = try? Data(contentsOf: URL(fileURLWithPath: selectedAppsFile)), let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
             selectedApps = apps.flatMap { AppModel(dict: $0) }
         }
     }
     
     // MARK: Actions
     
-    func save(app: AppModel?, shortcut: MASShortcut?) {
+    func save(_ app: AppModel?, shortcut: MASShortcut?) {
         guard let app = app else { return }
         
         ShortcutMonitor.unregister()
@@ -58,10 +58,10 @@ class AppsManager: NSObject {
         saveData()
     }
     
-    func delete(index: Int) {
+    func delete(_ index: Int) {
         guard 0 <= index && index < selectedApps.count else { return }
         
-        selectedApps.removeAtIndex(index)
+        selectedApps.remove(at: index)
         
         saveData()
     }
