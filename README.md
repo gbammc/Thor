@@ -10,7 +10,7 @@ Thor is an OS X application that allows you to open other application immediatel
 
 ## Build from source
 
-* Xcode 7.3 or later
+* Xcode 8.0 or later
 * [CocoaPods](https://cocoapods.org/)
 
 Thor uses [Cocoapods](https://cocoapods.org/) as dependency manager, follow the instructions below to build all dependencies.
