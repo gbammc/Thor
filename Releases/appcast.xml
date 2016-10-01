@@ -32,5 +32,14 @@
             <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.1.1.zip" sparkle:version="1.1.1" sparkle:shortVersionString="1.1.1" length="6866676" type="application/octet-stream" />
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
         </item>
+        <item>
+            <title>Version 1.2.0</title>
+            <description><![CDATA[
+                Support Chinese.
+            ]]></description>
+            <pubDate>Sat, 1 October 2016 11:00:00 +0000</pubDate>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.2.0.zip" sparkle:version="1.2.0" sparkle:shortVersionString="1.2.0" length="6782235" type="application/octet-stream" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
     </channel>
 </rss>
