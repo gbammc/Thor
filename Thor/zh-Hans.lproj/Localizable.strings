@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Thor
+
+  Created by Alvin on 2016/10/1.
+  Copyright © 2016年 AlvinZhu. All rights reserved.
+*/
+
+"Sure" = "确定";
+
+"Cancel" = "取消";
+
+"Delete this shortcut?" = "确定删除该快捷键？";

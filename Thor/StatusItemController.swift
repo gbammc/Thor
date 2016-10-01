@@ -17,6 +17,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var versionMenuItem: NSMenuItem!
+    @IBOutlet weak var updateMenuItem: NSMenuItem!
     
     // MARK: Life cycle
     
