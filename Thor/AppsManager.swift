@@ -61,7 +61,11 @@ class AppsManager: NSObject {
     func delete(_ index: Int) {
         guard 0 <= index && index < selectedApps.count else { return }
         
+        ShortcutMonitor.unregister()
+        
         selectedApps.remove(at: index)
+        
+        ShortcutMonitor.register()
         
         saveData()
     }
