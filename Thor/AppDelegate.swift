@@ -51,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let anewShortcutInterval: TimeInterval = Defaults[.DelayInterval]
         
         let shortcutActivateHandler = { (event: NSEvent) in
-            let deactivateKey: NSEventModifierFlags = [.option, .command, .control, .shift][Defaults[.DeactivateKey]]
+            let deactivateKey: NSEvent.ModifierFlags = [.option, .command, .control, .shift][Defaults[.DeactivateKey]]
             let modifier = event.modifierFlags.intersection(deactivateKey)
             
             if modifier == deactivateKey {

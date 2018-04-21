@@ -20,9 +20,9 @@ class SettingsViewController: NSViewController {
         
         view.layer?.backgroundColor = NSColor.white.cgColor
         
-        btnLaunchAtLogin.state = NSApplication.shared().startAtLogin ? NSOnState : NSOffState
+        btnLaunchAtLogin.state = NSApplication.shared.startAtLogin ? .on : .off
         
-        btnEnableShortcut.state = Defaults[.EnableShortcut] ? NSOnState : NSOffState
+        btnEnableShortcut.state = Defaults[.EnableShortcut] ? .on : .off
         
         btnShortcutDeavtivateKey.selectItem(at: Defaults[.DeactivateKey])
         
@@ -30,11 +30,11 @@ class SettingsViewController: NSViewController {
     }
    
     @IBAction func toggleLaunchAtLogin(_ sender: AnyObject) {
-        NSApplication.shared().toggleStartAtLogin()
+        NSApplication.shared.toggleStartAtLogin()
     }
     
     @IBAction func toggleEnableShortcut(_ sender: AnyObject) {
-        let enable = btnEnableShortcut.state == NSOnState
+        let enable = btnEnableShortcut.state == .on
         
         Defaults[.EnableShortcut] = enable
         

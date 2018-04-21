@@ -8,12 +8,12 @@
 
 import Cocoa
 
-let SharedAppDelegate        = NSApplication.shared().delegate as? AppDelegate
+let SharedAppDelegate        = NSApplication.shared.delegate as? AppDelegate
 let titleItemWidth: CGFloat  = 40.0
 let titleItemHeight: CGFloat = 37.0
 
 // identifiers
-let titleViewIdentifier             = "titleViewIdentifier"
-let appsTitleItemIdentifier         = "appsTitleItemIdentifier"
-let settingsTitleItemIdentifier     = "settingsTitleItemIdentifier"
+let titleViewIdentifier             = NSToolbarItem.Identifier("titleViewIdentifier")
+let appsTitleItemIdentifier         = NSToolbarItem.Identifier("appsTitleItemIdentifier")
+let settingsTitleItemIdentifier     = NSToolbarItem.Identifier("settingsTitleItemIdentifier")
 let shortcutTableCellViewIdentifier   = "ShortcutTableCellView"

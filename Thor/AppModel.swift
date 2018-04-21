@@ -20,17 +20,17 @@ class AppModel: Equatable {
     
     var icon: NSImage? {
         get {
-            guard let bundle = Bundle(url: appBundleURL) else {
+            guard let bundle = Bundle(url: appBundleURL), let bundleIdentifier = bundle.bundleIdentifier else {
                 return nil
             }
             
-            let compositeName = "\(bundle.bundleIdentifier):\(appIconName)"
+            let compositeName = "\(bundleIdentifier):\(appIconName)"
             
-            guard let file = bundle.pathForImageResource(appIconName), let bundleImage = NSImage(contentsOfFile: file) else {
+            guard let file = bundle.pathForImageResource(NSImage.Name(rawValue: appIconName)), let bundleImage = NSImage(contentsOfFile: file) else {
                 return nil
             }
             
-            bundleImage.setName(compositeName)
+            bundleImage.setName(NSImage.Name(rawValue: compositeName))
             bundleImage.size = NSSize(width: 36, height: 36)
             
             return bundleImage
@@ -81,12 +81,6 @@ class AppModel: Equatable {
         dict["shortcut"] = shortcut ?? NSNull()
         
         return dict as NSDictionary
-    }
-    
-    class func appsFroms(_ items: [AnyObject]) -> [AppModel] {
-        guard let apps = items as? [NSMetadataItem] else { return [] }
-        
-        return apps.flatMap({ AppModel(item: $0) }).sorted(by: { $0.0.appDisplayName.lowercased() < $0.1.appDisplayName.lowercased() })
     }
     
 }

@@ -37,7 +37,7 @@ class AppsManager: NSObject {
         super.init()
 
         if let data = try? Data(contentsOf: URL(fileURLWithPath: selectedAppsFile)), let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
-            selectedApps = apps.flatMap { AppModel(dict: $0) }
+            selectedApps = apps.compactMap { AppModel(dict: $0) }
         }
     }
     

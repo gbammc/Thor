@@ -31,7 +31,7 @@ class ShortcutListViewController: NSViewController {
         openPanel.allowedFileTypes = [kUTTypeApplicationFile as String, kUTTypeApplicationBundle as String]
         
         openPanel.beginSheetModal(for: view.window!, completionHandler: { (result) in
-            if result == NSModalResponseOK, let metaDataItem = NSMetadataItem(url: openPanel.urls.first!) {
+            if result == NSApplication.ModalResponse.OK, let metaDataItem = NSMetadataItem(url: openPanel.urls.first!) {
                 let app = AppModel(item: metaDataItem)
                 
                 AppsManager.manager.save(app, shortcut: nil)
@@ -51,7 +51,7 @@ class ShortcutListViewController: NSViewController {
         alert.messageText = "Delete this shortcut?".localized()
         alert.alertStyle = .warning
         
-        if alert.runModal() == NSAlertFirstButtonReturn {
+        if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
             AppsManager.manager.delete(tableView.selectedRow)
             
             tableView.reloadData()
@@ -72,7 +72,7 @@ extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let app = apps[row]
-        let cell = tableView.make(withIdentifier: shortcutTableCellViewIdentifier, owner: self) as! ShortcutTableCellView
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: shortcutTableCellViewIdentifier), owner: self) as! ShortcutTableCellView
         cell.configure(app.appDisplayName, icon: app.icon, shortcut: app.shortcut) { (shortcut) in
             AppsManager.manager.save(app, shortcut: shortcut)
         }

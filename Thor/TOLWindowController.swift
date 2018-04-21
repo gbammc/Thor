@@ -11,8 +11,8 @@ import Cocoa
 class TOLWindowController: NSWindowController {
     
     var titleView       = TitleView()
-    var identifiers     = [String]()
-    var items           = [String: NSToolbarItem]()
+    var identifiers     = [NSToolbarItem.Identifier]()
+    var items           = [NSToolbarItem.Identifier: NSToolbarItem]()
     var viewControllers = [String: NSViewController]()
 
     override func windowDidLoad() {
@@ -22,7 +22,7 @@ class TOLWindowController: NSWindowController {
         window?.titleVisibility = .hidden
         window?.backgroundColor = NSColor.white
         
-        let toolbar = NSToolbar(identifier: "toolbar")
+        let toolbar = NSToolbar(identifier: NSToolbar.Identifier(rawValue: "toolbar"))
         toolbar.delegate = self
         toolbar.showsBaselineSeparator = false
         window?.toolbar = toolbar
@@ -40,16 +40,16 @@ class TOLWindowController: NSWindowController {
         
         // space
         
-        let spaceItem = NSToolbarItem(itemIdentifier: NSToolbarFlexibleSpaceItemIdentifier)
+        let spaceItem = NSToolbarItem(itemIdentifier: NSToolbarItem.Identifier.flexibleSpace)
         
-        identifiers.append(NSToolbarFlexibleSpaceItemIdentifier)
-        items[NSToolbarFlexibleSpaceItemIdentifier] = spaceItem
-        toolbar.insertItem(withItemIdentifier: NSToolbarFlexibleSpaceItemIdentifier, at: 0)
+        identifiers.append(NSToolbarItem.Identifier.flexibleSpace)
+        items[NSToolbarItem.Identifier.flexibleSpace] = spaceItem
+        toolbar.insertItem(withItemIdentifier: NSToolbarItem.Identifier.flexibleSpace, at: 0)
     }
     
     override func keyDown(with theEvent: NSEvent) {
         let key = theEvent.charactersIgnoringModifiers
-        if theEvent.modifierFlags.contains(.command) && key == "w" {
+        if theEvent.modifierFlags.contains(NSEvent.ModifierFlags.command) && key == "w" {
             close()
         } else {
             super.keyDown(with: theEvent)
@@ -58,7 +58,7 @@ class TOLWindowController: NSWindowController {
     
     func insert(_ titleItem: TitleViewItem, viewController: NSViewController) {
         titleView.insert(titleItem)
-        viewControllers[titleItem.identifier!] = viewController
+        viewControllers[titleItem.identifier!.rawValue] = viewController
         items[titleViewIdentifier]?.minSize = NSSize(width: titleItemWidth * CGFloat(titleView.items.count), height: titleItemHeight)
         
         titleView.toggle(titleView.items.first!)
@@ -70,7 +70,7 @@ class TOLWindowController: NSWindowController {
             contentViewController.childViewControllers.forEach { $0.removeFromParentViewController() }
         }
         
-        if let viewController = viewControllers[item.identifier!] {
+        if let viewController = viewControllers[item.identifier!.rawValue] {
             contentViewController?.insertChildViewController(viewController, at: 0)
             contentViewController?.view.addSubview(viewController.view)
             contentViewController?.view.frame = viewController.view.frame
@@ -81,15 +81,15 @@ class TOLWindowController: NSWindowController {
 
 extension TOLWindowController: NSToolbarDelegate {
     
-    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
+    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         return identifiers
     }
     
-    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
+    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         return identifiers
     }
     
-    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: String, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {        
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {        
         return items[itemIdentifier]
     }
     
@@ -115,8 +115,8 @@ class TitleView: NSView {
         }
     }
     
-    func toggle(_ sender: TitleViewItem) {
-        items.forEach { $0.state = ($0 != sender) ? NSOnState : NSOffState }
+    @objc func toggle(_ sender: TitleViewItem) {
+        items.forEach { $0.state = ($0 != sender) ? .on : .off }
         
         toggleCallback?(sender)
     }
@@ -139,7 +139,7 @@ class TitleViewItem: NSButton {
     init(itemIdentifier: String) {
         super.init(frame: NSRect.zero)
         
-        identifier = itemIdentifier
+        identifier = NSUserInterfaceItemIdentifier(rawValue: itemIdentifier)
         isBordered = false
         setButtonType(.toggle)
     }

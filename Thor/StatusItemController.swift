@@ -13,7 +13,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
     // MARK: Properties
     
-    var statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var versionMenuItem: NSMenuItem!
@@ -39,7 +39,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
         if let rootViewController = SharedAppDelegate?.mainWindowController {
             rootViewController.showWindow(nil)
         } else {
-            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: MainWindowController.classString) as! MainWindowController
+            let rootViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: MainWindowController.classString)) as! MainWindowController
             SharedAppDelegate?.mainWindowController = rootViewController
             SharedAppDelegate?.mainWindowController?.showWindow(nil)
         }
@@ -57,8 +57,8 @@ class StatusItemController: NSObject, NSMenuDelegate {
     
     // MARK: Status bar
     
-    func displayInStatusBar() {
-        let image = NSImage(named: "menu-item")
+    @objc func displayInStatusBar() {
+        let image = NSImage(named: NSImage.Name(rawValue: "menu-item"))
         image?.isTemplate = true
         
         statusItem.menu = statusMenu
