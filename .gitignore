@@ -46,3 +46,4 @@ DerivedData
 Pods/
 Podfile.lock
 
+dsa_priv.pem

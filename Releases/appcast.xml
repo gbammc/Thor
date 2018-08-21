@@ -1,45 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <channel>
-        <title>Thor Changelog</title>
-        <link>https://github.com/gbammc/Thor/raw/master/Releases/appcast.xml</link>
-        <description>Most recent changes with links to updates.</description>
-        <language>en</language>
-        <item>
-            <title>Version 0.1.0</title>
-            <description><![CDATA[
-                First release.
-              ]]></description>
-            <pubDate>Wed, 19 May 2016 17:30:00 +0000</pubDate>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_0.1.0.zip" sparkle:version="0.1.0" sparkle:shortVersionString="0.1.0" length="3622468" type="application/octet-stream" />
-            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-        </item>
-        <item>
-            <title>Version 1.0.1</title>
-            <description><![CDATA[
-                Update UI and bugs fixed.
-            ]]></description>
-            <pubDate>Thus, 2 June 2016 17:30:00 +0000</pubDate>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_0.1.0.zip" sparkle:version="1.0.1" sparkle:shortVersionString="1.0.1" length="6140595" type="application/octet-stream" />
-            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-        </item>
-        <item>
-            <title>Version 1.1.1</title>
-            <description><![CDATA[
-                Bugs fixed.
-            ]]></description>
-            <pubDate>Fri, 30 September 2016 23:00:00 +0000</pubDate>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.1.1.zip" sparkle:version="1.1.1" sparkle:shortVersionString="1.1.1" length="6866676" type="application/octet-stream" />
-            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
-        </item>
-        <item>
-            <title>Version 1.2.0</title>
-            <description><![CDATA[
-                Support Chinese.
-            ]]></description>
-            <pubDate>Sat, 1 October 2016 11:00:00 +0000</pubDate>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.2.0.zip" sparkle:version="1.2.0" sparkle:shortVersionString="1.2.0" length="6782235" type="application/octet-stream" />
-            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
-        </item>
-    </channel>
-</rss>
+<?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<channel>
+<title>Thor</title>
+<item>
+<title>1.2.1</title>
+<pubDate>Wed, 22 Aug 2018 00:47:27 +0800</pubDate>
+<sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.2.1.zip" sparkle:version="7" sparkle:shortVersionString="1.2.1" length="9108205" type="application/octet-stream"/>
+</item>
+</channel></rss>

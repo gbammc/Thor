@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -137,6 +139,9 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
                         <rect key="contentRect" x="100" y="240" width="360" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="JWv-RT-bCs"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="x6J-UP-P0f" kind="relationship" relationship="window.shadowedContentViewController" id="r77-hl-J1L"/>
@@ -159,7 +164,7 @@
                                 <rect key="frame" x="41" y="19" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="IXM-DO-CdA"/>
-                                    <constraint firstAttribute="width" constant="22" id="bRz-uc-Coo"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="bRz-uc-Coo"/>
                                 </constraints>
                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8g0-Nk-gkJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -172,7 +177,7 @@
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qsh-Hx-foM">
                                 <rect key="frame" x="20" y="19" width="22" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="AsC-Zw-bWK"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="AsC-Zw-bWK"/>
                                     <constraint firstAttribute="height" constant="20" id="vYF-uQ-qrj"/>
                                 </constraints>
                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XXi-Qz-DcN">
@@ -276,6 +281,7 @@
                             <constraint firstItem="fZm-UD-Mz7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="25v-CA-rNL"/>
                             <constraint firstAttribute="bottom" secondItem="Qsh-Hx-foM" secondAttribute="bottom" constant="20" id="2EM-0U-1PR"/>
                             <constraint firstItem="Qsh-Hx-foM" firstAttribute="top" secondItem="fZm-UD-Mz7" secondAttribute="bottom" constant="20" id="AVT-3W-0gH"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PkA-I4-Eeo" secondAttribute="trailing" constant="20" symbolic="YES" id="ByS-AD-uKH"/>
                             <constraint firstItem="PkA-I4-Eeo" firstAttribute="leading" secondItem="Qsh-Hx-foM" secondAttribute="trailing" constant="-1" id="S9d-vN-569"/>
                             <constraint firstAttribute="trailing" secondItem="fZm-UD-Mz7" secondAttribute="trailing" constant="20" id="ZHN-Lu-ypU"/>
                             <constraint firstAttribute="bottom" secondItem="PkA-I4-Eeo" secondAttribute="bottom" constant="20" id="dgq-WU-3LL"/>
