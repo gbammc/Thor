@@ -20,7 +20,11 @@ class TOLWindowController: NSWindowController {
                 
         window?.titlebarAppearsTransparent = true
         window?.titleVisibility = .hidden
-        window?.backgroundColor = NSColor.white
+        if #available(OSX 10.13, *) {
+            window?.backgroundColor = NSColor(named: windowbackgroundColorName)
+        } else {
+            window?.backgroundColor = .white
+        }
         
         let toolbar = NSToolbar(identifier: NSToolbar.Identifier(rawValue: "toolbar"))
         toolbar.delegate = self
@@ -29,6 +33,7 @@ class TOLWindowController: NSWindowController {
         
         // title
         
+        titleView.frame = CGRect(x: 0, y: 0, width: titleItemWidth, height: titleItemHeight)
         titleView.toggleCallback = toggleViewControllers
         
         let titleItem = NSToolbarItem(itemIdentifier: titleViewIdentifier)
@@ -107,7 +112,7 @@ class TitleView: NSView {
         items.forEach { $0.removeFromSuperview() }
         
         for (index, item) in items.enumerated() {
-            item.frame = NSRect(x: CGFloat(index) * titleItemWidth, y: 0, width: titleItemWidth, height: self.frame.size.height)
+            item.frame = NSRect(x: CGFloat(index) * titleItemWidth, y: 0, width: titleItemWidth, height: titleItemHeight)
             item.target = self
             item.action = #selector(TitleView.toggle(_:))
             

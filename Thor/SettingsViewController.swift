@@ -18,7 +18,11 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer?.backgroundColor = NSColor.white.cgColor
+        if #available(OSX 10.13, *) {
+            view.layer?.backgroundColor = NSColor(named: windowbackgroundColorName)?.cgColor
+        } else {
+            view.layer?.backgroundColor = NSColor.white.cgColor
+        }
         
         btnLaunchAtLogin.state = NSApplication.shared.startAtLogin ? .on : .off
         
