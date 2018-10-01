@@ -24,4 +24,4 @@ mv "$APP_NAME".zip Releases/"$APP_NAME"_"$VERSION".zip
 
 # clean
 
-rm -rf "$APP_NAME".app "$APP_NAME".xcarchive DistributionSummary.plist Packaging.log
+rm -rf "$APP_NAME".app "$APP_NAME".xcarchive DistributionSummary.plist Packaging.log Releases/.tmp

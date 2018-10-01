@@ -13,5 +13,12 @@
 <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.3.0.zip" sparkle:version="8" sparkle:shortVersionString="1.3.0" length="9390136" type="application/octet-stream"/>
 </item>
+<item>
+<title>1.3.0</title>
+<pubDate>Mon, 01 Oct 2018 18:12:14 +0800</pubDate>
+<sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.3.0.zip" sparkle:version="11" sparkle:shortVersionString="1.3.0" length="9390159" type="application/octet-stream"/>
+</item>
+
 
 </channel></rss>
