@@ -1,0 +1,102 @@
+
+/* Class = "NSMenuItem"; title = "Thor"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Thor";
+
+/* Class = "NSTextFieldCell"; title = "Reactivate after:"; ObjectID = "1fT-Qh-dE2"; */
+"1fT-Qh-dE2.title" = "几秒后重新激活:";
+
+/* Class = "NSButtonCell"; title = "Quit Thor"; ObjectID = "2nX-9N-OOj"; */
+"2nX-9N-OOj.title" = "退出 Thor";
+
+/* Class = "NSMenuItem"; title = "Quit Thor"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "退出 Thor";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "主窗口";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "Hcy-Ge-ZoW"; */
+"Hcy-Ge-ZoW.title" = "其它视图";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "窗口";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "显示全部";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "前置全部窗口";
+
+/* Class = "NSMenuItem"; title = "Preference"; ObjectID = "LOh-9N-Sq4"; */
+"LOh-9N-Sq4.title" = "设置快捷键";
+
+/* Class = "NSMenuItem"; title = "⌃ Control Key"; ObjectID = "NL4-zo-fys"; */
+"NL4-zo-fys.title" = "⌃ Control 键";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "最小化";
+
+/* Class = "NSMenuItem"; title = "Hide Thor"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "隐藏 Thor";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Orv-4t-jpB"; */
+"Orv-4t-jpB.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "最大化";
+
+/* Class = "NSTextFieldCell"; title = "0.1s"; ObjectID = "RmK-si-Zsx"; */
+"RmK-si-Zsx.title" = "0.1秒";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "RwK-Ds-RBj"; */
+"RwK-Ds-RBj.title" = "退出";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "窗口";
+
+/* Class = "NSTextFieldCell"; title = "1s"; ObjectID = "UpG-OL-d8P"; */
+"UpG-OL-d8P.title" = "1秒";
+
+/* Class = "NSButtonCell"; title = "Launch Thor at login"; ObjectID = "Uwv-xu-Spi"; */
+"Uwv-xu-Spi.title" = "开机后启动 Thor";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "隐藏其它应用";
+
+/* Class = "NSMenuItem"; title = "⌘ Command Key"; ObjectID = "Yef-Cj-gO1"; */
+"Yef-Cj-gO1.title" = "⌘ Command 键";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "窗口";
+
+/* Class = "NSMenuItem"; title = "Check for updates"; ObjectID = "b8r-Yq-V8b"; */
+"b8r-Yq-V8b.title" = "检查更新";
+
+/* Class = "NSTextFieldCell"; title = "Enable:"; ObjectID = "cu5-Zh-kYl"; */
+"cu5-Zh-kYl.title" = "开启:";
+
+/* Class = "NSButtonCell"; title = "Enable shortcut"; ObjectID = "fya-Hu-agS"; */
+"fya-Hu-agS.title" = "开启快捷键";
+
+/* Class = "NSMenuItem"; title = "⌥ Option Key"; ObjectID = "ltM-LE-FOy"; */
+"ltM-LE-FOy.title" = "⌥ Option 键";
+
+/* Class = "NSMenuItem"; title = "Version"; ObjectID = "ong-Un-zmC"; */
+"ong-Un-zmC.title" = "版本号";
+
+/* Class = "NSMenuItem"; title = "⇧ Shift Key"; ObjectID = "qJu-sX-5Pd"; */
+"qJu-sX-5Pd.title" = "⇧ Shift 键";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "qh3-lo-MgL"; */
+"qh3-lo-MgL.title" = "Table View Cell";
+
+/* Class = "NSTextFieldCell"; title = "Startup:"; ObjectID = "rKg-Oa-Jg1"; */
+"rKg-Oa-Jg1.title" = "启动:";
+
+/* Class = "NSMenu"; title = "Thor"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Thor";
+
+/* Class = "NSTextFieldCell"; title = "Deactivate Key:"; ObjectID = "uWp-Ys-dhU"; */
+"uWp-Ys-dhU.title" = "解除激活键:";
+
+/* Class = "NSTextFieldCell"; title = "Double tap will deactivate the Shortcuts"; ObjectID = "yod-j7-EUV"; */
+"yod-j7-EUV.title" = "双击将会临时解除激活快捷键";
