@@ -38,7 +38,5 @@
 	<true/>
 	<key>SUFeedURL</key>
 	<string>https://github.com/gbammc/Thor/raw/master/Releases/appcast.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
 </dict>
 </plist>
