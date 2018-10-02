@@ -20,28 +20,7 @@ class ShortcutListViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateBackgroundColor()
-    }
-    
-    override func viewDidLayout() {
-        super.viewDidLayout()
-        
-        updateBackgroundColor()
-    }
-    
-    private func updateBackgroundColor() {
-        // FIXME: Color Set not work
-        // Here is a patch
-        if #available(OSX 10.14, *) {
-            let appearanceName = view.effectiveAppearance.bestMatch(from: [.aqua, .darkAqua])
-            if let appearanceName = appearanceName, appearanceName == .darkAqua {
-                view.layer?.backgroundColor = NSColor(red: 0.196, green: 0.196, blue: 0.196, alpha: 1).cgColor
-            } else {
-                view.layer?.backgroundColor = NSColor.white.cgColor
-            }
-        } else {
-            view.layer?.backgroundColor = NSColor.white.cgColor
-        }
+        view.layer?.backgroundColor = NSColor.clear.cgColor
     }
     
     @IBAction func add(_ sender: AnyObject) {

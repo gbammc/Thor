@@ -19,14 +19,6 @@ class StatusItemController: NSObject, NSMenuDelegate {
     @IBOutlet weak var versionMenuItem: NSMenuItem!
     @IBOutlet weak var updateMenuItem: NSMenuItem!
     
-    // MARK: Life cycle
-    
-    override init() {
-        super.init()
-        
-        DistributedNotificationCenter.default().addObserver(self, selector: #selector(displayInStatusBar), name: Notification.Name("AppleInterfaceThemeChangedNotification"), object: nil)
-    }
-    
     // MARK: NSMenuDelegate
     
     func menuWillOpen(_ menu: NSMenu) {
@@ -57,12 +49,9 @@ class StatusItemController: NSObject, NSMenuDelegate {
     
     // MARK: Status bar
     
-    @objc func displayInStatusBar() {
-        let image = NSImage(named: NSImage.Name(rawValue: "menu-item"))
-        image?.isTemplate = true
-        
+    func displayInStatusBar() {
+        statusItem.image = NSImage(named: NSImage.Name("menu-item"))
         statusItem.menu = statusMenu
-        statusItem.image = image
     }
     
 }
