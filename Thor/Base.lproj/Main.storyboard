@@ -93,6 +93,12 @@
                                 <action selector="showApps:" target="tdb-s2-QWr" id="zr3-M4-Xwv"/>
                             </connections>
                         </menuItem>
+                        <menuItem title="Privacy Policy" id="NJs-cX-AgP">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="privacyPolicy:" target="tdb-s2-QWr" id="Bw8-vJ-Pqg"/>
+                            </connections>
+                        </menuItem>
                         <menuItem title="Check for updates" id="b8r-Yq-V8b">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>

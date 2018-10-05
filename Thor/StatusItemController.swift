@@ -39,6 +39,10 @@ class StatusItemController: NSObject, NSMenuDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @IBAction func privacyPolicy(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "https://github.com/gbammc/Thor/blob/master/privacy.md")!)
+    }
+    
     @IBAction func quit(_ sender: AnyObject) {
         NSApp.terminate(self)
     }
