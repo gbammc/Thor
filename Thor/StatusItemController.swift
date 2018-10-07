@@ -28,15 +28,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
     // MARK: Actions
     
     @IBAction func showApps(_ sender: AnyObject) {
-        if let rootViewController = SharedAppDelegate?.mainWindowController {
-            rootViewController.showWindow(nil)
-        } else {
-            let rootViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: MainWindowController.classString)) as! MainWindowController
-            SharedAppDelegate?.mainWindowController = rootViewController
-            SharedAppDelegate?.mainWindowController?.showWindow(nil)
-        }
-        
-        NSApp.activate(ignoringOtherApps: true)
+        SharedAppDelegate?.showMainWindow()
     }
     
     @IBAction func privacyPolicy(_ sender: Any) {

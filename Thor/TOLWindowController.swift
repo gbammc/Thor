@@ -17,7 +17,7 @@ class TOLWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-                
+        
         window?.titlebarAppearsTransparent = true
         window?.titleVisibility = .hidden
         if #available(OSX 10.13, *) {

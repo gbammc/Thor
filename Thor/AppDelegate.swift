@@ -14,8 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Properties
     
-    var isTapping = false
-    var hasTapped = false
+    var hasLaunched = false
     var isGoingToDisableShortcut = false
     
     var anewShortcutTimer: Timer?
@@ -42,6 +41,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         MASShortcutValidator.shared().allowAnyShortcutWithOptionModifier = true
         ShortcutMonitor.register()
+        
+        if AppsManager.manager.selectedApps.count == 0 {
+            showMainWindow()
+        }
+    }
+    
+    func applicationWillBecomeActive(_ notification: Notification) {
+        if hasLaunched {
+            showMainWindow()
+        } else {
+            hasLaunched = true
+        }
+    }
+    
+    func showMainWindow() {
+        if let rootViewController = mainWindowController {
+            rootViewController.showWindow(nil)
+        } else {
+            let rootViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: MainWindowController.classString)) as! MainWindowController
+            mainWindowController = rootViewController
+            mainWindowController?.showWindow(nil)
+        }
+        
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     // MARK: Listen events
