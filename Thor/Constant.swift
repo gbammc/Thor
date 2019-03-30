@@ -19,4 +19,4 @@ let settingsTitleItemIdentifier     = NSToolbarItem.Identifier("settingsTitleIte
 let shortcutTableCellViewIdentifier   = "ShortcutTableCellView"
 
 // Color Set
-let windowbackgroundColorName = NSColor.Name("WindowBackgroundColor")
+let windowbackgroundColorName = "WindowBackgroundColor"

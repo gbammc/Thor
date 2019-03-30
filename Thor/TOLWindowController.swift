@@ -26,7 +26,7 @@ class TOLWindowController: NSWindowController {
             window?.backgroundColor = .white
         }
         
-        let toolbar = NSToolbar(identifier: NSToolbar.Identifier(rawValue: "toolbar"))
+        let toolbar = NSToolbar(identifier: "toolbar")
         toolbar.delegate = self
         toolbar.showsBaselineSeparator = false
         window?.toolbar = toolbar
@@ -70,13 +70,13 @@ class TOLWindowController: NSWindowController {
     }
     
     private func toggleViewControllers(_ item: TitleViewItem) {
-        if let contentViewController = contentViewController, contentViewController.childViewControllers.count > 0 {
+        if let contentViewController = contentViewController, contentViewController.children.count > 0 {
             contentViewController.view.subviews.forEach { $0.removeFromSuperview() }
-            contentViewController.childViewControllers.forEach { $0.removeFromParentViewController() }
+            contentViewController.children.forEach { $0.removeFromParent() }
         }
         
         if let viewController = viewControllers[item.identifier!.rawValue] {
-            contentViewController?.insertChildViewController(viewController, at: 0)
+            contentViewController?.insertChild(viewController, at: 0)
             contentViewController?.view.addSubview(viewController.view)
             contentViewController?.view.frame = viewController.view.frame
         }

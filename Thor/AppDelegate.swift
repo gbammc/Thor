@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let rootViewController = mainWindowController {
             rootViewController.showWindow(nil)
         } else {
-            let rootViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: MainWindowController.classString)) as! MainWindowController
+            let rootViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: MainWindowController.classString) as! MainWindowController
             mainWindowController = rootViewController
             mainWindowController?.showWindow(nil)
         }
@@ -84,12 +84,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     ShortcutMonitor.unregister()
                     
                     self.anewShortcutTimer = Timer(timeInterval: anewShortcutInterval, target: self, selector: #selector(self.anewShortcutEnable), userInfo: nil, repeats: false)
-                    RunLoop.current.add(self.anewShortcutTimer!, forMode: RunLoopMode.commonModes)
+                    RunLoop.current.add(self.anewShortcutTimer!, forMode: RunLoop.Mode.common)
                 } else {
                     self.isGoingToDisableShortcut = true
                     
                     self.delayTimer = Timer(timeInterval: delayInterval, target: self, selector: #selector(self.checkShortcutEnable(_:)), userInfo: nil, repeats: false)
-                    RunLoop.current.add(self.delayTimer!, forMode: RunLoopMode.commonModes)
+                    RunLoop.current.add(self.delayTimer!, forMode: RunLoop.Mode.common)
                 }
             }
         }

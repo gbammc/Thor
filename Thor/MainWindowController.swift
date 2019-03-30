@@ -16,17 +16,17 @@ class MainWindowController: TOLWindowController {
         window?.contentView?.layer?.masksToBounds = true
         
         let appItem = TitleViewItem(itemIdentifier: appsTitleItemIdentifier.rawValue)
-        appItem.activeImage = NSImage(named: NSImage.Name(rawValue: "AppStore-active"))
-        appItem.inactiveImage = NSImage(named: NSImage.Name(rawValue: "AppStore"))
+        appItem.activeImage = NSImage(named: "AppStore-active")
+        appItem.inactiveImage = NSImage(named: "AppStore")
         
         let settingsItem = TitleViewItem(itemIdentifier: settingsTitleItemIdentifier.rawValue)
-        settingsItem.activeImage = NSImage(named: NSImage.Name(rawValue: "Settings-active"))
-        settingsItem.inactiveImage = NSImage(named: NSImage.Name(rawValue: "Settings"))
+        settingsItem.activeImage = NSImage(named: "Settings-active")
+        settingsItem.inactiveImage = NSImage(named: "Settings")
         
-        let shortcutListViewController = storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: ShortcutListViewController.classString)) as! ShortcutListViewController
+        let shortcutListViewController = storyboard!.instantiateController(withIdentifier: ShortcutListViewController.classString) as! ShortcutListViewController
         insert(appItem, viewController: shortcutListViewController)
         
-        let settingsViewController = storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: SettingsViewController.classString)) as! SettingsViewController
+        let settingsViewController = storyboard!.instantiateController(withIdentifier: SettingsViewController.classString) as! SettingsViewController
         insert(settingsItem, viewController: settingsViewController)
     }
 

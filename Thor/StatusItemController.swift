@@ -46,7 +46,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
     // MARK: Status bar
     
     func displayInStatusBar() {
-        statusItem.image = NSImage(named: NSImage.Name("menu-item"))
+        statusItem.image = NSImage(named: "menu-item")
         statusItem.menu = statusMenu
     }
     
