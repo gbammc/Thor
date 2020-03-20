@@ -38,6 +38,11 @@ class AppsManager: NSObject {
 
         if let data = try? Data(contentsOf: URL(fileURLWithPath: selectedAppsFile)), let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
             selectedApps = apps.compactMap { AppModel(dict: $0) }
+            
+            // Remove deleted apps
+            if apps.count != selectedApps.count {
+                _ = saveData()
+            }
         }
     }
     
@@ -55,7 +60,9 @@ class AppsManager: NSObject {
             selectedApps.append(app)
         }
         
-        saveData()
+        if saveData() {
+            ShortcutMonitor.register()
+        }
     }
     
     func delete(_ index: Int) {
@@ -67,15 +74,14 @@ class AppsManager: NSObject {
         
         ShortcutMonitor.register()
         
-        saveData()
-    }
-    
-    private func saveData() {
-        let apps = selectedApps.map { $0.encode() }
-        
-        if NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile) {
+        if saveData() {
             ShortcutMonitor.register()
         }
+    }
+    
+    private func saveData() -> Bool {
+        let apps = selectedApps.map { $0.encode() }
+        return NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile)
     }
     
 }

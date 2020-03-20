@@ -58,6 +58,8 @@ class AppModel: Equatable {
         guard let appBundle = dict.object(forKey: "appBundleURL") as? String else { return nil }
         self.appBundleURL = URL(string: appBundle)!
         
+        guard let _ = Bundle(url: self.appBundleURL) else { return nil }
+        
         guard let name = dict.object(forKey: "appName") as? String else { return nil }
         self.appName = name
         

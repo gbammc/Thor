@@ -16,7 +16,7 @@ let titleItemHeight: CGFloat = 37.0
 let titleViewIdentifier             = NSToolbarItem.Identifier("titleViewIdentifier")
 let appsTitleItemIdentifier         = NSToolbarItem.Identifier("appsTitleItemIdentifier")
 let settingsTitleItemIdentifier     = NSToolbarItem.Identifier("settingsTitleItemIdentifier")
-let shortcutTableCellViewIdentifier   = "ShortcutTableCellView"
+let shortcutTableCellViewIdentifier = "ShortcutTableCellView"
 
 // Color Set
 let windowbackgroundColorName = "WindowBackgroundColor"
