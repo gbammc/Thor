@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let deactivateKey: NSEvent.ModifierFlags = [.option, .command, .control, .shift][Defaults[.DeactivateKey]]
             let modifier = event.modifierFlags.intersection(deactivateKey)
             
-            if modifier == deactivateKey {
+            if modifier == deactivateKey && Defaults[.EnableDeactivateKey] {
                 if self.isGoingToDisableShortcut {
                     self.isGoingToDisableShortcut = false
                     

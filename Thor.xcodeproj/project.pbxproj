@@ -210,7 +210,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = AlvinZhu;
 				TargetAttributes = {
 					B2E1B03F1CC48CD900FB687F = {
@@ -229,10 +229,9 @@
 			};
 			buildConfigurationList = B2E1B03B1CC48CD900FB687F /* Build configuration list for PBXProject "Thor" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -456,9 +455,12 @@
 				CODE_SIGN_ENTITLEMENTS = Thor/Thor.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 4Y65NZLKET;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -479,9 +481,12 @@
 				CODE_SIGN_ENTITLEMENTS = Thor/Thor.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 4Y65NZLKET;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

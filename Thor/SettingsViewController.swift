@@ -13,7 +13,8 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var btnLaunchAtLogin: NSButton!
     @IBOutlet weak var btnEnableShortcut: NSButton!
-    @IBOutlet weak var btnShortcutDeavtivateKey: NSPopUpButton!
+    @IBOutlet weak var btnShortcutDeactivateKey: NSPopUpButton!
+    @IBOutlet weak var btnEnableDeactivateKey: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +25,18 @@ class SettingsViewController: NSViewController {
         
         btnEnableShortcut.state = Defaults[.EnableShortcut] ? .on : .off
         
-        btnShortcutDeavtivateKey.selectItem(at: Defaults[.DeactivateKey])
+        btnShortcutDeactivateKey.selectItem(at: Defaults[.DeactivateKey])
+        
+        btnEnableDeactivateKey.state = Defaults[.EnableDeactivateKey] ? .on : .off
         
         slider.doubleValue = Defaults[.DelayInterval]
     }
    
-    @IBAction func toggleLaunchAtLogin(_ sender: AnyObject) {
+    @IBAction func toggleLaunchAtLogin(_ sender: Any) {
         NSApplication.shared.toggleStartAtLogin()
     }
     
-    @IBAction func toggleEnableShortcut(_ sender: AnyObject) {
+    @IBAction func toggleEnableShortcut(_ sender: Any) {
         let enable = btnEnableShortcut.state == .on
         
         Defaults[.EnableShortcut] = enable
@@ -41,15 +44,19 @@ class SettingsViewController: NSViewController {
         enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
     }
     
-    @IBAction func changeDeactivateKey(_ sender: AnyObject) {
-        Defaults[.DeactivateKey] = btnShortcutDeavtivateKey.indexOfSelectedItem
+    @IBAction func changeDeactivateKey(_ sender: Any) {
+        Defaults[.DeactivateKey] = btnShortcutDeactivateKey.indexOfSelectedItem
     }
     
-    @IBAction func changeShortcutReactivateInterval(_ sender: AnyObject) {
+    @IBAction func toggleEnableDeactivateKey(_ sender: Any) {
+        Defaults[.EnableDeactivateKey] = btnEnableDeactivateKey.state == .on
+    }
+    
+    @IBAction func changeShortcutReactivateInterval(_ sender: Any) {
         Defaults[.DelayInterval] = slider.doubleValue
     }
     
-    @IBAction func exit(_ sender: AnyObject) {
+    @IBAction func exit(_ sender: Any) {
         NSApp.terminate(self)
     }
     

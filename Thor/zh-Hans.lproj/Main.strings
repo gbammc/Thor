@@ -3,7 +3,7 @@
 "1Xt-HY-uBw.title" = "Thor";
 
 /* Class = "NSTextFieldCell"; title = "Reactivate after:"; ObjectID = "1fT-Qh-dE2"; */
-"1fT-Qh-dE2.title" = "几秒后重新激活:";
+"1fT-Qh-dE2.title" = "多久后重新开启:";
 
 /* Class = "NSButtonCell"; title = "Quit Thor"; ObjectID = "2nX-9N-OOj"; */
 "2nX-9N-OOj.title" = "退出 Thor";
@@ -71,9 +71,6 @@
 /* Class = "NSMenuItem"; title = "Check for updates"; ObjectID = "b8r-Yq-V8b"; */
 "b8r-Yq-V8b.title" = "检查更新";
 
-/* Class = "NSTextFieldCell"; title = "Enable:"; ObjectID = "cu5-Zh-kYl"; */
-"cu5-Zh-kYl.title" = "开启:";
-
 /* Class = "NSButtonCell"; title = "Enable shortcut"; ObjectID = "fya-Hu-agS"; */
 "fya-Hu-agS.title" = "开启快捷键";
 
@@ -89,14 +86,11 @@
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "qh3-lo-MgL"; */
 "qh3-lo-MgL.title" = "Table View Cell";
 
-/* Class = "NSTextFieldCell"; title = "Startup:"; ObjectID = "rKg-Oa-Jg1"; */
-"rKg-Oa-Jg1.title" = "启动:";
-
 /* Class = "NSMenu"; title = "Thor"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Thor";
 
 /* Class = "NSTextFieldCell"; title = "Deactivate Key:"; ObjectID = "uWp-Ys-dhU"; */
 "uWp-Ys-dhU.title" = "解除激活键:";
 
-/* Class = "NSTextFieldCell"; title = "Double tap will deactivate the Shortcuts"; ObjectID = "yod-j7-EUV"; */
-"yod-j7-EUV.title" = "双击将会临时解除激活快捷键";
+/* Class = "NSTextFieldCell"; title = "Double tap to deactivate the shortcuts"; ObjectID = "ntn-c3-HAA"; */
+"ntn-c3-HAA.title" = "启用解除激活键，双击后临时关闭快捷键";

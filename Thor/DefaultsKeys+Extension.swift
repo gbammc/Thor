@@ -15,5 +15,6 @@ extension DefaultsKeys {
     static let DelayInterval  = DefaultsKey<Double>("DelayInterval")
     static let Shortcuts      = DefaultsKey<[Data]?>("Shortcuts")
     static let DeactivateKey  = DefaultsKey<Int>("DeactivateKey")
+    static let EnableDeactivateKey = DefaultsKey<Bool>("EnableDeactivateKey")
     
 }
