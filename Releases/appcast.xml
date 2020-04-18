@@ -30,7 +30,7 @@
             <title>1.4.0</title>
             <pubDate>周六, 18 4月 2020 11:20:44 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.4.0.zip" sparkle:version="16" sparkle:shortVersionString="1.4.0" length="9583168" type="application/octet-stream"/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.4.0.zip" sparkle:version="16" sparkle:shortVersionString="1.4.0" length="9583085" type="application/octet-stream"/>
         </item>
     </channel>
 </rss>
