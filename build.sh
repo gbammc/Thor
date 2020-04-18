@@ -20,7 +20,7 @@ mv "$APP_NAME".zip Releases/"$APP_NAME"_"$VERSION".zip
 
 # sparkle
 
-./Pods/Sparkle/bin/generate_appcast dsa_priv.pem ./Releases
+./Pods/Sparkle/bin/generate_appcast ./Releases
 
 # clean
 
