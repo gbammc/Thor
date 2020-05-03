@@ -11,3 +11,7 @@
 "Cancel" = "取消";
 
 "Delete this shortcut?" = "确定删除该快捷键？";
+
+"Export Shortcuts To File" = "导出快捷键到文件";
+
+"Import Shortcuts From File" = "从文件导入快捷键";

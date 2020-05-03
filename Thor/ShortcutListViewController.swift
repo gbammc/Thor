@@ -29,7 +29,9 @@ class ShortcutListViewController: NSViewController {
         openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = true
         openPanel.allowedFileTypes = [kUTTypeApplicationFile as String, kUTTypeApplicationBundle as String]
-        
+        if let appDir = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .localDomainMask, true).first {
+            openPanel.directoryURL = URL(fileURLWithPath: appDir)
+        }
         openPanel.beginSheetModal(for: view.window!, completionHandler: { (result) in
             if result == NSApplication.ModalResponse.OK, let metaDataItem = NSMetadataItem(url: openPanel.urls.first!) {
                 let app = AppModel(item: metaDataItem)

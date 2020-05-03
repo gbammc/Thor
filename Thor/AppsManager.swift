@@ -19,15 +19,15 @@ class AppsManager: NSObject {
     
     private var closure: (([AppModel]) -> ())!
     
-    private var selectedAppsFile: String {
+    private var selectedAppsFilePath: String {
         get {
             let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
-            let path = (NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent(appName)
-            if !FileManager.default.fileExists(atPath: path) {
-                _ = try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            let dir = (NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first! as NSString).appendingPathComponent(appName)
+            if !FileManager.default.fileExists(atPath: dir) {
+                _ = try? FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
             }
             
-            return (path as NSString).appendingPathComponent("apps")
+            return (dir as NSString).appendingPathComponent("apps")
         }
     }
     
@@ -36,14 +36,7 @@ class AppsManager: NSObject {
     override init() {
         super.init()
 
-        if let data = try? Data(contentsOf: URL(fileURLWithPath: selectedAppsFile)), let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
-            selectedApps = apps.compactMap { AppModel(dict: $0) }
-            
-            // Remove deleted apps
-            if apps.count != selectedApps.count {
-                _ = saveData()
-            }
-        }
+        loadApps(from: selectedAppsFilePath)
     }
     
     // MARK: Actions
@@ -79,9 +72,23 @@ class AppsManager: NSObject {
         }
     }
     
+    func loadApps(from path: String) {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+            let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] else {
+            return
+        }
+        
+        selectedApps = apps.compactMap { AppModel(dict: $0) }
+        
+        // Remove deleted apps
+        if apps.count != selectedApps.count {
+            _ = saveData()
+        }
+    }
+    
     private func saveData() -> Bool {
         let apps = selectedApps.map { $0.encode() }
-        return NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFile)
+        return NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFilePath)
     }
     
 }

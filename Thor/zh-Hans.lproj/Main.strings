@@ -94,3 +94,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Double tap to deactivate the shortcuts"; ObjectID = "ntn-c3-HAA"; */
 "ntn-c3-HAA.title" = "启用解除激活键，双击后临时关闭快捷键";
+
+/* Class = "NSMenuItem"; title = "Export Shortcuts"; ObjectID = "1jO-A6-scN"; */
+"1jO-A6-scN.title" = "导出快捷键";
+
+/* Class = "NSMenuItem"; title = "Import Shortcuts"; ObjectID = "QQw-cp-cqP"; */
+"QQw-cp-cqP.title" = "导入快捷键";

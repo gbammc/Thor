@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -109,6 +109,19 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="8ld-uy-wtv"/>
+                        <menuItem title="Export Shortcuts" id="1jO-A6-scN">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="exportShortcuts:" target="tdb-s2-QWr" id="tbJ-Lh-IyE"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Import Shortcuts" id="QQw-cp-cqP">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="importShortcuts:" target="tdb-s2-QWr" id="EOd-RJ-0kt"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="WRo-Lh-hhC"/>
                         <menuItem title="Quit" id="RwK-Ds-RBj">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -209,7 +222,6 @@
                                             <tableColumns>
                                                 <tableColumn identifier="AppTableCellView" width="315" minWidth="40" maxWidth="1000" id="TMx-gL-5FD">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
