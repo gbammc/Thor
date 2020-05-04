@@ -9,7 +9,7 @@
 import Cocoa
 import MASShortcut
 
-class AppModel: Equatable {
+class AppModel: NSObject {
 
     let appBundleURL: URL
     let appName: String

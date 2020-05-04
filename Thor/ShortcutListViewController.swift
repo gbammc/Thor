@@ -16,11 +16,16 @@ class ShortcutListViewController: NSViewController {
     @IBOutlet weak var btnRemove: NSButton!
     
     var apps: [AppModel] { get { return AppsManager.manager.selectedApps } }
+    var observation: NSKeyValueObservation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.layer?.backgroundColor = NSColor.clear.cgColor
+
+        observation = AppsManager.manager.observe(\.selectedApps, changeHandler: { [unowned self] (_, _) in
+            self.tableView.reloadData()
+        })
     }
     
     @IBAction func add(_ sender: AnyObject) {

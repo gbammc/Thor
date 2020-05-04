@@ -47,15 +47,14 @@ class StatusItemController: NSObject, NSMenuDelegate {
         let savePanel = NSSavePanel()
         savePanel.title = "Export Shortcuts To File".localized()
         savePanel.canCreateDirectories = true
-        savePanel.allowedFileTypes = ["txt"]
+        savePanel.nameFieldStringValue = "thor_shortcuts"
         savePanel.isExtensionHidden = false
-        
-        let result = savePanel.runModal()
-        
-        guard result.rawValue == NSFileHandlingPanelOKButton, let url = savePanel.url else { return }
-        
-        let apps = AppsManager.manager.selectedApps.map { $0.encode() }
-        NSKeyedArchiver.archiveRootObject(apps, toFile: url.path)
+        savePanel.becomeKey()
+        savePanel.begin { (result) in
+            guard result == .OK, let url = savePanel.url else { return }
+            
+            _ = AppsManager.manager.saveData(to: url.path)
+        }
     }
     
     @IBAction func importShortcuts(_ sender: Any) {
@@ -63,12 +62,12 @@ class StatusItemController: NSObject, NSMenuDelegate {
         openPanel.title = "Import Shortcuts From File".localized()
         openPanel.canChooseDirectories = false
         openPanel.allowsMultipleSelection = false
-
-        let result = openPanel.runModal()
-        
-        guard result.rawValue == NSFileHandlingPanelOKButton, let url = openPanel.url else { return }
-        
-        AppsManager.manager.loadApps(from: url.path)
+        openPanel.becomeKey()
+        openPanel.begin { (result) in
+            guard result == .OK, let url = openPanel.url else { return }
+            
+            AppsManager.manager.loadApps(from: url.path)
+        }
     }
     
     // MARK: Status bar

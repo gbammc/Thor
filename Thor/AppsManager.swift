@@ -15,7 +15,7 @@ class AppsManager: NSObject {
     
     static let manager = AppsManager()
     
-    var selectedApps = [AppModel]()
+    @objc dynamic var selectedApps = [AppModel]()
     
     private var closure: (([AppModel]) -> ())!
     
@@ -53,7 +53,7 @@ class AppsManager: NSObject {
             selectedApps.append(app)
         }
         
-        if saveData() {
+        if saveData(to: selectedAppsFilePath) {
             ShortcutMonitor.register()
         }
     }
@@ -64,10 +64,8 @@ class AppsManager: NSObject {
         ShortcutMonitor.unregister()
         
         selectedApps.remove(at: index)
-        
-        ShortcutMonitor.register()
-        
-        if saveData() {
+                
+        if saveData(to: selectedAppsFilePath) {
             ShortcutMonitor.register()
         }
     }
@@ -80,15 +78,12 @@ class AppsManager: NSObject {
         
         selectedApps = apps.compactMap { AppModel(dict: $0) }
         
-        // Remove deleted apps
-        if apps.count != selectedApps.count {
-            _ = saveData()
-        }
+        _ = saveData(to: selectedAppsFilePath)
     }
     
-    private func saveData() -> Bool {
+    func saveData(to path: String) -> Bool {
         let apps = selectedApps.map { $0.encode() }
-        return NSKeyedArchiver.archiveRootObject(apps, toFile: selectedAppsFilePath)
+        return NSKeyedArchiver.archiveRootObject(apps, toFile: path)
     }
     
 }
