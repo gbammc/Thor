@@ -9,12 +9,12 @@
 import Foundation
 
 extension DefaultsKeys {
-    
+
     static let ModifyKey      = DefaultsKey<Int>("ModifyKey")
     static let EnableShortcut = DefaultsKey<Bool>("EnableShortcut")
     static let DelayInterval  = DefaultsKey<Double>("DelayInterval")
     static let Shortcuts      = DefaultsKey<[Data]?>("Shortcuts")
     static let DeactivateKey  = DefaultsKey<Int>("DeactivateKey")
     static let EnableDeactivateKey = DefaultsKey<Bool>("EnableDeactivateKey")
-    
+
 }

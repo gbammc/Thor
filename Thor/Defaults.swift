@@ -8,35 +8,35 @@
 
 import Foundation
 
-let Defaults = UserDefaults.standard
+let defaults = UserDefaults.standard
 
 extension UserDefaults {
-    
+
     subscript(key: DefaultsKey<String>) -> String {
-        get { return string(forKey: key._key) ?? "" }
-        set { set(newValue, forKey: key._key) }
+        get { return string(forKey: key.key) ?? "" }
+        set { set(newValue, forKey: key.key) }
     }
-    
+
     subscript(key: DefaultsKey<Int>) -> Int {
-        get { return integer(forKey: key._key) }
-        set { set(newValue, forKey: key._key) }
+        get { return integer(forKey: key.key) }
+        set { set(newValue, forKey: key.key) }
     }
-    
+
     subscript(key: DefaultsKey<Double>) -> Double {
-        get { return double(forKey: key._key) }
-        set { set(newValue, forKey: key._key) }
+        get { return double(forKey: key.key) }
+        set { set(newValue, forKey: key.key) }
     }
-    
+
     subscript(key: DefaultsKey<Bool>) -> Bool {
-        get { return bool(forKey: key._key) }
-        set { set(newValue, forKey: key._key) }
+        get { return bool(forKey: key.key) }
+        set { set(newValue, forKey: key.key) }
     }
-    
-    subscript(key: DefaultsKey<Array<Any>?>) -> Array<Any>? {
-        get { return array(forKey: key._key) }
-        set { set(newValue, forKey: key._key) }
+
+    subscript(key: DefaultsKey<[Any]?>) -> [Any]? {
+        get { return array(forKey: key.key) }
+        set { set(newValue, forKey: key.key) }
     }
-    
+
 }
 
 class DefaultsKeys {
@@ -44,11 +44,11 @@ class DefaultsKeys {
 }
 
 class DefaultsKey<ValueType>: DefaultsKeys {
-    
-    let _key: String
-    
+
+    let key: String
+
     init(_ key: String) {
-        self._key = key
+        self.key = key
     }
-    
+
 }

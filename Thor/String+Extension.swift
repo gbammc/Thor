@@ -9,9 +9,13 @@
 import Foundation
 
 extension String {
-    
+
     func localized() -> String {
         return NSLocalizedString(self, comment: "")
     }
-    
+
+    func appendingPathComponent(_ str: String) -> String {
+        return (self as NSString).appendingPathComponent(str)
+    }
+
 }

@@ -9,25 +9,29 @@
 import Cocoa
 
 class MainWindowController: TOLWindowController {
-    
+
     override func windowDidLoad() {
         super.windowDidLoad()
-        
+
         window?.contentView?.layer?.masksToBounds = true
-        
+
         let appItem = TitleViewItem(itemIdentifier: appsTitleItemIdentifier.rawValue)
         appItem.activeImage = NSImage(named: "AppStore-active")
         appItem.inactiveImage = NSImage(named: "AppStore")
-        
+
         let settingsItem = TitleViewItem(itemIdentifier: settingsTitleItemIdentifier.rawValue)
         settingsItem.activeImage = NSImage(named: "Settings-active")
         settingsItem.inactiveImage = NSImage(named: "Settings")
-        
-        let shortcutListViewController = storyboard!.instantiateController(withIdentifier: ShortcutListViewController.classString) as! ShortcutListViewController
-        insert(appItem, viewController: shortcutListViewController)
-        
-        let settingsViewController = storyboard!.instantiateController(withIdentifier: SettingsViewController.classString) as! SettingsViewController
-        insert(settingsItem, viewController: settingsViewController)
+
+        if let viewController = storyboard?.instantiateController(withIdentifier: ShortcutListViewController.className),
+            let shortcutListViewController = viewController as? ShortcutListViewController {
+            insert(appItem, viewController: shortcutListViewController)
+        }
+
+        if let viewController = storyboard?.instantiateController(withIdentifier: SettingsViewController.className),
+            let settingsViewController = viewController as? SettingsViewController {
+            insert(settingsItem, viewController: settingsViewController)
+        }
     }
 
 }

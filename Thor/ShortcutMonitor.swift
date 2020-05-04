@@ -10,13 +10,13 @@ import Foundation
 import MASShortcut
 
 struct ShortcutMonitor {
-    
+
     static func register() {
         let apps = AppsManager.manager.selectedApps
         for app in apps where app.shortcut != nil {
             MASShortcutMonitor.shared().register(app.shortcut, withAction: {
-                guard Defaults[.EnableShortcut] else { return }
-                
+                guard defaults[.EnableShortcut] else { return }
+
                 if let frontmostAppIdentifier = NSWorkspace.shared.frontmostApplication?.bundleIdentifier,
                     let targetAppIdentifier = Bundle(url: app.appBundleURL)?.bundleIdentifier,
                     frontmostAppIdentifier == targetAppIdentifier {
@@ -27,12 +27,12 @@ struct ShortcutMonitor {
             })
         }
     }
-    
+
     static func unregister() {
         let apps = AppsManager.manager.selectedApps
         for app in apps where app.shortcut != nil {
             MASShortcutMonitor.shared().unregisterShortcut(app.shortcut)
         }
     }
-    
+
 }

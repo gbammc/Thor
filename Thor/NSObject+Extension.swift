@@ -9,11 +9,9 @@
 import Foundation
 
 extension NSObject {
-    
-    static var classString: String {
-        get {
-            return String(describing: self)
-        }
+
+    static var className: String {
+        return String(describing: self)
     }
-    
+
 }

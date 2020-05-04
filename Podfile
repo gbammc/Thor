@@ -3,7 +3,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Thor' do
-	pod 'MASShortcut'
-    pod 'Sparkle'
+  pod 'SwiftLint'
+  pod 'MASShortcut'
+  pod 'Sparkle'
 end
 
