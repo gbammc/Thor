@@ -32,5 +32,11 @@
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.4.0.zip" sparkle:version="16" sparkle:shortVersionString="1.4.0" length="9583085" type="application/octet-stream"/>
         </item>
+        <item>
+            <title>1.5.0</title>
+            <pubDate>Mon, 04 May 2020 10:40:36 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.0.zip" sparkle:version="17" sparkle:shortVersionString="1.5.0" length="9585974" type="application/octet-stream" sparkle:edSignature="efncVOMVswfF/Qu4IAGrmaSl28oq0lNY2pL86tmAWj+VmsFFRONsRK5aznWDT7WSl04mKVxSv5Rj0TCdLwtWCQ=="/>
+        </item>
     </channel>
 </rss>
