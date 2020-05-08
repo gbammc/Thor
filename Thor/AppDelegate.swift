@@ -73,9 +73,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func shortcutEnableMonitor() {
         let delayInterval: TimeInterval        = 0.3
-        let anewShortcutInterval: TimeInterval = defaults[.DelayInterval]
 
         let shortcutActivateHandler = { (event: NSEvent) in
+            let anewShortcutInterval: TimeInterval = defaults[.DelayInterval]
             let deactivateKey: NSEvent.ModifierFlags = [.option, .command, .control, .shift][defaults[.DeactivateKey]]
             let modifier = event.modifierFlags.intersection(deactivateKey)
 
@@ -84,6 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     self.isGoingToDisableShortcut = false
 
                     ShortcutMonitor.unregister()
+                    defaults[.EnableShortcut] = false
 
                     self.anewShortcutTimer = Timer(timeInterval: anewShortcutInterval,
                                                    target: self,
@@ -125,6 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         anewShortcutTimer?.invalidate()
         anewShortcutTimer = nil
 
+        defaults[.EnableShortcut] = true
         ShortcutMonitor.register()
     }
 
