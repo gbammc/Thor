@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import MASShortcut
 import Sparkle
 
 class StatusItemController: NSObject, NSMenuDelegate {
