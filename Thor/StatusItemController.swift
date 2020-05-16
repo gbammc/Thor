@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASShortcut
 import Sparkle
 
 class StatusItemController: NSObject, NSMenuDelegate {
@@ -18,11 +19,17 @@ class StatusItemController: NSObject, NSMenuDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var versionMenuItem: NSMenuItem!
     @IBOutlet weak var updateMenuItem: NSMenuItem!
+    @IBOutlet weak var toggleEnableStateMenuItem: NSMenuItem!
 
     // MARK: NSMenuDelegate
 
     func menuWillOpen(_ menu: NSMenu) {
         versionMenuItem.title = NSApplication.formattedVersion()
+        var enableStateMenuItemTitle = NSLocalizedString("Enable Shortcuts", comment: "Enable Shortcuts")
+        if defaults[.EnableShortcut] {
+            enableStateMenuItemTitle = NSLocalizedString("Disable Shortcuts", comment: "Disable Shortcuts")
+        }
+        toggleEnableStateMenuItem.title = enableStateMenuItemTitle
     }
 
     // MARK: Actions
@@ -33,6 +40,12 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
     @IBAction func privacyPolicy(_ sender: Any) {
         NSWorkspace.shared.open(URL(string: "https://github.com/gbammc/Thor/blob/master/privacy.md")!)
+    }
+
+    @IBAction func toggleEnableState(_ sender: Any) {
+        let enable = !defaults[.EnableShortcut]
+        defaults[.EnableShortcut] = enable
+        enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
     }
 
     @IBAction func quit(_ sender: AnyObject) {

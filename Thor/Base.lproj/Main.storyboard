@@ -47,6 +47,7 @@
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
                                         <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
                                             </connections>
@@ -81,6 +82,7 @@
                 <customObject id="tdb-s2-QWr" customClass="StatusItemController" customModule="Thor" customModuleProvider="target">
                     <connections>
                         <outlet property="statusMenu" destination="dS2-uP-mFH" id="RK2-r1-FZR"/>
+                        <outlet property="toggleEnableStateMenuItem" destination="p6e-3p-Tyr" id="wau-f6-Sj0"/>
                         <outlet property="updateMenuItem" destination="b8r-Yq-V8b" id="7sq-yu-9x9"/>
                         <outlet property="versionMenuItem" destination="ong-Un-zmC" id="2gn-me-ivp"/>
                     </connections>
@@ -107,6 +109,13 @@
                         </menuItem>
                         <menuItem title="Version" enabled="NO" id="ong-Un-zmC">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="yP6-mr-MRs"/>
+                        <menuItem title="Disable Shortcuts" id="p6e-3p-Tyr">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="toggleEnableState:" target="tdb-s2-QWr" id="iWk-U2-Khc"/>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="8ld-uy-wtv"/>
                         <menuItem title="Export Shortcuts" id="1jO-A6-scN">
