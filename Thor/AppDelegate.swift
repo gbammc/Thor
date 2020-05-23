@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItemController.displayInStatusBar()
 
         shortcutEnableMonitor()
+        handleLaunchAtLogin()
 
         MASShortcutValidator.shared().allowAnyShortcutWithOptionModifier = true
         ShortcutMonitor.register()
@@ -128,6 +129,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         defaults[.EnableShortcut] = true
         ShortcutMonitor.register()
+    }
+
+    func handleLaunchAtLogin() {
+        let runningApps = NSWorkspace.shared.runningApplications
+        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
+
+        if isRunning {
+            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+        }
     }
 
 }

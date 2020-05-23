@@ -16,5 +16,6 @@ extension DefaultsKeys {
     static let Shortcuts      = DefaultsKey<[Data]?>("Shortcuts")
     static let DeactivateKey  = DefaultsKey<Int>("DeactivateKey")
     static let EnableDeactivateKey = DefaultsKey<Bool>("EnableDeactivateKey")
+    static let LaunchAtLoginKey = DefaultsKey<Bool>("LaunchAtLoginKey")
 
 }

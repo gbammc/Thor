@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 extension NSApplication {
 
@@ -38,10 +39,14 @@ extension NSApplication {
 
     var startAtLogin: Bool {
         get {
-            return itemRefInLoginItems().thisRef != nil
+            if defaults.value(forKey: DefaultsKeys.LaunchAtLoginKey.key) == nil {
+                defaults[.LaunchAtLoginKey] = itemRefInLoginItems().thisRef != nil
+            }
+            return defaults[.LaunchAtLoginKey]
         }
         set {
-            makeLoginItem(newValue)
+            defaults[.LaunchAtLoginKey] = newValue
+            SMLoginItemSetEnabled(launcherAppId as CFString, newValue)
         }
     }
 
@@ -54,20 +59,6 @@ extension NSApplication {
 
     func toggleStartAtLogin() {
         startAtLogin = !startAtLogin
-    }
-
-    private func makeLoginItem(_ shouldBeLoginItem: Bool) {
-        let itemReferences = itemRefInLoginItems()
-        if let loginItemsRef = loginItemsRef {
-            if shouldBeLoginItem {
-                let bundleURL = Bundle.main.bundleURL as CFURL
-                LSSharedFileListInsertItemURL(loginItemsRef, itemReferences.lastRef, nil, nil, bundleURL, nil, nil)
-            } else {
-                if let itemReference = itemReferences.thisRef {
-                    LSSharedFileListItemRemove(loginItemsRef, itemReference)
-                }
-            }
-        }
     }
 
     private func itemRefInLoginItems() -> (thisRef: LSSharedFileListItem?, lastRef: LSSharedFileListItem?) {

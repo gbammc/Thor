@@ -27,7 +27,23 @@
 		E166F32B1CE4B7E300F7C7B8 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F32A1CE4B7E300F7C7B8 /* StatusItemController.swift */; };
 		E166F3391CE7801A00F7C7B8 /* ShortcutListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */; };
 		E166F3401CE781EC00F7C7B8 /* ShortcutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166F33F1CE781EC00F7C7B8 /* ShortcutMonitor.swift */; };
+		E1F735C82479651400E3D85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F735C72479651400E3D85E /* AppDelegate.swift */; };
+		E1F735CF2479651500E3D85E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F735CD2479651500E3D85E /* Main.storyboard */; };
+		E1F735D6247967BA00E3D85E /* LauncherApplication.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1F735C52479651400E3D85E /* LauncherApplication.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E1F735D52479679300E3D85E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				E1F735D6247967BA00E3D85E /* LauncherApplication.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		12429CF05A48A6408B4A64C8 /* Pods_Thor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +72,11 @@
 		E166F3371CE7801A00F7C7B8 /* ShortcutListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutListViewController.swift; sourceTree = "<group>"; };
 		E166F33F1CE781EC00F7C7B8 /* ShortcutMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutMonitor.swift; sourceTree = "<group>"; };
 		E1ED9837212B258D008FCB7D /* Thor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thor.entitlements; sourceTree = "<group>"; };
+		E1F735C52479651400E3D85E /* LauncherApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LauncherApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F735C72479651400E3D85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1F735CE2479651500E3D85E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1F735D02479651500E3D85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1F735D12479651500E3D85E /* LauncherApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LauncherApplication.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +85,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FD6B79AE3534EDDB5FB0EA /* Pods_Thor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1F735C22479651400E3D85E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E1B0421CC48CD900FB687F /* Thor */,
+				E1F735C62479651400E3D85E /* LauncherApplication */,
 				B2E1B0411CC48CD900FB687F /* Products */,
 				FDE9A764C147F4A861F86FE1 /* Pods */,
 				7D3C22423A5AE7C6F35BDFB8 /* Frameworks */,
@@ -112,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E1B0401CC48CD900FB687F /* Thor.app */,
+				E1F735C52479651400E3D85E /* LauncherApplication.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +202,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E1F735C62479651400E3D85E /* LauncherApplication */ = {
+			isa = PBXGroup;
+			children = (
+				E1F735C72479651400E3D85E /* AppDelegate.swift */,
+				E1F735CD2479651500E3D85E /* Main.storyboard */,
+				E1F735D02479651500E3D85E /* Info.plist */,
+				E1F735D12479651500E3D85E /* LauncherApplication.entitlements */,
+			);
+			path = LauncherApplication;
+			sourceTree = "<group>";
+		};
 		FDE9A764C147F4A861F86FE1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +235,7 @@
 				B2E1B03E1CC48CD900FB687F /* Resources */,
 				7104CD680FD6ED7343226604 /* [CP] Embed Pods Frameworks */,
 				E13F5A3A245FDCD300E923F6 /* ShellScript */,
+				E1F735D52479679300E3D85E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -204,13 +246,30 @@
 			productReference = B2E1B0401CC48CD900FB687F /* Thor.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E1F735C42479651400E3D85E /* LauncherApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1F735D42479651500E3D85E /* Build configuration list for PBXNativeTarget "LauncherApplication" */;
+			buildPhases = (
+				E1F735C12479651400E3D85E /* Sources */,
+				E1F735C22479651400E3D85E /* Frameworks */,
+				E1F735C32479651400E3D85E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LauncherApplication;
+			productName = LauncherApplication;
+			productReference = E1F735C52479651400E3D85E /* LauncherApplication.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B2E1B0381CC48CD900FB687F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = AlvinZhu;
 				TargetAttributes = {
@@ -225,6 +284,11 @@
 								enabled = 1;
 							};
 						};
+					};
+					E1F735C42479651400E3D85E = {
+						CreatedOnToolsVersion = 11.5;
+						DevelopmentTeam = 4Y65NZLKET;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -243,6 +307,7 @@
 			projectRoot = "";
 			targets = (
 				B2E1B03F1CC48CD900FB687F /* Thor */,
+				E1F735C42479651400E3D85E /* LauncherApplication */,
 			);
 		};
 /* End PBXProject section */
@@ -255,6 +320,14 @@
 				B2E1B0481CC48CD900FB687F /* Assets.xcassets in Resources */,
 				B2E1B04B1CC48CD900FB687F /* Main.storyboard in Resources */,
 				E14196061D9F5A7D00ABBD8C /* zh-Hans.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1F735C32479651400E3D85E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F735CF2479651500E3D85E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +417,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1F735C12479651400E3D85E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F735C82479651400E3D85E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -352,6 +433,14 @@
 			children = (
 				B2E1B04A1CC48CD900FB687F /* Base */,
 				E1002A341D9F51C000C21721 /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1F735CD2479651500E3D85E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1F735CE2479651500E3D85E /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -473,12 +562,12 @@
 				CODE_SIGN_ENTITLEMENTS = Thor/Thor.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 4Y65NZLKET;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -499,15 +588,70 @@
 				CODE_SIGN_ENTITLEMENTS = Thor/Thor.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 4Y65NZLKET;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Thor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E1F735D22479651500E3D85E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LauncherApplication/LauncherApplication.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4Y65NZLKET;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LauncherApplication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor.LauncherApplication;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E1F735D32479651500E3D85E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = LauncherApplication/LauncherApplication.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4Y65NZLKET;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LauncherApplication/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = me.alvinzhu.Thor.LauncherApplication;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 			};
@@ -530,6 +674,15 @@
 			buildConfigurations = (
 				B2E1B0501CC48CD900FB687F /* Debug */,
 				B2E1B0511CC48CD900FB687F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1F735D42479651500E3D85E /* Build configuration list for PBXNativeTarget "LauncherApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1F735D22479651500E3D85E /* Debug */,
+				E1F735D32479651500E3D85E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
