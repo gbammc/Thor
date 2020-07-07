@@ -38,5 +38,14 @@
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.0.zip" sparkle:version="17" sparkle:shortVersionString="1.5.0" length="9585974" type="application/octet-stream" sparkle:edSignature="efncVOMVswfF/Qu4IAGrmaSl28oq0lNY2pL86tmAWj+VmsFFRONsRK5aznWDT7WSl04mKVxSv5Rj0TCdLwtWCQ=="/>
         </item>
+        <item>
+            <title>1.5.2</title>
+            <pubDate>Tue, 07 Jul 2020 23:42:56 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.2.zip" sparkle:version="19" sparkle:shortVersionString="1.5.2" length="9573102" type="application/octet-stream" sparkle:edSignature="GoS35lyE8j0QMnJsWjBkZ7bG3DJ350lDmgr8IqyeCk/gRMA1dEMujGwDU9w/ZiKHkLtkTtoMwqW2sw9QaMxsAA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor19-17.delta" sparkle:version="19" sparkle:shortVersionString="1.5.2" sparkle:deltaFrom="17" length="179571" type="application/octet-stream" sparkle:edSignature="TA19yLQJGkv5s0K1y/BeJjiSTQw8R9aoi29Iw/JG/P+nBjBTczgkQcuZCWY2DaQdfj8CLM5hQ280i8+ftjwJAg=="/>
+            </sparkle:deltas>
+        </item>
     </channel>
 </rss>
