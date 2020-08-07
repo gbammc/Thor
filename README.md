@@ -4,7 +4,7 @@ Open the right application ASAP.
 
 ![Screenshots](./screenshot_list.png)
 
-Thor is an OS X application that allows you to open other application immediately just by a shortcut. And it's avaliable in [Mac App Store](https://apps.apple.com/cn/app/thor/id1120999687?l=en&mt=12)! Feel free to enjoy the increased efficiency.
+Thor is an OS X application that allows you to open other application immediately just by a shortcut. And it's available in [Mac App Store](https://apps.apple.com/cn/app/thor/id1120999687?l=en&mt=12)! Feel free to enjoy the increased efficiency.
 
 ![Screenshots](./screenshot_settings.png)
 
