@@ -13,7 +13,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
     // MARK: Properties
 
-    var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var statusItem: NSStatusItem?
 
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var versionMenuItem: NSMenuItem!
@@ -84,9 +84,14 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
     // MARK: Status bar
 
-    func displayInStatusBar() {
-        statusItem.image = NSImage(named: "menu-item")
-        statusItem.menu = statusMenu
+    func showInMenuBar() {
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem?.image = NSImage(named: "menu-item")
+        statusItem?.menu = statusMenu
+    }
+
+    func hideInMenuBar() {
+        statusItem = nil
     }
 
 }

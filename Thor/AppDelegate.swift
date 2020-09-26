@@ -30,12 +30,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defaults.register(defaults: [
             DefaultsKeys.DeactivateKey.key: 0,
             DefaultsKeys.DelayInterval.key: 0.3,
-            DefaultsKeys.EnableShortcut.key: true
+            DefaultsKeys.EnableShortcut.key: true,
+            DefaultsKeys.enableMenuBarIcon.key: true
             ])
 
         NSApp.setActivationPolicy(.accessory)
 
-        statusItemController.displayInStatusBar()
+        if defaults[.enableMenuBarIcon] {
+            sharedAppDelegate?.statusItemController.showInMenuBar()
+        } else {
+            sharedAppDelegate?.statusItemController.hideInMenuBar()
+        }
 
         shortcutEnableMonitor()
         handleLaunchAtLogin()

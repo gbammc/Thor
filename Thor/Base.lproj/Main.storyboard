@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -350,7 +350,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-0d-C8U">
-                                <rect key="frame" x="45" y="266" width="104" height="16"/>
+                                <rect key="frame" x="45" y="217" width="104" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Reactivate after:" id="1fT-Qh-dE2">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -358,7 +358,7 @@
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Wg-Pgf">
-                                <rect key="frame" x="151" y="263" width="166" height="24"/>
+                                <rect key="frame" x="151" y="214" width="166" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="HaR-z1-X7a"/>
                                 </constraints>
@@ -392,7 +392,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cIc-ga-45L">
-                                <rect key="frame" x="45" y="302" width="99" height="16"/>
+                                <rect key="frame" x="45" y="253" width="99" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Deactivate Key:" id="uWp-Ys-dhU">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -400,7 +400,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hWC-9z-cv3">
-                                <rect key="frame" x="151" y="247" width="32" height="16"/>
+                                <rect key="frame" x="151" y="198" width="32" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0.1s" id="RmK-si-Zsx">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -408,7 +408,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9pw-DH-pgZ">
-                                <rect key="frame" x="296" y="245" width="21" height="16"/>
+                                <rect key="frame" x="296" y="196" width="21" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="1s" id="UpG-OL-d8P">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -416,10 +416,10 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0zk-yi-rDJ" userLabel="⌘ Command Key">
-                                <rect key="frame" x="146" y="296" width="165" height="25"/>
+                                <rect key="frame" x="146" y="247" width="165" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="⌥ Option Key" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ltM-LE-FOy" id="2rr-yT-VNc" userLabel="⌃ Control Key">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" title="OtherViews" id="Hcy-Ge-ZoW">
                                         <items>
                                             <menuItem title="⌥ Option Key" state="on" id="ltM-LE-FOy" userLabel="⌥ Option Key">
@@ -441,7 +441,7 @@
                                 </connections>
                             </popUpButton>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="ych-hK-1qT">
-                                <rect key="frame" x="45" y="336" width="289" height="18"/>
+                                <rect key="frame" x="45" y="287" width="289" height="18"/>
                                 <buttonCell key="cell" type="check" title="Enable double tap to deactivate shortcuts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ntn-c3-HAA">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
@@ -450,23 +450,40 @@
                                     <action selector="toggleEnableDeactivateKey:" target="LfM-H7-njo" id="5Rn-lR-zu6"/>
                                 </connections>
                             </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="d3U-w9-jNg">
+                                <rect key="frame" x="45" y="336" width="194" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="V6n-1t-57Z"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="Show Thor  in the menu bar " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LbD-19-0Ga">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleEnableMenuBarIcon:" target="LfM-H7-njo" id="QqI-Ja-rEW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="0zk-yi-rDJ" secondAttribute="trailing" constant="52" id="0pu-kB-MFi"/>
                             <constraint firstItem="ySw-Wg-Pgf" firstAttribute="leading" secondItem="Dtr-0d-C8U" secondAttribute="trailing" constant="6" id="0qn-xl-8i7"/>
                             <constraint firstItem="prA-Il-0qM" firstAttribute="leading" secondItem="Crp-4s-mEo" secondAttribute="leading" constant="90" id="1Tx-pu-Mto"/>
                             <constraint firstItem="9pw-DH-pgZ" firstAttribute="top" secondItem="ySw-Wg-Pgf" secondAttribute="bottom" constant="3" id="1r2-IW-hCj"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d3U-w9-jNg" secondAttribute="trailing" constant="20" symbolic="YES" id="7A4-et-3p2"/>
                             <constraint firstItem="XJy-eX-prE" firstAttribute="leading" secondItem="7sy-3X-TvI" secondAttribute="leading" id="8yE-nG-3YR"/>
                             <constraint firstItem="cIc-ga-45L" firstAttribute="leading" secondItem="Dtr-0d-C8U" secondAttribute="leading" id="ABh-Kh-94o"/>
                             <constraint firstItem="prA-Il-0qM" firstAttribute="centerX" secondItem="Crp-4s-mEo" secondAttribute="centerX" id="Afz-rC-qYb"/>
+                            <constraint firstItem="ych-hK-1qT" firstAttribute="top" secondItem="d3U-w9-jNg" secondAttribute="bottom" constant="35" id="Cem-dp-t4r"/>
                             <constraint firstAttribute="trailing" secondItem="ySw-Wg-Pgf" secondAttribute="trailing" constant="45" id="Icv-p1-Eqd"/>
                             <constraint firstItem="ySw-Wg-Pgf" firstAttribute="leading" secondItem="hWC-9z-cv3" secondAttribute="leading" id="KGC-X6-H3j"/>
                             <constraint firstItem="Dtr-0d-C8U" firstAttribute="centerY" secondItem="ySw-Wg-Pgf" secondAttribute="centerY" id="KjM-fA-ZVu"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XJy-eX-prE" secondAttribute="trailing" constant="20" symbolic="YES" id="L9K-CH-0wd"/>
                             <constraint firstItem="XJy-eX-prE" firstAttribute="top" secondItem="Crp-4s-mEo" secondAttribute="top" constant="30" id="Mm2-Om-20p"/>
                             <constraint firstItem="Dtr-0d-C8U" firstAttribute="top" secondItem="cIc-ga-45L" secondAttribute="bottom" constant="20" id="OUS-qx-t0k"/>
+                            <constraint firstItem="d3U-w9-jNg" firstAttribute="leading" secondItem="7sy-3X-TvI" secondAttribute="leading" id="PAh-Wm-2kA"/>
                             <constraint firstItem="hWC-9z-cv3" firstAttribute="top" secondItem="ySw-Wg-Pgf" secondAttribute="bottom" constant="1" id="R7Z-q7-uy1"/>
                             <constraint firstItem="XJy-eX-prE" firstAttribute="leading" secondItem="Crp-4s-mEo" secondAttribute="leading" constant="47" id="TPK-B1-dpv"/>
+                            <constraint firstItem="d3U-w9-jNg" firstAttribute="top" secondItem="7sy-3X-TvI" secondAttribute="bottom" constant="35" id="Yns-4x-PP5"/>
                             <constraint firstItem="7sy-3X-TvI" firstAttribute="leading" secondItem="ych-hK-1qT" secondAttribute="leading" id="dgY-s3-y2Y"/>
                             <constraint firstItem="cIc-ga-45L" firstAttribute="top" secondItem="ych-hK-1qT" secondAttribute="bottom" constant="20" id="e9X-KM-xgc"/>
                             <constraint firstAttribute="trailing" secondItem="ych-hK-1qT" secondAttribute="trailing" constant="28" id="flW-eQ-HBq"/>
@@ -479,11 +496,11 @@
                             <constraint firstAttribute="bottom" secondItem="prA-Il-0qM" secondAttribute="bottom" constant="20" symbolic="YES" id="taQ-Tf-jfr"/>
                             <constraint firstItem="ySw-Wg-Pgf" firstAttribute="trailing" secondItem="9pw-DH-pgZ" secondAttribute="trailing" id="uVo-Rg-JBi"/>
                             <constraint firstItem="0zk-yi-rDJ" firstAttribute="leading" secondItem="cIc-ga-45L" secondAttribute="trailing" constant="6" id="vtd-KI-5AV"/>
-                            <constraint firstItem="ych-hK-1qT" firstAttribute="top" secondItem="7sy-3X-TvI" secondAttribute="bottom" constant="35" id="wL3-wN-ytx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnEnableDeactivateKey" destination="ych-hK-1qT" id="wjv-C6-I04"/>
+                        <outlet property="btnEnableMenuBarIcon" destination="d3U-w9-jNg" id="VhB-4g-cwa"/>
                         <outlet property="btnEnableShortcut" destination="7sy-3X-TvI" id="qGM-kS-fk6"/>
                         <outlet property="btnLaunchAtLogin" destination="XJy-eX-prE" id="xKD-J0-ALg"/>
                         <outlet property="btnShortcutDeactivateKey" destination="0zk-yi-rDJ" id="OzF-KE-TX0"/>

@@ -12,6 +12,7 @@ class SettingsViewController: NSViewController {
 
     @IBOutlet weak var btnLaunchAtLogin: NSButton!
     @IBOutlet weak var btnEnableShortcut: NSButton!
+    @IBOutlet weak var btnEnableMenuBarIcon: NSButton!
     @IBOutlet weak var btnEnableDeactivateKey: NSButton!
     @IBOutlet weak var btnShortcutDeactivateKey: NSPopUpButton!
     @IBOutlet weak var slider: NSSlider!
@@ -24,6 +25,8 @@ class SettingsViewController: NSViewController {
         btnLaunchAtLogin.state = NSApplication.shared.startAtLogin ? .on : .off
 
         btnEnableShortcut.state = defaults[.EnableShortcut] ? .on : .off
+
+        btnEnableMenuBarIcon.state = defaults[.enableMenuBarIcon] ? .on : .off
 
         let isEnableDeactivateKey = defaults[.EnableDeactivateKey]
 
@@ -46,6 +49,18 @@ class SettingsViewController: NSViewController {
         defaults[.EnableShortcut] = enable
 
         enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
+    }
+
+    @IBAction func toggleEnableMenuBarIcon(_ sender: Any) {
+        let enable = btnEnableMenuBarIcon.state == .on
+
+        defaults[.enableMenuBarIcon] = enable
+
+        if enable {
+            sharedAppDelegate?.statusItemController.showInMenuBar()
+        } else {
+            sharedAppDelegate?.statusItemController.hideInMenuBar()
+        }
     }
 
     @IBAction func toggleEnableDeactivateKey(_ sender: Any) {
