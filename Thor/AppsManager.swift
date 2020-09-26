@@ -85,6 +85,17 @@ class AppsManager: NSObject {
         _ = saveData(to: selectedAppsFilePath)
     }
 
+    func move(with indexes: [Int], to row: Int) {
+        let apps = indexes.map { selectedApps[$0] }
+        let target = row - indexes.filter { $0 < row }.count
+        for (idx, index) in indexes.enumerated() {
+            selectedApps.remove(at: index - idx)
+        }
+        selectedApps.insert(contentsOf: apps, at: target)
+
+        _ = saveData(to: selectedAppsFilePath)
+    }
+
     func saveData(to path: String) -> Bool {
         let apps = selectedApps.map { $0.encode() }
         return NSKeyedArchiver.archiveRootObject(apps, toFile: path)

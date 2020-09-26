@@ -11,6 +11,8 @@ import MASShortcut
 
 class ShortcutListViewController: NSViewController {
 
+    private let dragDropType = NSPasteboard.PasteboardType(rawValue: "thor.drag-drop-app")
+
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var btnAdd: NSButton!
     @IBOutlet weak var btnRemove: NSButton!
@@ -25,6 +27,8 @@ class ShortcutListViewController: NSViewController {
         super.viewDidLoad()
 
         view.layer?.backgroundColor = NSColor.clear.cgColor
+
+        tableView.registerForDraggedTypes([dragDropType])
 
         observation = AppsManager.manager.observe(\.selectedApps, changeHandler: { [unowned self] (_, _) in
             self.tableView.reloadData()
@@ -90,6 +94,52 @@ extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate
         }
 
         return cell
+    }
+
+    // MARK: Drag and Drop
+
+    func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
+        let item = NSPasteboardItem()
+        item.setString(String(row), forType: dragDropType)
+        return item
+    }
+
+    func tableView(_ tableView: NSTableView,
+                   validateDrop info: NSDraggingInfo,
+                   proposedRow row: Int,
+                   proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+
+        return dropOperation == .above ? .move : []
+    }
+
+    func tableView(_ tableView: NSTableView,
+                   acceptDrop info: NSDraggingInfo,
+                   row: Int,
+                   dropOperation: NSTableView.DropOperation) -> Bool {
+
+        guard let items = info.draggingPasteboard.pasteboardItems else { return false }
+
+        let indexes = items.compactMap { Int($0.string(forType: dragDropType)!) }
+        if !indexes.isEmpty {
+            AppsManager.manager.move(with: indexes, to: row)
+
+            var oldIndexOffset = 0
+            var newIndexOffset = 0
+
+            tableView.beginUpdates()
+            for oldIndex in indexes {
+                if oldIndex < row {
+                    tableView.moveRow(at: oldIndex + oldIndexOffset, to: row - 1)
+                    oldIndexOffset -= 1
+                } else {
+                    tableView.moveRow(at: oldIndex, to: row + newIndexOffset)
+                    newIndexOffset += 1
+                }
+            }
+            tableView.endUpdates()
+        }
+
+        return true
     }
 
 }
