@@ -10,11 +10,11 @@ import Cocoa
 
 class SettingsViewController: NSViewController {
 
-    @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var btnLaunchAtLogin: NSButton!
     @IBOutlet weak var btnEnableShortcut: NSButton!
-    @IBOutlet weak var btnShortcutDeactivateKey: NSPopUpButton!
     @IBOutlet weak var btnEnableDeactivateKey: NSButton!
+    @IBOutlet weak var btnShortcutDeactivateKey: NSPopUpButton!
+    @IBOutlet weak var slider: NSSlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +25,15 @@ class SettingsViewController: NSViewController {
 
         btnEnableShortcut.state = defaults[.EnableShortcut] ? .on : .off
 
-        btnShortcutDeactivateKey.selectItem(at: defaults[.DeactivateKey])
+        let isEnableDeactivateKey = defaults[.EnableDeactivateKey]
 
-        btnEnableDeactivateKey.state = defaults[.EnableDeactivateKey] ? .on : .off
+        btnEnableDeactivateKey.state = isEnableDeactivateKey ? .on : .off
+
+        btnShortcutDeactivateKey.selectItem(at: defaults[.DeactivateKey])
+        btnShortcutDeactivateKey.isEnabled = isEnableDeactivateKey
 
         slider.doubleValue = defaults[.DelayInterval]
+        slider.isEnabled = isEnableDeactivateKey
     }
 
     @IBAction func toggleLaunchAtLogin(_ sender: Any) {
@@ -44,12 +48,17 @@ class SettingsViewController: NSViewController {
         enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
     }
 
-    @IBAction func changeDeactivateKey(_ sender: Any) {
-        defaults[.DeactivateKey] = btnShortcutDeactivateKey.indexOfSelectedItem
+    @IBAction func toggleEnableDeactivateKey(_ sender: Any) {
+        let isEnableDeactivateKey = btnEnableDeactivateKey.state == .on
+
+        defaults[.EnableDeactivateKey] = isEnableDeactivateKey
+
+        btnShortcutDeactivateKey.isEnabled = isEnableDeactivateKey
+        slider.isEnabled = isEnableDeactivateKey
     }
 
-    @IBAction func toggleEnableDeactivateKey(_ sender: Any) {
-        defaults[.EnableDeactivateKey] = btnEnableDeactivateKey.state == .on
+    @IBAction func changeDeactivateKey(_ sender: Any) {
+        defaults[.DeactivateKey] = btnShortcutDeactivateKey.indexOfSelectedItem
     }
 
     @IBAction func changeShortcutReactivateInterval(_ sender: Any) {
