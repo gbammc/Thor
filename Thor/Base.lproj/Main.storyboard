@@ -451,11 +451,11 @@
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="d3U-w9-jNg">
-                                <rect key="frame" x="45" y="336" width="194" height="18"/>
+                                <rect key="frame" x="45" y="336" width="188" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="V6n-1t-57Z"/>
                                 </constraints>
-                                <buttonCell key="cell" type="check" title="Show Thor  in the menu bar " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LbD-19-0Ga">
+                                <buttonCell key="cell" type="check" title="Show Thor in the menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LbD-19-0Ga">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                 </buttonCell>

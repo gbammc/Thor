@@ -100,3 +100,6 @@
 
 /* Class = "NSMenuItem"; title = "Import Shortcuts"; ObjectID = "QQw-cp-cqP"; */
 "QQw-cp-cqP.title" = "导入快捷键";
+
+/* Class = "NSMenuItem"; title = "Show Thor in the menu bar"; ObjectID = "LbD-19-0Ga"; */
+"LbD-19-0Ga.title" = "在状态栏显示 Thor 图标";
