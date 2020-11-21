@@ -38,5 +38,17 @@
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.4.0.zip" sparkle:version="16" sparkle:shortVersionString="1.4.0" length="9583085" type="application/octet-stream" sparkle:edSignature="5F122wECe1rdzpTtVZO5sWJ1P2LEvumQISkXz+HercHl1/KmH4CqvZwAkU8hEge0z27celIKs/DqAJECTTbpAw=="/>
         </item>
+        <item>
+            <title>1.5.4</title>
+            <pubDate>Sat, 21 Nov 2020 20:03:29 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.4.zip" sparkle:version="22" sparkle:shortVersionString="1.5.4" length="11319762" type="application/octet-stream" sparkle:edSignature="1SJHcP9Riz+2rFzbxL9V6Am0ZXjI3rG8NOlhN9EYT89c+L69wp0BWWUvvh6het2twywoFBDJg1+4d8e/Q/HqCQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-20.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="20" length="4485935" type="application/octet-stream" sparkle:edSignature="fPItBEFZ04on1Ic6OrpcbuJal5OUa6jybBXIDnjXJk33YtVG/b8mXsdWiwzuMlM0d38RkEn5v3zuEQmag24yAg=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-19.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="19" length="4660690" type="application/octet-stream" sparkle:edSignature="Z5xkpm7aXFWASZvnUFJUIP+LMmOEKOyPQx0TsFDImGHp6q58AffunnywJ1sHF/i1ZAFOsWDsojvUUxS0kPU3BA=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-17.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="17" length="4789497" type="application/octet-stream" sparkle:edSignature="XBojQEaVj2Fm9Glno4oOwnUwTEa2DKzBCAmBSh1OXYknXlI9CcOqDyEQz2bWQH6UV331/EwcZ1TgJQxO2kkFBg=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-16.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="16" length="4792054" type="application/octet-stream" sparkle:edSignature="o4GkiwFZsnU0uqXMdRNWM9Uh5m/x99MnkHLMyOf8thNTQettZe5YVieXFV6c0EJA/H6X9iWAkJCeOPjTnoOYDQ=="/>
+            </sparkle:deltas>
+        </item>
     </channel>
 </rss>
