@@ -14,67 +14,66 @@ class AppModel: NSObject {
     let appBundleURL: URL
     let appName: String
     let appDisplayName: String
-    let appIconName: String
-
     var shortcut: MASShortcut?
 
+    private enum InfoKeys: String {
+        case appBundleURL, appName, appDisplayName, shortcut, bookmark
+    }
+
     var icon: NSImage? {
-        guard let bundle = Bundle(url: appBundleURL), let bundleIdentifier = bundle.bundleIdentifier else {
+        guard let bundle = Bundle(url: appBundleURL) else {
             return nil
         }
 
-        let compositeName = "\(bundleIdentifier):\(appIconName)"
+        var iconImage: NSImage?
 
-        guard let file = bundle.pathForImageResource(appIconName),
-            let bundleImage = NSImage(contentsOfFile: file) else {
-                return nil
+        if let iconFileName = (bundle.infoDictionary?["CFBundleIconFile"]) as? String,
+           let iconFilePath = bundle.pathForImageResource(iconFileName) {
+            iconImage = NSImage(contentsOfFile: iconFilePath)
+        } else if let iconName = (bundle.infoDictionary?["CFBundleIconName"]) as? String,
+                  let image = bundle.image(forResource: iconName) {
+            iconImage = image
         }
 
-        bundleImage.setName(compositeName)
-        bundleImage.size = NSSize(width: 36, height: 36)
+        iconImage?.size = NSSize(width: 36, height: 36)
 
-        return bundleImage
+        return iconImage
     }
 
     init?(item: NSMetadataItem) {
         guard let path = item.value(forAttribute: kMDItemPath as String) as? String,
-            let displayName = item.value(forAttribute: kMDItemDisplayName as String) as? String,
-            let name = item.value(forKey: kMDItemFSName as String) as? String,
-            let appBundle = Bundle(path: path),
-            let iconName = (appBundle.infoDictionary?["CFBundleIconFile"]) as? String else {
-                return nil
+              let displayName = item.value(forAttribute: kMDItemDisplayName as String) as? String,
+              let name = item.value(forKey: kMDItemFSName as String) as? String,
+              let appBundle = Bundle(path: path) else {
+            return nil
         }
 
         self.appBundleURL = appBundle.bundleURL
         self.appName = name
         self.appDisplayName = displayName
-        self.appIconName = iconName
     }
 
     init?(dict: NSDictionary) {
-        guard let appBundle = dict.object(forKey: "appBundleURL") as? String,
-            let bundleURL = URL(string: appBundle), Bundle(url: bundleURL) != nil,
-            let name = dict.object(forKey: "appName") as? String,
-            let displayName = dict.object(forKey: "appDisplayName") as? String,
-            let iconName = dict.object(forKey: "appIconName") as? String,
-            let shortcut = dict.object(forKey: "shortcut") as? MASShortcut else {
-                return nil
+        guard let appBundle = dict.object(forKey: InfoKeys.appBundleURL.rawValue) as? String,
+              let bundleURL = URL(string: appBundle), Bundle(url: bundleURL) != nil,
+              let name = dict.object(forKey: InfoKeys.appName.rawValue) as? String,
+              let displayName = dict.object(forKey: InfoKeys.appDisplayName.rawValue) as? String,
+              let shortcut = dict.object(forKey: InfoKeys.shortcut.rawValue) as? MASShortcut else {
+            return nil
         }
 
         self.appBundleURL = bundleURL
         self.appName = name
         self.appDisplayName = displayName
-        self.appIconName = iconName
         self.shortcut = shortcut
     }
 
     func encode() -> NSDictionary {
         var dict = [String: Any]()
-        dict["appBundleURL"] = appBundleURL.absoluteString
-        dict["appName"] = appName
-        dict["appDisplayName"] = appDisplayName
-        dict["appIconName"] = appIconName
-        dict["shortcut"] = shortcut ?? NSNull()
+        dict[InfoKeys.appBundleURL.rawValue] = appBundleURL.absoluteString
+        dict[InfoKeys.appName.rawValue] = appName
+        dict[InfoKeys.appDisplayName.rawValue] = appDisplayName
+        dict[InfoKeys.shortcut.rawValue] = shortcut ?? NSNull()
 
         return dict as NSDictionary
     }
