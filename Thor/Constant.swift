@@ -26,4 +26,5 @@ let windowbackgroundColorName = "WindowBackgroundColor"
 // Notifications
 extension Notification.Name {
     static let killLauncher = Notification.Name("killLauncher")
+    static let updateMenuBarToggleState = Notification.Name("updateMenuBarToggleState")
 }

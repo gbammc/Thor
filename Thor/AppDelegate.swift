@@ -44,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         shortcutEnableMonitor()
         handleLaunchAtLogin()
+        registerMenubarIconShortcut()
 
         MASShortcutValidator.shared().allowAnyShortcutWithOptionModifier = true
         ShortcutMonitor.register()
@@ -143,6 +144,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if isRunning {
             DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
         }
+    }
+
+    func registerMenubarIconShortcut() {
+        let shortcut = MASShortcut(keyCode: kVK_ANSI_T, modifierFlags: [.shift, .control, .option, .command])
+        MASShortcutMonitor.shared().register(shortcut, withAction: {
+            defaults[.enableMenuBarIcon] = !defaults[.enableMenuBarIcon]
+
+            if defaults[.enableMenuBarIcon] {
+                sharedAppDelegate?.statusItemController.showInMenuBar()
+            } else {
+                sharedAppDelegate?.statusItemController.hideInMenuBar()
+            }
+
+            NotificationCenter.default.post(name: .updateMenuBarToggleState, object: nil)
+        })
     }
 
 }

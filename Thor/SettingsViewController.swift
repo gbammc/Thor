@@ -37,6 +37,11 @@ class SettingsViewController: NSViewController {
 
         slider.doubleValue = defaults[.DelayInterval]
         slider.isEnabled = isEnableDeactivateKey
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateMenuBarToggleState),
+                                               name: .updateMenuBarToggleState,
+                                               object: nil)
     }
 
     @IBAction func toggleLaunchAtLogin(_ sender: Any) {
@@ -82,6 +87,10 @@ class SettingsViewController: NSViewController {
 
     @IBAction func exit(_ sender: Any) {
         NSApp.terminate(self)
+    }
+
+    @objc func updateMenuBarToggleState() {
+        btnEnableMenuBarIcon.state = defaults[.enableMenuBarIcon] ? .on : .off
     }
 
 }
