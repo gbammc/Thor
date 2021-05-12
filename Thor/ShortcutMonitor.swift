@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 import MASShortcut
 
 struct ShortcutMonitor {
@@ -22,7 +23,18 @@ struct ShortcutMonitor {
                     frontmostAppIdentifier == targetAppIdentifier {
                     NSRunningApplication.runningApplications(withBundleIdentifier: frontmostAppIdentifier).first?.hide()
                 } else {
-                    NSWorkspace.shared.launchApplication(app.appName)
+                    if #available(macOS 10.15, *) {
+                        let configuration = NSWorkspace.OpenConfiguration()
+                        configuration.activates = true
+                        NSWorkspace.shared.openApplication(at: app.appBundleURL,
+                                                           configuration: configuration) { _, error in
+                            if let error = error {
+                                NSLog("ERROR: \(error)")
+                            }
+                        }
+                    } else {
+                        NSWorkspace.shared.launchApplication(app.appName)
+                    }
                 }
             })
         }
