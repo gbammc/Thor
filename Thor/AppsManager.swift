@@ -27,9 +27,16 @@ class AppsManager: NSObject {
             return ""
         }
 
-        let appDir = appSupportDir.appendingPathComponent(appName)
+        var appDir = appSupportDir.appendingPathComponent(appName)
         if !FileManager.default.fileExists(atPath: appDir) {
-            _ = try? FileManager.default.createDirectory(atPath: appDir, withIntermediateDirectories: true)
+            // Backward compatibility
+            let backwardAppDir = appSupportDir.appendingPathComponent("Thor")
+
+            if !FileManager.default.fileExists(atPath: backwardAppDir) {
+                _ = try? FileManager.default.createDirectory(atPath: appDir, withIntermediateDirectories: true)
+            } else {
+                appDir = backwardAppDir
+            }
         }
 
         return appDir.appendingPathComponent("apps")

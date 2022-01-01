@@ -68,6 +68,9 @@
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "窗口";
 
+/* Class = "NSMenuItem"; title = "Privacy Policy"; ObjectID = "NJs-cX-AgP"; */
+"NJs-cX-AgP.title" = "隐私政策";
+
 /* Class = "NSMenuItem"; title = "Check for updates"; ObjectID = "b8r-Yq-V8b"; */
 "b8r-Yq-V8b.title" = "检查更新";
 

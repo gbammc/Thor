@@ -147,7 +147,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func registerMenubarIconShortcut() {
-        let shortcut = MASShortcut(keyCode: kVK_ANSI_T, modifierFlags: [.shift, .control, .option, .command])
+        let modifierFlags = NSEvent.ModifierFlags.shift.rawValue |
+            NSEvent.ModifierFlags.control.rawValue |
+            NSEvent.ModifierFlags.option.rawValue |
+            NSEvent.ModifierFlags.command.rawValue
+        let shortcut = MASShortcut(keyCode: UInt(kVK_ANSI_T), modifierFlags: modifierFlags)
         MASShortcutMonitor.shared().register(shortcut, withAction: {
             defaults[.enableMenuBarIcon] = !defaults[.enableMenuBarIcon]
 

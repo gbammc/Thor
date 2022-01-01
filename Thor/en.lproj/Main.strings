@@ -1,0 +1,99 @@
+
+/* Class = "NSMenuItem"; title = "Thor Launcher"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Thor Launcher";
+
+/* Class = "NSTextFieldCell"; title = "Reactivate after:"; ObjectID = "1fT-Qh-dE2"; */
+"1fT-Qh-dE2.title" = "Reactivate after:";
+
+/* Class = "NSMenuItem"; title = "Export Shortcuts"; ObjectID = "1jO-A6-scN"; */
+"1jO-A6-scN.title" = "Export Shortcuts";
+
+/* Class = "NSButtonCell"; title = "Quit Thor Launcher"; ObjectID = "2nX-9N-OOj"; */
+"2nX-9N-OOj.title" = "Quit Thor Launcher";
+
+/* Class = "NSMenuItem"; title = "Quit Thor Launcher"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Thor Launcher";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "Hcy-Ge-ZoW"; */
+"Hcy-Ge-ZoW.title" = "OtherViews";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Preference"; ObjectID = "LOh-9N-Sq4"; */
+"LOh-9N-Sq4.title" = "Preference";
+
+/* Class = "NSButtonCell"; title = "Show Thor Launcher in the menu bar"; ObjectID = "LbD-19-0Ga"; */
+"LbD-19-0Ga.title" = "Show Thor Launcher in the menu bar";
+
+/* Class = "NSMenuItem"; title = "Privacy Policy"; ObjectID = "NJs-cX-AgP"; */
+"NJs-cX-AgP.title" = "Privacy Policy";
+
+/* Class = "NSMenuItem"; title = "⌃ Control Key"; ObjectID = "NL4-zo-fys"; */
+"NL4-zo-fys.title" = "⌃ Control Key";
+
+/* Class = "NSMenuItem"; title = "Hide Thor Launcher"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide Thor Launcher";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Orv-4t-jpB"; */
+"Orv-4t-jpB.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Import Shortcuts"; ObjectID = "QQw-cp-cqP"; */
+"QQw-cp-cqP.title" = "Import Shortcuts";
+
+/* Class = "NSTextFieldCell"; title = "⇧⌃⌥ ⌘ + T to show/hide"; ObjectID = "Qub-BS-LhT"; */
+"Qub-BS-LhT.title" = "⇧⌃⌥ ⌘ + T to show/hide";
+
+/* Class = "NSTextFieldCell"; title = "0.1s"; ObjectID = "RmK-si-Zsx"; */
+"RmK-si-Zsx.title" = "0.1s";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "RwK-Ds-RBj"; */
+"RwK-Ds-RBj.title" = "Quit";
+
+/* Class = "NSTextFieldCell"; title = "1s"; ObjectID = "UpG-OL-d8P"; */
+"UpG-OL-d8P.title" = "1s";
+
+/* Class = "NSButtonCell"; title = "Launch Thor Launcher at login"; ObjectID = "Uwv-xu-Spi"; */
+"Uwv-xu-Spi.title" = "Launch Thor Launcher at login";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
+
+/* Class = "NSMenuItem"; title = "⌘ Command Key"; ObjectID = "Yef-Cj-gO1"; */
+"Yef-Cj-gO1.title" = "⌘ Command Key";
+
+/* Class = "NSMenuItem"; title = "Check for updates"; ObjectID = "b8r-Yq-V8b"; */
+"b8r-Yq-V8b.title" = "Check for updates";
+
+/* Class = "NSButtonCell"; title = "Enable shortcut"; ObjectID = "fya-Hu-agS"; */
+"fya-Hu-agS.title" = "Enable shortcut";
+
+/* Class = "NSMenuItem"; title = "⌥ Option Key"; ObjectID = "ltM-LE-FOy"; */
+"ltM-LE-FOy.title" = "⌥ Option Key";
+
+/* Class = "NSButtonCell"; title = "Enable double tap to deactivate shortcuts"; ObjectID = "ntn-c3-HAA"; */
+"ntn-c3-HAA.title" = "Enable double tap to deactivate shortcuts";
+
+/* Class = "NSMenuItem"; title = "Version"; ObjectID = "ong-Un-zmC"; */
+"ong-Un-zmC.title" = "Version";
+
+/* Class = "NSMenuItem"; title = "Disable Shortcuts"; ObjectID = "p6e-3p-Tyr"; */
+"p6e-3p-Tyr.title" = "Disable Shortcuts";
+
+/* Class = "NSMenuItem"; title = "⇧ Shift Key"; ObjectID = "qJu-sX-5Pd"; */
+"qJu-sX-5Pd.title" = "⇧ Shift Key";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "qh3-lo-MgL"; */
+"qh3-lo-MgL.title" = "Table View Cell";
+
+/* Class = "NSMenu"; title = "Thor Launcher"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Thor Launcher";
+
+/* Class = "NSTextFieldCell"; title = "Deactivate Key:"; ObjectID = "uWp-Ys-dhU"; */
+"uWp-Ys-dhU.title" = "Deactivate Key:";
