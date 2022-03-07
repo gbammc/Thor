@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import LaunchAtLogin
 
 class SettingsViewController: NSViewController {
 
@@ -22,7 +23,7 @@ class SettingsViewController: NSViewController {
 
         view.layer?.backgroundColor = NSColor.clear.cgColor
 
-        btnLaunchAtLogin.state = NSApplication.shared.startAtLogin ? .on : .off
+        btnLaunchAtLogin.state = LaunchAtLogin.isEnabled ? .on : .off
 
         btnEnableShortcut.state = defaults[.EnableShortcut] ? .on : .off
 
@@ -45,7 +46,7 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func toggleLaunchAtLogin(_ sender: Any) {
-        NSApplication.shared.toggleStartAtLogin()
+        LaunchAtLogin.isEnabled = !LaunchAtLogin.isEnabled
     }
 
     @IBAction func toggleEnableShortcut(_ sender: Any) {

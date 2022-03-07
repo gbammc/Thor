@@ -8,6 +8,7 @@
 
 import Cocoa
 import MASShortcut
+import LaunchAtLogin
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -43,8 +44,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         shortcutEnableMonitor()
-        handleLaunchAtLogin()
         registerMenubarIconShortcut()
+
+        if defaults.object(forKey: DefaultsKeys.LaunchAtLoginKey.key) != nil {
+            defaults.removeObject(forKey: DefaultsKeys.LaunchAtLoginKey.key)
+            LaunchAtLogin.isEnabled = defaults[.LaunchAtLoginKey]
+        }
 
         MASShortcutValidator.shared().allowAnyShortcutWithOptionModifier = true
         ShortcutMonitor.register()
@@ -137,21 +142,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ShortcutMonitor.register()
     }
 
-    func handleLaunchAtLogin() {
-        let runningApps = NSWorkspace.shared.runningApplications
-        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
-
-        if isRunning {
-            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
-        }
-    }
-
     func registerMenubarIconShortcut() {
         let modifierFlags = NSEvent.ModifierFlags.shift.rawValue |
             NSEvent.ModifierFlags.control.rawValue |
             NSEvent.ModifierFlags.option.rawValue |
             NSEvent.ModifierFlags.command.rawValue
-        let shortcut = MASShortcut(keyCode: UInt(kVK_ANSI_T), modifierFlags: modifierFlags)
+        let shortcut = MASShortcut(keyCode: kVK_ANSI_T, modifierFlags: NSEvent.ModifierFlags(rawValue: modifierFlags))
         MASShortcutMonitor.shared().register(shortcut, withAction: {
             defaults[.enableMenuBarIcon] = !defaults[.enableMenuBarIcon]
 
