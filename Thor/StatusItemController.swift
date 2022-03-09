@@ -14,6 +14,8 @@ class StatusItemController: NSObject, NSMenuDelegate {
     // MARK: Properties
 
     var statusItem: NSStatusItem?
+    let updaterController = SPUStandardUpdaterController(startingUpdater: true,
+                                                         updaterDelegate: nil, userDriverDelegate: nil)
 
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var versionMenuItem: NSMenuItem!
@@ -51,10 +53,6 @@ class StatusItemController: NSObject, NSMenuDelegate {
         NSApp.terminate(self)
     }
 
-    @IBAction func checkForUpdates(_ sender: AnyObject) {
-        SUUpdater.shared().checkForUpdates(sender)
-    }
-
     @IBAction func exportShortcuts(_ sender: Any) {
         let savePanel = NSSavePanel()
         savePanel.title = "Export Shortcuts To File".localized()
@@ -88,6 +86,9 @@ class StatusItemController: NSObject, NSMenuDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem?.image = NSImage(named: "menu-item")
         statusItem?.menu = statusMenu
+
+        updateMenuItem.target = updaterController
+        updateMenuItem.action = #selector(SPUStandardUpdaterController.checkForUpdates(_:))
     }
 
     func hideInMenuBar() {

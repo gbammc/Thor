@@ -12,7 +12,7 @@ sleep 3
 
 # archive
 
-VERSION=`mdls -name kMDItemVersion "$APP_NAME".app | grep -o '\d\.\d\.\d'`
+VERSION=`mdls -name kMDItemVersion "$APP_NAME".app | grep -o '\d*\.\d*\.\d*'`
 
 zip -r "$APP_NAME".zip "$APP_NAME".app
 

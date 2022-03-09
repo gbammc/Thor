@@ -83,7 +83,7 @@
                     <connections>
                         <outlet property="statusMenu" destination="dS2-uP-mFH" id="RK2-r1-FZR"/>
                         <outlet property="toggleEnableStateMenuItem" destination="p6e-3p-Tyr" id="wau-f6-Sj0"/>
-                        <outlet property="updateMenuItem" destination="b8r-Yq-V8b" id="7sq-yu-9x9"/>
+                        <outlet property="updateMenuItem" destination="b8r-Yq-V8b" id="9wp-y4-abl"/>
                         <outlet property="versionMenuItem" destination="ong-Un-zmC" id="2gn-me-ivp"/>
                     </connections>
                 </customObject>
@@ -103,9 +103,6 @@
                         </menuItem>
                         <menuItem title="Check for updates" id="b8r-Yq-V8b">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="checkForUpdates:" target="tdb-s2-QWr" id="E4D-Pq-9Y9"/>
-                            </connections>
                         </menuItem>
                         <menuItem title="Version" enabled="NO" id="ong-Un-zmC">
                             <modifierMask key="keyEquivalentModifierMask"/>
