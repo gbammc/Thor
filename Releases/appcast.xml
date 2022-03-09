@@ -3,6 +3,21 @@
     <channel>
         <title>Thor</title>
         <item>
+            <title>1.5.10</title>
+            <pubDate>Wed, 09 Mar 2022 23:26:29 +0800</pubDate>
+            <sparkle:version>28</sparkle:version>
+            <sparkle:shortVersionString>1.5.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.10.zip" length="12399348" type="application/octet-stream" sparkle:edSignature="w4bR3Mswg0CS7raVVTl15N+SDfzWjetoicgyz0cdUzVMdWHazTVVqeUlGQmRU94UlxmrmjgnWuLDrcbBzP89Cw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor28-27.delta" sparkle:deltaFrom="27" length="3722792" type="application/octet-stream" sparkle:edSignature="cQ13q3lj3HdZZO2inyOZLvpMnY0Y4V06dXkkST5OpqrxV5WxniP8Y8U9RNV2Regc0jXhSKkVRIE9vCEYos6TDA=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor28-24.delta" sparkle:deltaFrom="24" length="7699658" type="application/octet-stream" sparkle:edSignature="oWO0hBXUPPoSIM5rN/eYu4JqXc31S7w1R0oUWb66jbT734+7WML9ub/EK4FQd1Mz6GqC901wTb6xCQJxkmcTCA=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor28-23.delta" sparkle:deltaFrom="23" length="7702170" type="application/octet-stream" sparkle:edSignature="uap/utAdL5ay3NWmDUeACa23m1XCICuyr+Q5n88h5Szbf1+79JkktCv9eupTQpRd5IZYqVu/l1EHFSAzVvTqDQ=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor28-22.delta" sparkle:deltaFrom="22" length="8074704" type="application/octet-stream" sparkle:edSignature="VqsxwKu4sDEiQkm6CGjdMA49pRDudkE55HB2pNlVr64vGlhXBW9BalJmz1hjUHyqPntYh75uf7iRb8Z9+PoxBA=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor28-20.delta" sparkle:deltaFrom="20" length="8226230" type="application/octet-stream" sparkle:edSignature="Hl0QNcJKoSLdoMDFbPpSt9iYje4Pt4LWs0MIyi22Wo1NpyeRy25raPeZFhvm2o2OWRZjXJzRL1SoPQdmdoENAQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.5.4</title>
             <pubDate>Sat, 21 Nov 2020 16:27:46 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
@@ -18,43 +33,53 @@
             <title>1.5.3</title>
             <pubDate>Sat, 21 Nov 2020 15:13:51 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.3.zip" sparkle:version="20" sparkle:shortVersionString="1.5.3" length="9712629" type="application/octet-stream" sparkle:edSignature="59H5R9Evmn7aaerC/fdGq7yFZ3UD5zbM0ziDnOwc4/9gE/+XpgS7ms5row5ytyLwWEjWBLLeXXALKpmjwH2iDg=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.3.zip" length="9712629" type="application/octet-stream" sparkle:edSignature="59H5R9Evmn7aaerC/fdGq7yFZ3UD5zbM0ziDnOwc4/9gE/+XpgS7ms5row5ytyLwWEjWBLLeXXALKpmjwH2iDg=="/>
+            <sparkle:version>20</sparkle:version>
+            <sparkle:shortVersionString>1.5.3</sparkle:shortVersionString>
         </item>
         <item>
             <title>1.5.2</title>
             <pubDate>Sat, 21 Nov 2020 12:34:36 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.2.zip" sparkle:version="19" sparkle:shortVersionString="1.5.2" length="9573102" type="application/octet-stream" sparkle:edSignature="GoS35lyE8j0QMnJsWjBkZ7bG3DJ350lDmgr8IqyeCk/gRMA1dEMujGwDU9w/ZiKHkLtkTtoMwqW2sw9QaMxsAA=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.2.zip" length="9573102" type="application/octet-stream" sparkle:edSignature="GoS35lyE8j0QMnJsWjBkZ7bG3DJ350lDmgr8IqyeCk/gRMA1dEMujGwDU9w/ZiKHkLtkTtoMwqW2sw9QaMxsAA=="/>
+            <sparkle:version>19</sparkle:version>
+            <sparkle:shortVersionString>1.5.2</sparkle:shortVersionString>
         </item>
         <item>
             <title>1.5.0</title>
             <pubDate>Sat, 23 May 2020 17:44:50 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.0.zip" sparkle:version="17" sparkle:shortVersionString="1.5.0" length="9585974" type="application/octet-stream" sparkle:edSignature="efncVOMVswfF/Qu4IAGrmaSl28oq0lNY2pL86tmAWj+VmsFFRONsRK5aznWDT7WSl04mKVxSv5Rj0TCdLwtWCQ=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.0.zip" length="9585974" type="application/octet-stream" sparkle:edSignature="efncVOMVswfF/Qu4IAGrmaSl28oq0lNY2pL86tmAWj+VmsFFRONsRK5aznWDT7WSl04mKVxSv5Rj0TCdLwtWCQ=="/>
+            <sparkle:version>17</sparkle:version>
+            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
         </item>
         <item>
             <title>1.4.0</title>
             <pubDate>Sat, 23 May 2020 17:44:50 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.4.0.zip" sparkle:version="16" sparkle:shortVersionString="1.4.0" length="9583085" type="application/octet-stream" sparkle:edSignature="5F122wECe1rdzpTtVZO5sWJ1P2LEvumQISkXz+HercHl1/KmH4CqvZwAkU8hEge0z27celIKs/DqAJECTTbpAw=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.4.0.zip" length="9583085" type="application/octet-stream" sparkle:edSignature="5F122wECe1rdzpTtVZO5sWJ1P2LEvumQISkXz+HercHl1/KmH4CqvZwAkU8hEge0z27celIKs/DqAJECTTbpAw=="/>
+            <sparkle:version>16</sparkle:version>
+            <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
         </item>
         <item>
             <title>1.5.4</title>
             <pubDate>Sat, 21 Nov 2020 20:03:29 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.4.zip" sparkle:version="22" sparkle:shortVersionString="1.5.4" length="11319762" type="application/octet-stream" sparkle:edSignature="1SJHcP9Riz+2rFzbxL9V6Am0ZXjI3rG8NOlhN9EYT89c+L69wp0BWWUvvh6het2twywoFBDJg1+4d8e/Q/HqCQ=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.4.zip" length="11319762" type="application/octet-stream" sparkle:edSignature="1SJHcP9Riz+2rFzbxL9V6Am0ZXjI3rG8NOlhN9EYT89c+L69wp0BWWUvvh6het2twywoFBDJg1+4d8e/Q/HqCQ=="/>
             <sparkle:deltas>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-20.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="20" length="4485935" type="application/octet-stream" sparkle:edSignature="fPItBEFZ04on1Ic6OrpcbuJal5OUa6jybBXIDnjXJk33YtVG/b8mXsdWiwzuMlM0d38RkEn5v3zuEQmag24yAg=="/>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-19.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="19" length="4660690" type="application/octet-stream" sparkle:edSignature="Z5xkpm7aXFWASZvnUFJUIP+LMmOEKOyPQx0TsFDImGHp6q58AffunnywJ1sHF/i1ZAFOsWDsojvUUxS0kPU3BA=="/>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-17.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="17" length="4789497" type="application/octet-stream" sparkle:edSignature="XBojQEaVj2Fm9Glno4oOwnUwTEa2DKzBCAmBSh1OXYknXlI9CcOqDyEQz2bWQH6UV331/EwcZ1TgJQxO2kkFBg=="/>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor22-16.delta" sparkle:version="22" sparkle:shortVersionString="1.5.4" sparkle:deltaFrom="16" length="4792054" type="application/octet-stream" sparkle:edSignature="o4GkiwFZsnU0uqXMdRNWM9Uh5m/x99MnkHLMyOf8thNTQettZe5YVieXFV6c0EJA/H6X9iWAkJCeOPjTnoOYDQ=="/>
             </sparkle:deltas>
+            <sparkle:version>22</sparkle:version>
+            <sparkle:shortVersionString>1.5.4</sparkle:shortVersionString>
         </item>
         <item>
             <title>1.5.5</title>
             <pubDate>Sun, 13 Dec 2020 19:13:30 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.5.zip" sparkle:version="23" sparkle:shortVersionString="1.5.5" length="11245726" type="application/octet-stream" sparkle:edSignature="l2juQ1tCIeu6o+9M9HxKa5GdqdT+OKqHh4oSh/Bik/A9VMHye6IKEXzCz2n23nKydRL1MUnU1dgn2mGXWNI9Aw=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.5.zip" length="11245726" type="application/octet-stream" sparkle:edSignature="l2juQ1tCIeu6o+9M9HxKa5GdqdT+OKqHh4oSh/Bik/A9VMHye6IKEXzCz2n23nKydRL1MUnU1dgn2mGXWNI9Aw=="/>
             <sparkle:deltas>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor23-22.delta" sparkle:version="23" sparkle:shortVersionString="1.5.5" sparkle:deltaFrom="22" length="1010057" type="application/octet-stream" sparkle:edSignature="ucukBgoxAflUjnC6Bf52nNMij+cfwoglCbE+DVvFDnZER1ufAQ4LrLSoXQ+6GySj03NxIFFQx9KkwGtP7c7HCQ=="/>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor23-20.delta" sparkle:version="23" sparkle:shortVersionString="1.5.5" sparkle:deltaFrom="20" length="4499264" type="application/octet-stream" sparkle:edSignature="5DNrS/SgeGveFp2+OpSn7cWg0dIY1dcS+5slxxZN3ZrTfS5+NsDL3tN8JwjI3lnmPUkBOqFu+BAexxZm0b0uAA=="/>
@@ -62,26 +87,29 @@
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor23-17.delta" sparkle:version="23" sparkle:shortVersionString="1.5.5" sparkle:deltaFrom="17" length="4628435" type="application/octet-stream" sparkle:edSignature="Zj1QvKSw3Eg7m+NVI9Qtdcrw8GBhHV7Jf8bFhKsmaRlpCOlP9k8xn6kIIoSGoFi+RNkob0theLx3vOfKeo7TDQ=="/>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor23-16.delta" sparkle:version="23" sparkle:shortVersionString="1.5.5" sparkle:deltaFrom="16" length="4631289" type="application/octet-stream" sparkle:edSignature="7An5Rc6K+ab4Xo646y6TcUv/t27FId7M6altRJXw86VhAAQWIstblL0wO+1b3YgvncljhKTZ+WQd1FxuoyQZAg=="/>
             </sparkle:deltas>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>1.5.5</sparkle:shortVersionString>
         </item>
         <item>
             <title>1.5.6</title>
             <pubDate>周六, 19 12月 2020 22:13:41 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.6.zip" sparkle:version="24" sparkle:shortVersionString="1.5.6" length="11248608" type="application/octet-stream" sparkle:edSignature="wUr2H1YQylwdhOvV/cKvvgd5St+J3aze7MAbpWLXihDI+2XQVUwWVQL3NySizDN6/driLJaNbowTR7Vn6L/6CQ=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.6.zip" length="11248608" type="application/octet-stream" sparkle:edSignature="wUr2H1YQylwdhOvV/cKvvgd5St+J3aze7MAbpWLXihDI+2XQVUwWVQL3NySizDN6/driLJaNbowTR7Vn6L/6CQ=="/>
             <sparkle:deltas>
-                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-23.delta" sparkle:version="24" sparkle:shortVersionString="1.5.6" sparkle:deltaFrom="23" length="139869" type="application/octet-stream" sparkle:edSignature="A9z80ArXj5ikl3FgyYlf/DeT7wTaRE3QG6/2L1hQvs7R1uMKLVy1GMC4oNoQzqkEYQ/Ka/XrtfVHMPmzJp5tBQ=="/>
-                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-22.delta" sparkle:version="24" sparkle:shortVersionString="1.5.6" sparkle:deltaFrom="22" length="1055409" type="application/octet-stream" sparkle:edSignature="aQehFbIA87dbLRq3AgSTmwjA5Y7/GkckykPXWPUXKusJPkK4poJhdhMeig4C3n6/XljWu+XN1BGxsV8E042aDg=="/>
-                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-20.delta" sparkle:version="24" sparkle:shortVersionString="1.5.6" sparkle:deltaFrom="20" length="4520678" type="application/octet-stream" sparkle:edSignature="xhLzY3gOm8V8mo5tmd+FHr5nac0xia+rJ5r+hCb2kKNwNez4ye8KYw8oveietTq1Pfntcw4dR5YO0XoNRSMoBA=="/>
-                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-16.delta" sparkle:version="24" sparkle:shortVersionString="1.5.6" sparkle:deltaFrom="16" length="4635468" type="application/octet-stream" sparkle:edSignature="UyZjfr4eU/Fl9JmXgfPy/okfvGRNJ1Zb5F64D5Neaj0jHYVOK6Hf3IjVy2ndXWhxDVjG2bu5RLeD0RY4idpyBA=="/>
-                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-17.delta" sparkle:version="24" sparkle:shortVersionString="1.5.6" sparkle:deltaFrom="17" length="4632888" type="application/octet-stream" sparkle:edSignature="5iJCXJBr7SqUbnvkxw04EjMwYO3yHbillYysTGIoePYUaFz1iEcmsf0Kgl7MshWaniZdwRDrM2dlr+EddkvIBA=="/>
-                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-19.delta" sparkle:version="24" sparkle:shortVersionString="1.5.6" sparkle:deltaFrom="19" length="4683429" type="application/octet-stream" sparkle:edSignature="7MgrabfdMwRODEi5gyPVGUHdG+jxhI5tEhSo3yA28DYCOcyvZzjC4VbhLGckrQT54xh1Ispj3yqgT7Zg5vobAw=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-23.delta" sparkle:deltaFrom="23" length="139869" type="application/octet-stream" sparkle:edSignature="A9z80ArXj5ikl3FgyYlf/DeT7wTaRE3QG6/2L1hQvs7R1uMKLVy1GMC4oNoQzqkEYQ/Ka/XrtfVHMPmzJp5tBQ=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-22.delta" sparkle:deltaFrom="22" length="1055409" type="application/octet-stream" sparkle:edSignature="aQehFbIA87dbLRq3AgSTmwjA5Y7/GkckykPXWPUXKusJPkK4poJhdhMeig4C3n6/XljWu+XN1BGxsV8E042aDg=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-19.delta" sparkle:deltaFrom="19" length="4683429" type="application/octet-stream" sparkle:edSignature="7MgrabfdMwRODEi5gyPVGUHdG+jxhI5tEhSo3yA28DYCOcyvZzjC4VbhLGckrQT54xh1Ispj3yqgT7Zg5vobAw=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-20.delta" sparkle:deltaFrom="20" length="4520678" type="application/octet-stream" sparkle:edSignature="xhLzY3gOm8V8mo5tmd+FHr5nac0xia+rJ5r+hCb2kKNwNez4ye8KYw8oveietTq1Pfntcw4dR5YO0XoNRSMoBA=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor24-17.delta" sparkle:deltaFrom="17" length="4632888" type="application/octet-stream" sparkle:edSignature="5iJCXJBr7SqUbnvkxw04EjMwYO3yHbillYysTGIoePYUaFz1iEcmsf0Kgl7MshWaniZdwRDrM2dlr+EddkvIBA=="/>
             </sparkle:deltas>
+            <sparkle:version>24</sparkle:version>
+            <sparkle:shortVersionString>1.5.6</sparkle:shortVersionString>
         </item>
         <item>
             <title>1.5.9</title>
             <pubDate>Tue, 08 Mar 2022 21:23:16 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.9.zip" sparkle:version="27" sparkle:shortVersionString="1.5.9" length="11245155" type="application/octet-stream" sparkle:edSignature="ZKoqAVT7d/KVcza9EmiualwE7K6Cs3FeBK+ZhwCc6n47OraitKhvECABiUup5SvRekinDyVP9EC9cE5hCMeZCQ=="/>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.9.zip" length="11245155" type="application/octet-stream" sparkle:edSignature="ZKoqAVT7d/KVcza9EmiualwE7K6Cs3FeBK+ZhwCc6n47OraitKhvECABiUup5SvRekinDyVP9EC9cE5hCMeZCQ=="/>
             <sparkle:deltas>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor27-24.delta" sparkle:version="27" sparkle:shortVersionString="1.5.9" sparkle:deltaFrom="24" length="5462747" type="application/octet-stream" sparkle:edSignature="/f9rvZ3Bqd2gvSfhKLHrGPvYgWuopng0SpViqCJ1/n01q4rnhepyUAWZbbSHgULIlx9qO17E4FgY+sTpWvLoAw=="/>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor27-23.delta" sparkle:version="27" sparkle:shortVersionString="1.5.9" sparkle:deltaFrom="23" length="5466519" type="application/octet-stream" sparkle:edSignature="MMBvHBGEukuDSq1LSkKzmdhA4/EBshFfBF/NPNjKkVbRS8n/rq1nabXHIm8oaKmyjJ25d0gx4h1dkzUmCPbEDg=="/>
@@ -90,6 +118,8 @@
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor27-19.delta" sparkle:version="27" sparkle:shortVersionString="1.5.9" sparkle:deltaFrom="19" length="6586465" type="application/octet-stream" sparkle:edSignature="FnEGL/N2LyoDUGn8YLvcG3IJdEAS5tiLlAYDAWNSZPXzyqMkoEmwsmrLb3hNFblnyUVZYtwQEdMwKWOmFyQ/Cg=="/>
                 <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor27-17.delta" sparkle:version="27" sparkle:shortVersionString="1.5.9" sparkle:deltaFrom="17" length="6678386" type="application/octet-stream" sparkle:edSignature="wSzRz7rzRMO0E62yMnj4FNsWWMaLleadObd1B6Z8RVZC9GR+vdN2TqM7QHGG76rPpH6jEr2okFGUYDYc7BWeDA=="/>
             </sparkle:deltas>
+            <sparkle:version>27</sparkle:version>
+            <sparkle:shortVersionString>1.5.9</sparkle:shortVersionString>
         </item>
     </channel>
 </rss>
