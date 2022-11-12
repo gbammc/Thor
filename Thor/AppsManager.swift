@@ -39,7 +39,7 @@ class AppsManager: NSObject {
             }
         }
 
-        return appDir.appendingPathComponent("apps")
+        return appDir.appendingPathComponent("apps.json")
     }
 
     // MARK: Life cycle
@@ -57,7 +57,7 @@ class AppsManager: NSObject {
 
         ShortcutMonitor.unregister()
 
-        if let existedApp = selectedApps.filter({ $0.appName == app.appName }).first {
+        if let existedApp = selectedApps.filter({ $0 == app }).first {
             existedApp.shortcut = shortcut
         } else {
             app.shortcut = shortcut
@@ -82,13 +82,14 @@ class AppsManager: NSObject {
     }
 
     func loadApps(from path: String) {
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
-            let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] else {
-            return
+        if let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+           let apps = try? JSONSerialization.jsonObject(with: data) as? [[String: String]] {
+            selectedApps = apps.compactMap { AppModel(jsonValue: $0) }
+        } else if let data = try? Data(contentsOf: URL(fileURLWithPath: path).deletingPathExtension()),
+                  let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
+            // Backward compatibility
+            selectedApps = apps.compactMap { AppModel(dict: $0) }
         }
-
-        selectedApps = apps.compactMap { AppModel(dict: $0) }
-
         _ = saveData(to: selectedAppsFilePath)
     }
 
@@ -104,8 +105,14 @@ class AppsManager: NSObject {
     }
 
     func saveData(to path: String) -> Bool {
-        let apps = selectedApps.map { $0.encode() }
-        return NSKeyedArchiver.archiveRootObject(apps, toFile: path)
+        do {
+            let apps = selectedApps.map { $0.encodeToJSONValue() }
+            let encoded = try JSONSerialization.data(withJSONObject: apps, options: [.prettyPrinted])
+            try encoded.write(to: URL(fileURLWithPath: path), options: [.atomic])
+            return true
+        } catch {
+            return false
+        }
     }
 
 }

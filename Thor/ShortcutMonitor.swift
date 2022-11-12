@@ -33,7 +33,7 @@ struct ShortcutMonitor {
                             }
                         }
                     } else {
-                        NSWorkspace.shared.launchApplication(app.appName)
+                        NSWorkspace.shared.launchApplication(app.appBundleURL.lastPathComponent)
                     }
                 }
             })

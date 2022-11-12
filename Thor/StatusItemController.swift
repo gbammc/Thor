@@ -62,7 +62,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
         let result = savePanel.runModal()
 
-        guard result.rawValue == NSFileHandlingPanelOKButton, let url = savePanel.url else { return }
+        guard result == NSApplication.ModalResponse.OK, let url = savePanel.url else { return }
 
         _ = AppsManager.manager.saveData(to: url.path)
     }
@@ -75,7 +75,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
         let result = openPanel.runModal()
 
-        guard result.rawValue == NSFileHandlingPanelOKButton, let url = openPanel.url else { return }
+        guard result == NSApplication.ModalResponse.OK, let url = openPanel.url else { return }
 
         AppsManager.manager.loadApps(from: url.path)
     }
@@ -84,7 +84,7 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
     func showInMenuBar() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem?.image = NSImage(named: "menu-item")
+        statusItem?.button?.image = NSImage(named: "menu-item")
         statusItem?.menu = statusMenu
 
         updateMenuItem.target = updaterController
