@@ -10,7 +10,7 @@ import Cocoa
 
 let sharedAppDelegate        = NSApplication.shared.delegate as? AppDelegate
 let titleItemWidth: CGFloat  = 40.0
-let titleItemHeight: CGFloat = 37.0
+let titleItemHeight: CGFloat = 22.0
 
 let launcherAppId = "me.alvinzhu.Thor.LauncherApplication"
 
