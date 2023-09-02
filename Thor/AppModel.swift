@@ -170,6 +170,7 @@ extension MASShortcut {
         kVK_ANSI_Keypad8: "numpad8",
         kVK_ANSI_Keypad9: "numpad9",
 
+        kVK_Return: "return",
         kVK_End: "end",
         kVK_Home: "home",
         kVK_Tab: "tab",
