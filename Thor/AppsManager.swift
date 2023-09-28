@@ -107,7 +107,7 @@ class AppsManager: NSObject {
     func saveData(to path: String) -> Bool {
         do {
             let apps = selectedApps.map { $0.encodeToJSONValue() }
-            let encoded = try JSONSerialization.data(withJSONObject: apps, options: [.prettyPrinted])
+            let encoded = try JSONSerialization.data(withJSONObject: apps, options: [.prettyPrinted, .sortedKeys])
             try encoded.write(to: URL(fileURLWithPath: path), options: [.atomic])
             return true
         } catch {
