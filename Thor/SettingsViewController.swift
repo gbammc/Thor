@@ -54,7 +54,11 @@ class SettingsViewController: NSViewController {
 
         defaults[.EnableShortcut] = enable
 
-        enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
+        if enable {
+            ShortcutMonitor.register()
+        } else {
+            ShortcutMonitor.unregister()
+        }
     }
 
     @IBAction func toggleEnableMenuBarIcon(_ sender: Any) {

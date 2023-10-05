@@ -265,10 +265,8 @@ extension MASShortcut {
         guard let key = MASShortcut.keycodeMap[keyCode] else { return "" }
 
         var components = [String]()
-        for modifier in MASShortcut.supportedModifiers {
-            if modifierFlags.contains(modifier) {
-                components.append(MASShortcut.modifierMap[modifier]!)
-            }
+        for modifier in MASShortcut.supportedModifiers where modifierFlags.contains(modifier) {
+            components.append(MASShortcut.modifierMap[modifier]!)
         }
         components.append(key)
         return components.joined(separator: "+")

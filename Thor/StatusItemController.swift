@@ -46,7 +46,12 @@ class StatusItemController: NSObject, NSMenuDelegate {
     @IBAction func toggleEnableState(_ sender: Any) {
         let enable = !defaults[.EnableShortcut]
         defaults[.EnableShortcut] = enable
-        enable ? ShortcutMonitor.register() : ShortcutMonitor.unregister()
+
+        if enable {
+            ShortcutMonitor.register()
+        } else {
+            ShortcutMonitor.unregister()
+        }
     }
 
     @IBAction func quit(_ sender: AnyObject) {

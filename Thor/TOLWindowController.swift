@@ -33,7 +33,6 @@ class TOLWindowController: NSWindowController {
 
         // title
 
-        titleView.frame = CGRect(x: 0, y: 0, width: titleItemWidth, height: titleItemHeight)
         titleView.toggleCallback = toggleViewControllers
 
         let titleItem = NSToolbarItem(itemIdentifier: titleViewIdentifier)
@@ -62,13 +61,9 @@ class TOLWindowController: NSWindowController {
     }
 
     func insert(_ titleItem: TitleViewItem, viewController: NSViewController) {
-        titleView.insert(titleItem)
-
         viewControllers[titleItem.identifier!.rawValue] = viewController
 
-        let itemSize = NSSize(width: titleItemWidth * CGFloat(titleView.items.count), height: titleItemHeight)
-        items[titleViewIdentifier]?.minSize = itemSize
-
+        titleView.insert(titleItem)
         titleView.toggle(titleView.items.first!)
     }
 
@@ -115,14 +110,21 @@ class TitleView: NSView {
     func insert(_ item: TitleViewItem) {
         items.append(item)
         items.forEach { $0.removeFromSuperview() }
-
         for (idx, item) in items.enumerated() {
-            item.frame = NSRect(x: CGFloat(idx) * titleItemWidth, y: 0, width: titleItemWidth, height: titleItemHeight)
+            addSubview(item)
+
             item.target = self
             item.action = #selector(TitleView.toggle(_:))
-
-            addSubview(item)
+            item.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                item.leftAnchor.constraint(equalTo: leftAnchor, constant: CGFloat(idx) * titleItemWidth),
+                item.topAnchor.constraint(equalTo: topAnchor),
+                item.widthAnchor.constraint(equalToConstant: titleItemWidth),
+                item.heightAnchor.constraint(equalToConstant: titleItemHeight)
+            ])
         }
+
+        frame = CGRect(x: 0, y: 0, width: CGFloat(items.count) * titleItemWidth, height: titleItemHeight)
     }
 
     @objc func toggle(_ sender: TitleViewItem) {

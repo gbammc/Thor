@@ -86,7 +86,11 @@ class AppsManager: NSObject {
            let apps = try? JSONSerialization.jsonObject(with: data) as? [[String: String]] {
             selectedApps = apps.compactMap { AppModel(jsonValue: $0) }
         } else if let data = try? Data(contentsOf: URL(fileURLWithPath: path).deletingPathExtension()),
-                  let apps = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
+                  let apps = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSDictionary.self,
+                                                                                 NSArray.self,
+                                                                                 NSString.self,
+                                                                                 MASShortcut.self],
+                                                                     from: data) as? [NSDictionary] {
             // Backward compatibility
             selectedApps = apps.compactMap { AppModel(dict: $0) }
         }
