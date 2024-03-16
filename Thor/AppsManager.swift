@@ -8,6 +8,7 @@
 
 import Foundation
 import MASShortcut
+import OSLog
 
 class AppsManager: NSObject {
 
@@ -82,19 +83,27 @@ class AppsManager: NSObject {
     }
 
     func loadApps(from path: String) {
-        if let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
-           let apps = try? JSONSerialization.jsonObject(with: data) as? [[String: String]] {
-            selectedApps = apps.compactMap { AppModel(jsonValue: $0) }
-        } else if let data = try? Data(contentsOf: URL(fileURLWithPath: path).deletingPathExtension()),
-                  let apps = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSDictionary.self,
+        do {
+            var data = try Data(contentsOf: URL(fileURLWithPath: path))
+            if let apps = try JSONSerialization.jsonObject(with: data) as? [[String: String]] {
+                selectedApps = apps.compactMap { AppModel(jsonValue: $0) }
+            } else {
+                data = try Data(contentsOf: URL(fileURLWithPath: path).deletingPathExtension())
+                if let apps = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSDictionary.self,
                                                                                  NSArray.self,
                                                                                  NSString.self,
                                                                                  MASShortcut.self],
                                                                      from: data) as? [NSDictionary] {
-            // Backward compatibility
-            selectedApps = apps.compactMap { AppModel(dict: $0) }
+                    // Backward compatibility
+                    selectedApps = apps.compactMap { AppModel(dict: $0) }
+                }
+            }
+            _ = saveData(to: selectedAppsFilePath)
+        } catch {
+            if #available(macOS 11.0, *) {
+                Logger.app.error("can't load with err: \(error.localizedDescription), path: \(path)")
+            }
         }
-        _ = saveData(to: selectedAppsFilePath)
     }
 
     func move(with indexes: [Int], to row: Int) {
@@ -115,6 +124,9 @@ class AppsManager: NSObject {
             try encoded.write(to: URL(fileURLWithPath: path), options: [.atomic])
             return true
         } catch {
+            if #available(macOS 11.0, *) {
+                Logger.app.error("can't save with err: \(error.localizedDescription), path: \(path)")
+            }
             return false
         }
     }

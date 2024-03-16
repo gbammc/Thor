@@ -8,6 +8,7 @@
 
 import Cocoa
 import MASShortcut
+import UniformTypeIdentifiers
 
 class ShortcutListViewController: NSViewController {
 
@@ -40,7 +41,7 @@ class ShortcutListViewController: NSViewController {
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = [kUTTypeApplicationFile as String, kUTTypeApplicationBundle as String]
+        openPanel.allowedContentTypes = [UTType.application, UTType.applicationBundle]
         if let appDir = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .localDomainMask, true).first {
             openPanel.directoryURL = URL(fileURLWithPath: appDir)
         }
