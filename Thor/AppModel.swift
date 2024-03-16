@@ -9,6 +9,13 @@
 import Cocoa
 import MASShortcut
 import Carbon.HIToolbox
+import OSLog
+
+@available(macOS 11.0, *)
+extension Logger {
+    static let app = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "app")
+    static let shortcut = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "shortcut")
+}
 
 class AppModel: NSObject {
 
@@ -56,6 +63,9 @@ class AppModel: NSObject {
               let bundleURL = URL(string: appBundle), Bundle(url: bundleURL) != nil,
               let displayName = dict.object(forKey: InfoKeys.appDisplayName.rawValue) as? String,
               let shortcut = dict.object(forKey: InfoKeys.shortcut.rawValue) as? MASShortcut else {
+            if #available(macOS 11.0, *) {
+                Logger.app.error("invalid app: \(dict)")
+            }
             return nil
         }
 
@@ -70,6 +80,9 @@ class AppModel: NSObject {
               let displayName = jsonValue[InfoKeys.appDisplayName.rawValue],
               let shortcutString = jsonValue[InfoKeys.shortcut.rawValue],
               let shortcut = MASShortcut(from: shortcutString) else {
+            if #available(macOS 11.0, *) {
+                Logger.app.error("invalid app: \(jsonValue)")
+            }
             return nil
         }
 
@@ -159,6 +172,9 @@ extension MASShortcut {
         kVK_ANSI_KeypadPlus: "numpad_add",
         kVK_ANSI_KeypadDivide: "numpad_divide",
         kVK_ANSI_KeypadMinus: "numpad_subtract",
+        kVK_ANSI_KeypadClear: "numpad_clear",
+        kVK_ANSI_KeypadEnter: "numpad_enter",
+        kVK_ANSI_KeypadEquals: "numpad_equals",
         kVK_ANSI_Keypad0: "numpad0",
         kVK_ANSI_Keypad1: "numpad1",
         kVK_ANSI_Keypad2: "numpad2",
@@ -230,13 +246,13 @@ extension MASShortcut {
         NSEvent.ModifierFlags.command: "cmd"
     ]
 
-    static func inversedModifierMap() -> [String: NSEvent.ModifierFlags] {
+    static let inversedModifierMap: [String: NSEvent.ModifierFlags] = {
         var inversedMap = [String: NSEvent.ModifierFlags]()
         for (key, value) in MASShortcut.modifierMap {
             inversedMap[value] = key
         }
         return inversedMap
-    }
+    }()
 
     convenience init?(from string: String) {
         let components = string.split(separator: "+")
@@ -245,7 +261,7 @@ extension MASShortcut {
         var modifiers = NSEvent.ModifierFlags(rawValue: 0)
         var keyCode = 0
         for key in components {
-            if let modifier = MASShortcut.inversedModifierMap()[String(key)] {
+            if let modifier = MASShortcut.inversedModifierMap[String(key)] {
                 guard !modifiers.contains(modifier) else { return nil }
                 modifiers.insert(modifier)
             } else if let code = MASShortcut.inversedKeycodeMap()[String(key)] {
@@ -262,7 +278,20 @@ extension MASShortcut {
     }
 
     func toString() -> String {
-        guard let key = MASShortcut.keycodeMap[keyCode] else { return "" }
+        if #available(macOS 11.0, *) {
+            let msg = "keyCode: \(self.keyCode), "
+                        + "keyValue: \(MASShortcut.keycodeMap[self.keyCode] ?? ""), "
+                        + "modifiers: \(self.modifierFlags.rawValue)"
+            Logger.shortcut.info("\(msg)")
+        }
+
+        guard let key = MASShortcut.keycodeMap[keyCode] else {
+            if #available(macOS 11.0, *) {
+                let msg = "unsupported keyCode: \(self.keyCode), modifiers: \(self.modifierFlags.rawValue)"
+                Logger.shortcut.warning("\(msg)")
+            }
+            return ""
+        }
 
         var components = [String]()
         for modifier in MASShortcut.supportedModifiers where modifierFlags.contains(modifier) {
