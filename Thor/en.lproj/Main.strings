@@ -47,9 +47,6 @@
 /* Class = "NSMenuItem"; title = "Import Shortcuts"; ObjectID = "QQw-cp-cqP"; */
 "QQw-cp-cqP.title" = "Import Shortcuts";
 
-/* Class = "NSTextFieldCell"; title = "⇧⌃⌥ ⌘ + T to show/hide"; ObjectID = "Qub-BS-LhT"; */
-"Qub-BS-LhT.title" = "⇧⌃⌥ ⌘ + T to show/hide";
-
 /* Class = "NSTextFieldCell"; title = "0.1s"; ObjectID = "RmK-si-Zsx"; */
 "RmK-si-Zsx.title" = "0.1s";
 
@@ -73,6 +70,9 @@
 
 /* Class = "NSButtonCell"; title = "Enable shortcut"; ObjectID = "fya-Hu-agS"; */
 "fya-Hu-agS.title" = "Enable shortcut";
+
+/* Class = "NSButtonCell"; title = "Enable ⇧⌃⌥ ⌘ + T to show/hide Thor in the menu bar"; ObjectID = "kOR-Gg-12E"; */
+"kOR-Gg-12E.title" = "Enable ⇧⌃⌥ ⌘ + T to show/hide Thor in the menu bar";
 
 /* Class = "NSMenuItem"; title = "⌥ Option Key"; ObjectID = "ltM-LE-FOy"; */
 "ltM-LE-FOy.title" = "⌥ Option Key";

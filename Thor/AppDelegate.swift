@@ -32,7 +32,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DefaultsKeys.DeactivateKey.key: 0,
             DefaultsKeys.DelayInterval.key: 0.3,
             DefaultsKeys.EnableShortcut.key: true,
-            DefaultsKeys.enableMenuBarIcon.key: true
+            DefaultsKeys.enableMenuBarIcon.key: true,
+            DefaultsKeys.enableMenuBarIconShowHideKey.key: true
             ])
 
         NSApp.setActivationPolicy(.accessory)
@@ -43,8 +44,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             sharedAppDelegate?.statusItemController.hideInMenuBar()
         }
 
+        if defaults[.enableMenuBarIconShowHideKey] {
+            registerMenubarIconShortcut()
+        }
+
         shortcutEnableMonitor()
-        registerMenubarIconShortcut()
 
         if defaults.object(forKey: DefaultsKeys.LaunchAtLoginKey.key) != nil {
             defaults.removeObject(forKey: DefaultsKeys.LaunchAtLoginKey.key)
@@ -159,6 +163,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             NotificationCenter.default.post(name: .updateMenuBarToggleState, object: nil)
         })
+    }
+
+    func unregisterMenubarIconShortcut() {
+        let modifierFlags = NSEvent.ModifierFlags.shift.rawValue |
+            NSEvent.ModifierFlags.control.rawValue |
+            NSEvent.ModifierFlags.option.rawValue |
+            NSEvent.ModifierFlags.command.rawValue
+        let shortcut = MASShortcut(keyCode: kVK_ANSI_T, modifierFlags: NSEvent.ModifierFlags(rawValue: modifierFlags))
+        MASShortcutMonitor.shared().unregisterShortcut(shortcut)
     }
 
 }
