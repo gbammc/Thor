@@ -107,5 +107,5 @@
 /* Class = "NSMenuItem"; title = "Show Thor in the menu bar"; ObjectID = "LbD-19-0Ga"; */
 "LbD-19-0Ga.title" = "在状态栏显示 Thor 图标";
 
-/* Class = "NSTextFieldCell"; title = "⇧⌃⌥ ⌘ + T to show/hide"; ObjectID = "Qub-BS-LhT"; */
-"Qub-BS-LhT.title" = "⇧⌃⌥ ⌘ + T 显示/隐藏";
+/* Class = "NSButtonCell"; title = "Enable ⇧⌃⌥ ⌘ + T to show/hide Thor in the menu bar"; ObjectID = "kOR-Gg-12E"; */
+"kOR-Gg-12E.title" = "启用 ⇧⌃⌥ ⌘ + T 在状态栏切换显示/隐藏 Thor 图标";
