@@ -3,6 +3,19 @@
     <channel>
         <title>Thor</title>
         <item>
+            <title>1.5.16</title>
+            <pubDate>Sat, 21 Sep 2024 09:43:22 +0800</pubDate>
+            <sparkle:version>35</sparkle:version>
+            <sparkle:shortVersionString>1.5.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.16.zip" length="6347730" type="application/octet-stream" sparkle:edSignature="4verPr9ZLP+5kh7K/pAMDIm+Yf12qrYLHdbnV3CxZLacv0pkevjNz+sdKQk6ptxJC9AffootOI/eXd2Gp8VmCA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor35-33.delta" sparkle:deltaFrom="33" length="195382" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="439152" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="j7pibFxYxrzguik4TGcmIDrejHnzgAqZ9rpT1zxf4hnAMrWW3UvxVNkqTSrpDajCx+oPp064dQ8Jdm79m9u2CA=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor35-29.delta" sparkle:deltaFrom="29" length="3950838" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="1802800" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="BTzXOhKAgivZZqfwa+HJhPb1gsdh4wWJ58v5VriKQtsFLOd+R3g3ZB39wmCyMgY2cLOvUazFOJdSJOki/pagAw=="/>
+                <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor35-28.delta" sparkle:deltaFrom="28" length="3964818" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="1802800" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="bZwzR5AIUklAxUhJ/yRHlzBsYnAfTo3r+oxoaCLl0mBeA3xLg7eoKQSw2hL7jcvvjjNnufENClfjIrahk2BiAg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.5.14</title>
             <pubDate>Sat, 16 Mar 2024 17:17:33 +0800</pubDate>
             <sparkle:version>33</sparkle:version>

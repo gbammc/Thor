@@ -23,7 +23,7 @@ sleep 3
 
 VERSION=`mdls -name kMDItemVersion ./arm64/"$APP_NAME".app | grep -o '\d*\.\d*\.\d*'`
 
-zip -r ./arm64/"$APP_NAME".zip ./arm64/"$APP_NAME".app
+cd ./arm64 && zip -r "$APP_NAME".zip "$APP_NAME".app && cd ..
 
 mv ./arm64/"$APP_NAME".zip Releases/"$APP_NAME"_"$VERSION".zip
 
