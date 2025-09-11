@@ -47,3 +47,6 @@ Pods/
 Podfile.lock
 
 dsa_priv.pem
+
+.DS_Store
+

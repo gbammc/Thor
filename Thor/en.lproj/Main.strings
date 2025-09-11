@@ -97,3 +97,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Deactivate Key:"; ObjectID = "uWp-Ys-dhU"; */
 "uWp-Ys-dhU.title" = "Deactivate Key:";
+
+/* Class = "NSButtonCell"; title = "Cycle through windows"; ObjectID = "l3c-7P-tRs"; */
+"l3c-7P-tRs.title" = "Cycle through windows";
+
+/* Class = "NSTextFieldCell"; title = "Toggles between app windows on subsequent presses"; ObjectID = "bGx-5P-NzM"; */
+"bGx-5P-NzM.title" = "When enabled, toggles between app windows on subsequent presses instead of hiding the app. Requires Accessibility permissions.";

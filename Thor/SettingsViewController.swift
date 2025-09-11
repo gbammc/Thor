@@ -8,6 +8,7 @@
 
 import Cocoa
 import LaunchAtLogin
+import ApplicationServices
 
 class SettingsViewController: NSViewController {
 
@@ -18,6 +19,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var btnEnableDeactivateKey: NSButton!
     @IBOutlet weak var btnShortcutDeactivateKey: NSPopUpButton!
     @IBOutlet weak var slider: NSSlider!
+    @IBOutlet weak var btnCycleWindowsEnabled: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,9 @@ class SettingsViewController: NSViewController {
 
         btnEnableMenuBarIcon.state = defaults[.enableMenuBarIcon] ? .on : .off
         btnEnableMenuBarIconShowHideKey.state = defaults[.enableMenuBarIconShowHideKey] ? .on : .off
+
+        // Set cycle windows checkbox state
+        btnCycleWindowsEnabled.state = defaults[.cycleWindowsEnabled] ? .on : .off
 
         let isEnableDeactivateKey = defaults[.EnableDeactivateKey]
 
@@ -112,4 +117,12 @@ class SettingsViewController: NSViewController {
         btnEnableMenuBarIcon.state = defaults[.enableMenuBarIcon] ? .on : .off
     }
 
+    @IBAction func toggleCycleWindowsEnabled(_ sender: Any) {
+        let enable = btnCycleWindowsEnabled.state == .on
+        defaults[.cycleWindowsEnabled] = enable
+
+        if enable {
+            AccessibilityUtils.checkAccessibilityPermissions()
+        }
+    }
 }
