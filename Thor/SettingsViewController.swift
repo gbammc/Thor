@@ -13,6 +13,7 @@ class SettingsViewController: NSViewController {
 
     @IBOutlet weak var btnLaunchAtLogin: NSButton!
     @IBOutlet weak var btnEnableShortcut: NSButton!
+    @IBOutlet weak var btnBackgroundWhenActive: NSButton!
     @IBOutlet weak var btnEnableMenuBarIcon: NSButton!
     @IBOutlet weak var btnEnableMenuBarIconShowHideKey: NSButton!
     @IBOutlet weak var btnEnableDeactivateKey: NSButton!
@@ -27,6 +28,8 @@ class SettingsViewController: NSViewController {
         btnLaunchAtLogin.state = LaunchAtLogin.isEnabled ? .on : .off
 
         btnEnableShortcut.state = defaults[.EnableShortcut] ? .on : .off
+
+        btnBackgroundWhenActive.state = defaults[.backgroundWhenActive] ? .on : .off
 
         btnEnableMenuBarIcon.state = defaults[.enableMenuBarIcon] ? .on : .off
         btnEnableMenuBarIconShowHideKey.state = defaults[.enableMenuBarIconShowHideKey] ? .on : .off
@@ -61,6 +64,11 @@ class SettingsViewController: NSViewController {
         } else {
             ShortcutMonitor.unregister()
         }
+    }
+
+    @IBAction func toggleBackgroundWhenActive(_ sender: Any) {
+        let enable = btnBackgroundWhenActive.state == .on
+        defaults[.backgroundWhenActive] = enable
     }
 
     @IBAction func toggleEnableMenuBarIcon(_ sender: Any) {
