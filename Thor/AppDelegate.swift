@@ -71,6 +71,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        // Thor runs as an accessory app, so relaunching it doesn't reliably activate it.
+        // Without this there's no way back in when the menu bar icon is hidden.
+        showMainWindow()
+        return true
+    }
+
     func showMainWindow() {
         if let rootViewController = mainWindowController {
             rootViewController.showWindow(nil)
