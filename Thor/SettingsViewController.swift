@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import LaunchAtLogin
 
 class SettingsViewController: NSViewController {
 
@@ -48,7 +47,8 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func toggleLaunchAtLogin(_ sender: Any) {
-        LaunchAtLogin.isEnabled = !LaunchAtLogin.isEnabled
+        LaunchAtLogin.setEnabled(btnLaunchAtLogin.state == .on)
+        btnLaunchAtLogin.state = LaunchAtLogin.isEnabled ? .on : .off
     }
 
     @IBAction func toggleEnableShortcut(_ sender: Any) {

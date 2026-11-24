@@ -17,6 +17,7 @@ extension DefaultsKeys {
     static let DeactivateKey  = DefaultsKey<Int>("DeactivateKey")
     static let EnableDeactivateKey = DefaultsKey<Bool>("EnableDeactivateKey")
     static let LaunchAtLoginKey = DefaultsKey<Bool>("LaunchAtLoginKey")
+    static let LaunchAtLoginMigrationCompleted = DefaultsKey<Bool>("LaunchAtLoginMigrationCompleted")
     static let enableMenuBarIcon = DefaultsKey<Bool>("enableMenuBarIcon")
     static let enableMenuBarIconShowHideKey = DefaultsKey<Bool>("enableMenuBarIconShowHideKey")
 

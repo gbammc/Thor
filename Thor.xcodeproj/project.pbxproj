@@ -14,6 +14,7 @@
 		B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B04B771CC74DC7005C9BEF /* MainWindowController.swift */; };
 		B2D65A071CDAF2D500E39A65 /* NSApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */; };
 		B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0431CC48CD900FB687F /* AppDelegate.swift */; };
+		B26618472DC5BD0F00C0EB32 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26618462DC5BD0F00C0EB32 /* LaunchAtLogin.swift */; };
 		B2E1B0481CC48CD900FB687F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2E1B0471CC48CD900FB687F /* Assets.xcassets */; };
 		B2E1B04B1CC48CD900FB687F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E1B0491CC48CD900FB687F /* Main.storyboard */; };
 		B2E1B0531CC4A81D00FB687F /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E1B0521CC4A81D00FB687F /* AppModel.swift */; };
@@ -52,6 +53,7 @@
 		B2D65A061CDAF2D500E39A65 /* NSApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extension.swift"; sourceTree = "<group>"; };
 		B2E1B0401CC48CD900FB687F /* Thor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E1B0431CC48CD900FB687F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B26618462DC5BD0F00C0EB32 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		B2E1B0471CC48CD900FB687F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2E1B04A1CC48CD900FB687F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2E1B04C1CC48CD900FB687F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E1B0431CC48CD900FB687F /* AppDelegate.swift */,
+				B26618462DC5BD0F00C0EB32 /* LaunchAtLogin.swift */,
 				B2E1B05A1CC4AE2600FB687F /* Constant.swift */,
 				638E33F21CFEB2E200069198 /* View */,
 				B2D65A0A1CDB2CAF00E39A65 /* Controller */,
@@ -375,6 +378,7 @@
 				B2E1B05D1CC4AE4500FB687F /* DefaultsKeys+Extension.swift in Sources */,
 				B2B04B781CC74DC7005C9BEF /* MainWindowController.swift in Sources */,
 				B2E1B0441CC48CD900FB687F /* AppDelegate.swift in Sources */,
+				B26618472DC5BD0F00C0EB32 /* LaunchAtLogin.swift in Sources */,
 				B2E1B0571CC4A85700FB687F /* AppsManager.swift in Sources */,
 				E166F32B1CE4B7E300F7C7B8 /* StatusItemController.swift in Sources */,
 				E166F3401CE781EC00F7C7B8 /* ShortcutMonitor.swift in Sources */,

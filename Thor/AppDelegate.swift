@@ -8,7 +8,6 @@
 
 import Cocoa
 import MASShortcut
-import LaunchAtLogin
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -50,10 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         shortcutEnableMonitor()
 
-        if defaults.object(forKey: DefaultsKeys.LaunchAtLoginKey.key) != nil {
-            defaults.removeObject(forKey: DefaultsKeys.LaunchAtLoginKey.key)
-            LaunchAtLogin.isEnabled = defaults[.LaunchAtLoginKey]
-        }
+        LaunchAtLogin.migrateIfNeeded()
 
         MASShortcutValidator.shared().allowAnyShortcutWithOptionModifier = true
         ShortcutMonitor.register()
