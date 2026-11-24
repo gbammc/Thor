@@ -3,6 +3,18 @@
     <channel>
         <title>Thor</title>
         <item>
+            <title>1.5.18</title>
+            <description><![CDATA[
+                <p>Improved shortcut recovery after restart, application location, and backup import.</p>
+                <p>Requires macOS 15 or later.</p>
+            ]]></description>
+            <pubDate>Tue, 24 Nov 2026 08:31:23 +0000</pubDate>
+            <sparkle:version>37</sparkle:version>
+            <sparkle:shortVersionString>1.5.18</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/gbammc/Thor/raw/master/Releases/Thor_1.5.18.zip" length="1936888" type="application/octet-stream" sparkle:edSignature="Sk216ylrcjojdJddy3duFw3KFI7FnoYPkMkEcJSkh3GiMbmFjsNuNJdH+dILQw+w9ZL+F72I3IPbY6xHN1M9AA=="/>
+        </item>
+        <item>
             <title>1.5.16</title>
             <pubDate>Sat, 21 Sep 2024 09:43:22 +0800</pubDate>
             <sparkle:version>35</sparkle:version>
