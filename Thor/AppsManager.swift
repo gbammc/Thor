@@ -12,123 +12,161 @@ import OSLog
 
 class AppsManager: NSObject {
 
-    // MARK: Properties
-
     static let manager = AppsManager()
 
-    @objc dynamic var selectedApps = [AppModel]()
+    @objc dynamic private(set) var selectedApps = [AppModel]()
 
-    private var closure: (([AppModel]) -> Void)!
+    private let configurationURL: URL
+    private var loadError: Error?
 
-    private var selectedAppsFilePath: String {
-        let dir = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first
-        let key = kCFBundleNameKey as String
-
-        guard let appSupportDir = dir, let appName = Bundle.main.infoDictionary![key] as? String else {
-            return ""
-        }
-
-        var appDir = appSupportDir.appendingPathComponent(appName)
-        if !FileManager.default.fileExists(atPath: appDir) {
-            // Backward compatibility
-            let backwardAppDir = appSupportDir.appendingPathComponent("Thor")
-
-            if !FileManager.default.fileExists(atPath: backwardAppDir) {
-                _ = try? FileManager.default.createDirectory(atPath: appDir, withIntermediateDirectories: true)
-            } else {
-                appDir = backwardAppDir
-            }
-        }
-
-        return appDir.appendingPathComponent("apps.json")
+    private static var defaultConfigurationURL: URL {
+        let appSupport = URL.applicationSupportDirectory
+        let appName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String ?? "Thor"
+        let currentDirectory = appSupport.appendingPathComponent(appName, isDirectory: true)
+        let legacyDirectory = appSupport.appendingPathComponent("Thor", isDirectory: true)
+        let files = FileManager.default
+        let hasLegacyDirectory = files.fileExists(atPath: legacyDirectory.path)
+        let useLegacyDirectory = hasLegacyDirectory && !files.fileExists(atPath: currentDirectory.path)
+        let directory = useLegacyDirectory ? legacyDirectory : currentDirectory
+        return directory.appendingPathComponent("apps.json")
     }
 
-    // MARK: Life cycle
+    override convenience init() {
+        self.init(configurationURL: Self.defaultConfigurationURL)
+    }
 
-    override init() {
+    init(configurationURL: URL) {
+        self.configurationURL = configurationURL
         super.init()
-
-        loadApps(from: selectedAppsFilePath)
-    }
-
-    // MARK: Actions
-
-    func save(_ app: AppModel?, shortcut: MASShortcut?) {
-        guard let app = app else { return }
-
-        ShortcutMonitor.unregister()
-
-        if let existedApp = selectedApps.filter({ $0 == app }).first {
-            existedApp.shortcut = shortcut
-        } else {
-            app.shortcut = shortcut
-            selectedApps.append(app)
-        }
-
-        if saveData(to: selectedAppsFilePath) {
-            ShortcutMonitor.register()
-        }
-    }
-
-    func delete(_ index: Int) {
-        guard 0 <= index && index < selectedApps.count else { return }
-
-        ShortcutMonitor.unregister()
-
-        selectedApps.remove(at: index)
-
-        if saveData(to: selectedAppsFilePath) {
-            ShortcutMonitor.register()
-        }
-    }
-
-    func loadApps(from path: String) {
         do {
-            var data = try Data(contentsOf: URL(fileURLWithPath: path))
-            if let apps = try JSONSerialization.jsonObject(with: data) as? [[String: String]] {
-                selectedApps = apps.compactMap { AppModel(jsonValue: $0) }
-            } else {
-                data = try Data(contentsOf: URL(fileURLWithPath: path).deletingPathExtension())
-                if let apps = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSDictionary.self,
-                                                                                 NSArray.self,
-                                                                                 NSString.self,
-                                                                                 MASShortcut.self],
-                                                                     from: data) as? [NSDictionary] {
-                    // Backward compatibility
-                    selectedApps = apps.compactMap { AppModel(dict: $0) }
-                }
-            }
-            _ = saveData(to: selectedAppsFilePath)
+            selectedApps = try Self.readLocalApps(from: configurationURL)
         } catch {
-            if #available(macOS 11.0, *) {
-                Logger.app.error("can't load with err: \(error.localizedDescription), path: \(path)")
+            loadError = error
+            Logger.app.error("Could not read shortcut configuration: \(error.localizedDescription)")
+        }
+    }
+
+    func add(_ app: AppModel) throws -> Int {
+        if let path = app.appBundleURL?.standardizedFileURL.path,
+           let index = selectedApps.firstIndex(where: { $0.appBundleURL?.standardizedFileURL.path == path }) {
+            try relocate(selectedApps[index], to: app)
+            return index
+        }
+        try commit(selectedApps + [app])
+        return selectedApps.count - 1
+    }
+
+    func setShortcut(_ shortcut: MASShortcut?, for app: AppModel) throws {
+        try replace(app) { $0.settingShortcut(shortcut) }
+    }
+
+    func relocate(_ app: AppModel, to replacement: AppModel) throws {
+        try replace(app) { $0.relocating(to: replacement) }
+    }
+
+    func refreshBookmark(_ data: Data, for app: AppModel, at url: URL) throws {
+        // A queued hotkey can still refer to the previous target after an edit.
+        guard let index = selectedApps.firstIndex(where: { $0 === app }) else { return }
+        var apps = selectedApps
+        apps[index] = app.refreshingBookmark(data, at: url)
+        try commit(apps)
+    }
+
+    private func replace(_ app: AppModel, with replacement: (AppModel) -> AppModel) throws {
+        guard let index = selectedApps.firstIndex(where: { $0.id == app.id }) else { return }
+        var apps = selectedApps
+        apps[index] = replacement(apps[index])
+        try commit(apps)
+    }
+
+    func delete(_ index: Int) throws {
+        guard selectedApps.indices.contains(index) else { return }
+        var apps = selectedApps
+        apps.remove(at: index)
+        try commit(apps)
+    }
+
+    func move(with indexes: [Int], to row: Int) throws {
+        guard !indexes.isEmpty, indexes.allSatisfy(selectedApps.indices.contains),
+              (0...selectedApps.count).contains(row) else { return }
+        let movedRows = IndexSet(indexes)
+        var apps = selectedApps.enumerated().filter { !movedRows.contains($0.offset) }.map(\.element)
+        let target = row - movedRows.count(in: 0..<row)
+        apps.insert(contentsOf: movedRows.map { selectedApps[$0] }, at: target)
+        try commit(apps, updateShortcuts: false)
+    }
+
+    func importShortcuts(from url: URL) throws {
+        let apps = try Self.decodeJSON(Data(contentsOf: url)).map { $0.restoringBookmark(from: selectedApps) }
+        if loadError != nil {
+            // Preserve the original file even when a valid import replaces an unreadable configuration.
+            let recoveryURL = configurationURL.deletingLastPathComponent()
+                .appendingPathComponent("apps-before-import-\(UUID().uuidString).json")
+            do {
+                try FileManager.default.copyItem(at: configurationURL, to: recoveryURL)
+            } catch let error as CocoaError where error.code == .fileNoSuchFile || error.code == .fileReadNoSuchFile {
+                // A legacy archive retains its own path when the JSON file is created.
             }
         }
+        try commit(apps, replacingUnreadableConfiguration: true)
     }
 
-    func move(with indexes: [Int], to row: Int) {
-        let apps = indexes.map { selectedApps[$0] }
-        let target = row - indexes.filter { $0 < row }.count
-        for (idx, index) in indexes.enumerated() {
-            selectedApps.remove(at: index - idx)
-        }
-        selectedApps.insert(contentsOf: apps, at: target)
-
-        _ = saveData(to: selectedAppsFilePath)
+    func exportShortcuts(to url: URL) throws {
+        if let loadError { throw loadError }
+        try Self.write(selectedApps, to: url)
     }
 
-    func saveData(to path: String) -> Bool {
+    private func commit(_ apps: [AppModel], updateShortcuts: Bool = true,
+                        replacingUnreadableConfiguration: Bool = false) throws {
+        if let loadError, !replacingUnreadableConfiguration { throw loadError }
+        try FileManager.default.createDirectory(at: configurationURL.deletingLastPathComponent(),
+                                                withIntermediateDirectories: true)
+        try Self.write(apps, to: configurationURL)
+        loadError = nil
+        let shouldRegister = updateShortcuts && defaults[.EnableShortcut]
+        if shouldRegister { ShortcutMonitor.unregister(apps: selectedApps) }
+        selectedApps = apps
+        if shouldRegister { ShortcutMonitor.register(apps: selectedApps) }
+    }
+
+    private static func readLocalApps(from url: URL) throws -> [AppModel] {
         do {
-            let apps = selectedApps.map { $0.encodeToJSONValue() }
-            let encoded = try JSONSerialization.data(withJSONObject: apps, options: [.prettyPrinted, .sortedKeys])
-            try encoded.write(to: URL(fileURLWithPath: path), options: [.atomic])
-            return true
-        } catch {
-            if #available(macOS 11.0, *) {
-                Logger.app.error("can't save with err: \(error.localizedDescription), path: \(path)")
+            return try decodeJSON(Data(contentsOf: url))
+        } catch let error as CocoaError where error.code == .fileReadNoSuchFile {
+            let data: Data
+            do {
+                data = try Data(contentsOf: url.deletingPathExtension())
+            } catch let error as CocoaError where error.code == .fileReadNoSuchFile {
+                return []
             }
-            return false
+            let types: [AnyClass] = [
+                NSDictionary.self, NSArray.self, NSString.self, NSData.self, NSNull.self, MASShortcut.self
+            ]
+            let decoded = try NSKeyedUnarchiver.unarchivedObject(ofClasses: types, from: data)
+            guard let apps = decoded as? [NSDictionary] else {
+                throw CocoaError(.fileReadCorruptFile)
+            }
+            return try apps.map { record in
+                guard let app = AppModel(dict: record) else { throw CocoaError(.fileReadCorruptFile) }
+                return app
+            }
         }
+    }
+
+    private static func decodeJSON(_ data: Data) throws -> [AppModel] {
+        let records = try JSONDecoder().decode([[String: String]].self, from: data)
+        return try records.map { record in
+            guard let app = AppModel(jsonValue: record) else {
+                throw CocoaError(.fileReadCorruptFile)
+            }
+            return app
+        }
+    }
+
+    private static func write(_ apps: [AppModel], to url: URL) throws {
+        let records = apps.map { $0.encodeToJSONValue() }
+        let data = try JSONSerialization.data(withJSONObject: records, options: [.prettyPrinted, .sortedKeys])
+        try data.write(to: url, options: .atomic)
     }
 
 }

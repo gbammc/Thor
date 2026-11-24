@@ -10,7 +10,7 @@ import Cocoa
 import MASShortcut
 import UniformTypeIdentifiers
 
-class ShortcutListViewController: NSViewController {
+class ShortcutListViewController: NSViewController, NSMenuItemValidation {
 
     private let dragDropType = NSPasteboard.PasteboardType(rawValue: "thor.drag-drop-app")
 
@@ -31,30 +31,56 @@ class ShortcutListViewController: NSViewController {
 
         tableView.registerForDraggedTypes([dragDropType])
 
+        let menu = NSMenu()
+        let locateItem = menu.addItem(withTitle: "Locate Application…".localized(),
+                                      action: #selector(locateApplication(_:)), keyEquivalent: "")
+        locateItem.target = self
+        tableView.menu = menu
+
         observation = AppsManager.manager.observe(\.selectedApps, changeHandler: { [unowned self] (_, _) in
             self.tableView.reloadData()
         })
     }
 
     @IBAction func add(_ sender: AnyObject) {
+        chooseApplication { app in
+            let row = try AppsManager.manager.add(app)
+            self.tableView.scrollRowToVisible(row)
+        }
+    }
+
+    @objc private func locateApplication(_ sender: NSMenuItem) {
+        let row = tableView.clickedRow >= 0 ? tableView.clickedRow : tableView.selectedRow
+        guard apps.indices.contains(row) else { return }
+        let app = apps[row]
+        chooseApplication { replacement in
+            try AppsManager.manager.relocate(app, to: replacement)
+        }
+    }
+
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        tableView.clickedRow >= 0 || tableView.selectedRow >= 0
+    }
+
+    private func chooseApplication(_ action: @escaping (AppModel) throws -> Void) {
+        guard let window = view.window else { return }
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
-        openPanel.canChooseDirectories = true
+        openPanel.canChooseDirectories = false
         openPanel.canChooseFiles = true
-        openPanel.allowedContentTypes = [UTType.application, UTType.applicationBundle]
+        openPanel.allowedContentTypes = [.applicationBundle]
         if let appDir = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .localDomainMask, true).first {
             openPanel.directoryURL = URL(fileURLWithPath: appDir)
         }
-        openPanel.beginSheetModal(for: view.window!, completionHandler: { (result) in
-            if result == NSApplication.ModalResponse.OK, let metaDataItem = NSMetadataItem(url: openPanel.urls.first!) {
-                let app = AppModel(item: metaDataItem)
-
-                AppsManager.manager.save(app, shortcut: nil)
-
-                self.tableView.reloadData()
-                self.tableView.scrollRowToVisible(self.apps.count - 1)
+        openPanel.beginSheetModal(for: window) { result in
+            guard result == .OK, let url = openPanel.url else { return }
+            do {
+                guard let app = AppModel(selectedURL: url) else { throw CocoaError(.fileReadCorruptFile) }
+                try action(app)
+            } catch {
+                NSApp.presentError(error)
             }
-        })
+        }
     }
 
     @IBAction func remove(_ sender: AnyObject) {
@@ -67,9 +93,11 @@ class ShortcutListViewController: NSViewController {
         alert.alertStyle = .warning
 
         if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
-            AppsManager.manager.delete(tableView.selectedRow)
-
-            tableView.reloadData()
+            do {
+                try AppsManager.manager.delete(tableView.selectedRow)
+            } catch {
+                presentError(error)
+            }
         }
     }
 
@@ -91,7 +119,12 @@ extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate
         let app = apps[row]
 
         cell?.configure(app.appDisplayName, icon: app.icon, shortcut: app.shortcut) { (shortcut) in
-            AppsManager.manager.save(app, shortcut: shortcut)
+            do {
+                try AppsManager.manager.setShortcut(shortcut, for: app)
+            } catch {
+                tableView.reloadData()
+                self.presentError(error)
+            }
         }
 
         return cell
@@ -120,27 +153,15 @@ extension ShortcutListViewController: NSTableViewDataSource, NSTableViewDelegate
 
         guard let items = info.draggingPasteboard.pasteboardItems else { return false }
 
-        let indexes = items.compactMap { Int($0.string(forType: dragDropType)!) }
-        if !indexes.isEmpty {
-            AppsManager.manager.move(with: indexes, to: row)
-
-            var oldIndexOffset = 0
-            var newIndexOffset = 0
-
-            tableView.beginUpdates()
-            for oldIndex in indexes {
-                if oldIndex < row {
-                    tableView.moveRow(at: oldIndex + oldIndexOffset, to: row - 1)
-                    oldIndexOffset -= 1
-                } else {
-                    tableView.moveRow(at: oldIndex, to: row + newIndexOffset)
-                    newIndexOffset += 1
-                }
-            }
-            tableView.endUpdates()
+        let indexes = items.compactMap { $0.string(forType: dragDropType).flatMap(Int.init) }
+        guard !indexes.isEmpty else { return false }
+        do {
+            try AppsManager.manager.move(with: indexes, to: row)
+            return true
+        } catch {
+            presentError(error)
+            return false
         }
-
-        return true
     }
 
 }

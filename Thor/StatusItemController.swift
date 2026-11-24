@@ -69,7 +69,11 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
         guard result == NSApplication.ModalResponse.OK, let url = savePanel.url else { return }
 
-        _ = AppsManager.manager.saveData(to: url.path)
+        do {
+            try AppsManager.manager.exportShortcuts(to: url)
+        } catch {
+            NSApp.presentError(error)
+        }
     }
 
     @IBAction func importShortcuts(_ sender: Any) {
@@ -82,7 +86,11 @@ class StatusItemController: NSObject, NSMenuDelegate {
 
         guard result == NSApplication.ModalResponse.OK, let url = openPanel.url else { return }
 
-        AppsManager.manager.loadApps(from: url.path)
+        do {
+            try AppsManager.manager.importShortcuts(from: url)
+        } catch {
+            NSApp.presentError(error)
+        }
     }
 
     // MARK: Status bar

@@ -19,27 +19,38 @@ extension Logger {
 
 class AppModel: NSObject {
 
-    let appBundleURL: URL
+    let id: UUID
     let appDisplayName: String
-    var shortcut: MASShortcut?
+    let appBundleIdentifier: String
+    let appBundleURL: URL?
+    let appIconData: Data?
+    let bookmark: Data?
+    let shortcut: MASShortcut?
+
+    private let values: [String: String]
 
     private enum InfoKeys: String {
-        case appBundleURL, appDisplayName, shortcut, bookmark
+        case appBundleURL, appBundleIdentifier, appDisplayName, shortcut, appIconData, bookmark
+        case shortcutKeyCode, shortcutModifierFlags
     }
 
     var icon: NSImage? {
-        guard let bundle = Bundle(url: appBundleURL) else {
-            return nil
-        }
-
         var iconImage: NSImage?
 
-        if let iconFileName = (bundle.infoDictionary?["CFBundleIconFile"]) as? String,
-           let iconFilePath = bundle.pathForImageResource(iconFileName) {
-            iconImage = NSImage(contentsOfFile: iconFilePath)
-        } else if let iconName = (bundle.infoDictionary?["CFBundleIconName"]) as? String,
-                  let image = bundle.image(forResource: iconName) {
-            iconImage = image
+        if let appIconData {
+            iconImage = NSImage(data: appIconData)
+        } else {
+            guard let appBundleURL, let bundle = Bundle(url: appBundleURL) else {
+                return nil
+            }
+
+            if let iconFileName = (bundle.infoDictionary?["CFBundleIconFile"]) as? String,
+               let iconFilePath = bundle.pathForImageResource(iconFileName) {
+                iconImage = NSImage(contentsOfFile: iconFilePath)
+            } else if let iconName = (bundle.infoDictionary?["CFBundleIconName"]) as? String,
+                      let image = bundle.image(forResource: iconName) {
+                iconImage = image
+            }
         }
 
         iconImage?.size = NSSize(width: 36, height: 36)
@@ -47,71 +58,149 @@ class AppModel: NSObject {
         return iconImage
     }
 
-    init?(item: NSMetadataItem) {
-        guard let path = item.value(forAttribute: kMDItemPath as String) as? String,
-              let displayName = item.value(forAttribute: kMDItemDisplayName as String) as? String,
-              let appBundle = Bundle(path: path) else {
-            return nil
-        }
-
-        self.appBundleURL = appBundle.bundleURL
-        self.appDisplayName = displayName
+    static func resizeImage(image: NSImage, targetSize: NSSize) -> NSImage? {
+        let resizedImage = NSImage(size: targetSize)
+        resizedImage.lockFocus()
+        image.draw(in: NSRect(origin: .zero, size: targetSize))
+        resizedImage.unlockFocus()
+        return resizedImage
     }
 
-    init?(dict: NSDictionary) {
-        guard let appBundle = dict.object(forKey: InfoKeys.appBundleURL.rawValue) as? String,
-              let bundleURL = URL(string: appBundle), Bundle(url: bundleURL) != nil,
-              let displayName = dict.object(forKey: InfoKeys.appDisplayName.rawValue) as? String,
-              let shortcut = dict.object(forKey: InfoKeys.shortcut.rawValue) as? MASShortcut else {
-            if #available(macOS 11.0, *) {
-                Logger.app.error("invalid app: \(dict)")
+    static func appIconData(from bundle: Bundle) -> Data? {
+        if let iconFileName = (bundle.infoDictionary?["CFBundleIconFile"]) as? String,
+           let iconFilePath = bundle.pathForImageResource(iconFileName),
+           let originImage = NSImage(contentsOfFile: iconFilePath),
+           let resizedImage = resizeImage(image: originImage, targetSize: NSSize(width: 36, height: 36)) {
+            guard let tiffData = resizedImage.tiffRepresentation,
+                  let bitmapRep = NSBitmapImageRep(data: tiffData) else { return nil }
+            return bitmapRep.representation(using: .png, properties: [:])
+        } else if let iconName = (bundle.infoDictionary?["CFBundleIconName"]) as? String,
+                  let originImage = bundle.image(forResource: iconName),
+                  let resizedImage = resizeImage(image: originImage, targetSize: NSSize(width: 36, height: 36)) {
+            guard let tiffData = resizedImage.tiffRepresentation,
+                  let bitmapRep = NSBitmapImageRep(data: tiffData) else { return nil }
+            return bitmapRep.representation(using: .png, properties: [:])
+        }
+        return nil
+    }
+
+    convenience init?(selectedURL url: URL) {
+        guard let bundle = Bundle(url: url) else { return nil }
+        let displayName = NSMetadataItem(url: url)?.value(forAttribute: kMDItemDisplayName as String) as? String
+            ?? FileManager.default.displayName(atPath: url.path)
+        var values = [
+            InfoKeys.appBundleURL.rawValue: url.absoluteString,
+            InfoKeys.appBundleIdentifier.rawValue: bundle.bundleIdentifier ?? "",
+            InfoKeys.appDisplayName.rawValue: displayName,
+            InfoKeys.shortcut.rawValue: ""
+        ]
+        values[InfoKeys.appIconData.rawValue] = Self.appIconData(from: bundle)?.base64EncodedString()
+        do {
+            values[InfoKeys.bookmark.rawValue] = try Self.makeBookmark(for: url).base64EncodedString()
+        } catch {
+            Logger.app.warning("Could not save application bookmark: \(error.localizedDescription)")
+        }
+        self.init(values: values, displayName: displayName)
+    }
+
+    convenience init?(dict: NSDictionary) {
+        guard let displayName = dict[InfoKeys.appDisplayName.rawValue] as? String else { return nil }
+        let values = dict as? [String: Any] ?? [:]
+        var strings = values.compactMapValues { $0 as? String }
+        for key in [InfoKeys.appIconData, .bookmark] {
+            if let data = values[key.rawValue] as? Data {
+                strings[key.rawValue] = data.base64EncodedString()
             }
-            return nil
         }
-
-        self.appBundleURL = bundleURL
-        self.appDisplayName = displayName
-        self.shortcut = shortcut
+        if let shortcut = values[InfoKeys.shortcut.rawValue] as? MASShortcut {
+            Self.encode(shortcut, into: &strings)
+        }
+        self.init(values: strings, displayName: displayName)
     }
 
-    init?(jsonValue: [String: String]) {
-        guard let appBundle = jsonValue[InfoKeys.appBundleURL.rawValue],
-              let bundleURL = URL(string: appBundle), Bundle(url: bundleURL) != nil,
-              let displayName = jsonValue[InfoKeys.appDisplayName.rawValue],
-              let shortcutString = jsonValue[InfoKeys.shortcut.rawValue],
-              let shortcut = MASShortcut(from: shortcutString) else {
-            if #available(macOS 11.0, *) {
-                Logger.app.error("invalid app: \(jsonValue)")
-            }
-            return nil
-        }
-
-        self.appBundleURL = bundleURL
-        self.appDisplayName = displayName
-        self.shortcut = shortcut
+    convenience init?(jsonValue: [String: String]) {
+        guard let displayName = jsonValue[InfoKeys.appDisplayName.rawValue] else { return nil }
+        self.init(values: jsonValue, displayName: displayName)
     }
 
-    func encode() -> NSDictionary {
-        var dict = [String: Any]()
-        dict[InfoKeys.appBundleURL.rawValue] = appBundleURL.absoluteString
-        dict[InfoKeys.appDisplayName.rawValue] = appDisplayName
-        dict[InfoKeys.shortcut.rawValue] = shortcut ?? NSNull()
+    private init(values: [String: String], displayName: String, id: UUID = UUID()) {
+        self.id = id
+        self.values = values
+        appDisplayName = displayName
+        appBundleIdentifier = values[InfoKeys.appBundleIdentifier.rawValue] ?? ""
+        if let storedURL = values[InfoKeys.appBundleURL.rawValue],
+           let url = URL(string: storedURL), url.isFileURL {
+            appBundleURL = url
+        } else {
+            appBundleURL = nil
+        }
+        appIconData = values[InfoKeys.appIconData.rawValue].flatMap { Data(base64Encoded: $0) }
+        bookmark = values[InfoKeys.bookmark.rawValue].flatMap { Data(base64Encoded: $0) }
+        if let keyCode = values[InfoKeys.shortcutKeyCode.rawValue].flatMap(UInt16.init),
+           let modifierFlags = values[InfoKeys.shortcutModifierFlags.rawValue].flatMap(UInt.init) {
+            shortcut = MASShortcut(keyCode: Int(keyCode), modifierFlags: NSEvent.ModifierFlags(rawValue: modifierFlags))
+        } else {
+            shortcut = values[InfoKeys.shortcut.rawValue].flatMap { MASShortcut(from: $0) }
+        }
+    }
 
-        return dict as NSDictionary
+    func settingShortcut(_ shortcut: MASShortcut?) -> AppModel {
+        var updated = values
+        Self.encode(shortcut, into: &updated)
+        return AppModel(values: updated, displayName: appDisplayName, id: id)
+    }
+
+    func relocating(to app: AppModel) -> AppModel {
+        var updated = values
+        for key in [InfoKeys.appBundleURL, .appBundleIdentifier, .appDisplayName, .appIconData, .bookmark] {
+            updated[key.rawValue] = app.values[key.rawValue]
+        }
+        return AppModel(values: updated, displayName: app.appDisplayName, id: id)
+    }
+
+    func refreshingBookmark(_ data: Data, at url: URL) -> AppModel {
+        var updated = values
+        updated[InfoKeys.bookmark.rawValue] = data.base64EncodedString()
+        updated[InfoKeys.appBundleURL.rawValue] = url.absoluteString
+        return AppModel(values: updated, displayName: appDisplayName, id: id)
+    }
+
+    func restoringBookmark(from localApps: [AppModel]) -> AppModel {
+        if let bookmark, matchesImportedTarget(bookmark) { return self }
+
+        let path = appBundleURL?.standardizedFileURL.path
+        let identifier = appBundleIdentifier
+        let localBookmark = localApps.lazy.filter { app in
+            path != nil && app.appBundleIdentifier == identifier
+                && app.appBundleURL?.standardizedFileURL.path == path
+        }.compactMap(\.bookmark).first(where: matchesImportedTarget)
+        var updated = values
+        updated[InfoKeys.bookmark.rawValue] = localBookmark?.base64EncodedString()
+        return AppModel(values: updated, displayName: appDisplayName, id: id)
+    }
+
+    private func matchesImportedTarget(_ bookmark: Data) -> Bool {
+        guard let resolved = try? accessBookmarkedApp(bookmark) else { return false }
+        // A bookmark may follow a moved app, but a still-available saved path identifies a specific copy.
+        guard let targetURL = appBundleURL, matchesApp(at: targetURL) else { return true }
+        return Self.isSameApp(at: resolved.url, as: targetURL)
+    }
+
+    static func makeBookmark(for url: URL) throws -> Data {
+        try url.bookmarkData(options: [],
+                             includingResourceValuesForKeys: nil, relativeTo: nil)
     }
 
     func encodeToJSONValue() -> [String: String] {
-        return [
-            InfoKeys.appBundleURL.rawValue: appBundleURL.absoluteString,
-            InfoKeys.appDisplayName.rawValue: appDisplayName,
-            InfoKeys.shortcut.rawValue: shortcut?.toString() ?? ""
-        ]
+        values
     }
 
-}
+    private static func encode(_ shortcut: MASShortcut?, into values: inout [String: String]) {
+        values[InfoKeys.shortcut.rawValue] = shortcut?.toString() ?? ""
+        values[InfoKeys.shortcutKeyCode.rawValue] = shortcut.map { String($0.keyCode) }
+        values[InfoKeys.shortcutModifierFlags.rawValue] = shortcut.map { String($0.modifierFlags.rawValue) }
+    }
 
-func == (lhs: AppModel, rhs: AppModel) -> Bool {
-    return lhs.appBundleURL.absoluteString == rhs.appBundleURL.absoluteString
 }
 
 extension MASShortcut {
@@ -224,13 +313,7 @@ extension MASShortcut {
         kVK_F20: "f20"
     ]
 
-    static func inversedKeycodeMap() -> [String: Int] {
-        var inversedMap = [String: Int]()
-        for (key, value) in MASShortcut.keycodeMap {
-            inversedMap[value] = key
-        }
-        return inversedMap
-    }
+    private static let inversedKeycodeMap = Dictionary(uniqueKeysWithValues: keycodeMap.map { ($0.value, $0.key) })
 
     static let supportedModifiers = [
         NSEvent.ModifierFlags.shift,
@@ -255,18 +338,17 @@ extension MASShortcut {
     }()
 
     convenience init?(from string: String) {
-        let components = string.split(separator: "+")
-        guard components.count > 0 else { return nil }
+        let components = string.split(separator: "+", omittingEmptySubsequences: false)
 
         var modifiers = NSEvent.ModifierFlags(rawValue: 0)
-        var keyCode = 0
+        var keyCode: Int?
         for key in components {
             if let modifier = MASShortcut.inversedModifierMap[String(key)] {
                 guard !modifiers.contains(modifier) else { return nil }
                 modifiers.insert(modifier)
-            } else if let code = MASShortcut.inversedKeycodeMap()[String(key)] {
+            } else if let code = MASShortcut.inversedKeycodeMap[String(key)] {
                 // only support one key code
-                guard keyCode == 0 else { return nil }
+                guard keyCode == nil else { return nil }
                 keyCode = code
             } else {
                 // invalid value
@@ -274,24 +356,17 @@ extension MASShortcut {
             }
         }
 
+        guard let keyCode else { return nil }
         self.init(keyCode: keyCode, modifierFlags: modifiers)
     }
 
     func toString() -> String {
-        if #available(macOS 11.0, *) {
-            let msg = "keyCode: \(self.keyCode), "
-                        + "keyValue: \(MASShortcut.keycodeMap[self.keyCode] ?? ""), "
-                        + "modifiers: \(self.modifierFlags.rawValue)"
-            Logger.shortcut.info("\(msg)")
-        }
+        let msg = "keyCode: \(self.keyCode), "
+                    + "keyValue: \(MASShortcut.keycodeMap[self.keyCode] ?? ""), "
+                    + "modifiers: \(self.modifierFlags.rawValue)"
+        Logger.shortcut.info("\(msg)")
 
-        guard let key = MASShortcut.keycodeMap[keyCode] else {
-            if #available(macOS 11.0, *) {
-                let msg = "unsupported keyCode: \(self.keyCode), modifiers: \(self.modifierFlags.rawValue)"
-                Logger.shortcut.warning("\(msg)")
-            }
-            return ""
-        }
+        guard let key = MASShortcut.keycodeMap[keyCode] else { return "" }
 
         var components = [String]()
         for modifier in MASShortcut.supportedModifiers where modifierFlags.contains(modifier) {
@@ -303,7 +378,7 @@ extension MASShortcut {
 
 }
 
-extension NSEvent.ModifierFlags: Hashable {
+extension NSEvent.ModifierFlags: @retroactive Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(rawValue)
     }
