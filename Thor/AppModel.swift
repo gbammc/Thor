@@ -167,6 +167,11 @@ extension MASShortcut {
         kVK_ANSI_Period: ".",
         kVK_ANSI_Grave: "`",
 
+        kVK_ISO_Section: "section",
+        kVK_JIS_Yen: "jis_yen",
+        kVK_JIS_Underscore: "jis_underscore",
+        kVK_JIS_KeypadComma: "jis_numpad_comma",
+
         kVK_ANSI_KeypadDecimal: "numpad_decimal",
         kVK_ANSI_KeypadMultiply: "numpad_multiply",
         kVK_ANSI_KeypadPlus: "numpad_add",
